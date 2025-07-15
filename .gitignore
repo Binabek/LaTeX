@@ -1,0 +1,12 @@
+# LaTeX ignores
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.out
+*.synctex.gz
+# BibTeX ignores
+*.bbl
+*.blg
+# XeTeX ignores
+*.xdv

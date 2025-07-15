@@ -1,0 +1,106 @@
+Introduction
+Accelerators are important drivers for fundamental research, especially at the energy and power frontier.
+Electromagnetic fields are best suited for accelerating and controlling particles.
+Linear accelerators are simple but uneconomical for high energy.
+Circular accelerators require a periodic solution, linearized solution in transverse space is easily understood.
+Real accelerators have stochastic, nonlinear, and collective effects, and the linear solution is broken.
+Already found the linear solution, we need to look for a nonlinear solution.
+Integrable Hamiltonian systems offer good predictive power of the dynamics.
+Hamiltonian systems satisfying the Nekhoroshev condition are desirable.
+Want a system which can be satisfied with magnetic fields, easy to build.
+Enter Danilov and Nagaitsev, start with Courant-Snyder linear system, implies construction as an insert.
+End up with linear component plus nonlinear function, long studied problem - Hietarinta
+The above constraints yield a number of solutions, in elliptic, parabolic, and polar coordinates.
+We investigate the elliptic solution since the origin is a stable fixed point, unlike polar.
+Parabolic solution has trajectories which cannot circle the origin, leads to unusual density characteristics. - investigate fields
+Prefer Chad's alternative complex parameterization of the system, easier for kick and field expansion.
+Simulations of the basic system show large flexibility in selection of poles and large tune spread.
+Above solutions ignore longitudinal dynamics, especially chromaticity.
+Practically the required potential must be pricewise approximated with imperfect magnets.
+Enter IOTA, machine constructed to evaluate the practicality of such a system.
+Presented work considers simulations and electron experiments on the DN NIO system.
+Supplemental work involving the magnetic field mapping and proton line simulation and characterization are also considered.
+
+Single Particle Simulations - improve story based flow
+To evaluate stability and implementation of various nonlinear integrable optics schemes single particle simulations were carried out.
+The first verification is reasonable conservation of the analytically predicted invariants.
+The simulation is constructed as a series of thin kicks proportional to the nonlinear potential followed by the necessary thin lens.
+The variance of the evaluated invariants from tracked coordinates can be compared.
+Different compositions of the nonlinear insert were considered.
+Equi-phase advance in the thin kicks showed improvements in conservation for a given number of elements.
+Equivalent thick lenses showed small reductions in conservation. - consider equi-phase centering
+Further extended single particle models to include full IOTA lattice.
+Evaluate tune spread and impacts of nonlinearities in matching section of the lattice.
+Consider 6-D effects including chromatic effects in nonlinear lenses.
+Three basic forms of the IOTA lattice, fully linear, with first order chromaticity including compensation, and with kinematic nonlinearities and exact dipole mappings.
+See significant effects on bare lattice chromaticity from the exact dipole mappings.
+
+150 MeV Electron Experiments
+Electron experiment consisted of three major thrusts, lattice commissioning and alignment including nonlinear elements, kicked beam turn by turn measurements, and circulating beam measurements with synchrotron radiation monitors.
+Lattice commissioning involved LOCO fitting of the lattice to the nominal NIO lattice, some linear element alignment.
+Chromatic compensation using orthogonal sextupole knobs indicated misalignment.
+Sextupole misalignment adjusted for final dynamic aperture optimization on losses using chromatic null space.
+Turn by turn data performed in dynamic aperture scans and dense grids.
+
+IOTA bpms are capacitive "button" style, with 20 of one geometry and one different large aperture BPM.
+BPMS have a sample rate of 32 points per turn, digitizer aligns BPMS to location in turn.
+Linear fit is applied to raw signal difference over sum for the first 16 sample points.
+
+150 MeV Electron Analysis
+
+To evaluate the full phase space, momentum reconstruction from the tbt BPM data is necessary.
+There are two main experimental reasons to extract info, amplitude calibration and nonlinear motion quantification.
+Started with 2-bpm, but it ignores a lot of signal.
+3 and N bpm methods use phase measurements as the baseline, don't trust linear phase measurements for nonlinear system.
+Decided on least squares fit to LOCO matrix results, easy to interpret.
+We have a good idea of the linear lattice transfer matrices from LOCO.
+Use transfer matrices as the model, tbt position data, and position and momentum at a single point as the free parameters.
+Tbt data consists of ~7000 turns sampled in each BPM, a turn defined from the lambertson septum.
+The nonlinear insert is excluded from fitting, so turn by turn data is considered from end of insert to beginning.
+The tbt data must be "slipped" to consider the causality of the later bpms.
+There are nonlinearities in the fit channel, but they are small and incoherent over one turn.
+Individual BPMS can be dropped to account for errors, in practice not done automatically.
+Lmfit package was used for easy access to error and goodness of fit metrics. 
+To provide the least squares residual error, the standard deviation in the last 2000 turns of the sample was used.
+In typical nonlinear data sets, the beam has long since decohered and so the tail is tbt bpm noise for a given current.
+The effect of a number of preprocessing techniques on goodness of fit was evaluated.
+The big considerations were PCA cleaning, BPM calibration, and dropping BPMs.
+PCA is a special case of singular value decomposition where the variance for each iterative singular value is maximized.
+SVD was initially considered, but PCA should separate dominant modes better.
+PCA implementation in scikit-learn is also very fast compared to generic numpy SVD.
+PCA is applied to tbt data from all bpms in both planes to account for coupling effects.
+High order PCA terms are assumed to be uncorrelated noise and excluded.
+Typically, the first 8 PCA terms were retained, sometimes more to ensure no information was removed.
+The PCA decomposition is then returned to the original BPM tbt space and fitting is applied.
+PCA cleaning demonstrated a significant benefit in the relative reduced chi square goodness of fit metric.
+The BPM calibration was based on the LOCO results, BPM rotation and scaling allowed to adjust to best fit model.
+End effect of BPM calibrations is beam based individual bpm linear intensity mapping.
+BPM calibration showed proportional improvement with PCA, dominated by the oddball BPM.
+Similar scale improvements in relative reduced chi squared for simply dropping that BPM.
+Dropping other BPMS showed no significant improvement in goodness of fit to linear model.
+Fits were performed with uncoupled 4x4 matricies since local coupling was minimized.
+Comparison of goodness of fit between horizontal and vertical planes was close.
+
+
+Multi Particle simulations
+
+
+Proton Line Efforts
+
+
+Magnet Measurements
+To prepare for the IOTA electron run, the octupole magnets were evaluated for alignment.
+A three axis magnetic test stand was used to sample the field at predefined points.
+Before the measurements, the test stand needed to be aligned to acceptable tolerances.
+The scan was performed on a cylinder in the magnet.
+The harmonic decomposition of the magnetic field on the circles was used to align wrt. fiducials.
+Based on experience with operations on the Octupoles, the magnetic test stand software was improved.
+A python class for faster head movement and superior data type output was developed. - add interpretable csv
+During IOTA operation, harmonic sextupole alignment became suspicious.
+Simple observations of closed orbit with sextupole excitation indicated offsets or field errors.
+Measurements of closed orbit offsets using bumps in sextupoles indicated fundamental dipole offset.
+A sextupole was evaluated using the test stand afterward.
+Dipole error was demonstrated to be independent of hysteresis.
+Harmonic evaluation wrt. current suggested fundamental multipole error.
+Coil turns not suspected, suggested to be uncontrolled differences in relative permeability of poles.
+Next generation nonlinear insert to be magnetically evaluated using test stand.
