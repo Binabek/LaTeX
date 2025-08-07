@@ -13,6 +13,7 @@ End up with linear component plus nonlinear function, long studied problem - Hie
 The above constraints yield a number of solutions, in elliptic, parabolic, and polar coordinates.
 We investigate the elliptic solution since the origin is a stable fixed point, unlike polar.
 Parabolic solution has trajectories which cannot circle the origin, leads to unusual density characteristics. - investigate fields
+Elliptic solution has distinct spirograph patterns, a discerning NIO scholar will have their favorites.
 Prefer Chad's alternative complex parameterization of the system, easier for kick and field expansion.
 Simulations of the basic system show large flexibility in selection of poles and large tune spread.
 Above solutions ignore longitudinal dynamics, especially chromaticity.
@@ -42,9 +43,14 @@ Chromatic compensation using orthogonal sextupole knobs indicated misalignment.
 Sextupole misalignment adjusted for final dynamic aperture optimization on losses using chromatic null space.
 Turn by turn data performed in dynamic aperture scans and dense grids.
 
+IOTA diagnostics used were BPMs, synchrotron cameras, and direct current current transformer (DCCT).
 IOTA bpms are capacitive "button" style, with 20 of one geometry and one different large aperture BPM.
 BPMS have a sample rate of 32 points per turn, digitizer aligns BPMS to location in turn.
-Linear fit is applied to raw signal difference over sum for the first 16 sample points.
+Linear fit is applied to raw signal difference over sum for the first 16 sample points for position.
+An order 7 coupled polynomial is applied based on bpm calibration with stretched wire. 
+BPMs can be triggered in TBT or closed orbit mode.
+TBT samples 7000 turns of individual TBT signals.
+Closed orbit averages over 1000 turns for more accurate circulating measurements.
 
 150 MeV Electron Analysis
 
@@ -54,15 +60,19 @@ Started with 2-bpm, but it ignores a lot of signal.
 3 and N bpm methods use phase measurements as the baseline, don't trust linear phase measurements for nonlinear system.
 Decided on least squares fit to LOCO matrix results, easy to interpret.
 We have a good idea of the linear lattice transfer matrices from LOCO.
-Use transfer matrices as the model, tbt position data, and position and momentum at a single point as the free parameters.
-Tbt data consists of ~7000 turns sampled in each BPM, a turn defined from the lambertson septum.
+Use transfer matrices as the model, tbt position in BPMS as data, and position and momentum at a single point as the free parameters.
+Tbt data consists of ~7000 turns sampled in each BPM, a turn defined as starting at the Lambertson septum.
 The nonlinear insert is excluded from fitting, so turn by turn data is considered from end of insert to beginning.
 The tbt data must be "slipped" to consider the causality of the later bpms.
-There are nonlinearities in the fit channel, but they are small and incoherent over one turn.
+There are of course nonlinearities in the fit channel, but they are proportionally small and incoherent over one turn.
 Individual BPMS can be dropped to account for errors, in practice not done automatically.
-Lmfit package was used for easy access to error and goodness of fit metrics. 
-To provide the least squares residual error, the standard deviation in the last 2000 turns of the sample was used.
-In typical nonlinear data sets, the beam has long since decohered and so the tail is tbt bpm noise for a given current.
+Lmfit python package was used for easy access to error and goodness of fit metrics. 
+In typical kicked data sets, the beam has long since decohered and so the tail is tbt BPM noise.
+To provide the least squares residual error, the standard deviation in the last 2000 turns of the sample was evaluated.
+Outliers disproportionally impact std, so inter quartile range with gaussian normalization was used as uncertainty.
+Reduced chi square per turn was used as goodness of fit evaluator.
+Initially goodness of fit showed an unusually large variation.
+Discriminating on data using magnitude of tbt uncertainty resulted in reasonable chi squared distributions.
 The effect of a number of preprocessing techniques on goodness of fit was evaluated.
 The big considerations were PCA cleaning, BPM calibration, and dropping BPMs.
 PCA is a special case of singular value decomposition where the variance for each iterative singular value is maximized.
@@ -74,12 +84,13 @@ Typically, the first 8 PCA terms were retained, sometimes more to ensure no info
 The PCA decomposition is then returned to the original BPM tbt space and fitting is applied.
 PCA cleaning demonstrated a significant benefit in the relative reduced chi square goodness of fit metric.
 The BPM calibration was based on the LOCO results, BPM rotation and scaling allowed to adjust to best fit model.
-End effect of BPM calibrations is beam based individual bpm linear intensity mapping.
+End effect of BPM calibrations is beam based individual bpm calibrations.
 BPM calibration showed proportional improvement with PCA, dominated by the oddball BPM.
 Similar scale improvements in relative reduced chi squared for simply dropping that BPM.
 Dropping other BPMS showed no significant improvement in goodness of fit to linear model.
-Fits were performed with uncoupled 4x4 matricies since local coupling was minimized.
-Comparison of goodness of fit between horizontal and vertical planes was close.
+Fits were performed with uncoupled 4x4 matrices since local coupling was minimized in LOCO.
+
+
 
 
 Multi Particle simulations
