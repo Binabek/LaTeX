@@ -9,10 +9,10 @@ Integrable Hamiltonian systems offer good predictive power of the dynamics.
 Hamiltonian systems satisfying the Nekhoroshev condition are desirable.
 Want a system which can be satisfied with magnetic fields, easy to build.
 Enter Danilov and Nagaitsev, start with Courant-Snyder linear system, implies construction as an insert.
-End up with linear component plus nonlinear function, long studied problem - Hietarinta
+End up with linear component plus nonlinear function, long studied problem, see Hietarinta.
 The above constraints yield a number of solutions, in elliptic, parabolic, and polar coordinates.
 We investigate the elliptic solution since the origin is a stable fixed point, unlike polar.
-Parabolic solution has trajectories which cannot circle the origin, leads to unusual density characteristics. - investigate fields
+Parabolic solution has trajectories which cannot circle the origin, leads to unusual density characteristics.
 Elliptic solution has distinct spirograph patterns, a discerning NIO scholar will have their favorites.
 Prefer Chad's alternative complex parameterization of the system, easier for kick and field expansion.
 Simulations of the basic system show large flexibility in selection of poles and large tune spread.
@@ -37,11 +37,42 @@ Three basic forms of the IOTA lattice, fully linear, with first order chromatici
 See significant effects on bare lattice chromaticity from the exact dipole mappings.
 
 150 MeV Electron Experiments
+The IOTA ring is constructed to study nonlinear integrable particle optics.
+IOTA is a 40 m circumference storage ring with 4 30 degree dipoles and 4 60 degree dipoles.
+Overall configuration is heavily influenced by VEPP-2000 accelerator design.
+Dipoles have dedicated trim coils and "flux compensator" elements to alleviate sagitta issues with closed orbit.
+Primary focusing is from 39 quadrupoles of two types, "Dubna" and "Radiabeam".
+All quads are powered with Sorensen supplies, some (High Beta?) have Bira regulators with DCCT.
+Local correction is provided for by 20 Panofsky type skew correctors with H,V dipoles and skew quad correction.
+There is one unique vertical corrector intended for an injection bump.
+The injection septum is a Lambertson type magnet.
+Bunching is provided for by a ferrite loaded quarter wave cavity operating at "" Hz
+There are 12 sextupoles for chromatic compensation and harmonic tuning, 4 "Fermilab" 2 "short" and 6 "long".
+The ring has 3 dedicated straights for experimental inserts.
+In run 4 they are occupied by a string of octupoles, a string of DN magnets, and an undulator.
+The undulator is permanent magnets, was for a synchrotron radiation experiment unrelated to NIO studies.
+The octupoles are all symmetric small 4A designs, for evaluating the quasi-integrable Hamiltonian.
+Octupoles were driven by 5A bipolar BIRA supplies with good noise characteristics. - true?
+Octupoles fiducialized to their base, and arranged for an equi-phase approach.
+NIO magnets must be designed to match the unique elliptical potential of th DN system.
+Pole faces are placed to sit at a constant potential surface in DN normalized coordinates.
+For IOTA NIO c=0.0009, and the potential value selected for the surface is 0.5.
+Mirror symmetric magnets needed to be individually EDM'd to match longitudinal scaling.
+Vacuum chamber design was very carefully done, but issues were all ironed out when I arrived.
+NIO magnet driven by bipolar 2A supplies.
+
+
+
+It can operate with protons for intense space charge and investigation of collective effects.
+Most of the studies in this thesis were focused on electrons.
+
 Electron experiment consisted of three major thrusts, lattice commissioning and alignment including nonlinear elements, kicked beam turn by turn measurements, and circulating beam measurements with synchrotron radiation monitors.
 Lattice commissioning involved LOCO fitting of the lattice to the nominal NIO lattice, some linear element alignment.
 Chromatic compensation using orthogonal sextupole knobs indicated misalignment.
 Sextupole misalignment adjusted for final dynamic aperture optimization on losses using chromatic null space.
 Turn by turn data performed in dynamic aperture scans and dense grids.
+
+Measured dynamic aperture with different sextupole configurations.
 
 IOTA diagnostics used were BPMs, synchrotron cameras, and direct current current transformer (DCCT).
 IOTA bpms are capacitive "button" style, with 20 of one geometry and one different large aperture BPM.
@@ -50,9 +81,11 @@ Linear fit is applied to raw signal difference over sum for the first 16 sample 
 An order 7 coupled polynomial is applied based on bpm calibration with stretched wire. 
 BPMs can be triggered in TBT or closed orbit mode.
 TBT samples 7000 turns of individual TBT signals.
-Closed orbit averages over 1000 turns for more accurate circulating measurements.
+Closed orbit averages over 1000 turns for more accurate circulating measurements. - correct?
 
 150 MeV Electron Analysis
+Many analyses used 
+Decoherence times with different sextupole configurations. Include operational maximum coherent oscillation with sextupole tuning.
 
 To evaluate the full phase space, momentum reconstruction from the tbt BPM data is necessary.
 There are two main experimental reasons to extract info, amplitude calibration and nonlinear motion quantification.
@@ -65,9 +98,10 @@ Tbt data consists of ~7000 turns sampled in each BPM, a turn defined as starting
 The nonlinear insert is excluded from fitting, so turn by turn data is considered from end of insert to beginning.
 The tbt data must be "slipped" to consider the causality of the later bpms.
 There are of course nonlinearities in the fit channel, but they are proportionally small and incoherent over one turn.
-Individual BPMS can be dropped to account for errors, in practice not done automatically.
+Individual BPMS can be dropped to account for acquisition failures, in practice not done automatically.
 Lmfit python package was used for easy access to error and goodness of fit metrics. 
-In typical kicked data sets, the beam has long since decohered and so the tail is tbt BPM noise.
+In typical kicked data sets, the beam has long since decohered and so the tail is mostly tbt BPM noise.
+The beam is still large as the damping time is much longer, but centroid is noise.
 To provide the least squares residual error, the standard deviation in the last 2000 turns of the sample was evaluated.
 Outliers disproportionally impact std, so inter quartile range with gaussian normalization was used as uncertainty.
 Reduced chi square per turn was used as goodness of fit evaluator.
@@ -91,13 +125,11 @@ Dropping other BPMS showed no significant improvement in goodness of fit to line
 Fits were performed with uncoupled 4x4 matrices since local coupling was minimized in LOCO.
 
 
-
-
 Multi Particle simulations
-
+Bunch simulations with chromaticity and kicked beam decoherence.
 
 Proton Line Efforts
-
+Simulation of RFQ and MEBT with space charge.
 
 Magnet Measurements
 To prepare for the IOTA electron run, the octupole magnets were evaluated for alignment.
@@ -106,7 +138,7 @@ Before the measurements, the test stand needed to be aligned to acceptable toler
 The scan was performed on a cylinder in the magnet.
 The harmonic decomposition of the magnetic field on the circles was used to align wrt. fiducials.
 Based on experience with operations on the Octupoles, the magnetic test stand software was improved.
-A python class for faster head movement and superior data type output was developed. - add interpretable csv
+A python class for faster head movement and superior data type output was developed.
 During IOTA operation, harmonic sextupole alignment became suspicious.
 Simple observations of closed orbit with sextupole excitation indicated offsets or field errors.
 Measurements of closed orbit offsets using bumps in sextupoles indicated fundamental dipole offset.
