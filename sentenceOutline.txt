@@ -62,7 +62,6 @@ Vacuum chamber design was very carefully done, but issues were all ironed out wh
 NIO magnet driven by bipolar 2A supplies.
 
 
-
 It can operate with protons for intense space charge and investigation of collective effects.
 Most of the studies in this thesis were focused on electrons.
 
