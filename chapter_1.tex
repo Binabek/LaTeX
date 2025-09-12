@@ -9,4 +9,42 @@ Scaling the electrostatic fields from our early cathode ray tubes are a straight
 
 So far the problem of imparting energy to the particles has been given precendence, but naturally the particles must also be steered and focused for useful purposes. Here we can consider magnetic fields as well as electric. While not possible to be used for energy gain, magnetic fields are the preferred option for steering and control. While electrostatic fields are used in some low energy applications, the proportional scaling of the force with momentum from a magnetic field pay divedends as beam energy increases and is the dominant approach for accelerator applications. We can consider then the earliest cyclic machine, the cyclotron. This consists of a single resonant electric gap in a static perpendicular magnetic field. By properly scaling the field strength, in the nonrelatavistic approximation, the classical cyclotron frequency means that the particle will continue to cycle at the correct frequency to see a positive gradient and gain energy. As a result, a modest field on the gap seen many times can result in a significant energy gain for the beam. The tradeoff is that now we have a periodic system which must support stable motion in the plane transverse to the direction of acceleration. This is not unique to cyclic machines.
 
-This problem of stability is of course not unique to accelerators and has a long history of study of dynamical systems. Accordingly, we can construct a hamiltonian of the system. To evaluate the inherent stability of the system we will construct the Hamiltonan for a single particle in external confining potentials in two dimensions. Notably this does not include the self fields of the particle, or of the interactions of many particles in a beam. 
+This problem of stability is of course not unique to accelerators and has a long history of study of dynamical systems. Accordingly, we can construct a hamiltonian of the system. To evaluate the inherent stability of the system we will construct the Hamiltonan for a single particle in external confining potentials in two dimensions. Notably this does not include the self fields of the particle, or of the interactions of many particles in a beam. We are specifically interested in a Hamiltonian which describes a relativitic particle in electromagnetic fields. This results in the general Hamiltonian \ref{eq:H_em} where $\Phi$ and $\vec{A}$ are the typical scalar and vector potentials related to the Electric and Magnetic fields by \ref{eq:phi_A}
+
+\begin{equation} \label{eq:H_em}
+H = c\sqrt{(\vec{p} - q\vec{A}) + m^2 c^2} + q\Phi
+\end{equation}
+
+\begin{equation} \label{eq:phi_A}
+\begin{split} 
+\vec{E} &= -\nabla \Phi - \frac{\partial \vec{A}}{\partial t}\\
+\vec{B} &= \nabla \times \vec{A}
+\end{split}
+\end{equation}
+
+We will aim to find the equations of motion for the linearized condition and. We would like to refine this expression by changing to a more useful coordinate system. When studying the dynamics of a particle accelerator it is useful to investigate the motion of the particles with respect to some reference trajectory rather their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret \cite{frenet-serret} coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path. In the case of an accelerator system, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame along the floor. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}.
+
+\begin{equation} \label{eq:H_fs}
+	H_{f.s.} = c\sqrt{\left(\frac{p_s}{1 + x/\rho} - qA_s\right)^2 + (p_x - qA_x)^2 + (p_y- qA_y)^2} + q\Phi
+\end{equation}
+
+\begin{figure} \label{fig:test_fig}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{Test Figure}
+\end{figure}
+
+The next standard step is to redefine the motion to the longitudinal reference momentum
+
+\begin{equation} \label{eq:coords}
+\begin{split}
+x &= x\\
+p_x &= \frac{p_x}{p_o}\\
+y &= y\\
+p_y &= \frac{p_x}{p_o}\\
+ct &= c(t-t_o)\\
+p_t &= \frac{E-E_o}{p_o c}
+\end{split}
+\end{equation}
+
+\cite{danilov_nonlinear_2010}
