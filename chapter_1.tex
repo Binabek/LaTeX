@@ -51,7 +51,8 @@ There is one more coordinate transformation we would like to make. Currently our
 We can then scale the overall Hamiltonian by this reference momentum Eq. \ref{eq:H_p}. The equations of motion are still satisfied with the inclusion of the already substituted variable changes in Eq. \ref{eq:pOverP}.
 
 \begin{multline} \label{eq:H_p}
-	H_p = \frac{H_s}{p_o} = -\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{\tilde{E}_{\Phi} - \frac{q}{p_o}\Phi}{c}\right)^2 - \left(p_x -\frac{q}{p_o} A_x\right)^2 - \left(p_y - \frac{q}{p_o} A_y\right)^2 - \frac{m^2c^2}{p_o^2}}\\ - \left(1 + \frac{x}{\rho}\right)\frac{q}{p_o}A_s
+	H_p = \frac{H_s}{p_o} = - \left(1 + \frac{x}{\rho}\right)\frac{q}{p_o}A_s\\
+-\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{\tilde{E}_{\Phi} - \frac{q}{p_o}\Phi}{c}\right)^2 - \left(p_x -\frac{q}{p_o} A_x\right)^2 - \left(p_y - \frac{q}{p_o} A_y\right)^2 - \frac{m^2c^2}{p_o^2}}
 \end{multline}
 
 
@@ -63,7 +64,35 @@ We can then scale the overall Hamiltonian by this reference momentum Eq. \ref{eq
 \end{split}
 \end{equation}
 
-The next transformation is for the 
+The last coordinate transformation we will make is to shift the longitudinal position of the test particle with respect to our reference particle. Using a generating function of the form Eq. \ref{eq:relGen}
+
+
+\begin{equation} \label{eq:relGen}
+	G_2(x,p_x,y,p_y,t,p_t;s) = x p_x  + y p_y + \left(ct - \frac{s}{\beta_o}\right)\left(p_t - \frac{1}{\beta_o}\right)
+\end{equation}
+
+The $x,y$ coordinates are not affected by the transformation, but we have the following new longitudinal coordinates in Eq. \ref{eq:statCoords}. Here we follow the direction convention chosen in ImpactX as it will be the native coordinate system for our simulation results later on.
+
+\begin{equation} \label{eq:statCoords}
+\begin{split}
+	ct &= ct - \frac{s}{\beta_o}\\
+	\tilde{p_t} &= \frac{1}{\beta_o} - \frac{\tilde{E_{\Phi}}}{c}\\
+	\tilde{H_p} &= H_p - \frac{\tilde{p_t}}{\beta_o} + \frac{1}{\beta_o^2}
+\end{split}
+\end{equation}
+
+After substitution and removing the constant $\frac{1}{\beta_o^2}$ term we have the Hamiltonian in Eq. \ref{eq:H_A}
+
+\begin{multline} \label{eq:H_A}
+	H_A = - \left(1 + \frac{x}{\rho}\right)\frac{q}{p_o}A_s - \frac{\tilde{p_t}}{\beta_o}\\
+	-\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{1}{\beta_o} - \tilde{p_t}  - \frac{q}{p_o c}\Phi\right)^2 - \left(p_x -\frac{q}{p_o} A_x\right)^2 - \left(p_y - \frac{q}{p_o} A_y\right)^2 - \frac{m^2c^2}{p_o^2}}
+\end{multline}
+
+We then have arrived at the general Hamiltonian for a particle along our reference trajectory with respect to a nominal reference particle in arbitrary electromagnetic fields. At this point we can make further simplifications. We are interested in representing the basic accelerator components, i.e. transverse magnets and radiofrequency cavities. For this case we can take $\Phi, A_x, A_y = 0$. Components that do not meet these conditions, like a solenoid, can be treated analagously to the approach below, but are omitted for brevity.
+
+\begin{equation} \label{eq:H}
+	H = -\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{1}{\beta_o} - p_t \right)^2 - p_x^2 - p_y^2- \frac{m^2c^2}{p_o^2}} - \frac{p_t}{\beta_o} - \left(1 + \frac{x}{\rho}\right)\frac{q}{p_o}A_s
+\end{equation}
 
 \begin{figure} \label{fig:test_fig}
 	\centering
@@ -78,7 +107,7 @@ p_x &= \frac{P_x}{p_o}\\
 y &= y\\
 p_y &= \frac{P_y}{p_o}\\
 ct &= c(t-t_o)\\
-p_t &= \frac{E-E_o}{p_o c}
+p_t &= \frac{E_o-E}{p_o c}
 \end{split}
 \end{equation}
 
