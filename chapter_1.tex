@@ -12,7 +12,7 @@ So far the problem of imparting energy to the particles has been given precenden
 This problem of stability is of course not unique to accelerators and has a long history of study of dynamical systems. Accordingly, we can construct a hamiltonian of the system. To evaluate the inherent stability of the system we will construct the Hamiltonan for a single particle in external confining potentials in two dimensions. Notably this does not include the self fields of the particle, or of the interactions of many particles in a beam. We are specifically interested in a Hamiltonian which describes a relativitic particle in electromagnetic fields. This results in the general Hamiltonian \ref{eq:H_em} where $\Phi$ and $\vec{A}$ are the typical scalar and vector potentials related to the Electric and Magnetic fields by \ref{eq:phi_A}
 
 \begin{equation} \label{eq:H_em}
-H = c\sqrt{(\vec{p} - q\vec{A}) + m^2 c^2} + q\Phi
+H_{EM} = E_{\Phi} = c\sqrt{(\vec{P} - q\vec{A}) + m^2 c^2} + q\Phi
 \end{equation}
 
 \begin{equation} \label{eq:phi_A}
@@ -22,11 +22,48 @@ H = c\sqrt{(\vec{p} - q\vec{A}) + m^2 c^2} + q\Phi
 \end{split}
 \end{equation}
 
-We will aim to find the equations of motion for the linearized condition and. We would like to refine this expression by changing to a more useful coordinate system. When studying the dynamics of a particle accelerator it is useful to investigate the motion of the particles with respect to some reference trajectory rather their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret \cite{frenet-serret} coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path. In the case of an accelerator system, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame along the floor. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}.
+Here the canonical momentum $\vec{P}$ is related to the mechanical momentum by \ref{eq:P_mv}
+
+\begin{equation} \label{eq:P_mv}
+	\vec{P} = \gamma m\vec{v} - q \vec{A}
+\end{equation}
+
+And this Hamiltonian is then the total energy of the particle including the contribution from the scalar potential, I will call this $E_{\Phi}$ to differentiate it from the total energy in the absence of the scalar potential.
+
+We will aim to find the equations of motion for the linearized condition and. We would like to refine this expression by changing to a more useful coordinate system. When studying the dynamics of a particle accelerator it is useful to investigate the motion of the particles with respect to some reference trajectory rather their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret \cite{frenet-serret} coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path. In the case of an accelerator system, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame along the floor. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}. This coordinate transformation does not affect the value of the Hamiltonian, so it is still equivalent to the total energy of the test particle with the scalar field contribution.
 
 \begin{equation} \label{eq:H_fs}
-	H_{f.s.} = c\sqrt{\left(\frac{p_s}{1 + x/\rho} - qA_s\right)^2 + (p_x - qA_x)^2 + (p_y- qA_y)^2} + q\Phi
+	H_{f.s.} = E_{\Phi} = c\sqrt{\left(\frac{p_s}{1 + x/\rho} - qA_s\right)^2 + (P_x - qA_x)^2 + (P_y- qA_y)^2+ m^2c^2} + q\Phi
 \end{equation}
+
+Since an accelerator is composed of sequential elements along this reference trajectory, it is useful to change the independent variable to the spacial coordinate along the trajectory. Inspecting the action with respect to the s dimension shows defining the new hamiltonain as $H_s(x,p_x,y,p_y,t,-E_{\Phi};s) = -p_s$ only requires rearranging Eq. \ref{eq:H_fs} to arrive at Eq. \ref{eq:H_s}.
+
+\begin{multline} \label{eq:H_s}
+	H_s = -\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{E_{\Phi} - q\Phi}{c}\right)^2 - (P_x -q A_x)^2 - (P_y - q A_y)^2 - m^2c^2}\\ - \left(1 + \frac{x}{\rho}\right)qA_s
+\end{multline}
+
+There is one more coordinate transformation we would like to make. Currently our longitudinal cannonical coordinate is time, which will increase quickly along the beam line and become cumbersome. We would like to define the position of the beam with respect to some reference particle, which has the ideal quantites we would like in our accelerated beam. Correspondingly we define a particle on our reference trajectory with a momentum $p_o$ (Eq.\ref{eq:p_o}) directed along the reference trajectory.
+
+\begin{equation} \label{eq:p_o}
+	p_o = \beta_o \gamma_o m c
+\end{equation}
+
+We can then scale the overall Hamiltonian by this reference momentum Eq. \ref{eq:H_p}. The equations of motion are still satisfied with the inclusion of the already substituted variable changes in Eq. \ref{eq:pOverP}.
+
+\begin{multline} \label{eq:H_p}
+	H_p = \frac{H_s}{p_o} = -\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{\tilde{E}_{\Phi} - \frac{q}{p_o}\Phi}{c}\right)^2 - \left(p_x -\frac{q}{p_o} A_x\right)^2 - \left(p_y - \frac{q}{p_o} A_y\right)^2 - \frac{m^2c^2}{p_o^2}}\\ - \left(1 + \frac{x}{\rho}\right)\frac{q}{p_o}A_s
+\end{multline}
+
+
+\begin{equation} \label{eq:pOverP}
+\begin{split}
+	p_x &= \frac{P_x}{p_o}\\
+	p_y &= \frac{P_y}{p_o}\\
+	\tilde{E_{\Phi}} &= \frac{E_{\Phi}}{p_o}
+\end{split}
+\end{equation}
+
+The next transformation is for the 
 
 \begin{figure} \label{fig:test_fig}
 	\centering
@@ -34,14 +71,12 @@ We will aim to find the equations of motion for the linearized condition and. We
 	\caption{Test Figure}
 \end{figure}
 
-The next standard step is to redefine the motion to the longitudinal reference momentum
-
 \begin{equation} \label{eq:coords}
 \begin{split}
 x &= x\\
-p_x &= \frac{p_x}{p_o}\\
+p_x &= \frac{P_x}{p_o}\\
 y &= y\\
-p_y &= \frac{p_x}{p_o}\\
+p_y &= \frac{P_y}{p_o}\\
 ct &= c(t-t_o)\\
 p_t &= \frac{E-E_o}{p_o c}
 \end{split}

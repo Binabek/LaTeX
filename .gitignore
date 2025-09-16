@@ -9,6 +9,9 @@
 # BibTeX ignores
 *.bbl
 *.blg
+# BibLaTeX ignores
+*.bcf
+*.xml
 # XeTeX ignores
 *.xdv
 # Paranoid ipython ignores
