@@ -30,7 +30,13 @@ Here the canonical momentum $\vec{P}$ is related to the mechanical momentum by \
 
 And this Hamiltonian is then the total energy of the particle including the contribution from the scalar potential, I will call this $E_{\Phi}$ to differentiate it from the total energy in the absence of the scalar potential.
 
-We will aim to find the equations of motion for the linearized condition and. We would like to refine this expression by changing to a more useful coordinate system. When studying the dynamics of a particle accelerator it is useful to investigate the motion of the particles with respect to some reference trajectory rather their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret \cite{frenet-serret} coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path. In the case of an accelerator system, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame along the floor. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}. This coordinate transformation does not affect the value of the Hamiltonian, so it is still equivalent to the total energy of the test particle with the scalar field contribution.
+We will aim to find the equations of motion for the linearized condition and. We would like to refine this expression by changing to a more useful coordinate system. When studying the dynamics of a particle accelerator it is useful to investigate the motion of the particles with respect to some reference trajectory rather their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret (Fig. \ref{fig:frenetSerret}) coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path. In the case of an accelerator system, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame along the floor. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}. This coordinate transformation does not affect the value of the Hamiltonian, so it is still equivalent to the total energy of the test particle with the scalar field contribution.
+
+\begin{figure} \label{fig:frenetSerret}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{Illustration of Frenet-Serret style Coordinate System}
+\end{figure}
 
 \begin{equation} \label{eq:H_fs}
 	H_{f.s.} = E_{\Phi} = c\sqrt{\left(\frac{p_s}{1 + x/\rho} - qA_s\right)^2 + (P_x - qA_x)^2 + (P_y- qA_y)^2+ m^2c^2} + q\Phi
@@ -88,17 +94,15 @@ After substitution and removing the constant $\frac{1}{\beta_o^2}$ term we have 
 	-\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{1}{\beta_o} - \tilde{p_t}  - \frac{q}{p_o c}\Phi\right)^2 - \left(p_x -\frac{q}{p_o} A_x\right)^2 - \left(p_y - \frac{q}{p_o} A_y\right)^2 - \frac{m^2c^2}{p_o^2}}
 \end{multline}
 
-We then have arrived at the general Hamiltonian for a particle along our reference trajectory with respect to a nominal reference particle in arbitrary electromagnetic fields. At this point we can make further simplifications. We are interested in representing the basic accelerator components, i.e. transverse magnets and radiofrequency cavities. For this case we can take $\Phi, A_x, A_y = 0$. Components that do not meet these conditions, like a solenoid, can be treated analagously to the approach below, but are omitted for brevity.
+We then have arrived at the general Hamiltonian for a particle along our reference trajectory with respect to a nominal reference particle in arbitrary electromagnetic fields. 
 
-\begin{equation} \label{eq:H}
+From here we now need to decide on which fields to apply to our particle for stable accelration. We are interested in representing the basic accelerator components, i.e. transverse magnets and radiofrequency cavities. For this case we can take $\Phi, A_x, A_y = 0$, which yields the Hamiltonian in \ref{eq:H_bet}. Components that do not meet these conditions, like a solenoid, can be treated analagously to the following approach, but are omitted for brevity.
+
+\begin{equation} \label{eq:H_bet}
 	H = -\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{1}{\beta_o} - p_t \right)^2 - p_x^2 - p_y^2- \frac{m^2c^2}{p_o^2}} - \frac{p_t}{\beta_o} - \left(1 + \frac{x}{\rho}\right)\frac{q}{p_o}A_s
 \end{equation}
 
-\begin{figure} \label{fig:test_fig}
-	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
-	\caption{Test Figure}
-\end{figure}
+With the scalar potential set to zero, we arrive at a common set of canonoical coordinates used for studies of acclerator dynamics (Eq. \ref{eq:coords}). The relevant difference here from our coordinates above is that now the longitudinal momentum $p_t$ is the difference in the relativistic energy (Eq. \ref{eq:relEnergy}) of the test and reference particle. These definitons are now completely consistent with those used in ImpactX. I refer to the longitudinal spacial coordinate as $ct$ to continually remind that the units are in meters.
 
 \begin{equation} \label{eq:coords}
 \begin{split}
@@ -110,5 +114,33 @@ ct &= c(t-t_o)\\
 p_t &= \frac{E_o-E}{p_o c}
 \end{split}
 \end{equation}
+
+\begin{equation} \label{eq:relEnergy}
+	E = \gamma m c^2 \Rightarrow E_o = \gamma_o m c^2
+\end{equation}
+
+There are two prominent alternative coordinate definitions in use. The first is an alternative longitudinal coordinate parameterization using the difference in momentum instead of energy, usually called $\delta$, which also changes the longitudinal coordinate defintion to spacial offset. The relationship between these coordinates and the coordinates in Eq. \ref{eq:coords} is given in Eq. \ref{eq:delCoord} and expanded upon in Appendix \ref{apx:delToPt}.
+
+\begin{equation} \label{eq:delCoord}
+\begin{split}
+	\delta &= \frac{p-p_o}{p_o} = \sqrt{p_t^2 -\frac{2}{\beta_o}p_t + 1} -1 \approx -\frac{p_t}{\beta_o}\\
+	z &= ct\frac{\sqrt{\beta_o^2 + \beta_o^2 p_t^2 - 2\beta_o p_t}}{\beta_o p_t - 1} \approx  - \beta_o c t
+\end{split}
+\end{equation}
+
+The other coordinate convention wich deserves mention is the use of $x' = \frac{dx}{ds}$. This is an easy to understand coordinate, but it is in general non-cannonical and so is avoided in our Hamiltonain based approach. This value converges with our definition of $p_x$ in the ultrarelatavistic case.
+
+Recognizing $\frac{m^2c^2}{p_o^2} = \frac{1}{\beta_o^2 \gamma_o^2}$ we can make one more simplification now that $\Phi = 0$, giving us the hamiltonian in Eq. \ref{eq:H_As}.
+
+\begin{equation} \label{eq:H_As}
+	H = -\left(1 + \frac{x}{\rho}\right)\sqrt{1 + p_t^2 - \frac{2 p_t}{\beta_o} - p_x^2 - p_y^2- } - \frac{p_t}{\beta_o} - \left(1 + \frac{x}{\rho}\right)\frac{q}{p_o}A_s
+\end{equation}
+
+The exact form of $A_s$ must now be selected to find our equations of motion. Before we do so we will consider the general form of this expansion we are interested in.
+
+\section{Multipole Expansion}
+
+\section{Linearized Hamiltonian}
+Based on the form of the multipole expansion, we can see that only our dipole and quadrupole elements will affect the dynamics to the first order. While in general, we can use potentials of any order, we are not garanteed an analytical solution. We can, however find solutions to the first order terms.
 
 \cite{danilov_nonlinear_2010}
