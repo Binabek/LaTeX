@@ -141,6 +141,68 @@ The exact form of $A_s$ must now be selected to find our equations of motion. Be
 \section{Multipole Expansion}
 
 \section{Linearized Hamiltonian}
-Based on the form of the multipole expansion, we can see that only our dipole and quadrupole elements will affect the dynamics to the first order. While in general, we can use potentials of any order, we are not garanteed an analytical solution. We can, however find solutions to the first order terms.
+Based on the form of the multipole expansion, we can see that only our dipole and quadrupole elements will affect the dynamics to the first order. While in general, we can use potentials of any order, we are not garanteed an analytical solution. The first order solutions to the equations of motion are possible to find analytically and will serve as the foundation for our dynamical analysis moving forward.
+
+We will look for a solution to the equations of motion for a static quadrupole field. This has the vector potential in Eq. \ref{eq:As_B2}.
+
+\begin{equation} \label{eq:As_B2}
+	A_s = -\frac{B_2}{2}(x^2 - y^2)
+\end{equation}
+
+We also have no bending of the reference trajectory here so $\rho \rightarrow \infty$. Recalling our relationship for the rigidity $B\rho = \frac{p_o}{q}$ the resulting Hamiltonian is Eq. \ref{eq:H_q}
+
+\begin{equation} \label{eq:H_q}
+	H = -\sqrt{1 + p_t^2 - \frac{2p_t}{\beta_o} - p_x^2 - p_y^2} - \frac{p_t}{\beta_o} + \frac{k_2}{2}(x^2 - y^2)
+\end{equation}
+
+We will now make the first big assumption towards our solution. If we expand the square root term in the Hamiltonian and truncate to lowest order in the dynamical variables (Eq. \ref{eq:sqrt_taylor}) we are making the paraxial approximation. The argument is that since our cannonical momentum coordinates are all defined as a ratios with respect the the reference particle, when it is relatavistic the motion of these particles is all nearly parallel and these quantites are small, so higher orders can safely be ignored. Naturally this assumption breaks down for low energy beams, but is generally good for most practical accelerators.
+
+\begin{equation} \label{eq:sqrt_taylor}
+	\sqrt{1 + p_t^2 - \frac{2p_t}{\beta_o} - p_x^2 - p_y^2} \Rightarrow 1 - \frac{p_t^2}{2\beta_o^2\gamma_o^2} - \frac{p_t}{\beta_o} - \frac{p_x^2}{2} - \frac{p_y^2}{2} + O(3)
+\end{equation}
+
+Resubstituting and dropping the constant factor, we arrive at the Hamiltonian in Eq. \ref{eq:H_parax}
+
+\begin{equation} \label{eq:H_parax}
+	H = \frac{p_x^2}{2} + \frac{p_y^2}{2} + \frac{p_t^2}{2\beta_o^2\gamma_o^2} + \frac{k_2}{2}(x^2 - y^2)
+\end{equation}
+
+Note that the resulting hamiltonian has no mixed terms, so the equations are naturally seperated into the different dimensions. This is in part due to our selection of external field, if we selected a skew quadrupole the transverse dimensions would be coupled. We can see that any static multipole field will not result in any coupling to the longitudinal dimensions in the paraxial approximation. For the quadrupole the most relevant effect is the effective field for different momentum, the tansverse "Chromaticity" in analogy to light optics. This is properly treated at higher orders, but we will first resolve this to lowest order. Applying Hamilton's equations of motion gives us three systems of linear differential equations.
+
+\begin{equation} \label{eq:quad_diffeq}
+\begin{split}
+	\frac{dx}{ds} &= p_x\\ 
+	\frac{dp_x}{ds} &= -k_2 x
+\end{split}
+\end{equation}
+
+Substituting and rearranging we arrive at Hills equation, Eq. \ref{eq:hills}
+
+\begin{equation} \label{eq:hills}
+	\frac{d^2 x}{ds^2} + k_2 x = 0
+\end{equation}
+
+Which has three general solutions for different ranges of $k_2$.
+
+\begin{align} \label{eq:hillSol}
+	x(s) &= a \cos{\left(\sqrt{k_2} s\right)} + b \sin{\left(\sqrt{k_2} s\right)}, &k_2>0\\
+	x(s) &= a s + b, &k_2 =0 \\
+	x(s) &= a \cosh{\left(\sqrt{k_2} s\right)} + b \sinh{\left(\sqrt{k_2} s\right)}, &k_2<0
+\end{align}
+
+For a quadrupole of a given lenth $L$, we can define a matrix which represents the three linear solutions for our different dimensions if it acts on a state vector of our canonical coordinates.
+
+\begin{equation} \label{mat:quad}
+\begin{pmatrix} 
+	&\cos{\left(\sqrt{k_2} L\right)} &\frac{1}{\sqrt{k_2}}\sin{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
+	&\sqrt{k_2}\sin{\left(\sqrt{k_2} L\right)} &\cos{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
+	&0 &0 &\cosh{\left(\sqrt{k_2} L\right)} &\frac{1}{\sqrt{k_2}}\sinh{\left(\sqrt{k_2} L\right)} &0 &0\\
+	&0 &0 &\sqrt{k_2}\sinh{\left(\sqrt{k_2} L\right)} &\cosh{\left(\sqrt{k_2} L\right)} &0 &0\\
+	&0 &0 &0 &0 &1 &\frac{L}{\beta_o^2\gamma_o^2}\\
+	&0 &0 &0 &0 &0 &1\\
+\end{pmatrix}
+\end{equation}
+
+
 
 \cite{danilov_nonlinear_2010}
