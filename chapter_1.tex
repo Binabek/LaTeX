@@ -30,7 +30,7 @@ Here the canonical momentum $\vec{P}$ is related to the mechanical momentum by \
 
 And this Hamiltonian is then the total energy of the particle including the contribution from the scalar potential, I will call this $E_{\Phi}$ to differentiate it from the total energy in the absence of the scalar potential.
 
-We will aim to find the equations of motion for the linearized condition and. We would like to refine this expression by changing to a more useful coordinate system. When studying the dynamics of a particle accelerator it is useful to investigate the motion of the particles with respect to some reference trajectory rather their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret (Fig. \ref{fig:frenetSerret}) coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path. In the case of an accelerator system, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame along the floor. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}. This coordinate transformation does not affect the value of the Hamiltonian, so it is still equivalent to the total energy of the test particle with the scalar field contribution.
+We will aim to find the equations of motion for the linearized condition and. We would like to refine this expression by changing to a more useful coordinate system. When studying the dynamics of a particle accelerator it is useful to investigate the motion of the particles with respect to some reference trajectory rather their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret (Fig. \ref{fig:frenetSerret}) coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path.  In the case of many accelerator systems, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame along the floor. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}. This coordinate transformation does not affect the value of the Hamiltonian, so it is still equivalent to the total energy of the test particle with the scalar field contribution. Strictly speaking this is the case for transfer lines, linacs, synchrotrons and storage rings. There are other style machines, such as cyclotrons and fixed field alternating gradient accelerators which demand a different treatment of the dynamics, but are beyond the scope of this derevation.
 
 \begin{figure} \label{fig:frenetSerret}
 	\centering
@@ -140,6 +140,13 @@ The exact form of $A_s$ must now be selected to find our equations of motion. Be
 
 \section{Multipole Expansion}
 
+Multipoles expansion about a straight line.
+Reference curved trajectory multipoles.
+Include sector vs rectangular bend consideration.
+Seperated function and combined-function.
+Comment on fringe field vs hard edge.
+Vector potential expansion of multipoles.
+
 \section{Linearized Hamiltonian}
 Based on the form of the multipole expansion, we can see that only our dipole and quadrupole elements will affect the dynamics to the first order. While in general, we can use potentials of any order, we are not garanteed an analytical solution. The first order solutions to the equations of motion are possible to find analytically and will serve as the foundation for our dynamical analysis moving forward.
 
@@ -190,19 +197,59 @@ Which has three general solutions for different ranges of $k_2$.
 	x(s) &= a \cosh{\left(\sqrt{k_2} s\right)} + b \sinh{\left(\sqrt{k_2} s\right)}, &k_2<0
 \end{align}
 
-For a quadrupole of a given lenth $L$, we can define a matrix which represents the three linear solutions for our different dimensions if it acts on a state vector of our canonical coordinates.
+For a quadrupole of a given lenth $L$, we can define a matrix Eq. \ref{mat:quad} which represents the three linear solutions for our different dimensions if it acts on a state vector of our canonical coordinates.
 
-\begin{equation} \label{mat:quad}
+\begin{multline} \label{mat:quad}
+	M_{quad} = \\
 \begin{pmatrix} 
 	&\cos{\left(\sqrt{k_2} L\right)} &\frac{1}{\sqrt{k_2}}\sin{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
-	&\sqrt{k_2}\sin{\left(\sqrt{k_2} L\right)} &\cos{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
+	&-\sqrt{k_2}\sin{\left(\sqrt{k_2} L\right)} &\cos{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
 	&0 &0 &\cosh{\left(\sqrt{k_2} L\right)} &\frac{1}{\sqrt{k_2}}\sinh{\left(\sqrt{k_2} L\right)} &0 &0\\
 	&0 &0 &\sqrt{k_2}\sinh{\left(\sqrt{k_2} L\right)} &\cosh{\left(\sqrt{k_2} L\right)} &0 &0\\
 	&0 &0 &0 &0 &1 &\frac{L}{\beta_o^2\gamma_o^2}\\
 	&0 &0 &0 &0 &0 &1\\
 \end{pmatrix}
+\end{multline}
+
+The same approach can be applied to our other seperated function, first order elements in the paraxial approximation, for a drift space (Eq. \ref{mat:drift}) and a sector dipole magnet (Eq. \ref{mat:dipole}).
+
+\begin{equation} \label{mat:drift}
+	M_{drift} =
+\begin{pmatrix}
+	&1 &L &0 &0 &0 &0\\
+	&0 &1 &0 &0 &0 &0\\
+	&0 &0 &1 &L &0 &0\\
+	&0 &0 &0 &1 &0 &0\\
+	&0 &0 &0 &0 &1 &\frac{L}{\beta_o^2\gamma_o^2}\\
+	&0 &0 &0 &0 &0 &1\\
+\end{pmatrix}
 \end{equation}
 
+\begin{multline} \label{mat:dipole}
+	M_{dipole} = \\
+\begin{pmatrix}
+	&\cos{\left(\frac{L}{\rho}\right)} &\rho \sin{\left(\frac{L}{\rho}\right)} &0 &0 &0 &-\frac{\rho}{\beta_o}\left(1 - \cos{\left(\frac{L}{\rho}\right)}\right)\\
+	&-\frac{1}{\rho}\sin{\left(\frac{L}{\rho}\right)} &\cos{\left(\frac{L}{\rho}\right)} &0 &0 &0 &-\frac{1}{\beta_o}\sin{\left(\frac{L}{\rho}\right)}\\
+	&0 &0 &1 &L &0 &0\\
+	&0 &0 &0 &1 &0 &0\\
+	&\frac{1}{\beta_o}\sin{\left(\frac{L}{\rho}\right)} &\frac{\rho}{\beta_o}\left(1 - \cos{\left(\frac{L}{\rho}\right)}\right) &0 &0 &1 &\frac{\rho}{\beta_o^2}\sin{\left(\frac{L}{\rho}\right)} - L\\
+	&0 &0 &0 &0 &0 &1\\
+\end{pmatrix}
+\end{multline}
 
+Note that the dipole preserves coupling between the longitudinal and horizontal planes at the first order, unlike the quadrupole. This gives rise to first order dispersion, or longitudinally dependent energy coupling in the horizontal motion. 
+
+These solutions are quite powerful, as they let us stack linear transformations in a row to construct mathematical representations of a transfer line. There is an additional advantage to this form, since the equations of motion were derived from the Hamiltonian of our system, we are garunteed that these transformations are symplectic. Formally a "symplectic form is a two-form which is closed and nondegenerate" \cite{JoseAndSalatan}. More usefully in a physics context a symplectic transformation is one which is garunteed to preserve our physical quantites, such as total energy. A sequence of symplectic mappings is also symplectic, so we can be certain that any sequence of our above matrix elements will maintain the symplectic condition. 
+
+\section{Courant-Snyder Parameterization}
+While the transformations we have aquired are generally applicable, we would like to evaluate the conditions for a stable periodic system like we need for a cyclic machine. At this point we will make another simplification of the dynamics by investigating the stability of the transverse and longitudinal dimensions seperately. This is of course not strictly true, but the characteristic timescales of synchrotron oscillations are often orders of magnitude slower than the transverse oscillations. We will choose the horizontal "x" motion to investigate. Analagous methods can be used for the "y" plane.
+
+We begin with defining a matrix of a periodic "cell" (Eq. \ref{eq:period}), or sequence of elements $M_1 \dots M_n$ with total length $L$. This could be the representation of a whole cyclic accelerator, or smaller sequence of elements intended for a superperiodic construction.
+
+\begin{equation} \label{eq:period}
+	\mathbb{M}(s) = M(s+L|s) = M_nM_{n-1}\dots M_2M_1
+\end{equation}
+
+Our periodic condition then becomes that motion is bounded for repeated applications of this matrix. The solutions to Hills equations (including the dipole case where longitudinal coupling is excluded) yields matricies with a determinant of one. As the determinant of a product of matricies is the product of their individual determinants, we know that the determinant of our particular cell must be 1. 
 
 \cite{danilov_nonlinear_2010}
