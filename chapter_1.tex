@@ -284,7 +284,7 @@ If we calculate the trace of this parameterization and substitute into Eq. \ref{
 
 Where $\phi_x$ is complex if $|\mathrm{Trace}(\mathbb{M})| > 2$ and real if $|\mathrm{Trace}(\mathbb{M})| < 2$. We can see from Eq. \ref{eq:eigenRep}, our motion is only bounded for real values of $\phi_x$ and our stability condition for a periodic transfer matrix $\mathbb{M}$ becomes $|\mathrm{Trace}(\mathbb{M})| < 2$.
 
-By leveraging the fact that the periodic linearized equations of motion have a determinant of 1, we can arrive at the relationship in Eq. \ref{eq:csRel}. We can also see from the couraunt snyder parameterization Eq. \ref{eq:phiTrace} holds for any stable transfer matrix.
+By leveraging the fact that the periodic linearized equations of motion have a determinant of 1, we can arrive at the relationship in Eq. \ref{eq:csRel}. We can also see from the couraunt snyder parameterization Eq. \ref{eq:phiTrace} holds for any stable transfer matrix. This defines the fractional component of $\phi_x$, but leaves it ambiguous to integer multiples of $2\pi$. In practice, the ambiguity can be cleared up by calculating this parameter for individual constituents of the periodic transfer matricies.
 
 \begin{equation} \label{eq:csRel}
 	\beta_x \gamma_x  = 1 + \alpha_x^2
@@ -294,6 +294,95 @@ By leveraging the fact that the periodic linearized equations of motion have a d
 	\cos{\left(\phi_x\right)} = \mathrm{Trace}(\mathbb{M})
 \end{equation}
 
-The full benefits of the courant-snyder parameterization are not yet clear. 
+We can further investigate the form of these parameters by splitting the general periodic matrix, in Eq. \ref{eq:csMatSplit}, where the matrix $A$ and $S$ are given in Eq. \ref{mat:csA}. $S$ is a block antisymmetric matrix, and reduces to just the antisymmetric matrix in two dimensions like we have here.
+
+\begin{equation} \label{eq:csMatSplit}
+	\mathbb{M}_{CS} = I \cos{\left(\phi_x\right)} + S A \sin{\left(\phi_x\right)}
+\end{equation}
+
+\begin{equation} \label{mat:csA}
+	A = 
+\begin{pmatrix}
+	&\gamma_x &\alpha_x\\
+	&\alpha_x &\beta_x
+\end{pmatrix},
+\hspace{10pt} S =
+\begin{pmatrix}
+	&0 &1\\
+	&-1 &0
+\end{pmatrix}
+\end{equation}
+
+Within our periodic cell $\mathbb{M}$, we can consider the transformation in Eq. \ref{eq:startShift} by some transfer matrix in the cell which moves the overall start point. By examaning the trace of this transformation, we can see that $\phi_x$ of our periodic matrix is unchanged by this shift in start point.
+
+\begin{equation} \label{eq:startShift}
+	\mathbb{M}(s_1)  = M(s_1|s_o)\mathbb{M}(s_o)M(s_1|s_o)^{-1}
+\end{equation}
+
+If we apply this transformation to \ref{eq:csMatSplit}, as $\phi_x$ unadjusted by the shift, the overall effect is summarized in Eq. \ref{eq:AstartShift}.
+
+\begin{equation} \label{eq:AstartShift}
+	S A(s_1) = M(s_1|s_o) S A(s_o)M(s_1|s_o)^{-1}
+\end{equation}
+
+We can now leverage the underlying symplecticity of our transfer matricies, which mandates the condition in Eq. \ref{eq:symplecticMat}.
+
+\begin{equation} \label{eq:symplecticMat}
+	M^T S M = S
+\end{equation}
+
+Recognizing that $S^T = S^{-1}$ and using the symplectic condition, we can rarrange and invert Eq. \ref{eq:AstartSplit} to arrive at the transformation of $A^{-1}$ at different points in the cell in Eq. \ref{eq:barAshift} 
+
+\begin{equation} \label{eq:barAshift}
+	A(s_1)^{-1} = M(s_1|s_o)  A(s_o)^{-1} M(s_1|s_o)^T
+\end{equation}
+
+After inverting $A$ we can solve Eq. \ref{eq:barAshift} for the transformation of our courant-snyder parameters $\beta_x, \alpha_x, \gamma_x$ with respect to the components of the transfer matrix $M$ in eqation Eq. \ref{eq:csShift}.
+
+\begin{equation} \label{eq:csShift}
+	\begin{pmatrix} &\beta_x(s_1) \\ &\alpha_x(s_1)\\ &\gamma_x(s_1) \end{pmatrix} = 
+	\begin{pmatrix}
+		&M_{11}^2 &-2 M_{11} M_{12} &M_{12}^2\\
+		&-M_{11} M_{21} &M_{11} M_{22} + M_{12} M_{21} &-M_{12}M_{22}\\
+		&M_{21}^2 &-2 M_{21} M_{22} &M_{22}^2
+	\end{pmatrix}
+	\begin{pmatrix} &\beta_x(s_o) \\ &\alpha_x(s_o)\\ &\gamma_x(s_o) \end{pmatrix}
+\end{equation}
+
+This is a useful result, as it means for any stable, periodic, sequence of our linear beamline elements, we can uniquely define the courant snyder parameters and transfer them to any other point in the lattice. The result in \ref{eq:csShift} is even useful without a periodic system, as the effective lattice parameters of a beam distribution (described later in this section) can be transformed along a sequence of linear elements as is the case in a linac or transfer line.
+
+We would now like to find the equations of motion for this parameterization. We can construct an invariant action for our canonical coordinates and Courant-Snyder parameters.
+
+\begin{equation} \label{eq:csJ}
+	J = \frac{1}{2} (\vec{q}_x)^T A \vec{q}_x = \frac{1}{2} (\gamma_x x^2 + 2\alpha_x x p_x + \beta_x p_x^2)
+\end{equation}
+
+Which we verify is invariant by inspecting the transformation of our cannonical state vectors $\vec{q}_X$ and matrix $A$ under a transfer matrix.
+
+\begin{equation} \label{eq:Jinvariant}
+	J(s_1) = \frac{1}{2} \vec{q}_x(s_1)^T A(s_1) \vec{q}_x(s1) = \frac{1}{2} \vec{q}_x(s_o)^T M^T (M^T)^{-1} A(s_o) M^{-1}  M \vec{q}_x(s_o) = J(s_o)
+\end{equation}
+
+Determining the angle variable with respect to the cournant snyder parameters is an extended derevation which requires inspecting the general solution to Hill's equation using the Floquet transform in comparison with the current periodic condition. This would be longer than the entire derevation of the courant snyder parameters up to this point, so it is ommitted here and only the important results are quoted. First the relationship to the angle $\varphi_x$ to the coordinates 
+
+\begin{equation} \label{eq:csAngle}
+	\tan{(\varphi_x)} = -\beta_x \frac{x}{p_x} - \alpha_x 
+\end{equation}
+
+Second, the relationship to the $\beta_x$
+
+\begin{equation} \label{eq:csNorm}
+\begin{split}
+	x_N &= \frac{x}{\sqrt{\beta_x}}\\
+	p_{xN} &= \frac{\alpha x}{\sqrt{\beta}} - \sqrt{\beta}p_x
+\end{split}
+\end{equation}
+
+All of this parameterization was of course in one dimension, the same can be applied to the y-plane assuming they are uncoupled. This parameterizaiton approach can be extended to include coupling, there are two main approaches. One by Edwards-Teng and Mais-Ripkin and extensions . For the purposes of this thesis these coupled parameterizations are extraneous and only affect the tune match possisble which will be discussed in chapter on experimental design.
+
+\section{Integrable Systems}
+
+\section{Nonlinear Integrable Optics}
+
 
 \cite{danilov_nonlinear_2010}
