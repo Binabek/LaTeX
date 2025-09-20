@@ -446,9 +446,32 @@ We can also observe that the definition of the emittance simplifies in these coo
 
 All of this parameterization was of course in one dimension, the same can be applied to the y-plane assuming they are uncoupled. An extended parameterization to include coupling has been considered and there are two main approaches. One by Edwards-Teng \cite{edwards-teng} and one by Mais-Ripkin \cite{mais-ripkin} with extensions by Lebedev-Bogacz \cite{lebedev-bogacz}. A good overview is provided in \cite{vanwelde}. For the purposes of this thesis these coupled parameterizations are extraneous and only affect the tune match possible which will be discussed in chapter \ref{chap:experiment} on experimental design.
 
+The beta funciton is strictly positive
+
+At this point I would like to reiterate the assumptions along the way and comment on their impacts.
+
 This approach has been very powerful and is the guiding principle for first order accelerator design since its introduciton. There is a wide variety of lattice simulation codes dating back to the 60's specifically designed to calculate these lattice parameters for evaluating stability, steering, and aperture restricitons of linear lattices.
 
 \section{First Order Bunch Properties} \label{sec:bunchEmit}
+In practice we rarely accelerate single particles, and so we would like to parameterize the collective properties of the particle bunch. If we have some bunch of particles all undergoing betatron oscillations we can relate their individual oscillations to the ensemble average or first moment in Eq. \ref{eq:bunchMean}.
+
+\begin{equation} \label{eq:bunchMean}
+	\langle x \rangle  = \sqrt{\beta_x} \langle \sqrt{\epsilon_x} \cos{(\varphi_x)}\rangle 
+\end{equation}
+
+Here we can extract the beta funciton since we know it is a longitudinally dependent parameter of the lattice and not our individual particles. For a typical bunch we can assume a uniform distribution of oscillation phases, and we know from our equations of motion that the emittance and betatron phase are uncorrolated, so we can see that this mean is typically zero. This form can be exploited by adding a coherent correlated emittance and phase term to the bunch with a "Kicker" element. This adds a coherent term to Eq. \ref{eq:bunchMean} and we can observe the bunch centroid evolving according to the lattice dynamics. If we look at the second moments we can extract more information on the bunch distribution. We start with the transverse coordinate, Eq. \ref{eq:momX2}.
+
+\begin{equation} \label{eq:momX2}
+	\langle x^2 \rangle = \beta_x \langle \epsilon \cos{(\varphi_x)}^2 \rangle
+\end{equation}
+
+If we evaluate again for a uniform distribution of the betatron phase, we arrive at Eq. \ref{}
+
+\begin{equation} \label{eq:emitDef}
+	\langle x^2 \rangle = \frac{\beta_x}{2} \langle \epsilon \rangle
+\end{equation}
+
+We then define our rms emittance in Eq. \ref{eq:rmsEmit}. 
 
 
 \section{Integrable Systems} \label{sec:integral}
