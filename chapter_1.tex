@@ -142,8 +142,42 @@ The exact form of $A_s$ must now be selected to find our equations of motion. Be
 
 \section{Multipole Expansion} \label{sec:multipole}
 
-Multipoles expansion about a straight line.
-Reference curved trajectory multipoles.
+To determine the fields used, we first consider what is convenient to generate. In general, a beam typically needs an evacuated beam pipe to travel in, so a we would like to consider magnetic fields that we generate outside of a region of beam travel. As a result we can consider a series solution for laplace's equtoins for magnetic fields in two dimensons for a region with periodic cylindrical boundary conditions, Eq. \ref{eq:poissonCylinder}
+
+\begin{equation} \label{eq:poissonCylinder}
+\begin{split}
+	B_r(r,\theta) &= \sum_{n=1}^{\infty} C_n(z) \left( r \right)^{n-1} \sin{(n\theta)}\\
+	B_\theta(r,\theta) &= \sum_{n=1}^{\infty} C_n(z) \left( r \right)^{n-1} \cos{(n\theta)}
+\end{split}
+\end{equation}
+
+We can apply an alternative combined representation with complex variables introduced by Beth \cite{Beth} \ref{eq:bethCyl}.
+
+\begin{equation} \label{eq:bethCyl}
+	B_{\theta} + i B_r = \sum_{n=1}^{\infty} C_n(z) e^{in\theta} \left( r \right)^{n-1}
+\end{equation}
+
+Using the substitutions in Eq. \ref{eq:cylToCart} we can convert the field representation to cartesian coordinates which can be matched to our Hamiltonian coordinates \ref{eq:bethCart}.
+
+\begin{equation} \label{eq:cylToCart}
+\begin{split}
+	B_{\theta} + i B_r &= B_y + i B_x\\
+	r e^{i\theta} &= x + iy
+\end{split}
+\end{equation}
+
+\begin{equation} \label{eq:bethCart}
+	B_y + iB_x = \sum_{n=1}^{\infty} C_n(z) (x + iy)^{n-1}
+\end{equation}
+
+Of course, this expansion has been about a straight reference path which contrasts with our earlier transformation to the Frenet-Serret frame. There do exist treatments of multipoles defined in a curved reference frame \cite{ZolkinMultipole}, but this is of relatively minor concern. In practice, we can see that our dipole magnet is the only term which results in bending of the reference trajectory. So, these curved trajectory cases only are relevant inside an element with a deliberate dipole term. This brings up the notion of seperated and combined function machines. The first generation of machines used a fixed magnetic field for the entire radius, somtimes with short gaps for injection and extraction. Vertical focus either relied on the field falloff due to realistic magnet construction, or a deliberateley added gradient to the median plane, effectively a mixed dipole and quadrupole term in our multipole expansion. First generation alternating gradient accelerators kept this approach, simply implementing two types of "combined funciton" magnets with consistent dipole terms and alternating quadrupole terms for much stronger net focusing. It quickly became clear that it was preferrable to seperate the bending and focusing components of the fields for greater flexibility in design. As a result, in most modern machines exhibit bending only in pure dipole magnets and higher order fields are placed in straight sections. Combined function magnets are typically only used when particular cost or space concerns renders them more practical.
+
+With regards to the 
+
+An additional 
+
+For the purposes of evaluating our Hamiltonian we can then represent the vector potential with respect to the multipole expansion terms.
+
 Include sector vs rectangular bend consideration.
 Seperated function and combined-function.
 Comment on fringe field vs hard edge.
@@ -462,17 +496,37 @@ In practice we rarely accelerate single particles, and so we would like to param
 Here we can extract the beta funciton since we know it is a longitudinally dependent parameter of the lattice and not our individual particles. For a typical bunch we can assume a uniform distribution of oscillation phases, and we know from our equations of motion that the emittance and betatron phase are uncorrolated, so we can see that this mean is typically zero. This form can be exploited by adding a coherent correlated emittance and phase term to the bunch with a "Kicker" element. This adds a coherent term to Eq. \ref{eq:bunchMean} and we can observe the bunch centroid evolving according to the lattice dynamics. If we look at the second moments we can extract more information on the bunch distribution. We start with the transverse coordinate, Eq. \ref{eq:momX2}.
 
 \begin{equation} \label{eq:momX2}
-	\langle x^2 \rangle = \beta_x \langle \epsilon \cos{(\varphi_x)}^2 \rangle
+	\langle x^2 \rangle = \beta_x \langle \epsilon_x \cos{(\varphi_x)}^2 \rangle
 \end{equation}
 
 If we evaluate again for a uniform distribution of the betatron phase, we arrive at Eq. \ref{}
 
 \begin{equation} \label{eq:emitDef}
-	\langle x^2 \rangle = \frac{\beta_x}{2} \langle \epsilon \rangle
+	\langle x^2 \rangle = \frac{\beta_x}{2} \langle \epsilon_x \rangle
 \end{equation}
 
 We then define our rms emittance in Eq. \ref{eq:rmsEmit}. 
 
+\begin{equation} \label{eq:rmsEmit}
+	\epsilon_{x,rms} = \frac{1}{2} \langle \epsilon \rangle
+\end{equation}
+
+Using the same approach, we can relate the emittance to the two other moments of the distribution.
+
+\begin{equation} \label{eq:momP2}
+\begin{split}
+	\langle x p_x \rangle &= -\alpha_x \epsilon_{x,rms}\\
+	\langle p_x^2 \rangle &= \gamma_x \epsilon_{x,rms}
+\end{split}
+\end{equation}
+
+Based on the relationship between the courant-snyder parameters in Eq. \ref{eq:emitMoment}.
+
+\begin{equation} \label{eq:emitMoment}
+	\epsilon_{x,rms} = \sqrt{\langle x^2 \rangle \langle p_x^2 \rangle - \langle x p_x \rangle^2}
+\end{equation}
+
+These parameters,
 
 \section{Integrable Systems} \label{sec:integral}
 The Courant-Snyder parameterziation is an example of an integrable dynamical system.
