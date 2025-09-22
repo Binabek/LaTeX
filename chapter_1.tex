@@ -170,18 +170,14 @@ Using the substitutions in Eq. \ref{eq:cylToCart} we can convert the field repre
 	B_y + iB_x = \sum_{n=1}^{\infty} C_n(z) (x + iy)^{n-1}
 \end{equation}
 
+The term $C_n(z)$ contains the multipole terms. Figure \ref{fig:multipoles} shows the first few multipole fields, both normal and skew. Of course, the three dimensional consenquence of Gauss's law mean that the magnetic field extends beyond the lenght of the pole, and has a nonlinear fallof along the beam path. However, In practice we are typically only concerned with the effective integral of the field, the lenght of the magnets and the fringe field especially are short compared to the characteristic wavelenghts of the betatron motion and only become relevant in large aperture magnets with long fringing fields.
+
 Of course, this expansion has been about a straight reference path which contrasts with our earlier transformation to the Frenet-Serret frame. There do exist treatments of multipoles defined in a curved reference frame \cite{ZolkinMultipole}, but this is of relatively minor concern. In practice, we can see that our dipole magnet is the only term which results in bending of the reference trajectory. So, these curved trajectory cases only are relevant inside an element with a deliberate dipole term. This brings up the notion of seperated and combined function machines. The first generation of machines used a fixed magnetic field for the entire radius, somtimes with short gaps for injection and extraction. Vertical focus either relied on the field falloff due to realistic magnet construction, or a deliberateley added gradient to the median plane, effectively a mixed dipole and quadrupole term in our multipole expansion. First generation alternating gradient accelerators kept this approach, simply implementing two types of "combined funciton" magnets with consistent dipole terms and alternating quadrupole terms for much stronger net focusing. It quickly became clear that it was preferrable to seperate the bending and focusing components of the fields for greater flexibility in design. As a result, in most modern machines exhibit bending only in pure dipole magnets and higher order fields are placed in straight sections. Combined function magnets are typically only used when particular cost or space concerns renders them more practical.
 
-With regards to the 
+An additional consideration for the dipole fields is the incident angle on the element. There are two broad approaches, a rectangular bending magnet, and a sector bend. The sector bend has poles with faces perpendicular to the direction of travel. Without this, there is effective focusing based on the longer and shorter path lenghts in the constant field depending on the initial horizontal coordinate. Figure \ref{fig:sector} shows the difference between a sector and rectangular dipole magnet.
 
-An additional 
+For the purposes of evaluating our Hamiltonian we can then represent the vector potential with respect to the multipole expansion terms. There is a generic relationship of the multipole decomposition to the vector potential through generalized gradients, but that is overcomplicated for our purposes. We can simply exploit the similar composition of the scalar magnetic potential to the vector potential to 
 
-For the purposes of evaluating our Hamiltonian we can then represent the vector potential with respect to the multipole expansion terms.
-
-Include sector vs rectangular bend consideration.
-Seperated function and combined-function.
-Comment on fringe field vs hard edge.
-Vector potential expansion of multipoles.
 
 \section{Linearized Hamiltonian} \label{sec:linHam}
 Based on the form of the multipole expansion, we can see that only our dipole and quadrupole elements will affect the dynamics to the first order. While in general, we can use potentials of any order, we are not garanteed an analytical solution. The first order solutions to the equations of motion are possible to find analytically and will serve as the foundation for our dynamical analysis moving forward.
