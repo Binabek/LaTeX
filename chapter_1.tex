@@ -151,13 +151,13 @@ To determine the fields used, we first consider what is convenient to generate. 
 \end{split}
 \end{equation}
 
-We can apply an alternative combined representation with complex variables introduced by Beth \cite{Beth} \ref{eq:bethCyl}.
+We can apply an alternative combined representation with complex variables introduced by Beth \cite{Beth} \ref{eq:bethCyl}. There are two different conventions for numbering the multipole orders. The convention used in this thesis is the "European" convention, the "US" convention shifts down the multipole term by an integer so the exponent simply becomes the summation variable.
 
 \begin{equation} \label{eq:bethCyl}
 	B_{\theta} + i B_r = \sum_{n=1}^{\infty} C_n(z) e^{in\theta} \left( r \right)^{n-1}
 \end{equation}
 
-Using the substitutions in Eq. \ref{eq:cylToCart} we can convert the field representation to cartesian coordinates which can be matched to our Hamiltonian coordinates \ref{eq:bethCart}.
+Using the substitutions in Eq. \ref{eq:cylToCart} we can convert the field representation to cartesian coordinates in Eq. \ref{eq:bethCart}. This can then be matched to our Hamiltonian coordinates.
 
 \begin{equation} \label{eq:cylToCart}
 \begin{split}
@@ -170,13 +170,50 @@ Using the substitutions in Eq. \ref{eq:cylToCart} we can convert the field repre
 	B_y + iB_x = \sum_{n=1}^{\infty} C_n(z) (x + iy)^{n-1}
 \end{equation}
 
-The term $C_n(z)$ contains the multipole terms. Figure \ref{fig:multipoles} shows the first few multipole fields, both normal and skew. Of course, the three dimensional consenquence of Gauss's law mean that the magnetic field extends beyond the lenght of the pole, and has a nonlinear fallof along the beam path. However, In practice we are typically only concerned with the effective integral of the field, the lenght of the magnets and the fringe field especially are short compared to the characteristic wavelenghts of the betatron motion and only become relevant in large aperture magnets with long fringing fields.
+The term $C_n(z)$ contains the multipole terms, and is in general a complex term with real "normal" and complex "skew" terms. The skew fields end up being the normal fields rotated by a factor of $\frac{\pi}{2n}$ for a given order. Figure \ref{fig:multipoles} shows the first few multipole fields, both normal and skew. As there are no magnetic monopoles, each multipole term represents another radially symmetric addition of a pair of north and south poles. The multipole terms are named according to a mix of latin and greek numeric prefixes, $n=1$ is dipole, $n=2$ is quadrupole, $n=3$ is a sextupole etc.
 
-Of course, this expansion has been about a straight reference path which contrasts with our earlier transformation to the Frenet-Serret frame. There do exist treatments of multipoles defined in a curved reference frame \cite{ZolkinMultipole}, but this is of relatively minor concern. In practice, we can see that our dipole magnet is the only term which results in bending of the reference trajectory. So, these curved trajectory cases only are relevant inside an element with a deliberate dipole term. This brings up the notion of seperated and combined function machines. The first generation of machines used a fixed magnetic field for the entire radius, somtimes with short gaps for injection and extraction. Vertical focus either relied on the field falloff due to realistic magnet construction, or a deliberateley added gradient to the median plane, effectively a mixed dipole and quadrupole term in our multipole expansion. First generation alternating gradient accelerators kept this approach, simply implementing two types of "combined funciton" magnets with consistent dipole terms and alternating quadrupole terms for much stronger net focusing. It quickly became clear that it was preferrable to seperate the bending and focusing components of the fields for greater flexibility in design. As a result, in most modern machines exhibit bending only in pure dipole magnets and higher order fields are placed in straight sections. Combined function magnets are typically only used when particular cost or space concerns renders them more practical.
+\begin{figure} \label{fig:multipoles}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{First three multipoles}
+\end{figure}
 
-An additional consideration for the dipole fields is the incident angle on the element. There are two broad approaches, a rectangular bending magnet, and a sector bend. The sector bend has poles with faces perpendicular to the direction of travel. Without this, there is effective focusing based on the longer and shorter path lenghts in the constant field depending on the initial horizontal coordinate. Figure \ref{fig:sector} shows the difference between a sector and rectangular dipole magnet.
 
-For the purposes of evaluating our Hamiltonian we can then represent the vector potential with respect to the multipole expansion terms. There is a generic relationship of the multipole decomposition to the vector potential through generalized gradients, but that is overcomplicated for our purposes. We can simply exploit the similar composition of the scalar magnetic potential to the vector potential to 
+Of course, the three dimensional consenquence of Gauss's law mean that the magnetic field extends beyond the lenght of the pole, and has a nonlinear fallof along the beam path. However, In practice we are typically only concerned with the effective integral of the field, the lenght of the magnets and the fringe field especially are short compared to the characteristic wavelenghts of the betatron motion and only become relevant in large aperture magnets with long fringing fields. We can then exclude the $z$ dependence of our multipole terms and arrive at the general definition for our two dimensional multipole expanison in Eq. \ref{eq:mult}. Here the $B_n$ terms are the normal components and the $A_n$ terms are skew. 
+
+\begin{equation} \label{eq:mult}
+	B_y + iB_x = \sum_{n=1}^{\infty} (B_n + iA_n) (x + iy)^{n-1}
+\end{equation}
+
+There are a few different parameterizations of this multipole expansion including reference radii and reference fields. We will only consider scaling to our so magnetic rigidity in Eq. \ref{eq:brho}. 
+
+\begin{equation} \label{eq:brho}
+	B\rho = \frac{p_o}{q}
+\end{equation}
+
+This is a useful quantity which indicates the effect of fields on a particle irrelevant of species. for a given fixed magnetic field, the radius of the characteristic circle of its motion is given by the rigidity over the field strength. So, a high rigidity particle will be bent less than a low rigidity particle in the same field. We can then define a multipole scaling to this rigidity in Eq. \ref{eq:multK}. We will only consider normal terms in the derivations later, but the same approach can be done for skew terms.
+
+\begin{equation} \label{eq:multK}
+	k_n = \frac{B_n}{B\rho}
+\end{equation}
+
+This expansion has been about a straight reference path which contrasts with our earlier transformation to the Frenet-Serret frame. There do exist treatments of multipoles defined in a curved reference frame \cite{ZolkinMultipole}, but this is of relatively minor concern. In practice, we can see that our dipole magnet is the only term which results in bending of the reference trajectory. So, these curved trajectory cases only are relevant inside an element with a deliberate dipole term. This brings up the notion of seperated and combined function machines. The first generation of machines used a fixed magnetic field for the entire radius, somtimes with short gaps for injection and extraction. Vertical focus either relied on the field falloff due to realistic magnet construction, or a deliberateley added gradient to the median plane, effectively a mixed dipole and quadrupole term in our multipole expansion. First generation alternating gradient accelerators kept this approach, simply implementing two types of "combined funciton" magnets with consistent dipole terms and alternating quadrupole terms for much stronger net focusing. It quickly became clear that it was preferrable to seperate the bending and focusing components of the fields for greater flexibility in design. As a result, in most modern machines exhibit bending only in pure dipole magnets and higher order fields are placed in straight sections. Combined function magnets are typically only used when particular cost or space concerns renders them more practical.
+
+An additional consideration for the dipole fields is the incident angle on the element. There are two broad approaches, a rectangular bending magnet, and a sector bend. The sector bend has poles with faces perpendicular to the direction of travel. Without this, there is effective focusing based on the longer and shorter path lenghts in the constant field depending on the initial horizontal coordinate. Figure \ref{fig:sector} shows the difference between a sector and rectangular dipole magnet. This can be exploited for focusing effects as was done in the Zero Gradient Synchrotron, but is not relevant for the content of this these as all dipoles considered are sector bends.
+
+\begin{figure} \label{fig:sector}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{Sector and Rectangular bending dipoles}
+\end{figure}
+
+
+For the purposes of evaluating our Hamiltonian we can then represent the vector potential with respect to the multipole expansion terms in Eq. \ref{eq:multAs}.
+
+\begin{equation} \label{eq:multAs}
+	A_s  =  - \mathbb{R} \left[ \sum_{n=1}^{\infty} \frac{B_n + i A_n}{n} (x+iy)^n \right]
+	%A_s  =  - \mathbb{Re} \left[ \sum_{n=1}^{\infty} \frac{B_n + i A_n}{n} (x+iy)^n \right]
+\end{equation}
 
 
 \section{Linearized Hamiltonian} \label{sec:linHam}
@@ -361,7 +398,7 @@ We can now leverage the underlying symplecticity of our transfer matricies, whic
 	M^T S M = S
 \end{equation}
 
-Recognizing that $S^T = S^{-1}$ and using the symplectic condition, we can rarrange and invert Eq. \ref{eq:AstartSplit} to arrive at the transformation of $A^{-1}$ at different points in the cell in Eq. \ref{eq:barAshift} 
+Recognizing that $S^T = S^{-1}$ and using the symplectic condition, we can rarrange and invert Eq. \ref{eq:AstartShift} to arrive at the transformation of $A^{-1}$ at different points in the cell in Eq. \ref{eq:barAshift} 
 
 \begin{equation} \label{eq:barAshift}
 	A(s_1)^{-1} = M(s_1|s_o)  A(s_o)^{-1} M(s_1|s_o)^T
@@ -474,6 +511,12 @@ We can also observe that the definition of the emittance simplifies in these coo
 	H = \frac{p_{xN}^2}{2\beta_x} + \frac{x_{N}^2}{2\beta_x}
 \end{equation}
 
+There is one more important dynamical quantity that needs to be defined. The betatron tune $Q_x$ is the total phase advance over the full periodicity of an accelerator, defined in Eq. \ref{eq:csTune} where $C$ is the overall machine circumference. While some machines may be constructed of periodic cells, the overall tune is the fundametal periodic condition and neccesary to understand the overall machine's stability.
+
+\begin{equation} \label{eq:csTune}
+	Q_x = \int_{s_o}^{s_o + C} \frac{1}{\beta_x(s)} ds
+\end{equation}
+
 All of this parameterization was of course in one dimension, the same can be applied to the y-plane assuming they are uncoupled. An extended parameterization to include coupling has been considered and there are two main approaches. One by Edwards-Teng \cite{edwards-teng} and one by Mais-Ripkin \cite{mais-ripkin} with extensions by Lebedev-Bogacz \cite{lebedev-bogacz}. A good overview is provided in \cite{vanwelde}. For the purposes of this thesis these coupled parameterizations are extraneous and only affect the tune match possible which will be discussed in chapter \ref{chap:experiment} on experimental design.
 
 The beta funciton is strictly positive
@@ -495,7 +538,7 @@ Here we can extract the beta funciton since we know it is a longitudinally depen
 	\langle x^2 \rangle = \beta_x \langle \epsilon_x \cos{(\varphi_x)}^2 \rangle
 \end{equation}
 
-If we evaluate again for a uniform distribution of the betatron phase, we arrive at Eq. \ref{}
+If we evaluate again for a uniform distribution of the betatron phase, we arrive at Eq. \ref{eq:emitDef}
 
 \begin{equation} \label{eq:emitDef}
 	\langle x^2 \rangle = \frac{\beta_x}{2} \langle \epsilon_x \rangle
@@ -522,14 +565,173 @@ Based on the relationship between the courant-snyder parameters in Eq. \ref{eq:e
 	\epsilon_{x,rms} = \sqrt{\langle x^2 \rangle \langle p_x^2 \rangle - \langle x p_x \rangle^2}
 \end{equation}
 
-These parameters,
+These values can be directly related to measurable quantites. This of course requires knowledge of the beam distribution, but the core of most beams are gaussian and Eq. \ref{eq:rmsMoment} is generally useful.
+
+\begin{equation} \label{eq:rmsMoment}
+	\sigma_x = \sqrt{\beta_x \epsilon_{x,rms}}
+\end{equation}
+
+\section{Nonlinear Perturbations} \label{sec:nonlinearPerturb}
+Our treatment of the dynamics thus far has been exclusively linear. In practical machines, higher order multipoles are often added to compensate for deficiencies in the linear lattice construction. In most modern circular accelerators the transverse chromaticity is compensated, or at least controlled with sextupole magnets. Octupole magnets may also be added to add an amplitude dependent detuning, which in turn drives tune spread in the bunch and can provide landau damping. In addition to deliberately introduced nonlinear perturbations, our linear elements have small intrinsic nonlinearities. Most notably there is an exact, nonlinear mapping for the dipole which has higher order terms which become relavant for large bending element \cite{Exact Sbend}s. Additionally, the fringe fields of linear elements will possess intrinsic nonlinearities, though this is strongly dependent on the design \cite{Baartman}. For example, the quadrupole fringe field in the hard-edge approximation has contributions of the same order as an octupole magnet \cite{Forrest}. These contributions all serve to perturb the dynamics, we can briefly consider the next order case of a sextupole magnet. If we add the sextupole term to our general hamiltonian in Eq. \ref{eq:H_As}, and take the case for the curvature to be zero we arrive at Eq. \ref{eq:H_sext}.
+
+\begin{equation} \label{eq:H_sext}
+	H = -\sqrt{1 + p_t^2 - \frac{2p_t}{\beta_o} - p_x^2 - p_y^2} - \frac{p_t}{\beta_o} + \frac{k_3}{3}(3 x y^2 - x^3)
+\end{equation}
+
+Even in the linearized case, we cannot find an analytic solution for the equations of motion for this system. There are a number of analytical techniques for analyzing the motion of these nonlinear systems, with Lie algebra approaches being the most common, but this is beyond the scope of this thesis. We can instead consider a quick numerical example using a thin mapping of the integrated effect of the sextupole term in Eq \ref{eq:sextKick}, analagous to our matrix treatment of the linear dynamics. For illustrative purposes, we will continue to restrict ourselves to the horizontal plane.
+
+\begin{equation} \label{eq:sextKick}
+	\Delta p_x = Lk_3x^2
+\end{equation}
+
+Figure \ref{fig:sextMap} shows the poincare map of a simple 1D periodic system with a tune of 0.3$\pi$ and a single thin sextupole kick like above. It demonstrates two important effects of the sextupole perturbation, there is an amplitude limit to stable motion, referred to as the dynamic aperture in accelerator literature. It also shows significant deviation of the trajectories from the linear elliptical traces, indicating that the emittance is not conserved.
+
+\section{Parametric Resonances} \label{sec:resonances}
+There is an additional effect of nonlinear perturbations to the linear dynamics, they serve to drive additional resonances. The general condition for a parametric resonance is given in Eq \ref{eq:resonance}, where $n$,$m$, and $k$ are integers.
+
+\begin{equation} \label{eq:resonance}
+	nQ_x + mQ_y = k\pi
+\end{equation}
+
+At these charactersitic frequencies contributions add coherently and drive unstable motion. The order of resonance is determined by the sum of $n$ and $m$. If $n + m = 3$ this is a third integer resonance and can be driven by sextupoles. Resonances are not limited to nonlinear driving components, quadrupoles drive half integer resonances, all multipole terms drive integer resonances.The basic resonance condition results in the dense map of resonance lines up to the order 6 in tune space in Figure \ref{fig:resonanceLines}. 
+
+Not every resonance is dangerous, only those which are driven strongly by the particular lattice configuration cause instabilites. Carefully picking the working point, or central tune of a lattice is an important design consideration.
 
 \section{Integrable Systems} \label{sec:integral}
-The Courant-Snyder parameterziation is an example of an integrable dynamical system.
-emmitance preservation allows for parameterizaion and bounded orbits
-Long history of searching for integrable systems
+We have seen that uncontrolled nonlinear pertubations can significantly reduce the stability of our system. An integrable system is one which has as many conserved quantities as degrees of freedom in the configuration space. This serves to regularize the motion and means there cannot be chaotic trajectories, though it does not garuntee that trajectories must be bounded. The linear Courant-Snyder system is an integrable system, with a conserved emittance in each degree of freedom. This also holds in the coupled linear system, thought the parameterization is more complicated. 
+
+Inte
+
+
+Additionally, the KAM theorem provides integrable systems with relative stability near the base integrability requirements.
+Long history of searching for integrable systems, with many general forms.
+Searches for nonlinear integrable systems in accelerators also has long history from mcmillan, through danilov 1D systems.
 
 \section{Nonlinear Integrable Optics} \label{sec:nio}
+Danilov and Nagaitsev found a two dimensional nonlinear integrable system relevant for accelerators.
+We begin with a Hamiltonian in our transverse space in our Courant-Snyder normalized parameters, so there is no time dependence of the Hamiltonain.  If we add a general nonlinear potential constructed out of these normalized coordinates, it too will be time independent and the Hamiltonian will be a constant of motion, as in Eq. \ref{eq:H_norm}.
+
+\begin{equation} \label{eq:H_norm}
+	H = \frac{p_{xN}^2}{2} + \frac{p_{yN}^2}{2}  + \frac{x_{N}^2}{2} + \frac{y_{N}^2}{2} + V(x_N,y_N,s)
+\end{equation}
+
+We can make the form of $V(x_N,y_N,s)$ more straightforward to define in lab coordinates if we elect to place the nonlinear potential in a position with matched horizontal and vertical beta functions. The only way to accomplish this is in a drift space. In order to arrive at this condition, we can define a periodic cell consinsting of a matched drift and a so called "t-insert" which evaluates to a matrix with equal focusing in both planes, dependent on the desired phase advance in the drift. We can construct this matching lattice out of whatever elements are convinient. 
+
+The general problem is then to find a potential which can generate a second invariant of motion $I$. We absorb the linear potential terms into an overall potential to yield Eq. \ref{eq:H_U}. 
+
+\begin{equation} \label{eq:H_U}
+	H = \frac{p_{xN}^2}{2} + \frac{p_{yN}^2}{2} + U(x_N,y_N)
+\end{equation}
+
+The approach used by Danilov and Nagaitsev looked for forms of $I$ quadratic in the normalized momentum. Three solutions were found, though two were determined to have practical issues impeding physical implementation. Most notably, the phase space trajectories could not circle the origin, and would require some sort of "C"-shaped vacuum chamber. The choice of constants leading to the first solution yields Eq. \ref{eq:darbroux} as the constraint on $U$ for a second integral.
+
+\begin{equation} \label{eq:darbroux}
+	x_N y_N\left( \frac{\partial^2 U}{\partial x_N^2} - \frac{\partial^2 U}{\partial y_N^2}\right) + (y_n^2 - x_n^2 + c^2)\frac{\partial^2 U}{\partial x_N y_N} + 3y_N \frac{\partial U}{\partial x_N} - 3 x_N \frac{\partial U}{\partial x_N} = 0
+\end{equation}
+
+This is Darbroux's equation \cite{Darbroux}, and has the general solution of Eq. \ref{eq:darbrouxSol}. Where $\xi$ and $\eta$ are elliptical coordinates given in Eq. \ref{eq:ellipCoords} and $f(\xi)$ and $g(\eta)$ are arbitrary functions.
+
+\begin{equation} \label{eq:darbrouxSol}
+	U(x_N,y_N) = \frac{f(\xi) + g(\eta)}{\xi^2 - \eta^2}
+\end{equation}
+
+\begin{equation} \label{eq:ellipCoords}
+\begin{split}
+	\xi &= \frac{1}{2c}\left[ \sqrt{(x_N+c)^2 + y_N^2} + \sqrt{(x_N-c)^2 + y_N^2} \right] \\
+	\eta &= \frac{1}{2c}\left[ \sqrt{(x_N+c)^2 + y_N^2} - \sqrt{(x_N-c)^2 + y_N^2} \right]
+\end{split}
+\end{equation}
+
+These can be related back to our transverse coordinates with the relationships in Eq. \ref{eq:ellipNorm}
+
+\begin{equation} \label{eq:ellipNorm}
+\begin{split}
+	x_N &= c\xi\eta \\
+	y_N &= c \sqrt{(\xi^2-1)(1-\eta^2)}
+\end{split}
+\end{equation}
+
+These functions result in a second invariant of motion of the form in Eq. \ref{eq:I_fg}
+
+\begin{equation} \label{eq:I_fg}
+	I = (x_N p_{yN} - y_N p_{xN})^2 + c^2 p_{xN}^2 + 2c^2 \frac{f(\xi)\eta^2 + g(\eta)\xi^2}{\xi^2 - \eta^2}
+\end{equation}
+
+The particular form of the $f(\xi)$ and $g(\eta)$ functions were selected to also satisfy laplace's equation so the potential $U$ could be generated by static magnetic fields. The first solution to consider is the linear potential Eq. \ref{eq:linFG}, which we recast into this form in Eq. \ref{eq:linEllipse}
+
+\begin{equation} \label{eq:linFG}
+	\frac{f_1(\xi) + g_1(\eta)}{\xi^2 - \eta^2} = \frac{x_N^2}{2} + \frac{y_N^2}{2}
+\end{equation}
+
+\begin{equation} \label{eq:linEllipse}
+\begin{split}
+	f_1(\xi) &= \frac{c^2}{2}\xi^2(\xi^2-1)\\
+	g_1(\eta) &= \frac{c^2}{2}\eta^2(1 - \eta^2)
+\end{split}
+\end{equation}
+
+The more difficult case is to find a nonlinear solution to these constraints. This was found to be the functions in \ref{eq:nonFG}. Here $b$, $d$ and $\tilde{t}$ are arbitrary constants with units of length.
+
+\begin{equation} \label{eq:nonFG}
+\begin{split}
+	f_2(\xi) &= \xi \sqrt{\xi^2 -1}(d + \tilde{t} \hspace{2pt} \textrm{arccosh}(\xi)) \\
+	g_2(\eta) &= \eta \sqrt{1-\eta^2}(b + \tilde{t} \hspace{2pt} \textrm{arccos}(\eta))
+\end{split}
+\end{equation}
+
+Inspection of the form of the nonlinear potential functions reveals that selecting $d=0$ and $b=-\tilde{t}\frac{\pi}{2}$ results in a magnetic field with not dipole term in the multipole expansion and therefore no bending in the nonlinear region. We also introduce a unitless nonlinear scalaing parameter $t$ such that $\tilde{t} = tc^2$. Making all of these substitutions we arrive at a form of these potentials in Eq. \ref{eq:nonFgNorm}.
+
+\begin{equation} \label{eq:nonFgNorm}
+\begin{split}
+	f_2(\xi) &= t c^2 \xi \sqrt{\xi^2 -1} \textrm{arccosh}(\xi) \\
+	g_2(\eta) = t c^2 \eta \sqrt{1-\eta^2}&\left(\arccos{(\eta) - \frac{\pi}{2}}\right) = -t c^2 \eta \sqrt{1-\eta^2}\arcsin{(\eta)}
+\end{split}
+\end{equation}
+
+We can then consider the linear combination of these individual solutions, i.e. $f(\xi) = f_1(\xi)+f_2(\xi)$, and after substitution and simplification, we arrive at the form of the equations in Equations \ref{eq:H_DN} and \ref{eq:I_DN}.
+
+\begin{multline} \label{eq:H_DN}
+	H_{DN} = \frac{p_{xN}^2}{2} + \frac{p_{yN}^2}{2}  + \frac{x_{N}^2}{2} + \frac{y_{N}^2}{2} +\\
+	tc^2 \frac{\xi \sqrt{\xi^2 -1} \textrm{arccosh}(\xi) - \eta \sqrt{1-\eta^2}\arcsin{(\eta)}}{\xi^2 - \eta^2} 
+\end{multline}
+
+\begin{multline} \label{eq:I_DN}
+	I_{DN} = (x_N p_{yN} - y_N p_{xN})^2 + c^2 p_{xN}^2 + c^2 x_N^2 +\\ 
+	2t c^4 \xi \eta \frac{\eta\sqrt{\xi^2 -1} \textrm{arccosh}(\xi) - \xi \sqrt{1-\eta^2}\arcsin{(\eta)}}{\xi^2 - \eta^2}
+\end{multline}
+
+This parameterization is presented as it was the form used in the original derevation, and most clearly arises from the underlying partial differential equations. However it is quite cumbersome, and encounters issues in numerical tracking for small values of $y_N$. A seperate parameterization in complex coordinates was proposed in \cite{Mitchell}, and will be used for the rest of this thesis. To begin with, the coordinates in this representation are scaled by the geometric parameter $c$ to be fully unitless, and a complex coordinate $z$ is introduced, Eq. \ref{eq:CMcoord}
+
+\begin{equation} \label{eq:CMcoord}
+\begin{split}
+	x_c &= \frac{x_N}{c} = \frac{x}{c\sqrt{\beta(s)}}\\
+	p_{xc} = \frac{p_{xN}}{c} &= p_x\frac{\sqrt{\beta(s)}}{c} + \frac{\alpha(s)x}{c\sqrt{\beta(s)}}\\
+	z_c &= x_c + iy_c
+\end{split}
+\end{equation}
+
+The resulting Hamiltonian and second integral of motion are given in Equations \ref{eq:H_CM} and \ref{eq:I_CM}
+
+\begin{equation} \label{eq:H_CM}
+H_c = \frac{1}{2}\left( p_{xc}^2 + p_{yc}^2 + x_c^2 + y_c^2 \right) - t \mathbb{Re}\left(\frac{z_c}{\sqrt{1-z_c^2}}\textrm{arcsin}(z_c)\right)
+\end{equation}
+
+\begin{equation} \label{eq:I_CM}
+I_c = (x_c p_{yc} - y_c p_{xc})^2 + p_{xc}^2 + x_c^2 - t\mathbb{Re}\left(\frac{2 x_c}{\sqrt{1-z_c^2}}\textrm{arcsin}(z_c)\right)
+\end{equation}
+
+Since the normalization changed these quantites are related to the original Hamiltonian and second invariant by the relations in \ref{eq:DNtoCM}
+
+\begin{equation} \label{eq:DNtoCM}
+\begin{split}
+	H_{DN} &= c^2 H_c \\
+	I_{DN} &= c^4 I_c
+\end{split}
+\end{equation}
+
+
+
+Can be represented with a string of magnets with properly shaped poles.
 
 
 \cite{danilov_nonlinear_2010}
