@@ -12,6 +12,12 @@
 # BibLaTeX ignores
 *.bcf
 *.xml
+# Image ignores
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
 # XeTeX ignores
 *.xdv
 # Paranoid ipython ignores
