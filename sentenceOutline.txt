@@ -36,7 +36,7 @@ Consider 6-D effects including chromatic effects in nonlinear lenses.
 Three basic forms of the IOTA lattice, fully linear, with first order chromaticity including compensation, and with kinematic nonlinearities and exact dipole mappings.
 See significant effects on bare lattice chromaticity from the exact dipole mappings.
 
-150 MeV Electron Experiments
+Experimental Facility/Design
 The IOTA ring is constructed to study nonlinear integrable particle optics.
 IOTA is a 40 m circumference storage ring with 4 30 degree dipoles and 4 60 degree dipoles.
 Overall configuration is heavily influenced by VEPP-2000 accelerator design.
@@ -60,19 +60,6 @@ For IOTA NIO c=0.0009, and the potential value selected for the surface is 0.5.
 Mirror symmetric magnets needed to be individually EDM'd to match longitudinal scaling.
 Vacuum chamber design was very carefully done, but issues were all ironed out when I arrived.
 NIO magnet driven by bipolar 2A supplies.
-
-
-IOTA can operate with protons for intense space charge and investigation of collective effects.
-Most of the studies in this thesis were focused on electrons.
-
-Electron experiment consisted of three major thrusts, lattice commissioning and alignment including nonlinear elements, kicked beam turn by turn measurements, and circulating beam measurements with synchrotron radiation monitors.
-Lattice commissioning involved LOCO fitting of the lattice to the nominal NIO lattice, some linear element alignment.
-Chromatic compensation using orthogonal sextupole knobs indicated misalignment.
-Sextupole misalignment adjusted for final dynamic aperture optimization on losses using chromatic null space.
-Turn by turn data performed in dynamic aperture scans and dense grids.
-
-Measured dynamic aperture with different sextupole configurations.
-
 IOTA diagnostics used were BPMs, synchrotron cameras, and direct current current transformer (DCCT).
 IOTA bpms are capacitive "button" style, with 20 of one geometry and one different large aperture BPM.
 BPMS have a sample rate of 32 points per turn, digitizer aligns BPMS to location in turn.
@@ -81,6 +68,18 @@ An order 7 coupled polynomial is applied based on bpm calibration with stretched
 BPMs can be triggered in TBT or closed orbit mode.
 TBT samples 7000 turns of individual TBT signals.
 Closed orbit averages over 1000 turns for more accurate circulating measurements. - correct?
+IOTA can operate with protons for intense space charge and investigation of collective effects.
+Most of the studies in this thesis were focused on electrons.
+
+150 MeV Electron Experiment
+Electron experiment consisted of three major thrusts, lattice commissioning and alignment including nonlinear elements, kicked beam turn by turn measurements, and circulating beam measurements with synchrotron radiation monitors.
+Lattice commissioning involved LOCO fitting of the lattice to the nominal NIO lattice, some linear element alignment.
+Chromatic compensation using orthogonal sextupole knobs indicated misalignment.
+Sextupole misalignment adjusted for final dynamic aperture optimization on losses using chromatic null space.
+Turn by turn data performed in dynamic aperture scans and dense grids.
+
+Measured dynamic aperture with different sextupole configurations.
+
 
 150 MeV Electron Analysis
 Many analyses used 
