@@ -1,9 +1,9 @@
-\chapter{Itroduction} \label{chap:intro}
+\chapter{Introduction} \label{chap:intro}
 
 \section{Background} \label{sec:back}
 Charged particle accelerators have been productive experimental tools for fundamental physics experiments, from Rutherford's use of naturally accelerated alpha particles for the discovery of the nucleus to the contemporary multinational physics collaborations centered at the Large Hadron Collider.  In addition to their useful nature as tools, particle accelerators provide an interesting system to study dynamics in a controlled environment. These same dynamical studies then have direct impacts on the construction of new machines for fundamental studies. As the experiments drive increasing energy and power demands on the beams, careful control of losses becomes more important as ever smaller loss fractions exceed safety and machine protection limits.
 
-To tackle the challenge of controlling energetic subatomic particles we first have to choose our tools. Some of the earliest "accelerator" experiments relied on energetic decay products, leveraging the weak nuclear force. This approach is quickly limited by the characteristic energies of these decays. Gravity can be easily dismissed as too weak and effectively fixed on the earth's surface. Bulk material interactions can be used to affect the path of particles, but they cannot accelerate and tend to cause significant losses. The default choice has been electromagnetic fields, dating back to early cathode ray experiments. These fields are easy to produce and control and can both steer and provide energy to charged particles. Naturally this restricts our ability to work with neutral particle beams, but this can be typically overcome with a charged primary beam to produce a neutral secondary beam as is the case in successful neutron spallation and neutrino beam facilities \cite{SNS} \cite{NuMI}.
+To tackle the challenge of controlling energetic subatomic particles we first have to choose our tools. Some of the earliest "accelerator" experiments relied on energetic decay products, leveraging the weak nuclear force. This approach is quickly limited by the characteristic energies of these decays. Gravity can be easily dismissed as too weak and effectively fixed on the earth's surface. Bulk material interactions can be used to affect the path of particles, but they cannot accelerate and tend to cause significant losses. The default choice has been electromagnetic fields, dating back to early cathode ray experiments. These fields are easy to produce and control and can both steer and provide energy to charged particles. Naturally this restricts our ability to work with neutral particle beams, but this can be typically overcome with a charged primary beam to produce a neutral secondary beam as is the case in successful neutron spallation and neutrino beam facilities \cite{hendersonSpallationNeutronSource2014} \cite{adamsonNuMINeutrinoBeam2016}.
 
 Scaling the electrostatic fields from our early cathode ray tubes are a straightforward starting point frr accelerating particles. A large voltage applied across carefully shaped electrodes can simultaneously accelerate and focus a beam. This was the guiding principle for early Van de Graaff machines like the Westinghouse atom smasher and the Cockroft-Walton style proton sources popularly used in the mid 20th century. This approach still finds use in pellotrons and "tandem" accelerators for low energy nuclear experimentation. However, the practical limits of breakdown gradients quickly limit the energy from such devices. Using an oscillating electric field is a practical approach to bypassing this limitation in two ways. First, the gradients of oscillating fields may be much higher than static fields. Second, by selectively timing the particles to be accelerated, the particle can gain energy from the gradient at the frequency of the oscillation. There are a few ways this is currently accomplished. The first is simply physically shielding the particles from the negative gradient, as is done in the Alvarez or drift tube linear accelerator (linac). If the velocity of a traveling EM wave is matched to that of the desired accelerated particle the beam can always see a positive gradient and "surf" the wave. This is the approach of a traveling wave linac, typified by the original SLAC linac. Another approach is to adjust the path length of the beam between standing wave structures (usually called cavities) and the phase of these cavities to always arrive in a positive gradient. There are two main approaches using this technique. Either a sequence of cavities with proper phase are used sequentially, a resonant cavity linac. Or, the particles are recirculated to a cavity many times, the case with a broad variety of cyclic machines.
 
@@ -34,12 +34,13 @@ Here the canonical momentum $\vec{P}$ is related to the mechanical momentum by \
 
 And this Hamiltonian is then the total energy of the particle including the contribution from the scalar potential, I will call this $E_{\Phi}$ to differentiate it from the total energy in the absence of the scalar potential.
 
-The following derivations for the equations of motion generally follow the tradition of the solution found in \cite{CourantSnyder}, and generally follow the approach outlined in \cite{Wolski} with some elements from \cite{Lee}. We would like to refine this expression by changing to a more useful coordinate system. When studying the dynamics of a particle accelerator it is useful to investigate the motion of the particles with respect to some reference trajectory rather their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret (Fig. \ref{fig:frenetSerret}) coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path.  In the case of many accelerator systems, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame along the floor. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the Hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}. This coordinate transformation does not affect the value of the Hamiltonian, so it is still equivalent to the total energy of the test particle with the scalar field contribution. Strictly speaking this is the case for transfer lines, linacs, synchrotrons and storage rings. There are other style machines, such as cyclotrons and fixed field alternating gradient accelerators which demand a different treatment of the dynamics, but are beyond the scope of this derivation.
+The following derivations for the equations of motion generally follow the tradition of the solution found in \cite{courantTheoryAlternatinggradientSynchrotron1958}, and generally follow the approach outlined in \cite{wolskiBeamDynamicsHigh2014} with some elements from \cite{leeAcceleratorPhysics2018}. We would like to refine this expression by changing to a more useful coordinate system. When studying the dynamics of a particle accelerator it is useful to investigate the motion of the particles with respect to some reference trajectory rather their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret (Fig. \ref{fig:frenetSerret}) coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path.  In the case of many accelerator systems, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame along the floor. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the Hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}. This coordinate transformation does not affect the value of the Hamiltonian, so it is still equivalent to the total energy of the test particle with the scalar field contribution. Strictly speaking this is the case for transfer lines, linacs, synchrotrons and storage rings. There are other style machines, such as cyclotrons and fixed field alternating gradient accelerators which demand a different treatment of the dynamics, but are beyond the scope of this derivation.
 
-\begin{figure} \label{fig:frenetSerret}
+\begin{figure} 
 	\centering
 	\includegraphics[width=0.8\linewidth]{madxFrenetSerret.pdf}
-	\caption{Illustration of Frenet-Serret style Coordinate System From Mad X Documentation \cite{madX}}
+	\caption{Illustration of Frenet-Serret style Coordinate System From Mad X Documentation \cite{deniauMADXProgramUsers}}
+	\label{fig:frenetSerret}
 \end{figure}
 
 \begin{equation} \label{eq:H_fs}
@@ -153,7 +154,7 @@ To determine the fields used, we first consider what is convenient to generate. 
 \end{split}
 \end{equation}
 
-We can apply an alternative combined representation with complex variables introduced by Beth \cite{Beth} \ref{eq:bethCyl}. There are two different conventions for numbering the multipole orders. The convention used in this thesis is the "European" convention, the "US" convention shifts down the multipole term by an integer so the exponent simply becomes the summation variable.
+We can apply an alternative combined representation with complex variables introduced by Beth \cite{bethComplexRepresentationComputation1966} \ref{eq:bethCyl}. There are two different conventions for numbering the multipole orders. The convention used in this thesis is the "European" convention, the "US" convention shifts down the multipole term by an integer so the exponent simply becomes the summation variable.
 
 \begin{equation} \label{eq:bethCyl}
 	B_{\theta} + i B_r = \sum_{n=1}^{\infty} C_n(z) e^{in\theta} \left( r \right)^{n-1}
@@ -174,10 +175,11 @@ Using the substitutions in Eq. \ref{eq:cylToCart} we can convert the field repre
 
 The term $C_n(z)$ contains the multipole terms, and is in general a complex term with real "normal" and complex "skew" terms. The skew fields end up being the normal fields rotated by a factor of $\frac{\pi}{2n}$ for a given order. Figure \ref{fig:multipoles} shows the first few multipole fields, both normal and skew. As there are no magnetic monopoles, each multipole term represents another radially symmetric addition of a pair of north and south poles. The multipole terms are named according to a mix of Latin and Greek numeric prefixes, $n=1$ is dipole, $n=2$ is quadrupole, $n=3$ is a sextupole etc.
 
-\begin{figure} \label{fig:multipoles}
+\begin{figure} 
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\includegraphics[width=1\linewidth]{multipoleExamples.pdf}
 	\caption{First three multipoles}
+	\label{fig:multipoles}
 \end{figure}
 
 
@@ -199,14 +201,15 @@ This is a useful quantity which indicates the effect of fields on a particle irr
 	k_n = \frac{B_n}{B\rho}
 \end{equation}
 
-This expansion has been about a straight reference path which contrasts with our earlier transformation to the Frenet-Serret frame. There do exist treatments of multipoles defined in a curved reference frame \cite{ZolkinMultipole}, but this is of relatively minor concern. In practice, we can see that our dipole magnet is the only term which results in bending of the reference trajectory. So, these curved trajectory cases only are relevant inside an element with a deliberate dipole term. This brings up the notion of separated and combined function machines. The first generation of machines used a fixed magnetic field for the entire radius, sometimes with short gaps for injection and extraction. Vertical focus either relied on the field falloff due to realistic magnet construction, or a deliberately added gradient to the median plane, effectively a mixed dipole and quadrupole term in our multipole expansion. First generation alternating gradient accelerators kept this approach, simply implementing two types of "combined function" magnets with consistent dipole terms and alternating quadrupole terms for much stronger net focusing. It quickly became clear that it was preferable to separate the bending and focusing components of the fields for greater flexibility in design. As a result, in most modern machines exhibit bending only in pure dipole magnets and higher order fields are placed in straight sections. Combined function magnets are typically only used when particular cost or space concerns renders them more practical.
+This expansion has been about a straight reference path which contrasts with our earlier transformation to the Frenet-Serret frame. There do exist treatments of multipoles defined in a curved reference frame \cite{zolkinSectorMagnetsTransverse2017}, but this is of relatively minor concern. In practice, we can see that our dipole magnet is the only term which results in bending of the reference trajectory. So, these curved trajectory cases only are relevant inside an element with a deliberate dipole term. This brings up the notion of separated and combined function machines. The first generation of machines used a fixed magnetic field for the entire radius, sometimes with short gaps for injection and extraction. Vertical focus either relied on the field falloff due to realistic magnet construction, or a deliberately added gradient to the median plane, effectively a mixed dipole and quadrupole term in our multipole expansion. First generation alternating gradient accelerators kept this approach, simply implementing two types of "combined function" magnets with consistent dipole terms and alternating quadrupole terms for much stronger net focusing. It quickly became clear that it was preferable to separate the bending and focusing components of the fields for greater flexibility in design. As a result, in most modern machines exhibit bending only in pure dipole magnets and higher order fields are placed in straight sections. Combined function magnets are typically only used when particular cost or space concerns renders them more practical.
 
 An additional consideration for the dipole fields is the incident angle on the element. There are two broad approaches, a rectangular bending magnet, and a sector bend. The sector bend has poles with faces perpendicular to the direction of travel. Without this, there is effective focusing based on the longer and shorter path lengths in the constant field depending on the initial horizontal coordinate. Figure \ref{fig:sector} shows the difference between a sector and rectangular dipole magnet. This can be exploited for focusing effects as was done in the Zero Gradient Synchrotron, but is not relevant for the content of this these as all dipoles considered are sector bends.
 
-\begin{figure} \label{fig:sector}
+\begin{figure} 
 	\centering
 	\includegraphics[width=1\linewidth]{sectorRect.pdf}
 	\caption{Sector and Rectangular bending dipoles}
+	\label{fig:sector}
 \end{figure}
 
 
@@ -309,7 +312,7 @@ The same approach can be applied to our other separated function, first order el
 
 Note that the dipole preserves coupling between the longitudinal and horizontal planes at the first order, unlike the quadrupole. This gives rise to first order dispersion, or longitudinally dependent energy coupling in the horizontal motion. 
 
-These solutions are quite powerful, as they let us stack linear transformations in a row to construct mathematical representations of a transfer line. There is an additional advantage to this form, since the equations of motion were derived from the Hamiltonian of our system, we are guaranteed that these transformations are symplectic. Formally a "symplectic form is a two-form which is closed and nondegenerate" \cite{JoseAndSalatan}. More usefully in a physics context a symplectic transformation is one which is guaranteed to preserve our physical quantities, such as total energy. A sequence of symplectic mappings is also symplectic, so we can be certain that any sequence of our above matrix elements will maintain the symplectic condition. Symplecticity is a rich topic in the context of dynamical systems, but beyond the scope of this thesis, the author recommends the following references for further edification \cite{ForrestSymplectic,YoshidaSymplectic}.
+These solutions are quite powerful, as they let us stack linear transformations in a row to construct mathematical representations of a transfer line. There is an additional advantage to this form, since the equations of motion were derived from the Hamiltonian of our system, we are guaranteed that these transformations are symplectic. Formally a "symplectic form is a two-form which is closed and nondegenerate" \cite{joseClassicalDynamicsContemporary1998}. More usefully in a physics context a symplectic transformation is one which is guaranteed to preserve our physical quantities, such as total energy. A sequence of symplectic mappings is also symplectic, so we can be certain that any sequence of our above matrix elements will maintain the symplectic condition. Symplecticity is a rich topic in the context of dynamical systems, but beyond the scope of this thesis, the author recommends the following references for further edification \cite{forestGeometricIntegrationParticle2006,yoshidaConstructionHigherOrder1990}.
 
 \section{Courant-Snyder Parameterization} \label{sec:CSparam}
 While the transformations we have acquired are generally applicable, we would like to evaluate the conditions for a stable periodic system like we need for a cyclic machine. At this point we will make another simplification of the dynamics by investigating the stability of the transverse and longitudinal dimensions separately. This is of course not strictly true, but the characteristic timescales of synchrotron oscillations are often orders of magnitude slower than the transverse oscillations. We will choose the horizontal "x" motion to investigate. Analogous methods can be used for the "y" plane.
@@ -480,10 +483,10 @@ The area of this ellipse is $2\pi J_x$, but is usually related to the "emittance
 	\epsilon_x = 2 J_x
 \end{equation}
 
-\begin{figure} \label{fig:csEllipse}
-	\centering
+\begin{figure} 	\centering
 	\includegraphics[width=\linewidth]{phase_space_ellipseImpactX.pdf}
-	\caption{Poincare section ellipse of linear betatron motion with associated relationships to Courant-Snyder parameters \cite{ImpactX}}
+	\caption{Poincare section ellipse of linear betatron motion with associated relationships to Courant-Snyder parameters \cite{hueblNextGenerationComputational2022}}
+	\label{fig:csEllipse}
 \end{figure}
 
 Based on these result we can introduce the "normalized" (they still have dimension of $\sqrt{m}$) Cournat-Snyder parameters in \ref{eq:csNorm}.
@@ -520,7 +523,7 @@ There is one more important dynamical quantity that needs to be defined. The bet
 	Q_x = \int_{s_o}^{s_o + C} \frac{1}{\beta_x(s)} ds
 \end{equation}
 
-All of this parameterization was of course in one dimension, the same can be applied to the y-plane assuming they are uncoupled. An extended parameterization to include coupling has been considered and there are two main approaches. One by Edwards-Teng \cite{edwards-teng} and one by Mais-Ripkin \cite{mais-ripkin}. A good overview including many extenisions to these parameterizations is provided in \cite{vanwelde}. For the purposes of this thesis these coupled parameterizations are extraneous and only affect the tune match possible which will be discussed in chapter \ref{chap:experiment} on experimental design.
+All of this parameterization was of course in one dimension, the same can be applied to the y-plane assuming they are uncoupled. An extended parameterization to include coupling has been considered and there are two main approaches. One by Edwards-Teng \cite{edwardsParametrizationLinearCoupled1973} and one by Mais-Ripkin \cite{borchardtCalculationBeamEnvelopes1988}. A good overview including many extenisions to these parameterizations is provided in \cite{vanweldeReviewCoupledBetatron2022}. For the purposes of this thesis these coupled parameterizations are extraneous and only affect the tune match possible which will be discussed in chapter \ref{chap:experiment} on experimental design.
 
 At this point I would like to reiterate the assumptions along the way, and comment on the impacts.
 \begin{enumerate}
@@ -580,7 +583,7 @@ These values can be directly related to measurable quantities. This of course re
 \end{equation}
 
 \section{Nonlinear Perturbations} \label{sec:nonlinearPerturb}
-Our treatment of the dynamics thus far has been exclusively linear. In practical machines, higher order multipoles are often added to compensate for deficiencies in the linear lattice construction. In most modern circular accelerators the transverse chromaticity is compensated, or at least controlled with sextupole magnets. Octupole magnets may also be added to add an amplitude dependent detuning, which in turn drives tune spread in the bunch and can provide landau damping. In addition to deliberately introduced nonlinear perturbations, our linear elements have small intrinsic nonlinearities. Most notably there is an exact, nonlinear mapping for the dipole which has higher order terms which become relevant for large bending element \cite{ExactSbend}s. Additionally, the fringe fields of linear elements will possess intrinsic nonlinearities, though this is strongly dependent on the design \cite{Baartman}. For example, the quadrupole fringe field in the hard-edge approximation has contributions of the same order as an octupole magnet \cite{Forrest}. These contributions all serve to perturb the dynamics, we can briefly consider the next order case of a sextupole magnet. If we add the sextupole term to our general Hamiltonian in Eq. \ref{eq:H_As}, and take the case for the curvature to be zero we arrive at Eq. \ref{eq:H_sext}.
+Our treatment of the dynamics thus far has been exclusively linear. In practical machines, higher order multipoles are often added to compensate for deficiencies in the linear lattice construction. In most modern circular accelerators the transverse chromaticity is compensated, or at least controlled with sextupole magnets. Octupole magnets may also be added to add an amplitude dependent detuning, which in turn drives tune spread in the bunch and can provide landau damping. In addition to deliberately introduced nonlinear perturbations, our linear elements have small intrinsic nonlinearities. Most notably there is an exact, nonlinear mapping for the dipole which has higher order terms which become relevant for large bending element \cite{bruhwilerSymplecticPropagationMap}s. Additionally, the fringe fields of linear elements will possess intrinsic nonlinearities, though this is strongly dependent on the design \cite{baartmanQuadrupoleShapes2012}. For example, the quadrupole fringe field in the hard-edge approximation has contributions of the same order as an octupole magnet \cite{forestLeadingOrderHard1988}. These contributions all serve to perturb the dynamics, we can briefly consider the next order case of a sextupole magnet. If we add the sextupole term to our general Hamiltonian in Eq. \ref{eq:H_As}, and take the case for the curvature to be zero we arrive at Eq. \ref{eq:H_sext}.
 
 \begin{equation} \label{eq:H_sext}
 	H = -\sqrt{1 + p_t^2 - \frac{2p_t}{\beta_o} - p_x^2 - p_y^2} - \frac{p_t}{\beta_o} + \frac{k_3}{3}(3 x y^2 - x^3)
@@ -596,10 +599,11 @@ Even in the linearized case, we cannot find an analytic solution for the equatio
 
 Figure \ref{fig:sextMap} shows the Poincare map for beam measurements in the Indiana University Cooler Synchrotron with sextupole effects. It demonstrates two important effects of the sextupole perturbation, there is an amplitude limit to stable motion, referred to as the dynamic aperture in accelerator literature. It also shows significant deviation of the trajectories from the linear elliptical traces, indicating that the emittance is not conserved.
 
-\begin{figure} \label{fig:sextMap}
+\begin{figure} 
 	\centering
 	\includegraphics[width=0.8\linewidth]{iucfSextupole.png}
-	\caption{Phase space in canonical and action angle coordinates for linear system with strong sextupole perturbations \cite{IUCFsextupole}}
+	\caption{Phase space in canonical and action angle coordinates for linear system with strong sextupole perturbations \cite{caussynExperimentalBeamDynamics}}
+	\label{fig:sextMap}
 \end{figure}
 
 \section{Nonlinear Resonances} \label{sec:resonances}
@@ -611,15 +615,23 @@ There is an additional effect of nonlinear perturbations to the linear dynamics,
 
 At these characteristic frequencies contributions add coherently and drive unstable motion. The order of resonance is determined by the sum of $n$ and $m$. If $n + m = 3$ this is a third integer resonance and can be driven by sextupoles. Resonances are not limited to nonlinear driving components, quadrupoles drive half integer resonances, all multipole terms drive integer resonances.The basic resonance condition results in the dense map of resonance lines up to the order 6 in tune space in Figure \ref{fig:resonanceLines}. 
 
+\begin{figure} 
+	\centering
+	\includegraphics[width=0.8\linewidth]{order6resonance.pdf}
+	\caption{Resonance lines in tune space up to the 6th order}
+	\label{fig:resonanceLines}
+\end{figure}
+
+
 Not every resonance is dangerous, only those which are driven strongly by the particular lattice configuration cause instabilites. Carefully picking the working point, or central tune of a lattice is an important design consideration.
 
 \section{Integrable Systems} \label{sec:integral}
-We have seen that uncontrolled nonlinear perturbations can significantly reduce the stability of our system. An integrable system is one which has as many independent conserved quantities as degrees of freedom in the configuration space. This serves to regularize the motion and means there cannot be chaotic trajectories, though it does not guarantee that trajectories must be bounded. Additionally the KAM theorem ensures that most trajectories away from resonances of a perturbed integrable system remain stable and quasi-periodic \cite{Moser}. This is an important result, as it means a realistic, flawed implementation of an integrable system will still demonstrate broad stability. The predictability of integrable systems means they have long been a subject of study in dynamics. Many forms of integrable systems have been found \cite{Heiterinta}, though they generally are physically impossible to impractical to implement. Particle accelerators are one of the few areas where careful study of the controlled dynamical systems can take place.
+We have seen that uncontrolled nonlinear perturbations can significantly reduce the stability of our system. An integrable system is one which has as many independent conserved quantities as degrees of freedom in the configuration space. This serves to regularize the motion and means there cannot be chaotic trajectories, though it does not guarantee that trajectories must be bounded. Additionally the KAM theorem ensures that most trajectories away from resonances of a perturbed integrable system remain stable and quasi-periodic \cite{moserSolarSystemStable1978}. This is an important result, as it means a realistic, flawed implementation of an integrable system will still demonstrate broad stability. The predictability of integrable systems means they have long been a subject of study in dynamics. Many forms of integrable systems have been found \cite{hietarintaDirectMethodsSearch1987}, though they generally are physically impossible to impractical to implement. Particle accelerators are one of the few areas where careful study of the controlled dynamical systems can take place.
 
-The linear Courant-Snyder system is an integrable system, with an independently conserved emittance in each degree of freedom. This also holds in the coupled linear system, thought the parameterization is more complicated. In the context of accelerator dynamics, the advantages of this integrability are clear. It indicates that the design orbits are stable, generally robust to small permutations, and can be parameterized from the conserved quantities. The drawbacks of perturbative nonlinearites introduced to the linear system to mitigate higher order effects, have motivated a long history of searches for practical nonlinear integrable accelerators. McMillan introduced a basic set of one dimensional thin lens solutions \cite{McMillan}, and Danilov found a practical 1-D solution using the Beam-Beam force as the nonlinear confining potential \cite{Danilov1D}. The experiments in this thesis focus on another development of Danilov and Nagaitsev in 2010.
+The linear Courant-Snyder system is an integrable system, with an independently conserved emittance in each degree of freedom. This also holds in the coupled linear system, thought the parameterization is more complicated. In the context of accelerator dynamics, the advantages of this integrability are clear. It indicates that the design orbits are stable, generally robust to small permutations, and can be parameterized from the conserved quantities. The drawbacks of perturbative nonlinearites introduced to the linear system to mitigate higher order effects, have motivated a long history of searches for practical nonlinear integrable accelerators. McMillan introduced a basic set of one dimensional thin lens solutions \cite{mcmillanThoughtsStabilityNonlinear1967}, and Danilov found a practical 1-D solution using the Beam-Beam force as the nonlinear confining potential \cite{danilovTwoExamplesIntegrable1997}. The experiments in this thesis focus on another development of Danilov and Nagaitsev in 2010.
 
 \section{Nonlinear Integrable Optics} \label{sec:nio}
-Danilov and Nagaitsev discovered a two dimensional nonlinear integrable system relevant for accelerators \cite{danilov_nonlinear_2010}. To derive this system, we begin with a Hamiltonian in our transverse space in our Courant-Snyder normalized parameters, so there is no time dependence of the Hamiltonian.  If we add a general nonlinear potential constructed out of these normalized coordinates, it too will be time independent and the Hamiltonian will be a constant of motion, as in Eq. \ref{eq:H_norm}.
+Danilov and Nagaitsev discovered a two dimensional nonlinear integrable system relevant for accelerators \cite{danilovNonlinearAcceleratorLattices2010}. To derive this system, we begin with a Hamiltonian in our transverse space in our Courant-Snyder normalized parameters, so there is no time dependence of the Hamiltonian.  If we add a general nonlinear potential constructed out of these normalized coordinates, it too will be time independent and the Hamiltonian will be a constant of motion, as in Eq. \ref{eq:H_norm}.
 
 \begin{equation} \label{eq:H_norm}
 	H = \frac{p_{xN}^2}{2} + \frac{p_{yN}^2}{2}  + \frac{x_{N}^2}{2} + \frac{y_{N}^2}{2} + V(x_N,y_N,s)
@@ -639,7 +651,7 @@ The approach used by Danilov and Nagaitsev looked for forms of $I$ quadratic in 
 	x_N y_N\left( \frac{\partial^2 U}{\partial x_N^2} - \frac{\partial^2 U}{\partial y_N^2}\right) + (y_n^2 - x_n^2 + c^2)\frac{\partial^2 U}{\partial x_N y_N} + 3y_N \frac{\partial U}{\partial x_N} - 3 x_N \frac{\partial U}{\partial x_N} = 0
 \end{equation}
 
-This is Darbroux's equation \cite{Darbroux}, and has the general solution of Eq. \ref{eq:darbrouxSol}, where $\xi$ and $\eta$ are elliptical coordinates given in Eq. \ref{eq:ellipCoords} and $f(\xi)$ and $g(\eta)$ are arbitrary functions. Note that there is a constant $c$ introduced with units of the square root of length.
+This is Darbroux's equation \cite{darbouxProblemeMecanique1901}, and has the general solution of Eq. \ref{eq:darbrouxSol}, where $\xi$ and $\eta$ are elliptical coordinates given in Eq. \ref{eq:ellipCoords} and $f(\xi)$ and $g(\eta)$ are arbitrary functions. Note that there is a constant $c$ introduced with units of the square root of length.
 
 \begin{equation} \label{eq:darbrouxSol}
 	U(x_N,y_N) = \frac{f(\xi) + g(\eta)}{\xi^2 - \eta^2}
@@ -710,7 +722,7 @@ We can then consider the linear combination of these individual solutions, i.e. 
 	2t c^4 \xi \eta \frac{\eta\sqrt{\xi^2 -1} \textrm{arccosh}(\xi) - \xi \sqrt{1-\eta^2}\arcsin{(\eta)}}{\xi^2 - \eta^2}
 \end{multline}
 
-This parameterization is presented as it was the form used in the original derivation, and most clearly arises from the underlying partial differential equations. However it is quite cumbersome, and encounters issues in numerical tracking for small values of $y_N$. A separate parameterization in complex coordinates was proposed in \cite{Mitchell}, and will be used for the rest of this thesis. To begin with, the coordinates in this representation are scaled by the geometric parameter $c$ to be fully unitless, and a complex coordinate $z$ is introduced, Eq. \ref{eq:CMcoord}.
+This parameterization is presented as it was the form used in the original derivation, and most clearly arises from the underlying partial differential equations. However it is quite cumbersome, and encounters issues in numerical tracking for small values of $y_N$. A separate parameterization in complex coordinates was proposed in \cite{mitchellComplexRepresentationPotentials2019}, and will be used for the rest of this thesis. To begin with, the coordinates in this representation are scaled by the geometric parameter $c$ to be fully unitless, and a complex coordinate $z$ is introduced, Eq. \ref{eq:CMcoord}.
 
 \begin{equation} \label{eq:CMcoord}
 \begin{split}
@@ -723,11 +735,11 @@ This parameterization is presented as it was the form used in the original deriv
 The resulting Hamiltonian and second integral of motion are given in Equations \ref{eq:H_CM} and \ref{eq:I_CM}
 
 \begin{equation} \label{eq:H_CM}
-H_c = \frac{1}{2}\left( p_{xc}^2 + p_{yc}^2 + x_c^2 + y_c^2 \right) - t \mathbb{Re}\left(\frac{z_c}{\sqrt{1-z_c^2}}\textrm{arcsin}(z_c)\right)
+H_c = \frac{1}{2}\left( p_{xc}^2 + p_{yc}^2 + x_c^2 + y_c^2 \right) - t \mathbb{Re}\left[\frac{z_c}{\sqrt{1-z_c^2}}\textrm{arcsin}(z_c)\right]
 \end{equation}
 
 \begin{equation} \label{eq:I_CM}
-I_c = (x_c p_{yc} - y_c p_{xc})^2 + p_{xc}^2 + x_c^2 - t\mathbb{Re}\left(\frac{2 x_c}{\sqrt{1-z_c^2}}\textrm{arcsin}(z_c)\right)
+I_c = (x_c p_{yc} - y_c p_{xc})^2 + p_{xc}^2 + x_c^2 - t\mathbb{Re}\left[\frac{2 x_c}{\sqrt{1-z_c^2}}\textrm{arcsin}(z_c)\right]
 \end{equation}
 
 Since the normalization changed these quantities are related to the original Hamiltonian and second invariant by the relations in \ref{eq:DNtoCM}
@@ -741,13 +753,14 @@ Since the normalization changed these quantities are related to the original Ham
 
 We can plot the potential $U$ with respect to our fully normalized coordinates $x_c,y_x$ in Figure \ref{fig:DNpot}.
 
-\begin{figure} \label{fig:DNpot}
+\begin{figure} 
 	\centering
 	\includegraphics[width=0.8\linewidth]{dnPot.pdf}
 	\caption{Potential of Danilov-Nagaitsev Integrable System. Yellow arrows indicate direction of potential scaling with $t$-parameter, and the cross indicates the location of the pole where $x=c$}
+	\label{fig:DNpot}
 \end{figure}
 
-This plot allows us to clearly illustrate the impact of the two arbitrary constants in the DN system. The $c$ parameter describes the locations of singularities in the nonlinear potential, specifically when $x_c = 1$ and $y_c = 0$. The dimensionless $t$ parameter encodes the relative strength of nonlinear insert, and has the strongest impact on the dynamics. Practically, the $t$-parameter is selected to vary in the range $-0.5 \leq t \leq 0$, here a value of $t=0$ recovers our Courant-Snyder case. The impact on the dynamics for further $t$ ranges are considered in \cite{MitchellBiforcation}. 
+This plot allows us to clearly illustrate the impact of the two arbitrary constants in the DN system. The $c$ parameter describes the locations of singularities in the nonlinear potential, specifically when $x_c = 1$ and $y_c = 0$. The dimensionless $t$ parameter encodes the relative strength of nonlinear insert, and has the strongest impact on the dynamics. Practically, the $t$-parameter is selected to vary in the range $-0.5 \leq t \leq 0$, here a value of $t=0$ recovers our Courant-Snyder case. The impact on the dynamics for further $t$ ranges are considered in \cite{mitchellBifurcationAnalysisNonlinear2020}. 
 
 As the potential satisfies Laplace's equation it can be represented with a string of magnets with properly shaped poles. The details of the implementation of such a magnet are discussed in further chapters.
 
