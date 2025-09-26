@@ -9,6 +9,9 @@
 \usepackage{amsfonts}
 %\usepackage{unicode-math}%, neccesary for vector graphic lowercase mathbb e, needs to use XeTex
 
+\usepackage{siunitx}
+\sisetup{tight-spacing=true} 
+
 \addbibresource{z_chapter_1.bib}
 
 \begin{document}
@@ -18,13 +21,13 @@
 
 \mainmatter
 
-\include{chapter_1.tex}
-%\include{chapter_2.tex}
+%\include{chapter_1.tex}
+\include{chapter_2.tex}
 
 %\begin{appendices}
 %\include{appendix_1.tex}
 %\end{appendices}
 
-\printbibliography
+%\printbibliography
 
 \end{document}

@@ -2,7 +2,91 @@
 
 \section{Facility Overview}
 
-The Integrable Optics Test Accelerator (IOTA) was constructed at the Fermi National Accelerator Laboratory (Fermilab) for dedicated beam studies, particularly implementations of nonlinear integrable optics (NIO). IOTA is housed in the Fermilab Accelerator Science and Technology (FAST) facility and is not connected to the main sequence of proton accelerators at Fermilab. 
+The Integrable Optics Test Accelerator (IOTA) was constructed at the Fermi National Accelerator Laboratory (Fermilab) for dedicated beam studies, particularly implementations of nonlinear integrable optics (NIO). IOTA is housed in the Fermilab Accelerator Science and Technology (FAST) facility and is not connected to the main sequence of proton accelerators at Fermilab. The location of the FAST facility on the Fermilab campus is marked in figure \ref{fig:FastMap}. In addition to IOTA, the FAST facility houses a superconducting electron linac, and a low energy proton injector.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_2_figures/fermiBakedSmall.jpg}
+	\caption{Location of FAST facility indicated by blue star at the end of a decommisioned fixed target beamline}
+	\label{fig:FastMap}
+\end{figure}
+
+
+\section{FAST Electron Linac}
+The electron linac started as a test bed for the ILC \cite{fermiILC,recordGradient}, and has since evolved to support a broad range of beam physics studies \cite{fastGreens,NEB}. Most importantly for the studies in this thesis, it is the source of the electron beams in IOTA. The general linac bunch parameters are given in table \ref{tab:linac}. The electron source is a gallium-arsenide photocathode inside a "" MHz RF gun. The laser pulses for the photocathode are supplied from a supporting laser lab capable ofcareful tuning of the laser pulse shape and timing for granular control of the resulting electron bunch. The beam then travels through a low energy beam transport (LEBT) line consisting of two independent "" MHz superconducting "capture" cavities. The electon LEBT also contains a few experimental stations and an optional chicane for beam studies. At the end of the lebt the beam can be either seered to a low energy absorber or onward to the "" GHz TESLA style cryomodule, which consists of 12 strings of 9 cell superconducting cavities. Beyond the cryomodule is a long transport line initially intended for further cryomodules, to a switchyard. Here the beam may be steered to further experiments, the high energy absorber, or injected into IOTA. Figure \ref{fig:linacLat} shows the lattice funcitons through the electron linac to the end of the IOTA injection septum. This long transport line presented some difficulties in tuning for injection. The $\beta$ functions neccesarially grow to large values which amplifies the impact of the quadrupole errors and granularities. While an accurate match into IOTA is irrelevant as the captured beam will damp to the equalibrium emittance, this touchy injection line was the cause of some headache in experimental operation, often limiting the injected current available.
+
+\begin{table}
+    \centering
+    \begin{tabular}{lr}
+    \toprule
+    \textbf{FAST Linac Parameter} & \textbf{Design Value/Range}\\
+    \midrule
+    Beam energy to low energy absorber & 20-52 [MeV]\\
+    Beam energy to IOTA/high energy absorber & 100-300 [MeV]\\
+    Bunch Charge & $<\num{1e-5}$ - 3.2 [nC]\\
+    Normalized Emittance (for 0.1 nC bunch) & 0.6 [mm-mrad]\\
+    \bottomrule
+    \end{tabular}
+    \caption{FAST Electron Linac Parameters}
+    \label{tab:linac}
+\end{table}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{FAST Electron Linac Lattice Parameters}
+	\label{fig:linacLat}
+\end{figure}
+
+\section{IOTA Proton Injector}
+
+The proton injector delivers 2.5 MeV proton beams to IOTA for space charge dominated studies. The hardware for the proton injection line is mostly repurposed from the Fermilab High Intensity Neutrino Source (HINS) \cite{webberHINS} project of the late 2000's, consisting of a Duoplasmatron proton source, a solenoidal low energy beam transport (LEBT) line, a radiofrequency quadrupole (RFQ), and a typical strong focusing medium energy beam transport (MEBT) line \cite{edstromIPI} to IOTA.
 
 \section{IOTA Design}
-IOTA shows significant design influence from the VEPP-2000 collider at the Budker Institute for Nuclear Physics \cite{vepp-2000}. IOTA is of a stretched octangonal layout with four thirty degree and four sixty degree primary dipoles forming the fundamental geometry. The dipole parameters are outlined in \ref{tab:dipole}.
+IOTA shows significant design influence from the VEPP-2000 collider at the Budker Institute for Nuclear Physics \cite{vepp-2000}. IOTA is of a stretched octangonal layout with four thirty degree and four sixty degree primary dipoles forming the fundamental geometry. Primary focusing is provided by The dipole parameters are outlined in \ref{tab:dipole}. 
+
+\section{IOTA NIO Insert Design}
+The IOTA NIO insert
+
+To define the pole geometry, we need to introduce an additional function from \cite{mitchellComplex}. This is a complex representation of the vector and magnetic scalar potentials (not the relatavistic scalar potential), scaled by the rigidity.
+
+\begin{equation} \label{eq:genF}
+	F(z_c) = \frac{A_s}{B\rho} + i\frac{\Phi_m}{B\rho} = \frac{t c^2}{\beta(s)}\frac{z_c}{\sqrt{1-z_c^2}} \arcsin{(z_c)} \\ 
+\end{equation}
+
+We can can also expand this function about the origin, note that this expansion is only good inside the radius $x_c^2 + y_c^2 = 1$. This is of no practical concern as it only mandates that our expansion is good inside poles of the potential, where we are interested in the dynamics anyway.
+
+\begin{equation} \label{eq:powF}
+	F(z_c) = \frac{t c^2}{\beta(s)} \sum_{n=1}^{\infty} \frac{2^{2n-1}n!(n-1)!}{(2n)!} z_c^{2n}
+\end{equation}
+
+In a space with only the $A_s$ component of the vector potential, we know our magnetic field terms are given by Eq. \ref{eq:B_As}, with chain rule considered since our potential depends on the normalized coordinates.
+
+\begin{equation} \label{eq:B_As}
+\begin{split}
+	B_x = &\frac{\partial A_s}{\partial y} = \frac{1}{c\sqrt{\beta(s)}}\frac{\partial A_s}{\partial y_c}\\
+	B_y = -&\frac{\partial A_s}{\partial x} = -\frac{1}{c\sqrt{\beta(s)}}\frac{\partial A_s}{\partial x_c}
+\end{split}
+\end{equation}
+
+To construct a Beth representation of our field we can combine our field terms in Eq. \ref{eq:cmBeth}.
+
+\begin{equation} \label{eq:cmBeth}
+	B_y + i B_x  = -\frac{\partial A_s}{\partial x} + i\frac{\partial A_s}{\partial y} = -\frac{1}{c\sqrt{\beta(s)}}\left(\frac{\partial A_s}{\partial x_c} - i\frac{\partial A_s}{\partial y_c}\right)
+\end{equation}
+
+A consequence of the Cauchy-Riemann equations yields Eq. \ref{eq:cauchy}
+
+\begin{equation} \label{eq:cauchy}
+	\frac{\partial F}{\partial z_c} = \left(\frac{\partial }{\partial x_c} - i\frac{\partial }{\partial y_c}\right) \frac{A_s}{B\rho}
+\end{equation}
+
+Substituting, we arrive at Eq. \ref{eq:BdF}, or the multipole expansion Eq. \ref{eq:dnMult}.
+
+\begin{equation} \label{eq:BdF}
+	B_y + i B_x  = -\frac{B\rho}{c\sqrt{\beta(s)}}\frac{\partial F}{\partial z_c} = - \frac{t c B\rho}{\beta(s)^{3/2}} \left( \frac{z_c^2}{1 - z_c^2} + \frac{\arcsin{(z_c)}}{\left(1-z_c^2\right)^{3/2}}\right)
+\end{equation}
+
+\begin{equation} \label{eq:dnMult}
+	B_y + i B_x = - \frac{t c^2 B\rho}{\beta(s)} \sum_{n=1}^{\infty} \frac{2^{2n-1}n!(n-1)!}{c^{2n}\beta(s)^n(2n-1)!} (x + i y)^{2n -1}
+\end{equation}
