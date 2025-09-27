@@ -13,7 +13,7 @@ The Integrable Optics Test Accelerator (IOTA) was constructed at the Fermi Natio
 
 
 \section{FAST Electron Linac}
-The electron linac started as a test bed for the ILC \cite{fermiILC,recordGradient}, and has since evolved to support a broad range of beam physics studies \cite{fastGreens,NEB}. Most importantly for the studies in this thesis, it is the source of the electron beams in IOTA. The general linac bunch parameters are given in table \ref{tab:linac}. The electron source is a gallium-arsenide photocathode inside a "" MHz RF gun. The laser pulses for the photocathode are supplied from a supporting laser lab capable ofcareful tuning of the laser pulse shape and timing for granular control of the resulting electron bunch. The beam then travels through a low energy beam transport (LEBT) line consisting of two independent "" MHz superconducting "capture" cavities. The electon LEBT also contains a few experimental stations and an optional chicane for beam studies. At the end of the lebt the beam can be either seered to a low energy absorber or onward to the "" GHz TESLA style cryomodule, which consists of 12 strings of 9 cell superconducting cavities. Beyond the cryomodule is a long transport line initially intended for further cryomodules, to a switchyard. Here the beam may be steered to further experiments, the high energy absorber, or injected into IOTA. Figure \ref{fig:linacLat} shows the lattice funcitons through the electron linac to the end of the IOTA injection septum. This long transport line presented some difficulties in tuning for injection. The $\beta$ functions neccesarially grow to large values which amplifies the impact of the quadrupole errors and granularities. While an accurate match into IOTA is irrelevant as the captured beam will damp to the equalibrium emittance, this touchy injection line was the cause of some headache in experimental operation, often limiting the injected current available.
+The electron linac started as a test bed for the ILC \cite{fermiILC,recordGradient}, and has since evolved to support a broad range of beam physics studies \cite{fastGreens,NEB}. Most importantly for the studies in this thesis, it is the source of the electron beams in IOTA. The general linac bunch parameters are given in table \ref{tab:linac}. The electron source is a gallium-arsenide photocathode inside a 1.3 GHz room temperature copper RF gun. The laser pulses for the photocathode are supplied from a supporting laser lab capable ofcareful tuning of the laser pulse shape and timing for granular control of the resulting electron bunch. The beam then travels through a low energy beam transport (LEBT) line consisting of two independent 1.3 GHz superconducting 9 cell "capture" cavities. The electon LEBT also contains a few experimental stations and an optional chicane for beam studies. At the end of the lebt the beam can be either seered to a low energy absorber or onward to the 1.3 GHz TESLA style cryomodule, which contains of 8 sequential 9 cell superconducting cavities. Beyond the cryomodule is a long transport line initially intended for further cryomodules, to a switchyard. Here the beam may be steered to further experiments, the high energy absorber, or injected into IOTA. Figure \ref{fig:linacLat} shows the lattice funcitons through the electron linac to the end of the IOTA injection septum. This long transport line presented some difficulties in tuning for injection. The $\beta$ functions neccesarially grow to large values which amplifies the impact of the quadrupole errors and granularities. While an accurate match into IOTA is irrelevant as the captured beam will damp to the equalibrium emittance, this touchy injection line was the cause of some headache in experimental operation, often limiting the injected current available.
 
 \begin{table}
     \centering
@@ -81,7 +81,7 @@ A consequence of the Cauchy-Riemann equations yields Eq. \ref{eq:cauchy}
 	\frac{\partial F}{\partial z_c} = \left(\frac{\partial }{\partial x_c} - i\frac{\partial }{\partial y_c}\right) \frac{A_s}{B\rho}
 \end{equation}
 
-Substituting, we arrive at Eq. \ref{eq:BdF}, or the multipole expansion Eq. \ref{eq:dnMult}.
+Substituting, we arrive at Eq. \ref{eq:BdF}, or the multipole expansion (in lab coordinates) Eq. \ref{eq:dnMult}.
 
 \begin{equation} \label{eq:BdF}
 	B_y + i B_x  = -\frac{B\rho}{c\sqrt{\beta(s)}}\frac{\partial F}{\partial z_c} = - \frac{t c B\rho}{\beta(s)^{3/2}} \left( \frac{z_c^2}{1 - z_c^2} + \frac{\arcsin{(z_c)}}{\left(1-z_c^2\right)^{3/2}}\right)
@@ -90,3 +90,21 @@ Substituting, we arrive at Eq. \ref{eq:BdF}, or the multipole expansion Eq. \ref
 \begin{equation} \label{eq:dnMult}
 	B_y + i B_x = - \frac{t c^2 B\rho}{\beta(s)} \sum_{n=1}^{\infty} \frac{2^{2n-1}n!(n-1)!}{c^{2n}\beta(s)^n(2n-1)!} (x + i y)^{2n -1}
 \end{equation}
+
+There are two important takeaways from the multipole expansion, there are only even multipoles in the expansion (quadrupole, octupole, decapole, etc.), and the lowest multipole order is that of a quadrupole. So, the first order effect of the nonlinear insert can be treated in our linear dynamics for coarse tuning purposes and alignment. Figure \ref{fig:dnMultRatio} shows the deviation of the magnetic field of the multipole decomposition (Eq. \ref{eq:dnMult}), from the exact analytic form (Eq. \ref{eq:BdF} for increasing cutoff orders. Three points of comparison are taken, $(x=c/2,y=0)$, $(x=0,y=c/2)$, and $(x=c\sqrt{2}/2,y=c\sqrt{2}/2)$. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{Relative field magnitude deviation between exact form and expansion}
+	\label{fig:dnMultRatio}
+\end{figure}
+
+The design of the nonlinear inserts use iron dominated magnets to shape the field, we can set to the scalar magnetic potential to a constant value and invert for the coordinates. In practice this is done numerically. The nonlinear insert used in these studies placed the pole at a scalar potential value of 0.5, in the $B\rho$ normalized units. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{Normalized magnetic potential of NIO system, contours used in IOTA highlited}
+	\label{fig:dnMagPtCurve}
+\end{figure}
