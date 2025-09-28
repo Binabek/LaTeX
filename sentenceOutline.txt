@@ -22,20 +22,6 @@ Enter IOTA, machine constructed to evaluate the practicality of such a system.
 Presented work considers simulations and electron experiments on the DN NIO system.
 Supplemental work involving the magnetic field mapping and proton line simulation and characterization are also considered.
 
-Single Particle Simulations - improve story based flow
-To evaluate stability and implementation of various nonlinear integrable optics schemes single particle simulations were carried out.
-The first verification is reasonable conservation of the analytically predicted invariants.
-The simulation is constructed as a series of thin kicks proportional to the nonlinear potential followed by the necessary thin lens.
-The variance of the evaluated invariants from tracked coordinates can be compared.
-Different compositions of the nonlinear insert were considered.
-Equi-phase advance in the thin kicks showed improvements in conservation for a given number of elements.
-Equivalent thick lenses showed small reductions in conservation. - consider equi-phase centering
-Further extended single particle models to include full IOTA lattice.
-Evaluate tune spread and impacts of nonlinearities in matching section of the lattice.
-Consider 6-D effects including chromatic effects in nonlinear lenses.
-Three basic forms of the IOTA lattice, fully linear, with first order chromaticity including compensation, and with kinematic nonlinearities and exact dipole mappings.
-See significant effects on bare lattice chromaticity from the exact dipole mappings.
-
 Experimental Facility/Design
 The IOTA ring is constructed to study nonlinear integrable particle optics.
 IOTA is a 40 m circumference storage ring with 4 30 degree dipoles and 4 60 degree dipoles.
@@ -71,6 +57,26 @@ Closed orbit averages over 1000 turns for more accurate circulating measurements
 IOTA can operate with protons for intense space charge and investigation of collective effects.
 Most of the studies in this thesis were focused on electrons.
 
+Single Particle Simulations - improve story based flow
+To evaluate stability and implementation of various nonlinear integrable optics schemes single particle simulations were carried out.
+The first verification is reasonable conservation of the analytically predicted invariants.
+The simulation is constructed as a series of thin kicks proportional to the nonlinear potential followed by the necessary thin lens.
+The variance of the evaluated invariants from tracked coordinates can be compared.
+Different compositions of the nonlinear insert were considered.
+Equi-phase advance in the thin kicks showed improvements in conservation for a given number of elements.
+Equivalent thick lenses showed small reductions in conservation. - consider equi-phase centering
+Further extended single particle models to include full IOTA lattice.
+Evaluate tune spread and impacts of nonlinearities in matching section of the lattice.
+Consider 6-D effects including chromatic effects in nonlinear lenses.
+Three basic forms of the IOTA lattice, fully linear, with first order chromaticity including compensation, and with kinematic nonlinearities and exact dipole mappings.
+See significant effects on bare lattice chromaticity from the exact dipole mappings.
+
+Multi Particle simulations
+Bunch simulations with chromaticity and kicked beam decoherence.
+
+Proton Line Efforts
+Simulation of RFQ and MEBT with space charge.
+
 150 MeV Electron Experiment
 Electron experiment consisted of three major thrusts, lattice commissioning and alignment including nonlinear elements, kicked beam turn by turn measurements, and circulating beam measurements with synchrotron radiation monitors.
 Lattice commissioning involved LOCO fitting of the lattice to the nominal NIO lattice, some linear element alignment.
@@ -80,10 +86,11 @@ Turn by turn data performed in dynamic aperture scans and dense grids.
 
 Measured dynamic aperture with different sextupole configurations.
 
-
 150 MeV Electron Analysis
 Many analyses used 
 Decoherence times with different sextupole configurations. Include operational maximum coherent oscillation with sextupole tuning.
+
+
 
 To evaluate the full phase space, momentum reconstruction from the tbt BPM data is necessary.
 There are two main experimental reasons to extract info, amplitude calibration and nonlinear motion quantification.
@@ -123,11 +130,7 @@ Dropping other BPMS showed no significant improvement in goodness of fit to line
 Fits were performed with uncoupled 4x4 matrices since local coupling was minimized in LOCO.
 
 
-Multi Particle simulations
-Bunch simulations with chromaticity and kicked beam decoherence.
 
-Proton Line Efforts
-Simulation of RFQ and MEBT with space charge.
 
 Magnet Measurements
 To prepare for the IOTA electron run, the octupole magnets were evaluated for alignment.
