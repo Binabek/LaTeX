@@ -9,10 +9,14 @@
 \usepackage{amsfonts}
 %\usepackage{unicode-math}%, neccesary for vector graphic lowercase mathbb e, needs to use XeTex
 
+%add siunitx package for scientific notation, set spacing to tight so powers of 10 fit well
 \usepackage{siunitx}
 \sisetup{tight-spacing=true} 
 
-\addbibresource{z_chapter_1.bib}
+%add subfig package for side-by-side figures
+%\usepackage{subfig}
+
+\addbibresource{z_chapter_2.bib}
 
 \begin{document}
 
@@ -28,6 +32,6 @@
 %\include{appendix_1.tex}
 %\end{appendices}
 
-%\printbibliography
+\printbibliography
 
 \end{document}

@@ -8,9 +8,11 @@
 *.pdf
 # BibTeX ignores
 *.bbl
+*.bbl-SAVE-ERROR
 *.blg
 # BibLaTeX ignores
 *.bcf
+*.bcf-SAVE-ERROR
 *.xml
 # Image ignores
 *.png

@@ -2,12 +2,12 @@
 
 \section{Facility Overview}
 
-The Integrable Optics Test Accelerator (IOTA) was constructed at the Fermi National Accelerator Laboratory (Fermilab) for dedicated beam studies, particularly implementations of nonlinear integrable optics (NIO). There are two main operational modes of IOTA, with 150 MeV electrons, and with 2.5 MeV protons. The design parameters for IOTA are give in Table. \ref{tab:IOTAdesign}. The electron beams have a quick damping time and low emittance due to synchrotron radiation and are useful probes of the phase space of the dynamical systems. The proton beams exhibit strong space charge effects at modest circulating currents and are useful for investigating schemes for suppression of damaging collective effects analogous to those seen in high intensity machines. IOTA is housed in the Fermilab Accelerator Science and Technology (FAST) facility and is not connected to the main sequence of proton accelerators at Fermilab. The location of the FAST facility on the Fermilab campus is marked in figure \ref{fig:FastMap}. In addition to IOTA, the FAST facility houses a superconducting electron linac, and a low energy proton injector.
+The Integrable Optics Test Accelerator (IOTA) was constructed at the Fermi National Accelerator Laboratory (Fermilab) for dedicated beam studies, particularly implementations of nonlinear integrable optics (NIO) \cite{antipovIOTAIntegrableOptics2017}. There are two main operational modes of IOTA, with 150 MeV electrons, and with 2.5 MeV protons. The design parameters for IOTA are give in Table. \ref{tab:IOTAdesign}. The electron beams have a quick damping time and low emittance due to synchrotron radiation and are useful probes of the phase space of the dynamical systems. The proton beams exhibit strong space charge effects at modest circulating currents and are useful for investigating schemes for suppression of damaging collective effects analogous to those seen in high intensity machines. IOTA is housed in the Fermilab Accelerator Science and Technology (FAST) facility and is not connected to the main sequence of proton accelerators at Fermilab. The location of the FAST facility on the Fermilab campus is marked in figure \ref{fig:FastMap}. In addition to IOTA, the FAST facility houses a superconducting electron linac, and a low energy proton injector.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_2_figures/fermiBakedSmall.jpg}
-	\caption{Location of FAST facility indicated by blue star at the end of a decommisioned fixed target beamline}
+	\caption{Location of FAST facility indicated by blue star at the end of a decommissioned fixed target beamline}
 	\label{fig:FastMap}
 \end{figure}
 
@@ -31,7 +31,14 @@ The Integrable Optics Test Accelerator (IOTA) was constructed at the Fermi Natio
 
 
 \section{FAST Electron Linac}
-The electron linac started as a test bed for the ILC \cite{fermiILC,recordGradient}, and has since evolved to support a broad range of beam physics studies \cite{fastGreens,NEB}. Most importantly for the studies in this thesis, it is the source of the electron beams in IOTA. The general linac bunch parameters are given in table \ref{tab:linac}. The electron source is a gallium-arsenide photocathode inside a 1.3 GHz room temperature copper RF gun. The laser pulses for the photocathode are supplied from a supporting laser lab capable of laser pulse shaping and timing for granular control of the resulting electron bunch. The beam then travels through a low energy beam transport (LEBT) line consisting of two independent 1.3 GHz superconducting 9 cell "capture" cavities. The electon LEBT also contains a few experimental stations and an optional chicane for beam studies. At the end of the lebt the beam can be either seered to a low energy absorber or onward to the 1.3 GHz TESLA style cryomodule, which contains 8 sequential 9 cell superconducting cavities. Beyond the cryomodule is a long transport line initially intended for further cryomodules, to a switchyard. Here the beam may be steered to further linac experiments, the high energy absorber, or injected into IOTA. Figure \ref{fig:linacLat} shows the lattice funcitons through the electron linac to the end of the IOTA injection septum. This long transport line presented some difficulties in tuning for injection. The $\beta$ functions neccesarially grow to large values which amplifies the impact of the quadrupole errors, especially the limited control resolution in quadrupole power supply. While an accurate transverse match into IOTA is not crucial as the captured beam will damp to the equalibrium emittance, this touchy injection line was the cause of some headache in experimental operation, often limiting the injected current available.
+The electron linac started as a test bed for the ILC \cite{churchPlans750MeV2007,broemmelsiekRecordHighgradientSRF2018}, and has since evolved to support a broad range of beam physics studies \cite{croppFASTLowEnergyBeamline2023,kladovNearInfraredNoiseIntense2025}. Most importantly for the studies in this thesis, it is the source of the electron beams in IOTA. Figure \ref{fig:linacOutline} shows a component-level outline of the linac. The general linac bunch parameters are given in table \ref{tab:linac}. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_2_figures/FAST_Electron_Beamline.png}
+	\caption{Placeholder Overview of FAST Linac}
+	\label{fig:linacOutline}
+\end{figure}
 
 \begin{table}
     \centering
@@ -49,6 +56,10 @@ The electron linac started as a test bed for the ILC \cite{fermiILC,recordGradie
     \label{tab:linac}
 \end{table}
 
+
+The electron source is a gallium-arsenide photocathode inside a 1.3 GHz room temperature copper RF gun. The laser pulses for the photocathode are supplied from a supporting laser lab capable of laser pulse shaping and timing for granular control of the resulting electron bunch. The beam then travels through a low energy beam transport (LEBT) line consisting of two independent 1.3 GHz superconducting 9 cell "capture" cavities. The electron LEBT also contains a few experimental stations and an optional chicane for beam studies. At the end of the LEBT the beam can be either steered to a low energy absorber or onward to the 1.3 GHz TESLA style cryomodule, which contains 8 sequential 9 cell superconducting cavities. Beyond the cryomodule is a long transport line initially intended for further cryomodules, to a switchyard. Here the beam may be steered to further linac experiments, the high energy absorber, or injected into IOTA. Figure \ref{fig:linacLat} shows the lattice functions through the electron linac to the end of the IOTA injection septum. This long transport line presented some difficulties in tuning for injection. The $\beta$ functions necessarily grow to large values which amplifies the impact of the quadrupole errors, especially the limited control resolution in quadrupole power supply. While an accurate transverse match into IOTA is not crucial as the captured beam will damp to the equilibrium emittance, this touchy injection line was the cause of some headache in experimental operation, often limiting the injected current available.
+
+
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_2_figures/adjustedFAST.png}
@@ -58,9 +69,9 @@ The electron linac started as a test bed for the ILC \cite{fermiILC,recordGradie
 
 \section{IOTA Proton Injector}
 
-The IOTA proton injector (IPI) delivers 2.5 MeV proton beams to IOTA for space charge dominated studies. The hardware for the proton injection line is mostly repurposed from the Fermilab High Intensity Neutrino Source (HINS) \cite{webberHINS} project of the late 2000's, consisting of a Duoplasmatron proton source, a solenoidal LEBT line, a radiofrequency quadrupole (RFQ), and a typical strong focusing medium energy beam transport (MEBT) line \cite{edstromIPI} to IOTA. The IPI line has been constructed and is undergoing comissioning at the time of the writing of this thesis, so it is not yet possible to quote its exact performance characteristics.
+The IOTA proton injector (IPI) delivers 2.5 MeV proton beams to IOTA for space charge dominated studies. The hardware for the proton injection line is mostly repurposed from the Fermilab High Intensity Neutrino Source (HINS) \cite{webberOverviewHighIntensity} project of the late 2000's, consisting of a Duoplasmatron proton source, a solenoidal LEBT line, a radiofrequency quadrupole (RFQ), and a typical strong focusing medium energy beam transport (MEBT) line \cite{edstromIOTAProtonInjector2023} to IOTA. The IPI line has been constructed and is undergoing commissioning at the time of the writing of this thesis, so it is not yet possible to quote its exact performance characteristics.
 
-The proton source is a 50 keV duoplasmatron. This particular source was characterized in the past \cite{tamThesis} for the HINS project, and these are the approximate emittance values used in simulation studies. However, the source was slightly reconfigured for its new installation location, so the past characterization is not entirely accurate. Some additional characterization was performed with an Allison type emittance scanner to verify approximate ion species fractions, but it was not possible to seperate proton emittance information. This will be evaluated with an allison scanner downstream of the RFQ.
+The proton source is a 50 keV duoplasmatron. This particular source was characterized in the past \cite{tamCharacterizationProtonIon2010} for the HINS project, and these are the approximate emittance values used in simulation studies. However, the source was slightly reconfigured for its new installation location, so the past characterization is not entirely accurate. Some additional characterization was performed with an Allison type emittance scanner to verify approximate ion species fractions, but it was not possible to separate proton emittance information. This will be evaluated with an Allison scanner downstream of the RFQ.
 
 The 325 MHz RFQ accelerates the beam to the final energy of 2.5 MeV. As the HINS linac was intended to be focused entirely with superconducting solenoids, the incoming and outgoing beams from the RFQ needed to be axially symmetric. This was accomplished through deliberately shaped electrodes for matching at the end of the otherwise typical RFQ vanes, and leads to unique matching conditions into the RFQ using round beams. 
 
@@ -74,9 +85,44 @@ The MEBT is mostly a straightforward strong focusing transfer line with two nota
 \end{figure}
 
 \section{IOTA Design}
-IOTA shows significant design influence from the VEPP-2000 collider at the Budker Institute for Nuclear Physics \cite{vepp-2000}. IOTA is of a stretched octangonal layout with four thirty degree and four sixty degree primary dipoles forming the fundamental geometry. IOTA originally was intended to be a regular octogon, but was eventualy stretched to better fill the availible lab space and provide a longer insert region for the optical stochastic cooling program. IOTA is broadly mirror symmetric across the streched sides, which informs the element naming scheme outlined in \ref{fig:iotaNames}. The dipole parameters are outlined in \ref{tab:dipole}. Primary focusing is provided by 39 quadrupoles of two types. High current quadrupoles are of a AMPS design from the Dubna laboratory, and the rest of ring is filled out with comercially available quadrupoles purchesed from Radiabeam. All quadrupoles are individually powered for flexible tuning of the lattice. The quadrupole parameters are outlined in table \ref{tab:quad}. IOTA has 20 pansofsky \cite{panofsky} style combined function correctors for local correction of the closed orbit and skew quadrupole terms. Table \ref{tab:corr} gives the important corrector parameters. For longintudinal focusing and making up for synchrotron radiation losses, IOTA has a single ferrite loaded quarter wave RF cavity operating at "". Injection into IOTA is facilitated by a horizontally bending Lambertson type magnetic septum \cite{lambertsonPatent}, and a vertical travelling wave stripline kicker \cite{antipovKicker}. Additionally, there are two vertical correctors intended for injection bump manipulation, but are practically simply implemented as additional corrector knobs. In additon to the linear elements, IOTA has 12 sextupoles of three types. There are 4 "prototype" type sextupoles constructed in house, 6 "long" type sextupoles manufactured by Elytts to the same magnetic parameters as the "prototypes" and 2 "short" sextupoles which aim for the same magnetic properties with shorter poles to fit a tight spot in the lattice. Sextupole parameters are given in \ref{tab:sext}. The basic IOTA geometry has three experimental insert locations. For the experiments described in this thesis, all three were filled. The first is the NIO insert described in detail in \ref{sec:nioDesign} in the BR straight. The BL straight housed a string of octupoles which satisfy one invariant of motion like the NIO system and are consider quasi-integrable. The octupole program lies outside of the scope of this thesis except for the magnetic alignment covered in chapter \ref{chap:magnets}. The final insert in DR was a permanent magnet undulator used for the CLARA experiment on electron radiation \cite{clara}. 
+IOTA shows significant design influence from the VEPP-2000 collider at the Budker Institute for Nuclear Physics \cite{shatunovProjectNewElectronPositron}. IOTA is of a stretched octagonal layout with four thirty degree and four sixty degree sector dipoles forming the fundamental geometry. IOTA originally was intended to be a regular octagon, but was eventually stretched to better fill the available lab space and provide a longer insert region for the optical stochastic cooling program. IOTA is broadly mirror symmetric across the stretched sides, which informs the element naming scheme outlined in \ref{fig:iotaNames}.
 
-The IOTA beam diagonostics consisted of 21 button style beam position monitors, a direct current current transformer (DCCT), a photomultiplier tube (PMT) for synchrotron radiation intensity, and five cameras for observing the synchrotron radiaiton profiles. The BPM's were of two configurations, 20 nominal and one larger aperture BPM for increased admittance near the injection location. The BPMs sampled at 32 times the revolution frequency of the machine and applied a linear fit to the difference over the sum of the individual button digitized signals as described in \cite{linearBPM}. After obtaining the position from the button signals, a seventh order two dimensional polynomial was applied to the measured position to account for the nonlinear response of the BPM. The factors for the polynomial mapping were obtained based on pulsed wire data in a BPM. The BPMs could provide turn by turn (TBT) data for "7000" turns, and 1000 turn averaged closed orbit data. Additionally 1000 turn raw button signals were availiable for a selectable single BPM in a special diagnosis mode. The DCCT was used for monitoring the current of the circulating beam. The DCCT samples the current in the kHz range, and these values are averaged and reported at a 15 Hz rate in the data acquisition system. The PMT was calibrated to act as a supplemental current measurement, though discoloratoin on the tube's surface impacted its sensitivity and limited its accurate current measurements to un-kicked beams. The synchrotron light cameras are mounted on the top of five of the IOTA dipoles and can monitor the transverse profile of the beam and its intensity. The camera system is quite flexible and the exposure can be adjusted all the way down to sensitivity to single orbiting electrons. The exposure is not calibrated, however, so only relative intensity measurments can be made. The cameras also act as an excellent operational diagnostic as they can be live during beam operation and you can easily "see" the circulating beam.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{./chapter_2_figures/crustyIOTA.jpg}
+	\caption{Placeholder IOTA drawing}
+	\label{fig:iotaNames}
+\end{figure}
+
+The main dipole coils are all wired in series to provide a constant bending supply, as is pretty typical. In addition there are dipole correction coils wound in the main poles to act as an additional correctors. Notably the dipoles have "flux compensation" coils added to the pole face to reduce the length and intensity of the fringe fields. This was applied after IOTA commissioning to correct for excessive sagitta into the dipoles. The dipole parameters are outlined in \ref{tab:dipole}. 
+
+\begin{table}
+    \centering
+    \begin{tabular}{lcc}
+    \toprule
+    \textbf{Dipole Parameters} & \textbf{$\mathbf{30^{\circ}}$ Dipole} & \textbf{$\mathbf{60^{\circ}}$ Dipole}\\
+    \midrule
+    Design Bending Angle & $30^{\circ}$ & $60^{\circ}$\\
+    Design Bending Radius & 74.7 [cm] & 72.4 [cm]\\
+    Design Path Length & 39.114 [cm] & 75.799 [cm]\\
+    Pole Gap & 6.49 [cm] & 6.1 [cm] \\
+    \bottomrule
+    \end{tabular}
+    \caption{IOTA Design Parameters}
+    \label{tab:dipole}
+\end{table}
+
+Primary focusing is provided by 39 quadrupoles of two types. High current quadrupoles are of a AMPS design from the Dubna laboratory, and the rest of ring is filled out with commercially available quadrupoles purchased from Radiabeam. All quadrupoles are individually powered for flexible tuning of the lattice. IOTA has 20 Pansofsky \cite{handMagneticQuadrupoleRectangular1959} style combined function correctors for local correction of the closed orbit and skew quadrupole terms to minimize coupling. For longitudinal focusing and making up for synchrotron radiation losses, IOTA has a single ferrite loaded quarter wave RF cavity operating at "". Injection into IOTA is facilitated by a horizontally bending Lambertson type magnetic septum \cite{lambertsonChargedParticleExtracting1967}, and a vertical travelling wave stripline kicker \cite{antipovStriplineKickerIntegrable2016}. Additionally, there are two vertical correctors intended for injection bump manipulation, but are practically simply implemented as additional corrector knobs. In addition to the linear elements, IOTA has 12 sextupoles of three types. There are 4 "prototype" type sextupoles constructed in house, 6 "long" type sextupoles manufactured by Elytts to the same magnetic parameters as the "prototypes" and 2 "short" sextupoles which aim for the same magnetic properties with shorter poles to fit a tight spot in the lattice. The basic IOTA geometry has three experimental insert locations. For the experiments described in this thesis, all three were filled. The first is the NIO insert described in detail in \ref{sec:nioDesign} in the BR straight. The BL straight housed a string of octupoles which satisfy one invariant of motion like the NIO system and are consider quasi-integrable. The octupole program lies outside of the scope of this thesis except for the magnetic alignment covered in chapter \ref{sec:octAlignment}. The final insert in DR was a permanent magnet undulator used for the CLARA experiment on electron radiation \cite{stancariUndulatorRadiationSingle2024}. 
+
+The IOTA beam diagnostics for the electron experiments consisted of 21 button style beam position monitors, a direct current current transformer (DCCT), a photomultiplier tube (PMT) for synchrotron radiation intensity, and five cameras for observing the synchrotron radiation profiles \cite{eddyBeamInstrumentationFermilab2019}. The BPM's were of two configurations, 20 nominal and one larger aperture BPM for increased admittance near the injection location. The BPMs sampled at 32 times the revolution frequency of the machine and applied a linear fit to the difference over the sum of the individual button digitized signals as described in \cite{reiterStatisticalTreatmentBeam2018}. After obtaining the position from the button signals, a seventh order two dimensional polynomial was applied to the measured position to account for the nonlinear response of the BPM. The factors for the polynomial mapping were obtained based on pulsed wire data in a BPM. The BPMs could provide turn by turn (TBT) data for "7000" turns, and 1000 turn averaged closed orbit data. Additionally 1000 turn raw button signals were available for a selectable single BPM in a special diagnosis mode. The DCCT was used for monitoring the current of the circulating beam. The DCCT samples the current in the kHz range, and these values are averaged and reported at a 15 Hz rate in the data acquisition system. The PMT was calibrated to act as a supplemental current measurement, though discoloration on the tube's surface impacted its sensitivity and limited its accurate current measurements to un-kicked beams. The synchrotron light cameras are mounted on the top of five of the IOTA dipoles and can monitor the transverse profile of the beam and its intensity. The camera system is quite flexible and the exposure can be adjusted all the way down to sensitivity to single orbiting electrons. The exposure is not calibrated, however, so only relative intensity measurements can be made. The cameras also act as an excellent operational diagnostic as they can be live during beam operation and you can easily "see" the circulating beam. Figure \ref{fig:iotaPhoto} shows the
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_2_figures/iota_poster_shot.jpg}
+	\caption{IOTA Ring photographed before all cabling is installed}
+	\label{fig:iotaPhoto}
+\end{figure}
 
 \section{IOTA Lattice}
 The dominant consideration for the design of the IOTA lattice is fulfilling the NIO insert requirements. These are:
@@ -86,7 +132,7 @@ The dominant consideration for the design of the IOTA lattice is fulfilling the 
 	\item The dispersion throughout the nonlinear insert must be zero.
 \end{enumerate}
 
-The dispersion consideration comes from analytical studies of the NIO system including energy dependent effects \cite{webbNIO}. The important results are that the dispersion must be made zero in the insert, and that the chromaticties in each plane must at least be matched. For IOTA the nonlinear insert length was chosen to be 1.8 m, and the working point was selected to be $Q_x=0.3$. These parameters then fix the beta and alpha lattice functions in the drift. While the insert lenght is fixed, the working point can in priciple be adjusted, though the nonlinear insert design depends on this factor so it is practically fixed. The basic transverse lattice requirements of the NIO system require 6 degrees of freedom to fully match. With the addition of dispersion suppression, this brings us to 7 degrees of freedom (assuming no coupling). IOTA is usually tuned to be mirror symmetric for convenience, which gives 20 quadrupole knobs, so there is available flexibility in the lattice for significant adjustments. In practice these knobs are not totally free as the beta funcitons and phase advance across the lattice must be kept reasonable for stable operation and good sensitivity of the BPMs. The idealized IOTA lattice functions as solved in SixDSimulation are plotted in figure \ref{fig:IOTAinj6}. This is the fundamental lattice used in the simulation studies presented in this thesis. Table \ref{tab:IOTAlattice} gives the lattice properties of this nominal configuration.
+The dispersion consideration comes from analytical studies of the NIO system including energy dependent effects \cite{webbChromaticDispersiveEffects2015}. The important results are that the dispersion must be made zero in the insert, and that the chromaticties in each plane must at least be matched. For IOTA the nonlinear insert length was chosen to be 1.8 m, and the working point was selected to be $Q_x=0.3$. These parameters then fix the beta and alpha lattice functions in the drift. While the insert length is fixed, the working point can in principle be adjusted, though the nonlinear insert design depends on this factor so it is practically fixed. The basic transverse lattice requirements of the NIO system require 6 degrees of freedom to fully match. With the addition of dispersion suppression, this brings us to 7 degrees of freedom (assuming no coupling). IOTA is usually tuned to be mirror symmetric for convenience, which gives 20 quadrupole knobs, so there is available flexibility in the lattice for significant adjustments. In practice these knobs are not totally free as the beta functions and phase advance across the lattice must be kept reasonable for stable operation and good sensitivity of the BPMs. The idealized IOTA lattice functions as solved in SixDSimulation are plotted in figure \ref{fig:IOTAinj6}. This is the fundamental lattice used in the simulation studies presented in this thesis. Table \ref{tab:IOTAlattice} gives the lattice properties of this nominal configuration.
 
 \begin{figure}
 	\centering
@@ -119,7 +165,7 @@ The dispersion consideration comes from analytical studies of the NIO system inc
     \label{tab:IOTAlattice}
 \end{table}
 
-In the real accelerator there are of course small perturbations and misalignments of the physical elements. To actually tune the IOTA lattice the linear optimization of closed orbits (LOCO) algorighm is used to iterativley adjust the lattice to best fit the simulation model. In the case of IOTA, there had to be slight adjustments to the lattice model to arrive at the final fit. Most notably, the undulator magnet was included in the lattice, the bpm locations had to shift a bit, and small gradient terms were added to the dipoles. The resulting lattice funcitons are plotting in \ref{fit:IOTAund9}, notice that the symmetry in the dispersion has been broken due to the dipole gradients. This lattice is used for experimental analysis as it represents the best match to the real accelerator conditions.
+In the real accelerator there are of course small perturbations and misalignments of the physical elements. To actually tune the IOTA lattice the linear optimization of closed orbits (LOCO) algorithm is used to iterativley adjust the lattice to best fit the simulation model \cite{romanovLatticeCorrectionModeling2014}. In the case of IOTA, there had to be slight adjustments to the lattice model to arrive at the final fit. Most notably, the undulator magnet was included in the lattice, the BPM locations had to shift a bit, and small gradient terms were added to the dipoles. The resulting lattice functions are plotting in \ref{fig:IOTAund9}, notice that the symmetry in the dispersion has been broken due to the dipole gradients. This lattice is used for experimental analysis as it represents the best match to the real accelerator conditions.
 
 \begin{figure}
 	\centering
@@ -130,7 +176,7 @@ In the real accelerator there are of course small perturbations and misalignment
 
 
 \section{IOTA NIO Insert Design} \label{sec:nioDesign}
-Once the insert drift parameters are fixed, the actual nonlinear insert magnets must be designed. To define the pole geometry, we introduce an additional function from \cite{mitchellComplex}. This is a complex representation of the vector and magnetic scalar potentials (not the relatavistic scalar potential), scaled by the rigidity.
+Once the insert drift parameters are fixed, the actual nonlinear insert magnets must be designed. To define the pole geometry, we introduce an additional function from \cite{mitchellComplexRepresentationPotentials2019}. This is a complex representation of the vector and magnetic scalar potentials (not the relativistic scalar potential), scaled by the rigidity.
 
 \begin{equation} \label{eq:genF}
 	F(z_c) = \frac{A_s}{B\rho} + i\frac{\Phi_m}{B\rho} = \frac{t c^2}{\beta(s)}\frac{z_c}{\sqrt{1-z_c^2}} \arcsin{(z_c)} \\ 
@@ -173,7 +219,7 @@ Substituting, we arrive at Eq. \ref{eq:BdF}, or the multipole expansion (in lab 
 	B_y + i B_x = - \frac{t c^2 B\rho}{\beta(s)} \sum_{n=1}^{\infty} \frac{2^{2n-1}n!(n-1)!}{c^{2n}\beta(s)^n(2n-1)!} (x + i y)^{2n -1}
 \end{equation}
 
-There are two important takeaways from the multipole expansion, there are only even multipoles in the expansion (quadrupole, octupole, decapole, etc.), and the lowest multipole order is that of a quadrupole. So, the first order effect of the nonlinear insert can be treated in our linear dynamics for coarse tuning purposes and alignment. Figure \ref{fig:dnMultRatio} shows the fractional deviation of the magnitude of the magnetic field of the multipole decomposition (Eq. \ref{eq:dnMult}), from the exact analytic form (Eq. \ref{eq:BdF}) for increasing cutoff orders. Three points of comparison are taken, $(x=c/2,y=0)$, $(x_c=0,y_c=1/2)$, and $(x_c=\sqrt{2}/4,y_c=\sqrt{2}/4)$. A comparison at for a multpolar cutoff at the 16th order, or our 32-pole term, is also plotted. Notice the breakdown of the field match at large amplitudes, even with these high order multipole terms considered.
+There are two important takeaways from the multipole expansion, there are only even multipoles in the expansion (quadrupole, octupole, dodecapole, etc.), and the lowest multipole order is that of a quadrupole. So, the first order effect of the nonlinear insert can be treated in our linear dynamics for coarse tuning purposes and alignment. Figure \ref{fig:dnMultRatio} shows the fractional deviation of the magnitude of the magnetic field of the multipole decomposition (Eq. \ref{eq:dnMult}), from the exact analytic form (Eq. \ref{eq:BdF}) for increasing cutoff orders. Three points of comparison are taken, $(x=c/2,y=0)$, $(x_c=0,y_c=1/2)$, and $(x_c=\sqrt{2}/4,y_c=\sqrt{2}/4)$. A comparison at for a multipolar cutoff at the 16th order, or our 32-pole term, is also plotted. Notice the breakdown of the field match at large amplitudes, even with these high order multipole terms considered.
 
 \begin{figure}
 	\centering
@@ -182,16 +228,16 @@ There are two important takeaways from the multipole expansion, there are only e
 	\label{fig:dnMultRatio}
 \end{figure}
 
-The design of the nonlinear inserts use iron dominated magnets to shape the field, we can set to the scalar magnetic potential to a constant value and invert for the coordinates. In practice this is done numerically. The nonlinear insert used in these studies placed the pole at a scalar potential value of 0.5, in the $B\rho$ normalized units. Figure \ref{fig:dnMagPtCurve} shows the scalare magnetic potential gradient in the region where the multipole expansion holds, with the selected contour for the insert in red.
+The design of the nonlinear inserts use iron dominated magnets to shape the field, we can set to the scalar magnetic potential to a constant value and invert for the coordinates. In practice this is done numerically. The nonlinear insert used in these studies placed the pole at a scalar potential value of 0.5, in the $B\rho$ normalized units. Figure \ref{fig:dnMagPtCurve} shows the scalar magnetic potential gradient in the region where the multipole expansion holds, with the selected contour for the insert in red.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{./chapter_2_figures/DNscalarMagneticV1.pdf}
-	\caption{Normalized magnetic potential of NIO system, contour used in IOTA magnetes is highlited in red. The region near the singularity is masked to make the gradient more distinct.}
+	\caption{Normalized magnetic potential of NIO system, contour used in IOTA magnets is highlighted in red. The region near the singularity is masked to make the gradient more distinct.}
 	\label{fig:dnMagPtCurve}
 \end{figure}
 
-Once the transverse profile has been defined the neccesary longitudinal scaling needs to be considered. The ideal DN potential smoothy scales with the beta function in the insert drift, but this is impractical to implement with magnets. For the real insert, a series of magnets approximatley integrate the potential. The basic implementation is to assume some number of thin kicks scaled by the hard edge equivalent lenght of the magnets. For the first version of the magnet, this was done with 18 magnets equally spaced along the lenght of the insert. Figure \ref{fig:dnLongKick} shows the effective potential for the ideal case and the 18 element piecewise approach. 
+Once the transverse profile has been defined the necessary longitudinal scaling needs to be considered. The ideal DN potential smoothly scales with the beta function in the insert drift, but this is impractical to implement with magnets. For the real insert, a series of magnets approximately integrate the potential. The basic implementation is to assume some number of thin kicks scaled by the hard edge equivalent length of the magnets. For the first version of the magnet, this was done with 18 magnets equally spaced along the length of the insert. Figure \ref{fig:dnLongKick} shows the effective potential for the ideal case and the 18 element piecewise approach. 
 
 \begin{figure}
 	\centering
@@ -210,7 +256,7 @@ The poles must be shaped by the beta function at the given location to match the
 	\label{fig:labPoles}
 \end{figure}
 
-The nonlinear insert was designed in part to exploit the nonlinearities of the magnet at small amplitudes, so the $c$ parameter was chosen to be quite small; $c=0.009 [\sqrt{m}]$ (some literature claims a different c-parameter, but this value has been confirmed with the engineering drawings). This means that the singularity of the potential is at about 7 mm at the center of the insert, and neccesitates a carefully designed beam pipe to maximize the available aperture within the small poles. The core parameters of the insert are outlined in table \ref{tab:dnParameters}
+The nonlinear insert was designed in part to exploit the nonlinearities of the magnet at small amplitudes, so the $c$ parameter was chosen to be quite small; $c=0.009 [\sqrt{m}]$ (some literature claims a different c-parameter, but this value has been confirmed with the engineering drawings). This means that the singularity of the potential is at about 7 mm at the center of the insert, and necessitates a carefully designed beam pipe to maximize the available aperture within the small poles. The core parameters of the insert are outlined in table \ref{tab:dnParameters}
 
 \begin{table}
     \centering
@@ -232,6 +278,12 @@ The nonlinear insert was designed in part to exploit the nonlinearities of the m
     \label{tab:dnParameters}
 \end{table}
 
-The mechanical, magnetic, and vacuum design and fabrication of the insert was performed by Radiabeam (in collaboration with the IOTA group) under a Department of Energy small business innovation research (SBIR) grant \cite{radiabeamInsertReports}. Based on experience with the first insert, a second version of the insert was constructed, though no beam studies have yet been performed. Some details on its design and magnetic mapping are included in section \ref{sec:dnv2}.
+The mechanical, magnetic, and vacuum design and fabrication of the insert was performed by Radiabeam (in collaboration with the IOTA group) under a Department of Energy small business innovation research (SBIR) grant \cite{mcnevinMechanicalDesignManufacturing2016,osheaMeasurementNonLinearInsert2013,osheaNonLinearInsertsIOTA2017,osheaNonlinearMagneticInserts2015}. The actual magnet is pictured in figure \ref{fig:realDN}.Based on experience with the first insert, a second version of the insert was constructed, though no beam studies have yet been performed. Some details on its design and magnetic mapping are included in section \ref{sec:dnv2}.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_2_figures/dn_side_by_side.png}
+	\caption{Pictures of IOTA NIO insert, note the pole contours and the longitudinal structure.}
+	\label{fig:realDN}
+\end{figure}
 
