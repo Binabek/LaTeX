@@ -85,12 +85,37 @@ Sextupole misalignment adjusted for final dynamic aperture optimization on losse
 Turn by turn data performed in dynamic aperture scans and dense grids.
 
 Measured dynamic aperture with different sextupole configurations.
+Simple center of the logistic function on the beam current was applied as the figure of merit for optimization algorithm.
+
+DN insert was aligned using LOCO methods assuming only the quadrupole term of the magnet.
+Relative calibration of the individual elements was done by measuring small amplitude tune response of individual magnets, comparing to quadrupolar effect.
 
 150 MeV Electron Analysis
-Many analyses used 
-Decoherence times with different sextupole configurations. Include operational maximum coherent oscillation with sextupole tuning.
+The primary goals of electron experiments with nonlinear integrable optics are direct measurements of impacts of the nonlinear insert on the dynamics and evaluating the stability of the system. 
 
+Decoherence times with different sextupole configurations? Include operational maximum coherent oscillation with sextupole tuning, Elog ID 237210.
 
+Tune measurements are the most accurate diagnostic available from the turn by turn data as it is independent of the signal amplitude.
+Tune verses amplitude is a direct measurement of the available tune spread and therefore strength of landau damping.
+The definition of tune is a little nebulous for nonlinear systems, but we will just evaluate it as the dominant frequency.
+Different tune measurement algorithms were considered.
+The simplest approach is to take a Fourier transform of the TBT data and pick the peak frequency.
+In practice this is done with a fast Fourier transform as we have a discrete sampling.
+Padding the signals with zeros improves the granularity of the FFT, but may add some artifacts.
+To bypass some of the resolution limitations of the FFT, the Jacobsen interpolation algorithm is sometimes used.
+Practically, for best tune measurements in accelerator physics the numerical analysis of fundamental frequencies (NAFF) is the standard.
+NAFF looks to iteratively maximize individual Fourier transform components.
+The online tune analysis tool uses a similar approach but directly fits a convolution of harmonic components and an exponential decoherence envelope.
+These methods were compared for a variety of sample signals, a generated clean signal, also with a decoherence envelope and noise, a simulated centroid signal, and real signals with different preprocessing levels.
+Naff showed consistently better convergence, especially with padding on signals with decoherence envelopes.
+Multipole BPM signals are available and we would like to combine them, there are two approaches considered.
+The first is a bpm stacking approach, where a quasi-periodic signal with jumbled overlapped phases is constructed, but this ignores coupling with strong orthogonal kicks which might override the other signal.
+An alternative approach was to select PCA components for all combined BPM signals, as we are interested in the frequency components the amplitude calibration is irrelevant - so long as nonlinear BPM responses are small.
+Starting tune measurements from different initial turns had an impact on the measurement, this was included in the uncertainty estimation.
+The effect is most prominent for very short sample windows.
+Another effect on tune measurements is resonant capture, where a small fraction of the beam dominates long term tune measurements.
+This can be seen in the spectrogram with short vertical decoherence with a long faint line.
+Resonant capture was additionally demonstrated on similar lines as seen in experiment in simulation with realistic bunches.
 
 To evaluate the full phase space, momentum reconstruction from the tbt BPM data is necessary.
 There are two main experimental reasons to extract info, amplitude calibration and nonlinear motion quantification.
@@ -129,7 +154,31 @@ Similar scale improvements in relative reduced chi squared for simply dropping t
 Dropping other BPMS showed no significant improvement in goodness of fit to linear model.
 Fits were performed with uncoupled 4x4 matrices since local coupling was minimized in LOCO.
 
+In addition to momentum reconstruction for phase space analysis, the reconstruction was used for amplitude calibration of kicker strengths.
+We want to verify from experiment what the resulting amplitude from the kickers will be, especially when sensitivity may be small.
+Interpretation after passing through the nonlinear insert is nebulous, prefer to calibrate amplitude to setting.
+Use bare lattice kicks to calibrate measured first turn amplitudes vs kicker settings.
+First, recognized discrepancies in state of lattice tune on kick ratios, presumably due to shifts in beta function at kicker.
+Additional recognition of quadratic dependence of horizontal kicks at large amplitudes, perhaps from beam scraping.
+Apply fits with coupling, fit results support slight roll of vertical kicker.
 
+
+Dynamic aperture measurements measured beam intensity for repeated kicks along a particular kicker setting ratio.
+Two intensity measurements were available, DCCT and BPM sum signal, sampled before and after the kick.
+Both were used consistently in tandem to select edge for dynamic aperture evaluation.
+Sum signals quickly lose sensitivity with lower current but provide good relative intensity.
+DCCT measurements are well calibrated and 
+
+The synchrotron camera images were used for evaluation of beam stability at the integer resonance condition.
+The calibrated t strength was used while observing the beam as the integer resonance was crossed.
+The camera exposure had to be changed during the course of the measurements, as continuing beam loss reduced the signal.
+At each t-value, a number of images were collected to measure relative intensity.
+Two runs were performed, one with the nominal lattice and one adjusted to best center the profile in the nonlinear potential.
+The images were preprocessed with a media filter to remove potential hot pixels, and a background subtraction was applied.
+The lifetime at a given t-value can then be estimated with a fit of exponential decay.
+Past the integer resonance condition the central stable fixed point becomes unstable, and two new stable fixed points move away from the origin with t-strength.
+We can define an upper limit on the integer resonance crossing when these fixed points split and we see separate maxima in the beam.
+Lifetime measurements indicate asymptotic stability of particles at the integer resonance where the nonlinear focusing terms dominate.
 
 
 Magnet Measurements
