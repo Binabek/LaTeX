@@ -1,0 +1,37 @@
+\chapter{Experimental Analysis} \label{chap:analysis}
+
+
+\section{Tune Measurements} \label{sec:tune}
+Tune measurments provide long term coherent information on the dynamics and the strong dependence on amplitude is the chief experimental indicator of nonlinearities in the focusing. While decoherence limits the available turns for measurments, the variations in amplitude do not alter the fundamental frequency, which gives us a longer coherent signal. The tune was previously defined only for the linear system in the context of phase advance. The definition of the tune is more nebulous then for a strongly nonlinear system, as the motion is neccesarially anharmonic. For nonlinear dynamical systems, the poincare rotation number is a related quantity \cite{nagaitsevBetatron}, but difficult to relate to measurable quantities. For the experimental measurments, we interpret the dominant frequency of the transverse oscillation spectrum as the tune. 
+
+Different tune measurment algorigthim were considered for the particular limitations of the available data. The simplest approach is simply taking the Fourier transform of turn by turn (TBT) bpm data and picking the peak frequency. As we have discrete sampling of the motion, the fast fourier transform (FFT) is the default approach. There are a number of methods to improve the resolution of the frequency measurements. In principle a windowing function can be applied to improve resolution of the peak frequency at the cost of supressing sidebands. In the case of the short coherent measurments, the reduction in available signal was more detrimental than the potential advantages. To bypass some of the limitations on the disctrete sample resolution of the FFT, Jacobsen interpolation \cite{jacobesnLocla} applies a quadratic interpolation to the FFT peak and its nearest neighbors for finer peak resolution. The implmentation used is based on that from the PyLHC \cite{cernomc} analysis library. The other approach considered is the Numerical Analysis of Fundamental Frequencies (NAFF) proposed by Lasker for the evaluation of long term stability of planetary systems \cite{laskar}. NAFF seeks to iteratively optimize the magnitude of a single fourier transform, or equation \ref{eq:naff}. In principle this is used to extract successive harmonics of the motion, but we are interested only in the dominant frequancy, so typically only one term is considered. In addition to the offline methods, live tune measurments on circulating beam used a least squares approach, where an assumed functional form is fit to the tune, phase, coupling, and decoherence times.
+
+\begin{equation}
+	G = \int dq
+	\label{eq:naff}
+\end{equation}
+
+To evaluate the methods, a comparison was made with both a synthetic signal and the simulated bunch centroid signal from an Impact-X simulation. Figure \ref{fig:syntune} shows the.
+
+The same evaluations can be made on the real tbt BPM signals, but of course, the actual tune is unknown in this case
+
+
+Padding the signals with zeros improves the granularity of the FFT, but may add some artifacts.
+
+Naff showed consistently better convergence, especially with padding on signals with decoherence envelopes.
+
+Multipole BPM signals are available and we would like to combine them, there are two approaches considered.
+
+The first is a bpm stacking approach, where a quasi-periodic signal with jumbled overlapped phases is constructed, but this ignores coupling with strong orthogonal kicks which might override the other signal.
+
+An alternative approach was to select PCA components for all combined BPM signals, as we are interested in the frequency components the amplitude calibration is irrelevant - so long as nonlinear BPM responses are small.
+
+Starting tune measurements from different initial turns had an impact on the measurement, this was included in the uncertainty estimation.
+
+The effect is most prominent for very short sample windows.
+
+Another effect on tune measurements is resonant capture, where a small fraction of the beam dominates long term tune measurements.
+
+This can be seen in the spectrogram with short vertical decoherence with a long faint line.
+Resonant capture was additionally demonstrated on similar lines as seen in experiment in simulation with realistic bunches.
+
