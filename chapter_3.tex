@@ -11,27 +11,58 @@ Different tune measurment algorigthim were considered for the particular limitat
 	\label{eq:naff}
 \end{equation}
 
-To evaluate the methods, a comparison was made with both a synthetic signal and the simulated bunch centroid signal from an Impact-X simulation. Figure \ref{fig:syntune} shows the.
+To evaluate the methods, a comparison was made with both a synthetic signal and the simulated bunch centroid signal from an Impact-X simulation. Figure \ref{fig:syntune} shows the evaluation signals, the amplitude does not impact the tune evaluation. The synthetic signal consisted of a convolution of a single harmonic base signal, a logistic function \ref{eq:logistic} for decoherence and a gaussian noise distribution wiht an RMS of ten percent of the signal amplitude. 
 
-The same evaluations can be made on the real tbt BPM signals, but of course, the actual tune is unknown in this case
+\begin{equation}
+	f_{logistic} = \frac{1}{1 + e^{-k(x-x_o)}}
+	\label{eq:logistic}
+\end{equation}
+
+The first evaluation was on the convergence of the various methods. Figure \ref{fig:baseConv} shows the tune measurment for the various algorighms with increasing length of the sample window. It is clear to see the limitations of the FFT resolution from the availble signal. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{Convergence of tune measurments with signal window}
+	\label{fig:baseConv}
+\end{figure}
+
+This can be improved by padding the signal with zeros. This serves to increase the resolution of the FFT and by extension the Jacobsen interpolation. We can verify that this improves the resolution of the, and logically has relatively negligible effects on the NAFF convergence.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{Convergence of tune measuremnts with zero padding}
+	\label{fig:padConv}
+\end{figure}
+
+As we can see in both cases, the NAFF convergence rate is superior even with the padding. There is an additional consideration, we can evaluate the accuracy of the measurments while adjusting the inital phase. There is a periodic variation of the measured tune for this change in phase that strongly depends on the length of the tune measuremnt window. Figure \ref{fig:baseRoll} shows the change in the tune measurments for varying the initial turn of the sample window. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{Variaiton of tune measurments with inital phase}
+	\label{fig:baseRoll}
+\end{figure}
+
+The different tune measurement algorithms have different characteristic statistical uncertianties that scale with the availible sample window. Without interpolation, the uncertianty in the FFT lines goes as $\frac{1}{N}$ where N is sample points, in our case available turns.
+
+The magnitude of this variation decreased for longer sample windows, but did not go below the statistical uncertianty of the methods. As a result the magnitude of this variation was added to the uncertianty of the tune measurements.
 
 
-Padding the signals with zeros improves the granularity of the FFT, but may add some artifacts.
+The same evaluations can be made on the real tbt BPM signals, but of course, the actual tune is unknown. In this case, the same analyses are considered to verify the same behaviours are preserved. Figure \ref{fig:measConvRoll} shows the same analysis for and example real kick response.
 
-Naff showed consistently better convergence, especially with padding on signals with decoherence envelopes.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\caption{Tune measurment convergence and variation with phase for measured TBT data}
+	\label{fig:measConvRoll}
+\end{figure}
 
-Multipole BPM signals are available and we would like to combine them, there are two approaches considered.
 
-The first is a bpm stacking approach, where a quasi-periodic signal with jumbled overlapped phases is constructed, but this ignores coupling with strong orthogonal kicks which might override the other signal.
+Multiple BPM signals are available and we would like to combine them, there were two approaches considered. The first is a bpm stacking approach, where a quasi-periodic signal with jumbled overlapped phases is constructed \cite{zisopolous}. This approach is unable to differentiate the sympathetic frequency components from large orthogonal kicks. 
 
-An alternative approach was to select PCA components for all combined BPM signals, as we are interested in the frequency components the amplitude calibration is irrelevant - so long as nonlinear BPM responses are small.
+The prefered approach to investigating multiple BPM response was to select the dominat components of a PCA decomposition for all combined BPM signals. Since we know the direction of the particular BPM buttons, we can differentiate horizontal and vertical signals, even if one kick dominated. NAFF could then be applied to the respective componenets to 
 
-Starting tune measurements from different initial turns had an impact on the measurement, this was included in the uncertainty estimation.
-
-The effect is most prominent for very short sample windows.
-
-Another effect on tune measurements is resonant capture, where a small fraction of the beam dominates long term tune measurements.
-
-This can be seen in the spectrogram with short vertical decoherence with a long faint line.
-Resonant capture was additionally demonstrated on similar lines as seen in experiment in simulation with realistic bunches.
+Another effect on tune measurements is resonant capture, where a small fraction of the beam becomes trapped in a resonant condition and continues to oscillate at the characteristic frequency of the resonance. As the rest of the beam quickly decoheres due to tune spread, theis dominates tune measurements with large sample windows. This can be seen in the spectrogram with short vertical decoherence with a long faint line. Resonant capture was additionally demonstrated on similar lines as seen in experiment in simulation with realistic bunches. Figure \ref{fig:simResCap} shows the tune space plot of the individually evaluated tunes of the macroparticles in a simulation. A low population component of the bunc has been trapped on a sextupole diffference line and coherently oscillates at this frequency while the rest of the bunch shows the typical strong amplitude dependent detuning. 
 
