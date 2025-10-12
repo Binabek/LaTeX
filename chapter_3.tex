@@ -4,116 +4,137 @@
 \section{Tune Measurements} \label{sec:tune}
 Tune measurments provide long term coherent information on the dynamics and the strong dependence on amplitude is the chief experimental indicator of nonlinearities in the focusing. While decoherence limits the available turns for measurments, the variations in amplitude do not alter the fundamental frequency, which gives us a longer coherent signal. The tune was previously defined only for the linear system in the context of phase advance. The definition of the tune is more nebulous then for a strongly nonlinear system, as the motion is neccesarially anharmonic. For nonlinear dynamical systems, the poincare rotation number is a related quantity \cite{nagaitsevBetatron}, but difficult to relate to measurable quantities. For the experimental measurments, we interpret the dominant frequency of the transverse oscillation spectrum as the tune. 
 
-Different tune measurment algorigthim were considered for the particular limitations of the available data. The simplest approach is simply taking the Fourier transform of turn by turn (TBT) BPM data and picking the peak frequency. As we have discrete sampling of the motion, a discrete Fourier transform is a simple first approach. Practically, the fast fourier transform (FFT) is used as the default discrete transform. There are a number of methods to improve the resolution of the frequency measurements. In principle a windowing function can be applied to improve resolution of the peak frequency at the cost of supressing sidebands. However, for the IOTA data, there are two important considerations. A window suppresses the amplitude of a fraction of the sample window. In the case of the short coherent measurments, the reduction in available signal was more detrimental than the advantages of the window. And for low signal to noise ratios the benefits of a window disappear. For example, the common Hann window does not provide any benefits for signal to noise ratios less than \num{1e3} \cite{bartoliniAlgorithms}, well above those seen in IOTA. To bypass some of the limitations on the disctrete sample resolution of the FFT, Jacobsen interpolation \cite{jacobesnLocla} applies a quadratic interpolation to the FFT peak and its nearest neighbors for finer peak resolution. The implementation used is based on that from the PyLHC \cite{cernomc} analysis library. The other approach considered is the Numerical Analysis of Fundamental Frequencies (NAFF) proposed by Lasker for the evaluation of long term stability of planetary systems \cite{laskar}. NAFF seeks to iteratively optimize the magnitude of a single fourier transform, or equation \ref{eq:naff}. In principle this can be used to extract successive harmonics of the motion, but we are interested only in the dominant frequancy, so typically only one term is considered. The implementation of NAFF used in this analysis is PyNAFF \cite{zisopolusPyZ}. In addition to the offline methods, live tune measurments on circulating beam used a least squares approach, where an assumed functional form with free parameters for tune, phase, coupling, and decoherence times, is fit to the data.
+Different tune measurment algorigthim were considered for the particular limitations of the available data. The simplest approach is simply taking the Fourier transform of turn by turn (TBT) BPM data and picking the peak frequency. As we have discrete sampling of the motion, a discrete Fourier transform is a simple first approach. Practically, the fast fourier transform (FFT) is used as the default discrete transform. There are a number of methods to improve the resolution of the frequency measurements. In principle a windowing function can be applied to improve resolution of the peak frequency at the cost of supressing sidebands. However, for the IOTA data, there are two important considerations. A window suppresses the amplitude of a fraction of the sample window. In the case of the short coherent measurments, the reduction in available signal was more detrimental than the advantages of the window. And for low signal to noise ratios the benefits of a window disappear. For example, the common Hann window does not provide any benefits for signal to noise ratios less than \num{1e3} \cite{bartoliniAlgorithms}, well above those seen in IOTA. To bypass some of the limitations on the disctrete sample resolution of the FFT, Jacobsen interpolation \cite{jacobesnLocla} applies a quadratic interpolation to the FFT peak and its nearest neighbors for finer peak resolution. The implementation used is based on that from the PyLHC \cite{cernomc} analysis library. The other approach considered is the Numerical Analysis of Fundamental Frequencies (NAFF) proposed by Lasker for the evaluation of long term stability of planetary systems \cite{laskar}. NAFF starts with a guess from the FFT spectrum, and seeks to iteratively optimize the magnitude of a single fourier transform as in equation \ref{eq:naff}. In principle this can be used to extract successive harmonics of the motion, but we are interested only in the dominant frequancy, so typically only one term is considered. The implementation of NAFF used in this analysis is PyNAFF \cite{zisopolusPZ}, this uses hardys method (Eq. \ref{eq:hardy} \cite[p.151]{whitakerCalculs}) for the numerical integration as opposed to a simple riemann summ. In addition to the offline methods, live tune measurments on circulating beam used a least squares approach, where an assumed functional form with free parameters for tune, phase, coupling, and decoherence times, is fit to the data.
 
 \begin{equation}
 	\Psi(T) = \frac{1}{2T}\int_{-T}^{T}f(t)e^{-i\omega t}dt
 	\label{eq:naff}
 \end{equation}
 
-To evaluate the methods, a comparison was made with both a synthetic signal and the simulated bunch centroid signal from an Impact-X simulation. Figure \ref{fig:synTune} shows the evaluation signals, the amplitude does not impact the tune evaluation. The synthetic signal consisted of a convolution of a single harmonic base signal, a logistic function \ref{eq:logistic} for decoherence and a gaussian noise distribution wiht an RMS of fifteen percent of the signal amplitude. 
-
 \begin{equation}
-	f_{logistic} = \frac{1}{1 + e^{-k(x-x_o)}}
-	\label{eq:logistic}
+	\int_{x_{n}}^{x_{n+6}}f(x)dx \approx \frac{\Delta x}{100}\left(28(f(x_n) + f(x_{n+6})) + 162(f(x_{n+1}) + f(x_{n+5})) + 220 f(x_{n+3}) \right)
+	\label{eq:hardy}
 \end{equation}
 
+To evaluate the methods, a comparison was made with both a synthetic signal and the simulated bunch centroid signal from an Impact-X simulation. Figure \ref{fig:synKicks} shows the evaluation signals, the amplitude does not impact the tune evaluation. The synthetic signal consisted of a convolution of a single harmonic base signal, a logistic function for decoherence and a gaussian noise distribution with a RMS of ten percent of the signal amplitude. 
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_3_figures/syntheticAndSimulationKicks.pdf}
 	\caption{Evaluation signals, fully synthetic and simulated}
-	\label{fig:synTune}
+	\label{fig:synKicks}
 \end{figure}
 
-The first evaluation was on the convergence of the various methods. Figure \ref{fig:baseConv} shows the tune measurment for the various algorighms with increasing length of the sample window. It is clear to see the limitations of the FFT resolution from the availble signal. 
+The first evaluation was on the convergence of the various methods. Figure \ref{fig:baseConv} shows the convergence of tune measurments for the various considered algorighms with increasing length of the sample window. The limitations of the FFT resolution from the available signal are clear, but they inform the initial values for the interpolation and the NAFF. The vertical simulation signals are considered here as they exhibit faster decoherence. The relatively long coherence time of the horizontal signal means that convergence rate is less important, and we are interested in best performance for very fast decoherence.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
-	\caption{Convergence of tune measurments with signal window}
+	\includegraphics[width=1\linewidth]{./chapter_3_figures/basicConvergence.pdf}
+	\caption{Convergence of tune measurments with lenght of signal window}
 	\label{fig:baseConv}
 \end{figure}
 
-This can be improved by padding the signal with zeros. This serves to increase the resolution of the FFT and by extension the Jacobsen interpolation. We can verify that this improves the resolution of the, and logically has relatively negligible effects on the NAFF convergence.
+The available resolution of the FFT can be improved by padding the input signal with zero values. This is the same effect as increasing the lenght of the signal and applying a rectangular window the length of the original signal. Figure \ref{fig:padConv} shows the convergence of the faster methods with and without padding. Here all signals were padded to an equal signal lenght of 256 turns. We see that the convergence of the padded FFT is improved, but the windowing effect introduces a systematic, limited offset of the tune determined by the lenght of the padding. The Jacobsen interpolation with a padded signal also suffers a similar effect, converging on a systematically offset tune.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_3_figures/paddedConvergence.pdf}
 	\caption{Convergence of tune measuremnts with zero padding}
 	\label{fig:padConv}
 \end{figure}
 
-As we can see in both cases, the NAFF convergence rate is superior even with the padding. There is an additional consideration, we can evaluate the accuracy of the measurments while adjusting the inital phase. There is a periodic variation of the measured tune for this change in phase that strongly depends on the length of the tune measuremnt window. Figure \ref{fig:baseRoll} shows the change in the tune measurments for varying the initial turn of the sample window. 
+We then have three approaches which reliably converge before the 100 turn limit of our sample plots, Jacobsen interpolation wihtout padding, and NAFF with and without padding. In evaluating the quality of the convergence, the noise seed on the simulated signal was found to have a significant effect on these methods. The convergence of the tune measurement was evaluated for the same underlying synthetic signal and decoherence as before but with one thousand different noise seeds for the random noise. The synthetic signal was used as there is a garuntee of a single underlying frequency unlike the simulation signal. The ensemble properties of the convergence are plotted in Figure \ref{fig:noiseConv}. The left plot shows the mean of the absolute difference of the measured tune from the nominal, $|Q_{meas} - Q_{nominal}|$ and the right plot is the standard deviation of the measured tunes for each window lenght. We see that the average convergance is about the same, with a slight prefereance for Jacobsen interpolation. The padded NAFF measurements have slightly lower variation.
+
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_3_figures/noiseSeedConvergence.pdf}
+	\caption{Convergence of tune measuremnts with zero padding}
+	\label{fig:noiseConv}
+\end{figure}
+
+There is an additional consideration, we can evaluate the accuracy of the measurments while adjusting the inital phase. There is a periodic variation of the measured tune for this change in initial.  This neccesarally means sampling a lower amplitude region of the signal as you go along the decoherence. With the padded signal we can also do a similar transfomation. By rolling the padding to the front as well as behind with the same overall signal lenght, different phases given by the resoltion of the binning. Figure \ref{fig:baseRoll} shows the change in the tune measurments for varying the initial turn of a sixty turn sample window and "rolling" the padded signal. Note that the first value of the NAFF padded and the NAFF rolled circled in black are exactly the same as they are evaluating the same signal. This comparison is not apples-to-apples but it does imply a benefit of the NAFF padded evaluation. For a given signal lenght the uncertianty due to the initial phase is regular and can be evaluated without sampling different, presumamby lower amplitude areas of the original signal.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{./chapter_3_figures/slideTuneComparison.pdf}
 	\caption{Variaiton of tune measurments with inital phase}
 	\label{fig:baseRoll}
 \end{figure}
 
-The different tune measurement algorithms have different characteristic statistical uncertianties that scale with the availible sample window. Without interpolation, the uncertianty in the FFT lines goes as $\frac{1}{N}$ where N is sample points, in our case available turns.
+The different tune measurement algorithms have different characteristic statistical uncertianties that scale with the availible sample window. Without interpolation, the uncertianty in the FFT lines goes as $\frac{1}{N}$ where N is sample points, in our case available turns. Both the unwindowed NAFF and interpolation approaches have analytic uncertianties that go as $\frac{1}{N^2}$ \cite{zisopolousRefined,bartoliniTune}. The magnitude of the variation due to initial phase was added to the uncertianty of the tune measurements. We then have the following steps for a single signal tune measurement:
 
-The magnitude of this variation decreased for longer sample windows, but did not go below the statistical uncertianty of the methods. As a result the magnitude of this variation was added to the uncertianty of the tune measurements.
+\begin{enumerate}
+	\item{Zero pad signal to predetermined length}
+	\item{Evaluate the tune with NAFF}
+	\item{"Roll" the signal to shift inital phase}
+	\item{Evaluate rolled signal with NAFF}
+	\item{Repeat roll and evaluation a predetermined number of times, and estimate initial phase uncertianty from variance in rolled tune measurments}
+\end{enumerate}
 
-
-The same evaluations can be made on the real tbt BPM signals, but of course, the actual tune is unknown. In this case, the same analyses are considered to verify the same behaviours are preserved. Figure \ref{fig:measConvRoll} shows the same analysis for and example real kick response.
+This algorightm is applied to the real TBT bpm sample (Figure. \ref{fig:realEvalSig}) in  Figure \ref{fig:measConvRoll}.
 
 \begin{figure}
-	\centering \includegraphics[width=0.5\linewidth]{placeholder.pdf}
-	\caption{Tune measurment convergence and variation with phase for measured TBT data}
+	\centering \includegraphics[width=1\linewidth]{./chapter_3_figures/realTuneEvalSignal.pdf}
+	\caption{Example kick for tune evaluation, BPM B1R signal}
+	\label{fig:realEvalSig}
+\end{figure}
+
+
+\begin{figure}
+	\centering \includegraphics[width=1\linewidth]{./chapter_3_figures/realTuneConvergence.pdf}
+	\caption{Tune measurment convergence for measured TBT data, with estimated uncertianty}
 	\label{fig:measConvRoll}
 \end{figure}
 
 
-Multiple BPM signals are available and we would like to combine them, there were two approaches considered. The first is a BPM stacking approach, where a quasi-periodic signal with jumbled overlapped phases is constructed \cite{zisopolous}. This approach is unable to differentiate the sympathetic frequency components from large orthogonal kicks. 
+The above comparisons assume a single signal, but multiple BPM signals are available and we would like to combine them, there were two approaches considered. The first is a BPM stacking approach, where a quasi-periodic signal is constructed \cite{zisopolousRefined} by stacking sequential BPMs. This approach did not yield good results for the experimental IOTA data.
 
-The prefered approach to investigating multiple BPM response was to select the dominat components of a PCA decomposition for all combined BPM signals. Figure \ref{fig:pcaComps} shows the matrix resulting from the convolution of the BPM-specific terms in the PCA with the relative weights. Each column corresponds to a BPM, with the center line indicating the split between the horizontal and vertical BPM labels. 
+The other considered approach to investigate multiple BPM response was to select the dominat components of a PCA decomposition of all combined BPM signals. PCA was selected as the scikit-learn implementation of PCA was significantly more performant than the numpy implementation of SVD, with the same resulting singular values. Figure \ref{fig:pcaComps} shows the matrix resulting from the convolution of the BPM-specific terms in the PCA with the singular values of a single kick, the same kick as shown in \ref{fig:realEvalSig}. Each column corresponds to a BPM, with the center line indicating the split between the horizontal and vertical BPM labels. 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\includegraphics[width=0.7\linewidth]{./chapter_3_figures/t238_singleKickPCA.pdf}
 	\caption{PCA decomposition of TBT signals }
 	\label{fig:pcaComps}
 \end{figure}
 
-The rows indicate different temporal signals. To provide some insight, in the case of simple harmonic motion we would expect four terms, two componetns for each phase in each plane. Each BPM signal is then composed of the relevant fraction of these phase components with scaling proporitonal to the beta function at that location. Figure \ref{fig:pcaTemps} shows the first four temporal components of the same decomposition. 
+The rows indicate different temporal signals. To provide some insight, in the case of simple harmonic motion we would expect four terms, two components for each phase in each plane. Each BPM signal is then composed of the relevant fraction of these phase components with scaling proporitonal to the beta function at that location. Figure \ref{fig:pcaTemps} shows the first four temporal components of the same decomposition. 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_3_figures/pcaTemporalModes.pdf}
 	\caption{First four PCA temporal modes from decomposition above}
 	\label{fig:pcaTemps}
 \end{figure}
 
 We can then discriminate on the direction of a tune component by looking at the relative magnitudes of the temporal components in the horizontal and vertical BPMs. A tune measurement technique, NAFF in this case, can then be applied to these individual components. This has the slight drawback of making phase measurments of individual BPMs more difficult, but this is not typically considered the the analysis anyways. 
 
-Another effect on tune measurements is resonant capture, where a small fraction of the beam becomes trapped in a resonant condition and continues to oscillate at the characteristic frequency of the resonance. As the rest of the beam quickly decoheres due to tune spread, this dominates tune measurements with long sample windows. This can be seen in the spectrogram with short vertical decoherence with a long faint line. Figure \ref{fig:specResCap} shows such a spectogram and the associated kick profile. Here the vertical decoherence is very fast, as there is not much vertical kicked amplitude but large tune spread from the horizontal excitation. However, we see a faint line with long coherence right on the third order difference line $Q_x-2Q_y = 0$, which dominates the long window tune measurment.
+Another effect on tune measurements is resonant capture, where a small fraction of the beam becomes trapped in a resonant condition and continues to oscillate at the characteristic frequency of the resonance. As the rest of the beam quickly decoheres due to tune spread, this dominates tune measurements with long sample windows. This can be seen in the spectrogram with short vertical decoherence with a long faint line. Figure \ref{fig:resCapReal} shows the profile for a kick demonstrating resonant capture. The vertical decoherence is very fast, about 20 turns. However, a small portion of the beam continues to coherently oscillate as can be seen in the spectogram in Figure \ref{fig:specResCap}. This spectogram has a window lenght of 60 turns. The dominant peak in the first window is with the decohering main tune line, but we see a faint line with one bin lower tune and long coherence right on the third order difference line $Q_x-2Q_y = 0$.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
-	\caption{Vertical Spectogram and Kick Profile}
+	\includegraphics[width=1\linewidth]{./chapter_3_figures/resonantCaptureSignal.pdf}
+	\caption{Example resonant capture kick}
+	\label{fig:resCapReal}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_3_figures/resonantCaptureSpectogramB1R_238_10_19_kick26.png}
+	\caption{Resonant capture spectogram}
 	\label{fig:specResCap}
 \end{figure}
 
-Resonant capture was additionally demonstrated on similar lines as seen in experiment in simulation with realistic bunches. Figure \ref{fig:simResCap} shows the tune space plot of the individually evaluated tunes of the macroparticles in a simulation. A low population component of the bunch has been trapped on a sextupole diffference line and coherently oscillates at this frequency while the rest of the bunch shows the typical strong amplitude dependent detuning. 
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
-	\caption{Simulated resonant capture on same line}
-	\label{fig:simResCap}
-\end{figure}
-
-The impact of resonant capture on tune measurments is that we prefer very short windows to capture the characteristic tune of the majority of the beam before it decoheres and becomes dominated by the resonant fraction.
+This resonant capture effect means we prefer to keep the tune measurment windows as short as gives reasonable tune resolution. This effect has been demonstrated in simulation, with kicked bunch measurements, and can be seen in single-electron measurments.
 
 \section{Nonlinear Insert Calibration} \label{sec:nioCal}
 The nonlinear insert had to be calibrated and aligned to best match the nominal potential. This was done with beam based measurments. Recalling from section \ref{sec:dnMag} that the lowest order component of the nonliner insert is a quadrupole, and that the proper implementation of the DN NIO system requires consistent longitudinal scaling to properly match the potential, we treat the individual DN magnets as quadrupoles for small amplitudes. LOCO was applied to center the individual elements, the measured closed orbit offsets after centering \textit{assuming quadrupole terms} are presented in \ref{fig:dnOffset}. 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\includegraphics[width=0.7\linewidth]{./chapter_3_figures/dnOrbitOffsets.pdf}
 	\caption{Closed orbit offests in DN magnet after manual alignment, assuming quadrupole terms}
 	\label{fig:dnOffset}
 \end{figure}
@@ -136,7 +157,7 @@ The resulting data gives a relative current scaling profile for the overall inse
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{placeholder.pdf}
+    \includegraphics[width=0.7\linewidth]{./chapter_3_figures/2023-05-22dnScalings.pdf}
     \caption{Relative DN insert current scaling profile compared to calculated ideal values}
     \label{fig:dnIscaling}
 \end{figure}
@@ -155,7 +176,7 @@ The tune shift of the insert was measured by adjusting the t-parameter of the en
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{placeholder.pdf}
+    \includegraphics[width=0.8\linewidth]{./chapter_3_figures/tuneSpaceDnShift.pdf}
     \caption{Measured nonlinear insert tune shift detuning}
     \label{fig:dnDetuning}
 \end{figure}
@@ -164,7 +185,7 @@ The ratio of the tune shift between the planes is good indicator of proper imple
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{placeholder.pdf}
+    \includegraphics[width=0.8\linewidth]{./chapter_3_figures/dnDetuningCalFactor.pdf}
     \caption{Tune shfit vs t-parameter in both planes, before and after scaling}
     \label{fig:dnTuneVsT}
 \end{figure}
@@ -176,9 +197,60 @@ The initial data indicated a discrepancy in the tune dependence of the t-paramet
     \label{eq:fitTune}
 \end{equation}
 
-The fit resulted in a calibrated t-parameter scaling of $a \approx 0.935$. The source of this discrepancy is not clear, but may be a result of magnet crosstalk, as the relative calibration was measured with single elements.
+The fit resulted in a calibrated t-parameter scaling of $a \approx 0.935$. The source of this discrepancy is not clear, but may be a result of magnet crosstalk, as the relative calibration was measured with single elements and the magnet spacing is close.
 
 \section{Momentum Reconstruction} \label{sec:momReconst}
+
+The error of the BPMs is evaluated to be the variation in the tails long after the signal has fully decohered.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{./chapter_3_figures/tbtBpmNoise_iqrVstd.pdf}
+    \caption{BPM noise over last 2000 turns, standard deviation and interquartile range markers included}
+    \label{fig:bpmErrIQR}
+\end{figure}
+
+We now consider the effects of various preprocessing steps on the goodness of fit to the linear model. First we consider the linear BPM calibration factors from the LOCO procedure.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./chapter_3_figures/redChiSquare_10_19_t238_rawVcal.pdf}
+    \caption{Tune shfit vs t-parameter in both planes, before and after scaling}
+    \label{fig:rawVcal}
+\end{figure}
+
+We now consider the effect of 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./chapter_3_figures/redChiSquare_10_19_t238_rawVdropA1CandCalibrate.pdf}
+    \caption{Tune shfit vs t-parameter in both planes, before and after scaling}
+    \label{fig:rawVA1C}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./chapter_3_figures/redChiSquare_10_19_t238_fullPrepVdropB2L.pdf}
+    \caption{Tune shfit vs t-parameter in both planes, before and after scaling}
+    \label{fig:prepVB2L}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./chapter_3_figures/redChiSquare_10_19_t238_calAndDropVpcaClean.pdf}
+    \caption{Tune shfit vs t-parameter in both planes, before and after scaling}
+    \label{fig:calVpca}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{./chapter_3_figures/10_19_t238_redChiSquare_dists.pdf}
+    \caption{Tune shfit vs t-parameter in both planes, before and after scaling}
+    \label{fig:redChiDists}
+\end{figure}
+
+
 
 \section{Kick Amplitude Calibration} \label{sec:kickAmpCal}
 
