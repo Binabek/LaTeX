@@ -200,8 +200,24 @@ The initial data indicated a discrepancy in the tune dependence of the t-paramet
 The fit resulted in a calibrated t-parameter scaling of $a \approx 0.935$. The source of this discrepancy is not clear, but may be a result of magnet crosstalk, as the relative calibration was measured with single elements and the magnet spacing is close.
 
 \section{Momentum Reconstruction} \label{sec:momReconst}
+For studying the evolution of the phase space, the four dimensional $(x,p_x,y,p_y)$ transverse coordinates of the beam need to be reconstructed. There are a few standard ways to accomplish this. The simplest approach is a pair of BPMs with a $\phi = \pi/2$ phase advance between them. We have more than two BPMs and would like to combine the signals. A common way to approach this is the N-BPM method, which reconstructs the momentum from measured beta functions. The most accurate beta function measurements are the so called beta from phase methods, where the relative phase advance between BPMs can adjust a model prior for the betas. In the case of IOTA with the NIO insert, the tune and therefore phase advance is highly nonlinear and not a reliably linear parameter. So instead we leverage the linear model of the lattice generated using LOCO. The momentum and position at a virtual BPM could then be reconstructing using a least squares approach. 
 
-The error of the BPMs is evaluated to be the variation in the tails long after the signal has fully decohered.
+Before fitting the TBT data a few preprocessing steps were taken. BPM calibrations for scaling and roll as fit from the LOCO optimization were applied. A principle component analysis was applied to all of the BPMs. Based on the singular value, the first 8 components of the PCA were used to reduce the uncorrelated noise in the TBT signals.
+
+Since the matching section of the DN system is most of the lattice footprint, all IOTA BPMs are located in this section. For the fitting, the matching section was essentially treated in a channel mode from the end of the nonlinear insert to the beginning of it, see Fig. \ref{fig:IOTAchannel}.
+
+The practical IOTA lattice contains calibrated sextupoles for chromaticity manipulation, but expanding the method using second order transfer maps yielded poor quality fits of the motion, and strictly linear fits were used for analysis.
+
+The error of the BPMs is evaluated to be the variation in the tails long after the signal has fully decohered. Note that the radiation damping time for the beam ~3 orders of magnitude longer than this sample time. So the individual particles are still and mostly full amplitude. For NIO lattice configurations starting 2000 turns from the end was selected to be well past the expected coherence limit. Figure \ref{fig:bpmErrCutoff} shows the full sample range of an example kick in IOTA with a line indicating the noise sample threshold.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./chapter_3_figures/exampleKick_pointDN_t238.pdf}
+    \caption{Full range IOTA example kick with error estimation cutoff}
+    \label{fig:bpmErrCutoff}
+\end{figure}
+
+The error in the BPM measurments is then evaluated to be the variance in this remaining signal.
 
 \begin{figure}
     \centering
@@ -250,7 +266,14 @@ We now consider the effect of
     \label{fig:redChiDists}
 \end{figure}
 
+The resulting fit can then be compared by threading through the same transfer matricies used to generate the reconstructed position and momentum.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{./chapter_3_figures/fitExampleBPM.pdf}
+    \caption{Reconstructed position threaded through the rest of the machine}
+    \label{fig:fitThread}
+\end{figure}
 
 \section{Kick Amplitude Calibration} \label{sec:kickAmpCal}
 
