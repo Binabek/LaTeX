@@ -1,5 +1,4 @@
-\chapter{Experimental Analysis} \label{chap:analysis}
-
+\chapter{Experimental Analysis Methods} \label{chap:analysis}
 
 \section{Tune Measurements} \label{sec:tune}
 Tune measurments provide long term coherent information on the dynamics and the strong dependence on amplitude is the chief experimental indicator of nonlinearities in the focusing. While decoherence limits the available turns for measurments, the variations in amplitude do not alter the fundamental frequency, which gives us a longer coherent signal. The tune was previously defined only for the linear system in the context of phase advance. The definition of the tune is more nebulous then for a strongly nonlinear system, as the motion is neccesarially anharmonic. For nonlinear dynamical systems, the poincare rotation number is a related quantity \cite{nagaitsevBetatron}, but difficult to relate to measurable quantities. For the experimental measurments, we interpret the dominant frequency of the transverse oscillation spectrum as the tune. 
@@ -297,7 +296,7 @@ To illustrate the result with data, Figure \ref{fig:fitThread} shows the result 
 \end{figure}
 
 \section{Kick Amplitude Calibration} \label{sec:kickAmpCal}
-The position reconstruction is also valuable for calibrating the amplitude from the kicker. When evaluating the amplitude dependent detuning, we need a consistent way to define the amplitude for different configurations. The position reconstruction with the nonlinear insert is difficult to interpret and depends on the insert setting. We prefer instead to evaluate the effective linear emittance imparted from a kick. To calculate this, we reconstruct the position and momentum for the first turn in the bare lattice and look at the correlation with the kicker setting. Figure \ref{fig:kicCalLilacChrom} shows the reconstructed position and momentum for a few bare lattices with different sextupole configurations. The kicker response is reasonably linear, but we see a difference in calibration between bare lattices. As covered in \ref{sec:sextErr} we know some sextupoles have error terms with feed down effects on the linear lattice. As a result only the lattice with a current LOCO optimization is reliable, for the collections we are interseted in, this is the "lilac" configuration which is what is considered moving forward.
+The position reconstruction is also valuable for calibrating the amplitude from the kicker. When evaluating the amplitude dependent detuning, we need a consistent way to define the amplitude for different configurations. The position reconstruction with the nonlinear insert is difficult to interpret and depends on the insert setting. We prefer instead to evaluate the effective linear emittance imparted from a kick. To calculate this, we reconstruct the position and momentum for the first turn in the bare lattice and look at the correlation with the kicker setting. Figure \ref{fig:kicCalLilacChrom} shows the reconstructed position and momentum for a few bare lattices with different sextupole configurations. The kicker response is reasonably linear, but we see a difference in calibration between bare lattices. As covered in \ref{sec:sextErr} we know some sextupoles have error terms with feed down effects on the linear lattice. As a result only the lattice with a current LOCO optimization is reliable, for the collections we are interseted in, this is the "lilac" configuration considered moving forward.
 
 
 \begin{figure}
@@ -335,27 +334,26 @@ Considering with a large collection of mixed kicks for this bare lattice configu
 This amplitude calibration could be used directly or to generate the initial values for a short position reconstruction between the kicker and the nonlinear insert.
 
 \section{Dynamic Aperture Evaluation} \label{sec:daEval}
-The dynamic aperture (DA), or amplitude limit on stable motion, is a crucial metric of the real nonlinear system with full perturbations. The dynamic aperture is evaluated for simulated beams as the limit of asymptotically stable trajectories. For experimental measurements, the interpretation becomes more difficult. DA scans were performed by measuring the losses of kicked circulating beam. A consistent qualitative metric was applied, the loss limit was defined as a percent loss greater than 25\% or two subsequent kicks with percent losses greater than 10\%.
+The dynamic aperture (DA), or amplitude limit on stable motion, is a crucial metric of the real nonlinear system with full perturbations. The dynamic aperture is evaluated for simulated beams as the limit of asymptotically stable trajectories. For experimental measurements, the interpretation becomes more difficult. The DA measurments settled on were performed by measuring the losses of kicked circulating beam at increasing amplitudes. A consistent qualitative metric was applied, the loss limit was defined as a percent loss greater than 25\% or two subsequent kicks with percent losses greater than 10\%.
 
 For a particular DA scan, a bunch was injected and scraped to a standard initial current in the BPM sensitivity range. The beam was iteratively kicked along fixed ratio "spokes" as current was logged. Once the current reached a minimum threshold, another bunch was injected and the scan of another spoke began.  Figure \ref{fig:spokes} illustrates the resulting geometry of the kick amplitudes.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\includegraphics[width=0.5\linewidth]{./chapter_3_figures/spokesExample.pdf}
 	\caption{Dynamic Aperture Scan configuration}
 	\label{fig:spokes}
 \end{figure}
 
-Both the BPMs and DCCT were used to monitor beam current after a kick. The sum of the individual BPM button responses can be used as a fast indicator of losses. The BPM TBT output contains 20 turns of information before the kicker fires. For loss comparisons, the mean of the BPM signal for the first and last 20 turns was compared. The sample range of the BPMs was around 7000 turns which corresponds to a timescale of just under a millisecond. The DCCT signal was sampled before and after the kick on a timescale of a second. Loss timescales differed, some losses on kick were visible in the first few turns of the sum signal, and some losses were not visible in the sum signal but were visible in the DCCT. 
+Both the BPMs and DCCT were used to monitor beam current after a kick. The sum of the individual BPM button responses can be used as a TBT indicator of losses. The BPM TBT output contains 20 turns of information before the kicker fires, which can be used as a baseline. For loss comparisons, the mean of the BPM signal for the first and last 20 turns was compared. The sample range of the BPMs was around 7000 turns which corresponds to a timescale of just under a millisecond.The sum signal from all of the BPMs was combined TBT to form a global sum signal. The sum signal noise was evaluated as the standard deviation of these sample ranges. 
 
-The noise in the DCCT signal was evaluated as the RMS noise with no circulating beam. The sum signal noise was evaluated as the RMS of the availible sample range.
+The DCCT signal was sampled before and after the kick on a timescale of a second. Loss timescales differed, some losses on kick were visible in the first few turns of the sum signal, and some losses were too slow to be in the sum signal but were visible in the DCCT. 
 
-To ensure that losses occurred in the time span between the DCCT samples, and were not dominated by the natural circulating beam lifetime, the difference between the second sample and the first sample of the next kick were calculated and verified to be at the level of noise in the DCCT signal. Figure \ref{fig:dcctKickLife}. DCCT noise was evaluated as the standard deviation without any circulating beam at \num{6.7e-3} [mA].
-
+To ensure that losses occurred in the time span between the DCCT samples, and were not dominated by the natural circulating beam lifetime, the difference between the second sample and the first sample of the next kick were calculated and verified to be at the level of noise in the DCCT signal. Figure \ref{fig:dcctKickLife}, shows the difference in current after a DA kick and the initial value before the next kick on the order of a few seconds. DCCT noise was evaluated as the standard deviation without any circulating beam at \num{6.7e-3} [mA].
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\includegraphics[width=0.6\linewidth]{./chapter_3_figures/dcctInterKickLoss.pdf}
 	\caption{Change in DCCT current between DA scan kicks}
 	\label{fig:dcctKickLife}
 \end{figure}
@@ -364,7 +362,7 @@ Figure \ref{fig:daLimit} shows the DCCT and BPM sum signal for increasing kicks 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.5\linewidth]{placeholder.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_3_figures/percentLossErrorbars.pdf}
 	\caption{Percent Losses after individual kicks in a DA scan}
 	\label{fig:daLimit}
 \end{figure}
