@@ -1,9 +1,9 @@
 \chapter{Experimental Analysis Methods} \label{chap:analysis}
 
 \section{Tune Measurements} \label{sec:tune}
-Tune measurments provide long term coherent information on the dynamics and the strong dependence on amplitude is the chief experimental indicator of nonlinearities in the focusing. While decoherence limits the available turns for measurments, the variations in amplitude do not alter the fundamental frequency, which gives us a longer coherent signal. The tune was previously defined only for the linear system in the context of phase advance. The definition of the tune is more nebulous then for a strongly nonlinear system, as the motion is neccesarially anharmonic. For nonlinear dynamical systems, the poincare rotation number is a related quantity \cite{nagaitsevBetatron}, but difficult to relate to measurable quantities. For the experimental measurments, we interpret the dominant frequency of the transverse oscillation spectrum as the tune. 
+Tune measurements provide long term coherent information on the dynamics and the strong dependence on amplitude is the chief experimental indicator of nonlinearities in the focusing. While decoherence limits the available turns for measurements, the variations in amplitude do not alter the fundamental frequency, which gives us a longer coherent signal. The tune was previously defined only for the linear system in the context of phase advance. The definition of the tune is more nebulous then for a strongly nonlinear system, as the motion is necessarily anharmonic. For nonlinear dynamical systems, the Poincare rotation number is a related quantity \cite{nagaitsevBetatronFrequencyPoincare2020}, but difficult to relate to measurable quantities. For the experimental measurements, we interpret the dominant frequency of the transverse oscillation spectrum as the tune. 
 
-Different tune measurment algorigthim were considered for the particular limitations of the available data. The simplest approach is simply taking the Fourier transform of turn by turn (TBT) BPM data and picking the peak frequency. As we have discrete sampling of the motion, a discrete Fourier transform is a simple first approach. Practically, the fast fourier transform (FFT) is used as the default discrete transform. There are a number of methods to improve the resolution of the frequency measurements. In principle a windowing function can be applied to improve resolution of the peak frequency at the cost of supressing sidebands. However, for the IOTA data, there are two important considerations. A window suppresses the amplitude of a fraction of the sample window. In the case of the short coherent measurments, the reduction in available signal was more detrimental than the advantages of the window. And for low signal to noise ratios the benefits of a window disappear. For example, the common Hann window does not provide any benefits for signal to noise ratios less than \num{1e3} \cite{bartoliniAlgorithms}, well above those seen in IOTA. To bypass some of the limitations on the disctrete sample resolution of the FFT, Jacobsen interpolation \cite{jacobesnLocla} applies a quadratic interpolation to the FFT peak and its nearest neighbors for finer peak resolution. The implementation used is based on that from the PyLHC \cite{cernomc} analysis library. The other approach considered is the Numerical Analysis of Fundamental Frequencies (NAFF) proposed by Lasker for the evaluation of long term stability of planetary systems \cite{laskar}. NAFF starts with a guess from the FFT spectrum, and seeks to iteratively optimize the magnitude of a single fourier transform as in equation \ref{eq:naff}. In principle this can be used to extract successive harmonics of the motion, but we are interested only in the dominant frequancy, so typically only one term is considered. The implementation of NAFF used in this analysis is PyNAFF \cite{zisopolusPZ}, this uses hardys method (Eq. \ref{eq:hardy} \cite[p.151]{whitakerCalculs}) for the numerical integration as opposed to a simple riemann summ. In addition to the offline methods, live tune measurments on circulating beam used a least squares approach, where an assumed functional form with free parameters for tune, phase, coupling, and decoherence times, is fit to the data.
+Different tune measurement algorithm were considered for the particular limitations of the available data. The simplest approach is simply taking the Fourier transform of turn by turn (TBT) BPM data and picking the peak frequency. As we have discrete sampling of the motion, a discrete Fourier transform is a simple first approach. Practically, the fast Fourier transform (FFT) is used as the default discrete transform. There are a number of methods to improve the resolution of the frequency measurements. In principle a windowing function can be applied to improve resolution of the peak frequency at the cost of suppressing sidebands. However, for the IOTA data, there are two important considerations. A window suppresses the amplitude of a fraction of the sample window. In the case of the short coherent measurements, the reduction in available signal was more detrimental than the advantages of the window. And for low signal to noise ratios the benefits of a window disappear. For example, the common Hann window does not provide any benefits for signal to noise ratios less than \num{1e3} \cite{bartoliniAlgorithmsPreciseDetermination1996}, well above those seen in IOTA. To bypass some of the limitations on the discrete sample resolution of the FFT, Jacobsen interpolation \cite{jacobsenLocalInterpolationDFT} applies a quadratic interpolation to the FFT peak and its nearest neighbors for finer peak resolution. The implementation used is based on that from the PyLHC \cite{cernomcteamPyLHC} analysis library. The other approach considered is the Numerical Analysis of Fundamental Frequencies (NAFF) proposed by Laskar for the evaluation of long term stability of planetary systems \cite{laskarMeasureChaosNumerical1992}. NAFF starts with a guess from the FFT spectrum, and seeks to iteratively optimize the magnitude of a single Fourier transform as in equation \ref{eq:naff}. In principle this can be used to extract successive harmonics of the motion, but we are interested only in the dominant frequency, so typically only one term is considered. The implementation of NAFF used in this analysis is PyNAFF \cite{zisopoulosPZisoPyNAFF2023}, this uses Hardy's method (Eq. \ref{eq:hardy} \cite[p.151]{whittakerCalculusObservations1924}) for the numerical integration as opposed to a simple Riemann sum. In addition to the offline methods, live tune measurements on circulating beam used a least squares approach, where an assumed functional form with free parameters for tune, phase, coupling, and decoherence times, is fit to the data.
 
 \begin{equation}
 	\Psi(T) = \frac{1}{2T}\int_{-T}^{T}f(t)e^{-i\omega t}dt
@@ -15,7 +15,7 @@ Different tune measurment algorigthim were considered for the particular limitat
 	\label{eq:hardy}
 \end{equation}
 
-To evaluate the methods, a comparison was made with both a synthetic signal and the simulated bunch centroid signal from an Impact-X simulation. Figure \ref{fig:synKicks} shows the evaluation signals, the amplitude does not impact the tune evaluation. The synthetic signal consisted of a convolution of a single harmonic base signal, a logistic function for decoherence and a gaussian noise distribution with a RMS of ten percent of the signal amplitude. 
+To evaluate the methods, a comparison was made with both a synthetic signal and the simulated bunch centroid signal from an Impact-X simulation. Figure \ref{fig:synKicks} shows the evaluation signals, the amplitude does not impact the tune evaluation. The synthetic signal consisted of a convolution of a single harmonic base signal, a logistic function for decoherence and a Gaussian noise distribution with a RMS of ten percent of the signal amplitude. 
 
 \begin{figure}
 	\centering
@@ -24,54 +24,52 @@ To evaluate the methods, a comparison was made with both a synthetic signal and 
 	\label{fig:synKicks}
 \end{figure}
 
-The first evaluation was on the convergence of the various methods. Figure \ref{fig:baseConv} shows the convergence of tune measurments for the various considered algorighms with increasing length of the sample window. The limitations of the FFT resolution from the available signal are clear, but they inform the initial values for the interpolation and the NAFF. The vertical simulation signals are considered here as they exhibit faster decoherence. The relatively long coherence time of the horizontal signal means that convergence rate is less important, and we are interested in best performance for very fast decoherence.
+The first evaluation was on the convergence of the various methods. Figure \ref{fig:baseConv} shows the convergence of tune measurements for the various considered algorithms with increasing length of the sample window. The limitations of the FFT resolution from the available signal are clear, but they inform the initial values for the interpolation and the NAFF. The vertical simulation signals are considered here as they exhibit faster decoherence. The relatively long coherence time of the horizontal signal means that convergence rate is less important, and we are interested in best performance for very fast decoherence.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_3_figures/basicConvergence.pdf}
-	\caption{Convergence of tune measurments with lenght of signal window}
+	\caption{Convergence of tune measurements with length of signal window}
 	\label{fig:baseConv}
 \end{figure}
 
-The available resolution of the FFT can be improved by padding the input signal with zero values. This is the same effect as increasing the lenght of the signal and applying a rectangular window the length of the original signal. Figure \ref{fig:padConv} shows the convergence of the faster methods with and without padding. Here all signals were padded to an equal signal lenght of 256 turns. We see that the convergence of the padded FFT is improved, but the windowing effect introduces a systematic, limited offset of the tune determined by the lenght of the padding. The Jacobsen interpolation with a padded signal also suffers a similar effect, converging on a systematically offset tune.
+The available resolution of the FFT can be improved by padding the input signal with zero values. This is the same effect as increasing the length of the signal and applying a rectangular window the length of the original signal. Figure \ref{fig:padConv} shows the convergence of the faster methods with and without padding. Here all signals were padded to an equal signal length of 256 turns. We see that the convergence of the padded FFT is improved, but the windowing effect introduces a systematic, limited offset of the tune determined by the length of the padding. The Jacobsen interpolation with a padded signal also suffers a similar effect, converging on a systematically offset tune.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_3_figures/paddedConvergence.pdf}
-	\caption{Convergence of tune measuremnts with zero padding}
+	\caption{Convergence of tune measurements with zero padding}
 	\label{fig:padConv}
 \end{figure}
 
-We then have three approaches which reliably converge before the 100 turn limit of our sample plots, Jacobsen interpolation wihtout padding, and NAFF with and without padding. In evaluating the quality of the convergence, the noise seed on the simulated signal was found to have a significant effect on these methods. The convergence of the tune measurement was evaluated for the same underlying synthetic signal and decoherence as before but with one thousand different noise seeds for the random noise. The synthetic signal was used as there is a garuntee of a single underlying frequency unlike the simulation signal. The ensemble properties of the convergence are plotted in Figure \ref{fig:noiseConv}. The left plot shows the mean of the absolute difference of the measured tune from the nominal, $|Q_{meas} - Q_{nominal}|$ and the right plot is the standard deviation of the measured tunes for each window lenght. We see that the average convergance is about the same, with a slight prefereance for Jacobsen interpolation. The padded NAFF measurements have slightly lower variation.
+We then have three approaches which reliably converge before the 100 turn limit of our sample plots, Jacobsen interpolation without padding, and NAFF with and without padding. In evaluating the quality of the convergence, the noise seed on the simulated signal was found to have a significant effect on these methods. The convergence of the tune measurement was evaluated for the same underlying synthetic signal and decoherence as before but with one thousand different noise seeds for the random noise. The synthetic signal was used as there is a guarantee of a single underlying frequency unlike the simulation signal. The ensemble properties of the convergence are plotted in Figure \ref{fig:noiseConv}. The left plot shows the mean of the absolute difference of the measured tune from the nominal, $|Q_{meas} - Q_{nominal}|$ and the right plot is the standard deviation of the measured tunes for each window length. We see that the average convergence is about the same, with a slight preference for Jacobsen interpolation. The padded NAFF measurements have slightly lower variation.
 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_3_figures/noiseSeedConvergence.pdf}
-	\caption{Convergence of tune measuremnts with zero padding}
+	\caption{Convergence of tune measurements with zero padding}
 	\label{fig:noiseConv}
 \end{figure}
 
-There is an additional consideration, we can evaluate the accuracy of the measurments while adjusting the inital phase. There is a periodic variation of the measured tune for this change in initial.  This neccesarally means sampling a lower amplitude region of the signal as you go along the decoherence. With the padded signal we can also do a similar transfomation. By rolling the padding to the front as well as behind with the same overall signal lenght, different phases given by the resoltion of the binning. Figure \ref{fig:baseRoll} shows the change in the tune measurments for varying the initial turn of a sixty turn sample window and "rolling" the padded signal. Note that the first value of the NAFF padded and the NAFF rolled circled in black are exactly the same as they are evaluating the same signal. This comparison is not apples-to-apples but it does imply a benefit of the NAFF padded evaluation. For a given signal lenght the uncertianty due to the initial phase is regular and can be evaluated without sampling different, presumamby lower amplitude areas of the original signal.
+There is an additional consideration, we can evaluate the accuracy of the measurements while adjusting the initial phase. There is a periodic variation of the measured tune for this change in initial.  This necessarily means sampling a lower amplitude region of the signal as you go along the decoherence. With the padded signal we can also do a similar transformation. By rolling the padding to the front as well as behind with the same overall signal length, different phases given by the resolution of the binning. Figure \ref{fig:baseRoll} shows the change in the tune measurements for varying the initial turn of a sixty turn sample window and "rolling" the padded signal. Note that the first value of the NAFF padded and the NAFF rolled circled in black are exactly the same as they are evaluating the same signal. This comparison is not apples-to-apples but it does imply a benefit of the NAFF padded evaluation. For a given signal length the uncertainty due to the initial phase is regular and can be evaluated without sampling different, presumably lower amplitude areas of the original signal.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{./chapter_3_figures/slideTuneComparison.pdf}
-	\caption{Variaiton of tune measurments with inital phase}
+	\caption{Variation of tune measurements with initial phase}
 	\label{fig:baseRoll}
 \end{figure}
 
-The different tune measurement algorithms have different characteristic statistical uncertianties that scale with the availible sample window. Without interpolation, the uncertianty in the FFT lines goes as $\frac{1}{N}$ where N is sample points, in our case available turns. Both the unwindowed NAFF and interpolation approaches have analytic uncertianties that go as $\frac{1}{N^2}$ \cite{zisopolousRefined,bartoliniTune}. The magnitude of the variation due to initial phase was added to the uncertianty of the tune measurements. We then have the following steps for a single signal tune measurement:
-
-\begin{enumerate}
+The different tune measurement algorithms have different characteristic statistical uncertainties that scale with the available sample window. Without interpolation, the uncertainty in the FFT lines goes as $\frac{1}{N}$ where N is sample points, in our case available turns. Both the unwindowed NAFF and interpolation approaches have analytic uncertainties that go as $\frac{1}{N^2}$ \cite{zisopoulosRefinedBetatronTune2019,bartoliniTuneEvaluationSimulations1996}. The magnitude of the variation due to initial phase was added to the uncertainty of the tune measurements. We then have the following steps for a single signal tune measurement: \begin{enumerate}
 	\item{Zero pad signal to predetermined length}
 	\item{Evaluate the tune with NAFF}
-	\item{"Roll" the signal to shift inital phase}
+	\item{"Roll" the signal to shift initial phase}
 	\item{Evaluate rolled signal with NAFF}
-	\item{Repeat roll and evaluation a predetermined number of times, and estimate initial phase uncertianty from variance in rolled tune measurments}
+	\item{Repeat roll and evaluation a predetermined number of times, and estimate initial phase uncertainty from variance in rolled tune measurements}
 \end{enumerate}
 
-This algorightm is applied to the real TBT bpm sample (Figure. \ref{fig:realEvalSig}) in  Figure \ref{fig:measConvRoll}.
+This algorithm is applied to the real TBT bpm sample (Figure. \ref{fig:realEvalSig}) in  Figure \ref{fig:measConvRoll}.
 
 \begin{figure}
 	\centering \includegraphics[width=1\linewidth]{./chapter_3_figures/realTuneEvalSignal.pdf}
@@ -82,14 +80,14 @@ This algorightm is applied to the real TBT bpm sample (Figure. \ref{fig:realEval
 
 \begin{figure}
 	\centering \includegraphics[width=1\linewidth]{./chapter_3_figures/realTuneConvergence.pdf}
-	\caption{Tune measurment convergence for measured TBT data, with estimated uncertianty}
+	\caption{Tune measurement convergence for measured TBT data, with estimated uncertainty}
 	\label{fig:measConvRoll}
 \end{figure}
 
 
-The above comparisons assume a single signal, but multiple BPM signals are available and we would like to combine them, there were two approaches considered. The first is a BPM stacking approach, where a quasi-periodic signal is constructed \cite{zisopolousRefined} by stacking sequential BPMs. This approach did not yield good results for the experimental IOTA data.
+The above comparisons assume a single signal, but multiple BPM signals are available and we would like to combine them, there were two approaches considered. The first is a BPM stacking approach, where a quasi-periodic signal is constructed \cite{zisopoulosRefinedBetatronTune2019} by stacking sequential BPMs. This approach did not yield good results for the experimental IOTA data.
 
-The other considered approach to investigate multiple BPM response was to select the dominat components of a PCA decomposition of all combined BPM signals. PCA was selected as the scikit-learn implementation of PCA was significantly more performant than the numpy implementation of SVD, with the same resulting singular values. Figure \ref{fig:pcaComps} shows the matrix resulting from the convolution of the BPM-specific terms in the PCA with the singular values of a single kick, the same kick as shown in \ref{fig:realEvalSig}. Each column corresponds to a BPM, with the center line indicating the split between the horizontal and vertical BPM labels. 
+The other considered approach to investigate multiple BPM response was to select the dominate components of a PCA decomposition of all combined BPM signals. PCA was selected as the scikit-learn implementation of PCA was significantly more performant than the numpy implementation of SVD, with the same resulting singular values. Figure \ref{fig:pcaComps} shows the matrix resulting from the convolution of the BPM-specific terms in the PCA with the singular values of a single kick, the same kick as shown in \ref{fig:realEvalSig}. Each column corresponds to a BPM, with the center line indicating the split between the horizontal and vertical BPM labels. 
 
 \begin{figure}
 	\centering
@@ -98,7 +96,7 @@ The other considered approach to investigate multiple BPM response was to select
 	\label{fig:pcaComps}
 \end{figure}
 
-The rows indicate different temporal signals. To provide some insight, in the case of simple harmonic motion we would expect four terms, two components for each phase in each plane. Each BPM signal is then composed of the relevant fraction of these phase components with scaling proporitonal to the beta function at that location. Figure \ref{fig:pcaTemps} shows the first four temporal components of the same decomposition. 
+The rows indicate different temporal signals. To provide some insight, in the case of simple harmonic motion we would expect four terms, two components for each phase in each plane. Each BPM signal is then composed of the relevant fraction of these phase components with scaling proportional to the beta function at that location. Figure \ref{fig:pcaTemps} shows the first four temporal components of the same decomposition. 
 
 \begin{figure}
 	\centering
@@ -107,9 +105,9 @@ The rows indicate different temporal signals. To provide some insight, in the ca
 	\label{fig:pcaTemps}
 \end{figure}
 
-We can then discriminate on the direction of a tune component by looking at the relative magnitudes of the temporal components in the horizontal and vertical BPMs. A tune measurement technique, NAFF in this case, can then be applied to these individual components. This has the slight drawback of making phase measurments of individual BPMs more difficult, but this is not typically considered the the analysis anyways. 
+We can then discriminate on the direction of a tune component by looking at the relative magnitudes of the temporal components in the horizontal and vertical BPMs. A tune measurement technique, NAFF in this case, can then be applied to these individual components. This has the slight drawback of making phase measurements of individual BPMs more difficult, but this is not typically considered for the analysis anyways. 
 
-Another effect on tune measurements is resonant capture, where a small fraction of the beam becomes trapped in a resonant condition and continues to oscillate at the characteristic frequency of the resonance. As the rest of the beam quickly decoheres due to tune spread, this dominates tune measurements with long sample windows. This can be seen in the spectrogram with short vertical decoherence with a long faint line. Figure \ref{fig:resCapReal} shows the profile for a kick demonstrating resonant capture. The vertical decoherence is very fast, about 20 turns. However, a small portion of the beam continues to coherently oscillate as can be seen in the spectogram in Figure \ref{fig:specResCap}. This spectogram has a window lenght of 60 turns. The dominant peak in the first window is with the decohering main tune line, but we see a faint line with one bin lower tune and long coherence right on the third order difference line $Q_x-2Q_y = 0$.
+Another effect on tune measurements is resonant capture, where a small fraction of the beam becomes trapped in a resonant condition and continues to oscillate at the characteristic frequency of the resonance. As the rest of the beam quickly decoheres due to tune spread, this dominates tune measurements with long sample windows. This can be seen in the spectrogram with short vertical decoherence with a long faint line. Figure \ref{fig:resCapReal} shows the profile for a kick demonstrating resonant capture. The vertical decoherence is very fast, about 20 turns. However, a small portion of the beam continues to coherently oscillate as can be seen in the spectogram in Figure \ref{fig:specResCap}. This spectogram has a window length of 60 turns. The dominant peak in the first window is with the decohering main tune line, but we see a faint line with one bin lower tune and long coherence right on the third order difference line $Q_x-2Q_y = 0$.
 
 \begin{figure}
 	\centering
@@ -126,15 +124,15 @@ Another effect on tune measurements is resonant capture, where a small fraction 
 	\label{fig:specResCap}
 \end{figure}
 
-This resonant capture effect means we prefer to keep the tune measurment windows as short as gives reasonable tune resolution. This effect has been demonstrated in simulation, with kicked bunch measurements, and can be seen in single-electron measurments.
+This resonant capture effect means we prefer to keep the tune measurement windows as short as gives reasonable tune resolution. This effect has been demonstrated in simulation, with kicked bunch measurements, and can be seen in single-electron measurements.
 
 \section{Nonlinear Insert Calibration} \label{sec:nioCal}
-The nonlinear insert had to be calibrated and aligned to best match the nominal potential. This was done with beam based measurments. Recalling from section \ref{sec:dnMag} that the lowest order component of the nonliner insert is a quadrupole, and that the proper implementation of the DN NIO system requires consistent longitudinal scaling to properly match the potential, we treat the individual DN magnets as quadrupoles for small amplitudes. LOCO was applied to center the individual elements, the measured closed orbit offsets after centering \textit{assuming quadrupole terms} are presented in \ref{fig:dnOffset}. 
+The nonlinear insert had to be calibrated and aligned to best match the nominal potential. This was done with beam based measurements. Recalling from section \ref{sec:dnMag} that the lowest order component of the nonlinear insert is a quadrupole, and that the proper implementation of the DN NIO system requires consistent longitudinal scaling to properly match the potential, we treat the individual DN magnets as quadrupoles for small amplitudes. LOCO was applied to center the individual elements, the measured closed orbit offsets after centering \textit{assuming quadrupole terms} are presented in \ref{fig:dnOffset}. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{./chapter_3_figures/dnOrbitOffsets.pdf}
-	\caption{Closed orbit offests in DN magnet after manual alignment, assuming quadrupole terms}
+	\caption{Closed orbit offsets in DN magnet after manual alignment, assuming quadrupole terms}
 	\label{fig:dnOffset}
 \end{figure}
 
@@ -161,7 +159,7 @@ The resulting data gives a relative current scaling profile for the overall inse
     \label{fig:dnIscaling}
 \end{figure}
 
-This approach gives good relative scaling of the magnets, but we want to additionally evaluate the calibration of the insert as a whole. The tune shift assuming only the quadrupole terms of the DN element is given in Eq. (\ref{eq:dnDetune}) \cite{nagaitsevNonlinearOptics}.
+This approach gives good relative scaling of the magnets, but we want to additionally evaluate the calibration of the insert as a whole. The tune shift assuming only the quadrupole terms of the DN element is given in Eq. (\ref{eq:dnDetune}) \cite{nagaitsevNonlinearOpticsPath2012}.
 
 \begin{equation}
 	\begin{split}
@@ -171,7 +169,7 @@ This approach gives good relative scaling of the magnets, but we want to additio
 	\label{eq:dnDetune}
 \end{equation}
 
-The tune shift of the insert was measured by adjusting the t-parameter of the entire DN insert, according to the previously calibrated current ratios and kicking the beam to small amplitudes to measure the tune. The measured tunes are plotted with the quadrupolar detuning in Figure \ref{fig:dnDetuning}. The impact of the sextupoles used to compensate chromaticity can be seen inas the dominant effect on the tune near the third order resonances (red lines on tune diagram).
+The tune shift of the insert was measured by adjusting the t-parameter of the entire DN insert, according to the previously calibrated current ratios and kicking the beam to small amplitudes to measure the tune. The measured tunes are plotted with the quadrupolar detuning in Figure \ref{fig:dnDetuning}. The impact of the sextupoles used to compensate chromaticity can be seen as the dominant effect on the tune near the third order resonances (red lines on tune diagram).
 
 \begin{figure}
     \centering
@@ -180,16 +178,16 @@ The tune shift of the insert was measured by adjusting the t-parameter of the en
     \label{fig:dnDetuning}
 \end{figure}
 
-The ratio of the tune shift between the planes is good indicator of proper implementation of the longitudinal scaling of the potenetial and beta function match in the insert. The absolute t-parameter scaling was calibrated by measuring tune shift vs nominal t-parameter, as presented in Figure \ref{fig:dnTuneVsT}. The gap in the data between t=0.2 t=0.3 was an unfortunate result of the BPM system freezing and failing to update TBT data, and was simply excluded.
+The ratio of the tune shift between the planes is good indicator of proper implementation of the longitudinal scaling of the potential and beta function match in the insert. The absolute t-parameter scaling was calibrated by measuring tune shift vs nominal t-parameter, as presented in Figure \ref{fig:dnTuneVsT}. The gap in the data between t=0.2 t=0.3 was an unfortunate result of the BPM system freezing and failing to update TBT data, and was simply excluded.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{./chapter_3_figures/dnDetuningCalFactor.pdf}
-    \caption{Tune shfit vs t-parameter in both planes, before and after scaling}
+    \caption{Tune shift vs t-parameter in both planes, before and after scaling}
     \label{fig:dnTuneVsT}
 \end{figure}
 
-The initial data indicated a discrepancy in the tune dependence of the t-parameter. The proportiona The ideal detuning expression was fit to the data with a t-scaling factor as the only free parameter Eq. (\ref{eq:fitTune}). 
+The initial data indicated a discrepancy in the tune dependence of the t-parameter. The proportion The ideal detuning expression was fit to the data with a t-scaling factor as the only free parameter Eq. (\ref{eq:fitTune}). 
 
 \begin{equation}
     Q = Q_o \sqrt{1\pm 2at}
@@ -199,13 +197,13 @@ The initial data indicated a discrepancy in the tune dependence of the t-paramet
 The fit resulted in a calibrated t-parameter scaling of $a \approx 0.935$. The source of this discrepancy is not clear, but may be a result of magnet crosstalk, as the relative calibration was measured with single elements and the magnet spacing is close.
 
 \section{Momentum Reconstruction} \label{sec:momReconst}
-For studying the evolution of the phase space, the four dimensional $(x,p_x,y,p_y)$ transverse coordinates of the beam need to be reconstructed. There are a few standard ways to accomplish this. The simplest approach is a pair of BPMs with a $\phi = \pi/2$ phase advance between them. This is a straightforward start, but we have more than two BPMs and would like to combine the signals. A succesful approach this is the N-BPM method \cite{langerOptics}, which can reconstruct the momentum from measured beta functions. The most accurate beta function measurements use the relative phase advance between BPMs can adjust a model prior for the betas. In the case of IOTA with the NIO insert, the tune and therefore phase advance is highly nonlinear and not a reliable parameter to combine with the bare lattice. Instead we leverage the linear model of the lattice generated using LOCO. The momentum and position at a virtual BPM could then be reconstructing using a least squares approach. 
+For studying the evolution of the phase space, the four dimensional $(x,p_x,y,p_y)$ transverse coordinates of the beam need to be reconstructed. There are a few standard ways to accomplish this. The simplest approach is a pair of BPMs with a $\phi = \pi/2$ phase advance between them. This is a straightforward start, but we have more than two BPMs and would like to combine the signals. A successful approach this is the N-BPM method \cite{langnerOpticsMeasurementAlgorithms2015}, which can reconstruct the momentum from measured beta functions. The most accurate beta function measurements use the relative phase advance between BPMs can adjust a model prior for the betas. In the case of IOTA with the NIO insert, the tune and therefore phase advance is highly nonlinear and not a reliable parameter to combine with the bare lattice. Instead we leverage the linear model of the lattice generated using LOCO. The momentum and position at a virtual BPM could then be reconstructing using a least squares approach. 
 
-The BPMs are all located in the linear matching section of the lattice. We can then reconstruct the position and momentum at a virtural BPM turn by turn, using the linear model from LOCO. The main nonlinearity in IOTA stems from the insert, though there is nonlinearity stemming from the sextupoles, fringe fields, and sharp bending dipoles. Using higher order maps including the calibrated sextupole terms was considered, but expanding the method using second order transfer maps yielded poor convergence of the fits of the motion. Additionally, such a method would require more accurate understanding of the residual nonlinearities in the matching lattice than we currently have for IOTA. We have an advantage in that the nonlinear effects outside of the insert are perturbative compared to the linear focusing terms, so we only expect them to be coherent over many turns. This motivates carefully evaluating the goodness of fit to our linear model later in this section. So then, for the fitting, the matching section was essentially treated in a channel mode from the end of the nonlinear insert to the beginning of it.
+The BPMs are all located in the linear matching section of the lattice. We can then reconstruct the position and momentum at a virtual BPM turn by turn, using the linear model from LOCO. The main nonlinearity in IOTA stems from the insert, though there is nonlinearity stemming from the sextupoles, fringe fields, and sharp bending dipoles. Using higher order maps including the calibrated sextupole terms was considered, but expanding the method using second order transfer maps yielded poor convergence of the fits of the motion. Additionally, such a method would require more accurate understanding of the residual nonlinearities in the matching lattice than we currently have for IOTA. We have an advantage in that the nonlinear effects outside of the insert are perturbative compared to the linear focusing terms, so we only expect them to be coherent over many turns. This motivates carefully evaluating the goodness of fit to our linear model later in this section. So then, for the fitting, the matching section was essentially treated in a channel mode from the end of the nonlinear insert to the beginning of it.
 
-To perform the least squares fit the lmfit python package \cite{newvilleLMFIT} was used. The nonlinear least squares efforts are irrelevent for the linear transport model, but the interface is much improved over other pythonic options, e.g. scipy. For our fits the free parameters are the position and momentum at a virtual BPM. Our model is the linear transfer matrices to each BPM from the virtual BPM location. In principle, these could be coupled, but the coupling is deliberatley locally corrected with the IOTA skew quad correctors. The resulting transfer matrices have coupling on the order of the machine precision, so we simply exclude these terms to reduce the dimensionality of the fit. Accordingly, we perform a fit for each plane. The data for the fit is the BPM measured position at each BPM in a given turn. To ascribe an uncertianty to our reconstructed coordinates we need an understanding of the uncertianty in our BPM measurements.
+To perform the least squares fit the lmfit python package \cite{newvilleLMFITNonLinearLeastSquares2025} was used. The nonlinear least squares efforts are irrelevant for the linear transport model, but the interface is much improved over other pythonic options, e.g. scipy. For our fits the free parameters are the position and momentum at a virtual BPM. Our model is the linear transfer matrices to each BPM from the virtual BPM location. In principle, these could be coupled, but the coupling is deliberately locally corrected with the IOTA skew quad correctors. The resulting transfer matrices have coupling on the order of the machine precision, so we simply exclude these terms to reduce the dimensionality of the fit. Accordingly, we perform a fit for each plane. The data for the fit is the BPM measured position at each BPM in a given turn. To ascribe an uncertainty to our reconstructed coordinates we need an understanding of the uncertainty in our BPM measurements.
 
-The uncertianty of the BPM measurements is evaluated from the variation in the tails long after the signal has fully decohered. Note that the radiation damping time for the beam ~3 orders of magnitude longer than this sample time. The individual particles are still at mostly full amplitude and our beam is "large". This may impact the centroid measurments if the nonlinear BPM calibration factors are off, as a fraction of the beam near the buttons may be undersampled or saturate the acquisition electronics. Some preprocessing was applied to the BPM signals to excluded these effects. For NIO lattice configurations, the tail was defined to be 2000 turns from the end, well past the expected coherence limit. Figure \ref{fig:bpmErrCutoff} shows the full sample range of an example kick in IOTA with a line indicating the noise sample threshold.
+The uncertainty of the BPM measurements is evaluated from the variation in the tails long after the signal has fully decohered. Note that the radiation damping time for the beam ~3 orders of magnitude longer than this sample time. The individual particles are still at mostly full amplitude and our beam is "large". This may impact the centroid measurements if the nonlinear BPM calibration factors are off, as a fraction of the beam near the buttons may be undersampled or saturate the acquisition electronics. Some preprocessing was applied to the BPM signals to excluded these effects. For NIO lattice configurations, the tail was defined to be 2000 turns from the end, well past the expected coherence limit. Figure \ref{fig:bpmErrCutoff} shows the full sample range of an example kick in IOTA with a line indicating the noise sample threshold.
 
 \begin{figure}
     \centering
@@ -214,7 +212,7 @@ The uncertianty of the BPM measurements is evaluated from the variation in the t
     \label{fig:bpmErrCutoff}
 \end{figure}
 
-The error in the BPM measurments is then evaluated to be the variance in this remaining signal. Figure \ref{fig:bpmErrIQR} shows the histogram of coordinates in the last thousand turns in Figure \ref{fig:bpmErrCutoff}. The standard deviation and interquartile range are both calculated and compared. The interquartile range is less susciptible to outliers, and can be directly related to the standard deviation if the distribution is gaussian. A comparison of these metrics for a large sample of real IOTA kicks showed good correspondence, indicating that the bpm noise is well modeled with the normal distribution. For fitting, the BPM noise was evaluated for each BPM and kick individually and applied as the noise for each turn.
+The error in the BPM measurements is then evaluated to be the variance in this remaining signal. Figure \ref{fig:bpmErrIQR} shows the histogram of coordinates in the last thousand turns in Figure \ref{fig:bpmErrCutoff}. The standard deviation and interquartile range are both calculated and compared. The interquartile range is less susceptible to outliers, and can be directly related to the standard deviation if the distribution is Gaussian. A comparison of these metrics for a large sample of real IOTA kicks showed good correspondence, indicating that the bpm noise is well modeled with the normal distribution. For fitting, the BPM noise was evaluated for each BPM and kick individually and applied as the noise for each turn.
 
 \begin{figure}
     \centering
@@ -223,7 +221,7 @@ The error in the BPM measurments is then evaluated to be the variance in this re
     \label{fig:bpmErrIQR}
 \end{figure}
 
-Figure \ref{fig:bpmErrSet} shows the resulting error evaluation for a full collection. This is a smaller example collection from the rest considered in this section to be a little easier to read. The vertical and horizontal BPM signals are seperated with the red line. We can see that the oddball BPM A1C has a supressed uncertainty from its improper calibration. The other standout bpm is the unusally high noise on the horizontal signals on E2L, an issue with the hardware. We can see a steady growth in the uncertianty over the collection as the circulating current decreases. The individual fits capture the relative uncertainty for their given kick.
+Figure \ref{fig:bpmErrSet} shows the resulting error evaluation for a full collection. This is a smaller example collection from the rest considered in this section to be a little easier to read. The vertical and horizontal BPM signals are separated with the red line. We can see that the oddball BPM A1C has a suppressed uncertainty from its improper calibration. The other standout bpm is the unusually high noise on the horizontal signals on E2L, an issue with the hardware. We can see a steady growth in the uncertainty over the collection as the circulating current decreases. The individual fits capture the relative uncertainty for their given kick.
 
 \begin{figure}
     \centering
@@ -232,7 +230,7 @@ Figure \ref{fig:bpmErrSet} shows the resulting error evaluation for a full colle
     \label{fig:bpmErrSet}
 \end{figure}
 
-The reduced chi square of each turn was used to evaluate the goodness of fit to the linear model. In the ideal case a reduced chi square value of one indicates a good fit. In practice, estimation of uncertianty and data preprocesing can impact this value, and we are mostly interested in a reasonably contained rang of reduced chi-square values. Initially, the range of the goodness of fit was very large, with large outliers above and below the central value near one. Excluding turns with large BPM noise significantly improved this metric, and let us consider the impact of other data preprocessing steps on the goodness of fit.
+The reduced chi square of each turn was used to evaluate the goodness of fit to the linear model. In the ideal case a reduced chi square value of one indicates a good fit. In practice, estimation of uncertainty and data preprocesing can impact this value, and we are mostly interested in a reasonably contained rang of reduced chi-square values. Initially, the range of the goodness of fit was very large, with large outliers above and below the central value near one. Excluding turns with large BPM noise significantly improved this metric, and let us consider the impact of other data preprocessing steps on the goodness of fit.
 
 First we consider the linear BPM calibration factors from the LOCO procedure. The real BPMs are not perfectly made or aligned to the principle modes of the beam dynamics. To first order these calibrations are included in the LOCO fits. The resulting parameterization with individual bpm constants is given in eq. \ref{eq:bpmCal}.
 
@@ -250,7 +248,7 @@ In Figure \ref{fig:rawVcal} we compare the reduced chi square of the fits to the
     \label{fig:rawVcal}
 \end{figure}
 
-Individual BPMs can be dropped from the fitting algorigthm in the case of a acquisition error or saturation in the BPM. We know that the A1C BPM has a different geometry and incorrectly applied scaling map, so we investigate the impact on goodness of fit by uniformly dropping it in Figure \ref{fig:rawVA1C}. We see a slight reduction in the size of the band as compared to just applying the calibration. As a result, this BPM was excluded from any momentum reconstruction calculations.
+Individual BPMs can be dropped from the fitting algorithm in the case of a acquisition error or saturation in the BPM. We know that the A1C BPM has a different geometry and incorrectly applied scaling map, so we investigate the impact on goodness of fit by uniformly dropping it in Figure \ref{fig:rawVA1C}. We see a slight reduction in the size of the band as compared to just applying the calibration. As a result, this BPM was excluded from any momentum reconstruction calculations.
 
 \begin{figure}
     \centering
@@ -259,7 +257,7 @@ Individual BPMs can be dropped from the fitting algorigthm in the case of a acqu
     \label{fig:rawVA1C}
 \end{figure}
 
-To reduce the uncorrelated noise a principle component analysis was applied to all of the BPMs. The PCA was applied to all BPMs to account for possible coupling. Based on the singular values, the first 8 components of the PCA were used. Figure \ref{calVpca} shows the impact on the goodness of fit between the calibration and dropping A1C and these two steps plus the PCA cleaning step. We see a reduction in the band and a correllated drop in the average reduced chi square away from one. This is an expectd side effect, since we are now over estimating the uncertianty from before the PCA cleaning. The uncertianty is not re-estimated because the interpretation of the tails after PCA is inconsistent, and we prefer to evaluate the PCA on as short of a section of the kick as possible.
+To reduce the uncorrelated noise a principle component analysis was applied to all of the BPMs. The PCA was applied to all BPMs to account for possible coupling. Based on the singular values, the first 8 components of the PCA were used. Figure \ref{fig:calVpca} shows the impact on the goodness of fit between the calibration and dropping A1C and these two steps plus the PCA cleaning step. We see a reduction in the band and a correlated drop in the average reduced chi square away from one. This is an expected side effect, since we are now over estimating the uncertainty from before the PCA cleaning. The uncertainty is not re-estimated because the interpretation of the tails after PCA is inconsistent, and we prefer to evaluate the PCA on as short of a section of the kick as possible.
 
 \begin{figure}
     \centering
@@ -277,7 +275,7 @@ While BPM A1C was consistently excluded, the other BPMs were evaluated and found
     \label{fig:prepVB2L}
 \end{figure}
 
-After evaluating and settling on our preprocessing steps we can evaluate the distribution of our reduced chi square values over the course of the collection. Figure \ref{fig:redChiDists} shows this distribution for the first 25 and last 25 turns to account for the decoherence related shift. We see the characteristic reduced chi distribution is preserved. The grey histogram corresponds to every fitted turn, the colored curves indicate increasingly aggresive cuts. The first cut excludes bpms with saturation and errors, and the further cuts are on tbt noise. The reduced chi distribution is preserved and the tails smooth out with the calibration cuts. The green trace corresponds to the sets analyzed in the preprocessing comparisons above.
+After evaluating and settling on our preprocessing steps we can evaluate the distribution of our reduced chi square values over the course of the collection. Figure \ref{fig:redChiDists} shows this distribution for the first 25 and last 25 turns to account for the decoherence related shift. We see the characteristic reduced chi distribution is preserved. The grey histogram corresponds to every fitted turn, the colored curves indicate increasingly aggressive cuts. The first cut excludes BPMs with saturation and errors, and the further cuts are on TBT noise. The reduced chi distribution is preserved and the tails smooth out with the calibration cuts. The green trace corresponds to the sets analyzed in the preprocessing comparisons above.
 
 \begin{figure}
     \centering
@@ -286,7 +284,7 @@ After evaluating and settling on our preprocessing steps we can evaluate the dis
     \label{fig:redChiDists}
 \end{figure}
 
-To illustrate the result with data, Figure \ref{fig:fitThread} shows the result of a fit for a single turn. The position and momentum are fit from the blue measured points. The fitted position is given by the green diamond, and the effective propogated position from that virtual bpm is illustrated with the green trace.
+To illustrate the result with data, Figure \ref{fig:fitThread} shows the result of a fit for a single turn. The position and momentum are fit from the blue measured points. The fitted position is given by the green diamond, and the effective propagated position from that virtual bpm is illustrated with the green trace.
 
 \begin{figure}
     \centering
@@ -296,7 +294,7 @@ To illustrate the result with data, Figure \ref{fig:fitThread} shows the result 
 \end{figure}
 
 \section{Kick Amplitude Calibration} \label{sec:kickAmpCal}
-The position reconstruction is also valuable for calibrating the amplitude from the kicker. When evaluating the amplitude dependent detuning, we need a consistent way to define the amplitude for different configurations. The position reconstruction with the nonlinear insert is difficult to interpret and depends on the insert setting. We prefer instead to evaluate the effective linear emittance imparted from a kick. To calculate this, we reconstruct the position and momentum for the first turn in the bare lattice and look at the correlation with the kicker setting. Figure \ref{fig:kicCalLilacChrom} shows the reconstructed position and momentum for a few bare lattices with different sextupole configurations. The kicker response is reasonably linear, but we see a difference in calibration between bare lattices. As covered in \ref{sec:sextErr} we know some sextupoles have error terms with feed down effects on the linear lattice. As a result only the lattice with a current LOCO optimization is reliable, for the collections we are interseted in, this is the "lilac" configuration considered moving forward.
+The position reconstruction is also valuable for calibrating the amplitude from the kicker. When evaluating the amplitude dependent detuning, we need a consistent way to define the amplitude for different configurations. The position reconstruction with the nonlinear insert is difficult to interpret and depends on the insert setting. We prefer instead to evaluate the effective linear emittance imparted from a kick. To calculate this, we reconstruct the position and momentum for the first turn in the bare lattice and look at the correlation with the kicker setting. Figure \ref{fig:kickCalLilacChrom} shows the reconstructed position and momentum for a few bare lattices with different sextupole configurations. The kicker response is reasonably linear, but we see a difference in calibration between bare lattices. As covered in \ref{sec:sextErr} we know some sextupoles have error terms with feed down effects on the linear lattice. As a result only the lattice with a current LOCO optimization is reliable, for the collections we are interested in, this is the "lilac" configuration considered moving forward.
 
 
 \begin{figure}
@@ -306,7 +304,7 @@ The position reconstruction is also valuable for calibrating the amplitude from 
     \label{fig:kickCalLilacChrom}
 \end{figure}
 
-Considering with a large collection of mixed kicks for this bare lattice configuraiton, a few models were considered, but a coupled linear model with a fixed zero intercept performed the best according to the goodness of fit metric. Figure \ref{fig:kickCalFit} shows the reconstructed position and momentum at the virtual BPM and the lines corresponding to no perpendicular kicker setting. The calibration parameters are given in \ref{tab:kickCal}. The coupling can be interpreted as a slight roll misalignment of the kicker about the longitudinal axis.
+Considering with a large collection of mixed kicks for this bare lattice configuration, a few models were considered, but a coupled linear model with a fixed zero intercept performed the best according to the goodness of fit metric. Figure \ref{fig:kickCalFit} shows the reconstructed position and momentum at the virtual BPM and the lines corresponding to no perpendicular kicker setting. The calibration parameters are given in \ref{tab:kickCal}. The coupling can be interpreted as a slight roll misalignment of the kicker about the longitudinal axis.
 
 \begin{figure}
     \centering
@@ -334,7 +332,7 @@ Considering with a large collection of mixed kicks for this bare lattice configu
 This amplitude calibration could be used directly or to generate the initial values for a short position reconstruction between the kicker and the nonlinear insert.
 
 \section{Dynamic Aperture Evaluation} \label{sec:daEval}
-The dynamic aperture (DA), or amplitude limit on stable motion, is a crucial metric of the real nonlinear system with full perturbations. The dynamic aperture is evaluated for simulated beams as the limit of asymptotically stable trajectories. For experimental measurements, the interpretation becomes more difficult. The DA measurments settled on were performed by measuring the losses of kicked circulating beam at increasing amplitudes. A consistent qualitative metric was applied, the loss limit was defined as a percent loss greater than 25\% or two subsequent kicks with percent losses greater than 10\%.
+The dynamic aperture (DA), or amplitude limit on stable motion, is a crucial metric of the real nonlinear system with full perturbations. The dynamic aperture is evaluated for simulated beams as the limit of asymptotically stable trajectories. For experimental measurements, the interpretation becomes more difficult. The DA measurements settled on were performed by measuring the losses of kicked circulating beam at increasing amplitudes. A consistent qualitative metric was applied, the loss limit was defined as a percent loss greater than 25\% or two subsequent kicks with percent losses greater than 10\%.
 
 For a particular DA scan, a bunch was injected and scraped to a standard initial current in the BPM sensitivity range. The beam was iteratively kicked along fixed ratio "spokes" as current was logged. Once the current reached a minimum threshold, another bunch was injected and the scan of another spoke began.  Figure \ref{fig:spokes} illustrates the resulting geometry of the kick amplitudes.
 
@@ -368,7 +366,7 @@ Figure \ref{fig:daLimit} shows the DCCT and BPM sum signal for increasing kicks 
 \end{figure}
 
 \section{Synchrotron Profiles} \label{sec:synchProfiles}
-In addition to their very useful capacity as live beam monitoring instruments, the synchrotron radiation cameras were used to evaluate the stability of the beam at the integer resonance condition. These measurments were taken with very low circulating beam currents, the cameras are sensitive down to single orbiting electrons, but the exposure has to be periodically adjusted to maintain sensitivity. The transverse profile and the intensity were the points of reference. The images were preprocessed with a media filter to remove potential hot pixels, and a background subtraction was applied. Figure \ref{fig:synchBackground} shows an example camera profile with the marginal sums and a line indicating where the boundary of the background sample.
+In addition to their very useful capacity as live beam monitoring instruments, the synchrotron radiation cameras were used to evaluate the stability of the beam at the integer resonance condition. These measurements were taken with very low circulating beam currents, the cameras are sensitive down to single orbiting electrons, but the exposure has to be periodically adjusted to maintain sensitivity. The transverse profile and the intensity were the points of reference. The images were preprocessed with a media filter to remove potential hot pixels, and a background subtraction was applied. Figure \ref{fig:synchBackground} shows an example camera profile with the marginal sums and a line indicating where the boundary of the background sample.
 
 \begin{figure}
 	\centering
@@ -377,7 +375,7 @@ In addition to their very useful capacity as live beam monitoring instruments, t
 	\label{fig:synchBackground}
 \end{figure}
 
-To evaluate the lifetime from camera images, the relative intensity (simply the sum of the full image) and timestamps of the image could be fit with an exponential decay, eq. \ref{eq:expLife}. The uncertianty of the lifetime was determined from the uncertainty in the fit.
+To evaluate the lifetime from camera images, the relative intensity (simply the sum of the full image) and timestamps of the image could be fit with an exponential decay, eq. \ref{eq:expLife}. The uncertainty of the lifetime was determined from the uncertainty in the fit.
 
 \begin{equation}
 	I(t) = I_o e^{-\frac{t}{\tau}}
