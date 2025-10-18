@@ -3,30 +3,66 @@
 \section{Working Point stability of Different NIO configurations} \label{sec:nioWorkPoint}
 As discussed in section \ref{sec:nioConfig}, the NIO system requires chromatic compensation for stable operation. The base stability was investigated for different bare lattice configurations. Circulating beam was established and the nonlinear insert t-parameter was slowly ramped to establish stability. Figure \ref{fig:bareRamp} shows the ramp for the naieve bare lattice without sextupole compensation of any kind. We see complete losses near the horizontal third order resonance $3 Q_x = 1$. This may indicate residual sextupole components in the bare lattice. The source of these nonlinearities is not clear, but may stem from the dipole fringe fields, or the geometric nonlinearities from the tight bending radius. The source may also be destabilztion of the system due to adjustment of momentum.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{./chapter_4_figures/2023-10-15aVstslowRes.pdf}
+	\caption{Circulating current in IOTA while ramping t-parameter for no sextupole compensation}
+	\label{fig:bareRamp}
+\end{figure}
+
+
 Chromaticity was then compensated with a minimal set of two families of sextupoles. Figure \ref{fig:midRamp} shows a similar ramp after the compensation. The sextupole resonance is still present, but the stability is not strongly impacted.
 
 Figure \ref{fig:fastRamp} shows quickly ramping by these points does not incur significant losses. This is an improvement over the lattice tune in the previous runs. In the past, ad hoc sextupole knobs had to be ajdusted as the insert was ramped to stably operate at various tunes.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{./chapter_4_figures/2023-04-24aVstMidRes.pdf}
+	\caption{Circulating current in IOTA while quickly ramping t-parameter with chromatic compensation}
+	\label{fig:fasteRamp}
+\end{figure}
+
 Another informative scan was done with a very slow ramp of the NIO insert in Figure \ref{fig:slowRamp}. In this scan a second region of losses becomes more clear near the integer resonant condition. The nearest resonant line in tune space is $Q_x + Q_y = 0$, but there are not elements expected to drive this term in the lattice. Whatever the cause of losses near this working point, it meant that this region had to be quicly stepped beyond when investigating dynamics at the integer resonance. Practically, the NIO insert was ramped to just above the limit of losses then "snapped" beyond this point.
 
 \section{Conservation of Nonlinear Invariants} \label{sec:invConv}
-To evaluate the invariant expressions, the raw fitted coordinates needed to be normalized by the bare lattice Courant-Snyder functions at the virtual BPM location. Like the transfer matrices, these quantities were extracted from the design lattice. To benchmark the method, the Courant-Snyder invariants were extracted from the bare lattice. 
+A direct verification of proper implementation of the NIO system would be conservation of the analytically predicted invariants.
 
-For reasonable comparison to the equivalent Courant-Snyder invariant, the first order effect on the lattice functions of the DN element was extracted from the design lattice. The calculations of the Courant-Snyder invariants used this normalization as opposed to the bare lattice functions. To avoid apparent invariant changes due to any linear coupling, the sum of the horizontal and vertical invariants (also the normalized Hamiltonian) was used for comparison \cite{leeAccelerator}. The first DN invariant, the Hamiltonian of the system, is very similar to the CS Hamiltonian. As a result these two quantities display similar levels of conservation. A better metric is looking at the conservation of the second DN invariant.
+To evaluate the invariant expressions, the raw fitted coordinates needed to be normalized by the bare lattice Courant-Snyder functions at the virtual BPM location. Like the transfer matrices, these quantities were extracted from the design lattice fitted by LOCO. To benchmark the method, the Courant-Snyder invariants were extracted from the bare lattice. For reasonable comparison to the equivalent Courant-Snyder invariant, the first order effect on the lattice functions due to the NIO insert were simulated using quadrupoles in place of the full nonlinear elements. The calculations of the Courant-Snyder invariants used this normalization as opposed to the bare lattice functions. To avoid apparent invariant changes due to any linear coupling, the sum of the horizontal and vertical invariants (also the normalized Hamiltonian) was used for comparison \cite{leeAccelerator}. The first DN invariant, the Hamiltonian of the system, is similar to the overall Courant-Snyder invariant. As a result these two quantities display similar levels of conservation. A better metric is looking at the conservation of the second DN invariant. Figure \ref{fig:invTbt} shows the calculation for an example set.
+
+
 
 Direct calculation of the analytical invariant quantities from fitted position data has insufficient resolution to demonstrate conservation of these invariants.
 
 \section{Amplitude Dependent Detuning} \label{sec:ampDetune}
-A useful measurement of the nonlinearities of a system is to directly evaluate the change in tune with the amplitude. This is the figure of merit which impacts the potential strenght of the Landau damping of a system. To measure the maximum range of the detuning without resonant effects, a nominal working point of $t=0.238$ was selected, which corresponds to $Q_x = , Q_y = $. As the amplitude calibration depends on the linear lattice parameters, the amplitude dependent measurments were only valid for the "lilac" sextupole configuration. 
+A useful measurement of the nonlinearities of a system is to directly evaluate the change in tune with the amplitude. This is the figure of merit which impacts the potential strength of the Landau damping of a system. The amplitude dependent detuning was evaluated for different t-parameter settings ranging from $t=-0.05$ to $t=-0.41$. The resonant capture effects had a strong impact on available detuning measurments beyond $t=-0.275$. Figure \ref{fig:t330Detuning} shows the detuning for a t-parameter setting of $t=-0.330$, note the clustering of tunes on the third order coupling line. The sextupole terms tend to drive this coupling and trap the beam on the resonance. This does not negatively impact stability, but renders us insensitive to the detuning effects from the NIO.
+
+Figure \ref{fig:t330phaseSpace} shows the resulting phase space for the beam on this coupling resonance. The contours are characteristic of the two to one nature of the coupling tunes.
+
+The $Q_x = 1/3$ horizontal resonance line also impacted the availible aperture for tune measurments. Figure \ref{fig:t140phaseSpace} shows the reconstructed phase space of a kick near this line for a NIO setting at $t=-0.140$. The characteristic triangular phase space is visible.
+
+Based on these constraints, to measure the maximum range of the detuning without resonant effects, a nominal working point of $t=-0.238$ was selected, which corresponds to $Q_x = , Q_y = $. Figure \ref{fig:t238detune35} shows the detuning for this point sampling 35 turns. This is quite fast and leads to some uncertianties in the tune measurments. However, we still see resonant capture effects on fractions of the beam. If we are dominated by TBT signal before full decoherence we are sensitive to the DN NIO detuning. However if the tune lenght is sampled for a long span, the result is similar to other regions of the phase space. Figure \ref{fig:t238detune100} shows the same tune space measurments for a TBT sample range of one hundred turns. We see strong dominant sextupole and octupole coupling lines.
+
+
+We can also compare this detuning with our directly calibrated amplitude measurements. As the amplitude calibration depends on the linear lattice parameters, the direct amplitude dependent measurments were only valid for the "lilac" sextupole configuration. Figure \ref{fig:t238ampDetuneBase} shows the tune in both planes plotted agains the equivalent initial linear action in both planes. In addition, simulated tunes for the ideal IOTA lattice are plotted alongside. The overall direction of the detuning and the ranges are comparable, but a number of features are lacking. The horizontal and vertical detuning versus the horizontal amplitude are suppressed, the slope of the detuning versus the veritcal kicks is different, \textit{and the width of the horizontal detuning is significantly impacted}.
+
+We know that the bare lattice is more complicated than the ideal situation. We can introduce the sextupole nonlinearities consistent with full compensation of the chromaticities and the exact dipole mappings, i.e. configuration S2 from section \ref{sec:iotaSim}. Figure \ref{fig:t238ampDetuneSext} shows this same comparison, we see that two of the important effects have matched.
+
+We make one more comparison, that of the detuning with the S2 nonlinearities and only the quadrupole terms of the nonlinear insert to ensure that the dominant contribution to the detuning is the DN system in Figure \ref{fig:t238ampDetuneQuad}.
+
+We see significant impacts of the residual nonlinearities in the bare IOTA lattice. We can directly evaluate the amplitude dependent detuning for the bare "lilac" as well. Figure \ref{fig:t0detune} shows this detuning. We see coherent detuning along the linear coupling resonance.
 
 \section{Dynamic Aperture} \label{sec:DA}
-The dynamic aperture was measured for a number of different lattice configurations and nonlinear insert settings.
+The dynamic aperture was measured for a number of different lattice configurations and nonlinear insert settings. The losses along fixed amplitude ratio "spoke" kicks were taken as outlined in section \ref{sec:DA}. To evaluate the loss amplitude we compare the initial amplitude to the effective linear action in the center of the nonlinear insert, as we expect this to be the minimizing aperture. In this approximaiton, the aperture comparison is seen in \ref{fig:iotaMinApDA}. We see reasonable aperture conservation in the vertical plane for the first few t-parameters, but the horizontal aperture shrinks to a plateau.
+
+The measured losses with amplitude has a few caveats. An error in the admittance model of IOTA means we were not strictly limited by the small aperture in the center of the nonlinear insert.
+
+Additionally, an effect related to the configuration space of the NIO system may shrink the admittance. For larger t-parameters, the configuration space begins to take on an "hourglass" shape, so for a given horizontal axis positon, parts of the beam off the median symmetry line may have larger horizontal offsets and be lost on the minimizin aperture.
 
 \section{Nonlinear Stability at Integer Resonance} \label{sec:intCross}
 The synchrotron camera images were used for evaluation of beam stability at the integer resonance condition. To make this observation, the t-parameter was incremented while logging the time dependence of the synchrotron radiation profiles. Based on the calibration of the t-strength from the linear working point in section \ref{sec:dnCal}, settings crossing the vertical integer resonance were selected. The linear system is fundamentally unstable at this tune, but the NIO system retains stability . Measurments supporting stability in these conditions are strong evidence for the NIO system. To evaluate stability, the lifetime of the beam was evaluated at each t-parameter setting. Beam current was low due to a restricted dynamic aperture and normal beam lifetime, so the DCCT measurments were insensitive and intensity was evaluated from the synchtrotron images. Section \ref{sec:synchLife} describes the methods to extract the lifetime from the synchtrotron images.
 
 The topography of the DN system is useful here in tuning the measurments and determining the working point. At strengths of the nonlinear insert beyond the integer resonance, the origin of the system becomes an unstable fixed point. Two new stable fixed points are present above and below the origin. The result in the machine is the slow splitting of the beam into two stable ”beamlets” about these new fixed points. By evaluating when the beam becomse fully split, an upper limit on the crossing of the integer resonance location can be set. In addition to evaluating the integer resonance, the synchrotron profiles could be used for fine tuning the closed orbit throught the insert. Varying the closed orbit knobs to arrive at an equal distribution of beam in the top and bottom beamlets is a  clear indicator of proper alignment about the center of the insert. Figure \ref{} shows a comparison of the synchrotron profile of the beam before and after the centering.
 
-The camera exposure had to be changed during the course of the measurements, as continuing beam loss reduced the signal.
+The camera exposure had to be changed during the course of the measurements, as continuing beam loss reduced the signal. This means that only the relative intensity for a given exposure setting could be evaluated, and the absolute circulating current values were not availible. 
 
-Lifetime measurements indicate asymptotic stability of particles at the integer resonance where the nonlinear focusing terms dominate.
+The lifetime measurements on the order of minutes indicate asymptotic stability of particles at the integer resonance where the nonlinear focusing terms dominate.
