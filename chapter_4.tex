@@ -5,7 +5,7 @@ As discussed in section \ref{sec:nioConfig}, the NIO system requires chromatic c
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\linewidth]{./chapter_4_figures/2023-10-15aVstslowRes.pdf}
+	\includegraphics[width=0.8\linewidth]{./chapter_4_figures/2023-10-15aVstSlowRamp.pdf}
 	\caption{Circulating current in IOTA while ramping t-parameter for no sextupole compensation}
 	\label{fig:bareRamp}
 \end{figure}
@@ -41,18 +41,37 @@ Figure \ref{fig:fastRamp} shows quickly ramping does not incur significant losse
 
 
 \section{Conservation of Nonlinear Invariants} \label{sec:invConv}
-A direct verification of proper implementation of the NIO system would be conservation of the analytically predicted invariants.
+A direct verification of proper implementation of the NIO system would be conservation of the analytically predicted invariants. The same approach was used in section \ref{sec:simInv} for evalution of insert configurations. To evaluate the invariant expressions, transverse momentum coordinates must be reconstructed as described in section \ref{sec:momReconst}, and the fitted coordinates needed to be normalized by the bare lattice Courant-Snyder functions at the virtual BPM location. Like the transfer matrices, these quantities were extracted from the design lattice fitted to by LOCO. To benchmark the method, the Courant-Snyder invariants were calculated for the same kicks. For reasonable comparison to the equivalent Courant-Snyder invariant, the first order effect on the lattice functions due to the NIO insert were simulated using quadrupoles in place of the full nonlinear elements. The calculations of the Courant-Snyder invariants used this normalization as opposed to the bare lattice functions. To avoid apparent invariant changes due to any linear coupling, the sum of the horizontal and vertical invariants (also the normalized Hamiltonian) was used for comparison \cite{leeAccelerator}.  Figure \ref{fig:invTbt} shows the resulting calculated invariant quantities TBT for two kicks. These parameters are normalized to the value at the first turn. Since the decoherence reduces the amplitude of the centroid signal, the invariant quantities also neccesarially reduce. The TBT BPM position uncertianty also impacts the invariant uncertianty. The left plot shows a good result for measured conservation, where both nonlinear predicted invariants show relatively small devation from their predicted values. The right plot shows a case where the second DN invariant is not conserved at all. We see large oscillations about a central value, this is a characteristic signature of an arbitrary value calculated from the dynamical variables. These responses were for the same lattice condition with different kick amplitues.
 
-To evaluate the invariant expressions, the raw fitted coordinates needed to be normalized by the bare lattice Courant-Snyder functions at the virtual BPM location. Like the transfer matrices, these quantities were extracted from the design lattice fitted to by LOCO. To benchmark the method, the Courant-Snyder invariants were extracted from the bare lattice. For reasonable comparison to the equivalent Courant-Snyder invariant, the first order effect on the lattice functions due to the NIO insert were simulated using quadrupoles in place of the full nonlinear elements. The calculations of the Courant-Snyder invariants used this normalization as opposed to the bare lattice functions. To avoid apparent invariant changes due to any linear coupling, the sum of the horizontal and vertical invariants (also the normalized Hamiltonian) was used for comparison \cite{leeAccelerator}.  Figure \ref{fig:invTbt} shows the resulting calculated invariant quantities TBT for an example set. These parameters are normalized to the value at the first turn. Since the decoherence reduces the amplitude of the centroid signal, the invariant quantities also neccesarially reduce. Naturally the TBT uncertianty also impacts the nonlinear uncertianty. 
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/goodBadInvConsTbt_t238.pdf}
+	\caption{TBT calculated invariant quantities, left plot shows general good conservation of all invariant quantities, right plot shows poor conservation of DN second invariant}
+	\label{fig:invTbt}
+\end{figure}
 
-To compare different amplitudes and nonlinear insert configurations we calculate the standard deviation of these valuse over the first 28 turns. This was selected to maximize the number of points evaluated before the decoherence becomes prominant for the broadest range of sample kick at the cost of significant uncertianty in the metric. Figure \ref{fig:invt238} shows the variation of the couraunt snyder, DN hamiltonian and DN second invariant over the first 28 turns versus the kicker setting. The lattice configuration is with the "lilac" sextupole configuration and a nominal $t=-0.238$.
+To compare different amplitudes and nonlinear insert configurations we calculate the standard deviation of these valuse over the first 28 turns. This was selected to maximize the number of points evaluated before the decoherence becomes prominant for the broadest range of sample kicks at the cost of significant uncertianty in the metric. The first 28 turns are highlighted in Figure \ref{fig:invTbt}. Figure \ref{fig:invt238} shows the variation of the Courant-Snyder Hamiltonian, DN Hamiltonian and DN second invariant over the first 28 turns versus the kicker setting. The lattice configuration is with the "lilac" sextupole configuration and a nominal $t=-0.238$. The coupled calibration factors are used, which results in a skewed grid from the inital cartesian input kicker settings.
 
-The first DN invariant (the Hamiltonian) is similar in funcitonal form to the overall Courant-Snyder invariant. As a result these two quantities display similar levels of conservation. A better metric is looking at the conservation of the second DN invariant. Based on this plotted invariant space we see reasonable conservation of both nonlinear invariants of motion for low vertical kicks and middling horizontal kicks. Based on this observation, a collection was taken for the same kicker settings repeatedly for the full beam lifetime. Once again, the sextupoles are in the "lilac" configuration and the nonliner $t=-0.238$. We can observe the nonlinear invariants versus current for this setting, in Figure \ref{fig:pointCurrent}. 
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/multitInvConsDeviation_t238.pdf}
+	\caption{Color plot of standard deviation of analytically predicted invariants over first 28 turns, each plot has individual color scaling for better contrast but underlying metric is the same}
+	\label{fig:inv238}
+\end{figure}
+
+The first DN invariant (the Hamiltonian) is similar in functional form to the overall Courant-Snyder invariant. As a result these two quantities display similar levels of conservation. A better metric is looking at the conservation of the second DN invariant. Based on this plotted invariant space we see reasonable conservation of both nonlinear invariants of motion for low vertical kicks and middling horizontal kicks. Based on this observation, a collection was taken for the same kicker settings repeatedly for the full beam lifetime. Once again, the sextupoles are in the "lilac" configuration and the nonliner $t=-0.238$. We can observe the nonlinear invariants versus current for this setting, in Figure \ref{fig:pointCurrent}. There is a slight reduction in overall conservation as current goes down, this is an expected effect of the decreasing signal to noise ratio we see in the BPM TBT signals. Additionally, the valuse are all within the statistical uncertianty for the range from \~0.33 to 0.5 mA.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/invConsVcurr_point_t238.pdf}
+	\caption{Invariant conservation for repeated kicks with same nominal amplitude as current naturally decays}
+	\label{fig:pointCurrent}
+\end{figure}
 
 This set corresponds to the best conservation of the nonlinear invariants via this method. We can compare to the predicted deviation between the conservation of the courant snyder invariant with adjusted lattice funcitons and the nonlinear invariants in simulation for the same initial amplitudes. Table \ref{tab:invConsv} shows the difference in the invariants in simulation and experiment. Unfortunately direct calculation of the analytical invariant quantities from fitted position data has insufficient resolution to demonstrate conservation of these invariants. We can still evaluate regions of better and worse conservation, but the direct quantitatve verificaiton is limited by the TBT noise in our BPM signals.
 
 
-An additional amplitude independent approach to evaluating the variance of the predicted invariants is to look at the frequency spectrum of the values. For non conserved quatitites, we expect oscillations of the value stemming from our underlying tune.
+An additional amplitude independent approach to evaluating the variance of the predicted invariants is to look at the frequency spectrum of the values. As previously commented on for figure \ref{fig:invTbt}, for non conserved quatitites, we expect oscillations of the value about some central value. For a conserved quantity, we expect the TBT noise to dominate and the frequency spectrum to be flat. For a non-conserved quantity, we expect peaks in the frequency spectrum corresponding to the oscillation.
 
 
 \section{Amplitude Dependent Detuning} \label{sec:ampDetune}
