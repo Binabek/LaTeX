@@ -50,6 +50,16 @@ A direct verification of proper implementation of the NIO system would be conser
 	\label{fig:invTbt}
 \end{figure}
 
+
+An approach to evaluating the variance of the predicted invariants is to look at the frequency spectrum of the values. For a conserved quantity, we expect the TBT noise to dominate and the frequency spectrum to be flat. For a non-conserved quantity, we expect peaks in the frequency spectrum corresponding to the oscillation. Figure \ref{fig:invLogLog} shows the FFT spectra for the same kicks as in figure \ref{fig:invTbt}. As the decoherence generates a strong zero frequency term in the spectrum, a log-log scale is used to emphasize the higher frequency spectral peaks. We can see the clear peak in the spectrum for the poorly conserved second invariant. This approach is useful as a graphical method, but does not yield an easily interpritable reduced quantity for a given kick.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/fourierInvariantCons_t238.pdf}
+	\caption{}
+	\label{fig:invLogLog}
+\end{figure}
+
 To compare different amplitudes and nonlinear insert configurations we calculate the standard deviation of these valuse over the first 28 turns. This was selected to maximize the number of points evaluated before the decoherence becomes prominant for the broadest range of sample kicks at the cost of significant uncertianty in the metric. The first 28 turns are highlighted in Figure \ref{fig:invTbt}. Figure \ref{fig:invt238} shows the variation of the Courant-Snyder Hamiltonian, DN Hamiltonian and DN second invariant over the first 28 turns versus the kicker setting. The lattice configuration is with the "lilac" sextupole configuration and a nominal $t=-0.238$. The coupled calibration factors are used, which results in a skewed grid from the inital cartesian input kicker settings.
 
 \begin{figure}
@@ -59,7 +69,7 @@ To compare different amplitudes and nonlinear insert configurations we calculate
 	\label{fig:inv238}
 \end{figure}
 
-The first DN invariant (the Hamiltonian) is similar in functional form to the overall Courant-Snyder invariant. As a result these two quantities display similar levels of conservation. A better metric is looking at the conservation of the second DN invariant. Based on this plotted invariant space we see reasonable conservation of both nonlinear invariants of motion for low vertical kicks and middling horizontal kicks. Based on this observation, a collection was taken for the same kicker settings repeatedly for the full beam lifetime. Once again, the sextupoles are in the "lilac" configuration and the nonliner $t=-0.238$. We can observe the nonlinear invariants versus current for this setting, in Figure \ref{fig:pointCurrent}. There is a slight reduction in overall conservation as current goes down, this is an expected effect of the decreasing signal to noise ratio we see in the BPM TBT signals. Additionally, the valuse are all within the statistical uncertianty for the range from \~0.33 to 0.5 mA.
+The first DN invariant (the Hamiltonian) is similar in functional form to the overall Courant-Snyder invariant. As a result these two quantities display similar levels of conservation. A better metric is looking at the conservation of the second DN invariant. Based on this plotted invariant space we see reasonable conservation of both nonlinear invariants of motion for low vertical kicks and middling horizontal kicks. Based on this observation, a collection was taken for the same kicker settings repeatedly for the full beam lifetime. Once again, the sextupoles are in the "lilac" configuration and the nonliner $t=-0.238$. We can observe the nonlinear invariants versus current for this setting, in Figure \ref{fig:pointCurrent}. There is a slight reduction in overall conservation as current goes down, this is an expected effect of the decreasing signal to noise ratio we see in the BPM TBT signals. Additionally, the valuse are all within the statistical uncertianty for the range from about 0.33 to 0.5 mA.
 
 \begin{figure}
 	\centering
@@ -70,18 +80,75 @@ The first DN invariant (the Hamiltonian) is similar in functional form to the ov
 
 This set corresponds to the best conservation of the nonlinear invariants via this method. We can compare to the predicted deviation between the conservation of the courant snyder invariant with adjusted lattice funcitons and the nonlinear invariants in simulation for the same initial amplitudes. Table \ref{tab:invConsv} shows the difference in the invariants in simulation and experiment. Unfortunately direct calculation of the analytical invariant quantities from fitted position data has insufficient resolution to demonstrate conservation of these invariants. We can still evaluate regions of better and worse conservation, but the direct quantitatve verificaiton is limited by the TBT noise in our BPM signals.
 
-
-An additional amplitude independent approach to evaluating the variance of the predicted invariants is to look at the frequency spectrum of the values. As previously commented on for figure \ref{fig:invTbt}, for non conserved quatitites, we expect oscillations of the value about some central value. For a conserved quantity, we expect the TBT noise to dominate and the frequency spectrum to be flat. For a non-conserved quantity, we expect peaks in the frequency spectrum corresponding to the oscillation.
+\begin{table}
+    \centering
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Invariant} & \textbf{Simulation} & \textbf{Experimental}\\
+        \midrule
+        CS Hamiltonian & 1.9\% & 6.9\% \\
+        DN Hamiltonian & 0.3\% & 5.6\% \\
+        DN Invariant & 0.3\% & 6.9\% \\
+        \bottomrule
+    \end{tabular}
+    \caption{Invariant Conservation Standard Deviation}
+    \label{tab:invConsv}
+\end{table}
 
 
 \section{Amplitude Dependent Detuning} \label{sec:ampDetune}
-A useful measurement of the nonlinearities of a system is to directly evaluate the change in tune with the amplitude. This is the figure of merit which impacts the potential strength of the Landau damping of a system. The amplitude dependent detuning was evaluated for different t-parameter settings ranging from $t=-0.05$ to $t=-0.41$. The resonant capture effects had a strong impact on available detuning measurments beyond $t=-0.275$. Figure \ref{fig:t330Detuning} shows the detuning for a t-parameter setting of $t=-0.330$, note the clustering of tunes on the third order coupling line. The sextupole terms tend to drive this coupling and trap the beam on the resonance. This does not negatively impact stability, but renders us insensitive to the detuning effects from the NIO.
+A useful measurement of the nonlinearities of a system is to directly evaluate the change in tune with the amplitude. This is a figure of merit which impacts the potential effectiveness of the Landau damping of a system. The amplitude dependent detuning was evaluated for different t-parameter settings ranging from $t=-0.05$ to $t=-0.41$. The resonant capture effects had a strong impact on available detuning measurments beyond $t=-0.275$. Figure \ref{fig:t330Detuning} shows the detuning for a t-parameter setting of $t=-0.330$, note the clustering of tunes on the third order coupling line. The sextupole terms tend to drive this coupling and trap the beam on the resonance. This does not negatively impact stability, but renders us insensitive to the detuning effects from the NIO.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadPoint_t330.pdf}
+	\caption{}
+	\label{fig:t330Detuning}
+\end{figure}
+
 
 Figure \ref{fig:t330phaseSpace} shows the resulting phase space for the beam on this coupling resonance. The contours are characteristic of the two to one ratio of the coupling tunes.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{./chapter_4_figures/coupledSextupolePhaseSpace.pdf}
+	\caption{}
+	\label{fig:t330phaseSpace}
+\end{figure}
+
 The $Q_x = 1/3$ horizontal resonance line also impacted the availible aperture for tune measurments. Figure \ref{fig:t140phaseSpace} shows the reconstructed phase space of a kick near this line for a NIO setting at $t=-0.140$. The characteristic triangular phase space is visible.
 
-Based on these constraints, to measure the maximum range of the detuning without resonant effects, a nominal working point of $t=-0.238$ was selected, which corresponds to $Q_x = 0.364, Q_y = 0.217$. Figure \ref{fig:t238detune35} shows the detuning for this point sampling 35 turns. This is quite fast and leads to some uncertianties in the tune measurments. However, we still see resonant capture effects on fractions of the beam. If we are dominated by TBT signal before full decoherence we are sensitive to the DN NIO detuning. However if the tune lenght is sampled for a long span, the result is similar to other regions of the phase space. Figure \ref{fig:t238detune100} shows the same tune space measurments for a TBT sample range of one hundred turns. We see resonant capture on sextupole and octupole coupling lines.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{./chapter_4_figures/horizontalSextupolePhaseSpace.pdf}
+	\caption{}
+	\label{fig:t140phaseSpace}
+\end{figure}
+
+
+Based on these constraints, to measure the maximum range of the detuning without resonant effects, a nominal working point of $t=-0.238$ was selected, which corresponds to $Q_x = 0.364, Q_y = 0.217$. Figure \ref{fig:t238detune45} shows the detuning for this point sampling 45 turns. This is quite fast and leads to some uncertianties in the tune measurments. Figrue \ref{fig:t238detune45Error} shows a further zoomed version of the plot with errorbars indicating uncertianties of the tune measurments in each plane. However, we still see resonant capture effects on fractions of the beam. If we are dominated by TBT signal before full decoherence we are sensitive to the DN NIO detuning. However if the tune length is sampled for a long span, the result is similar to other regions of the phase space. Figure \ref{fig:t238detune190} shows the same tune space measurments for a TBT sample range of 190 turns. We see resonant capture on sextupole and octupole coupling lines.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadGrid_t238_45turn.pdf}
+	\caption{}
+	\label{fig:t238detune45}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadErrorbar_t238_45turn.pdf}
+	\caption{}
+	\label{fig:t238detune45Error}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadPoint_t238_190turn.pdf}
+	\caption{}
+	\label{fig:t238detune190}
+\end{figure}
 
 
 We can also compare this detuning with our directly calibrated amplitude measurements. As the amplitude calibration depends on the linear lattice parameters, the direct amplitude dependent measurments were only valid for the "lilac" sextupole configuration. Figure \ref{fig:t238ampDetuneBase} shows the tune in both planes plotted agains the equivalent initial linear action in both planes. In addition, simulated tunes for the ideal IOTA lattice are plotted alongside. The overall direction of the detuning and the ranges are comparable, but a number of features are lacking. The horizontal and vertical detuning versus the horizontal amplitude are suppressed, the slope of the detuning versus the veritcal kicks is different, \textit{and the width of the horizontal detuning is significantly impacted}.
@@ -93,6 +160,13 @@ We make one more comparison, that of the detuning with the S2 nonlinearities and
 The effect is more striking in tune space, Figure \ref{fig:t238detuneQuad} shows the overlay of the simulated tune spread for configuration S3 and the measured detuning.
 
 We see significant impacts of the residual nonlinearities in the bare IOTA lattice. We can directly evaluate the amplitude dependent detuning for the bare "lilac" as well. Figure \ref{fig:t0detune} shows this detuning. We see coherent detuning along the linear coupling resonance.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadPoint_t000_190turn.pdf}
+	\caption{}
+	\label{fig:t0detune}
+\end{figure}
 
 \section{Dynamic Aperture} \label{sec:DA}
 The dynamic aperture was measured for a number of different lattice configurations and nonlinear insert settings. The losses along fixed amplitude ratio "spoke" kicks were taken as outlined in section \ref{sec:DA}. To evaluate the loss amplitude we compare the initial amplitude to the effective linear action in the center of the nonlinear insert, as we expect this to be the minimizing aperture. In this approximaiton, the aperture comparison is seen in \ref{fig:iotaMinApDA}. We see reasonable aperture conservation in the vertical plane for the first few t-parameters, but the horizontal aperture shrinks to a plateau.
