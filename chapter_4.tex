@@ -214,7 +214,15 @@ The dynamic aperture was measured for different lattice configurations and nonli
 
 The measured losses with amplitude has a few caveats. An error in the admittance model of IOTA means we were not strictly limited by the small aperture in the center of the nonlinear insert.
 
-Additionally, an effect related to the configuration space of the NIO system may shrink the admittance. For larger t-parameters, the configuration space begins to take on an "hourglass" shape, so for a given horizontal axis positon, parts of the beam off the median symmetry line may have larger horizontal offsets and be lost on the minimizing aperture.
+Additionally, an effect related to the configuration space of the NIO system may shrink the admittance. For larger t-parameters, the configuration space begins to take on an "hourglass" shape, so for a given horizontal axis positon, parts of the beam off the median symmetry line may have larger horizontal offsets and be lost on the minimizing aperture. Figure \ref{fig:dnAdmitEvolve} shows the case for a simple simulation (configuration s1 in seciton \ref{sec:simConfig}) of only the nonlinear insert and a matching matrix. We see losses on the central aperture changing near the horizonatal axis for large displacements. This is a strictly nonlinear effect, for a linear system the admittince for this single aperture case would simply be the aperture scaled by the beta funciton. For future experiments a full aperture model of IOTA should be constrocted and evaluated with the full DN impacts, but this is unfortunately beyond the scope of this thesis work.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/dnAdmittanceEvolution.pdf}
+	\caption{Evolution of admittance for a simple thin lens DN system}
+	\label{fig:dnAdmitEvolve}
+\end{figure}
+
 
 \section{Nonlinear Stability at Integer Resonance} \label{sec:intCross}
 The synchrotron camera images were used for evaluation of beam stability at the integer resonance condition. To make this observation, the t-parameter was incremented while logging the time dependence of the synchrotron radiation profiles. Based on the calibration of the t-strength from the linear working point in section \ref{sec:dnCal}, settings crossing the vertical integer resonance were selected. The linear system is fundamentally unstable at this tune, but the NIO system retains stability . Measurments supporting stability in these conditions are strong evidence for the NIO system. To evaluate stability, the lifetime of the beam was evaluated at each t-parameter setting. Beam current was low due to a restricted dynamic aperture and normal beam lifetime, so the DCCT measurments were insensitive and intensity was evaluated from the synchtrotron images. Section \ref{sec:synchLife} describes the methods to extract the lifetime from the synchtrotron images.

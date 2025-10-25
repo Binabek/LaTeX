@@ -332,9 +332,18 @@ Considering with a large collection of mixed kicks for this bare lattice configu
 This amplitude calibration could be used directly or to generate the initial values for a short position reconstruction between the kicker and the nonlinear insert.
 
 \section{Dynamic Aperture Evaluation} \label{sec:daEval}
-The dynamic aperture (DA), or amplitude limit on stable motion, is a crucial metric of the real nonlinear system with full perturbations. The dynamic aperture is evaluated for simulated beams as the limit of asymptotically stable trajectories. For experimental measurements, the interpretation becomes more difficult. The DA measurements settled on were performed by measuring the losses of kicked circulating beam at increasing amplitudes. A consistent qualitative metric was applied, the loss limit was defined as a percent loss greater than 25\% or two subsequent kicks with percent losses greater than 10\%.
+The dynamic aperture (DA), or amplitude limit on stable motion, is a crucial metric of the real nonlinear system with full perturbations. The dynamic aperture is evaluated for simulated beams as the limit of asymptotically stable trajectories. For experimental measurements, the interpretation becomes more difficult. The DA measurements settled on were performed by measuring the losses of kicked circulating beam at increasing amplitudes. Two methods were used to evaluate the dynamic aperture, a fast coarse approach implemented online for optimization purposes, and a more granular method emplying postprocessing. 
 
-For a particular DA scan, a bunch was injected and scraped to a standard initial current in the BPM sensitivity range. The beam was iteratively kicked along fixed ratio "spokes" as current was logged. Once the current reached a minimum threshold, another bunch was injected and the scan of another spoke began.  Figure \ref{fig:spokes} illustrates the resulting geometry of the kick amplitudes.
+The coarse apporoach consisted of fitting a logistic funciton to the charactersitic current curve of repeated losses versus kick amplitude. The offset of the logistic function could be used as a relative metric for the location of the aperture. Figure \ref{fig:acnetDA} shows the raw output in the Fermilab ACNET control system that was used for the fitting. The green trace is the DCCT current, the red trace is a rolling average of the same measurment, and the yellow trace is the calibrated current as measured by the PMT. The spikes in the PMT signal correspond to kicks, as the center of the PMT window is discolored, so when the beam size increases after a kick the spot size increases beyond this artificially suppressed region on the diagnostic. This ended up being an additional useful indicator of successfull kicks in the machine. This method relies on many assumptions, the losses between the kicks are consistent, the kick timing is regular, and the initial current is consistent. However, it was relatively fast, and resulted in a simple single figure of merit, both very useful features for input into an optimizer
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{./chapter_3_figures/2023-10-01acnetSigmoidScan.png}
+	\caption{ACNET control system readout of currents during a logistic fit DA scan}
+	\label{fig:acnetDA}
+\end{figure}
+
+For the more granualar, postprocessed DA scans, a bunch was injected and scraped to a standard initial current in the BPM sensitivity range. The beam was iteratively kicked along fixed ratio "spokes" as current was logged. Once the current reached a minimum threshold, another bunch was injected and the scan of another spoke began.  Figure \ref{fig:spokes} illustrates the resulting geometry of the kick amplitudes.
 
 \begin{figure}
 	\centering
@@ -343,7 +352,7 @@ For a particular DA scan, a bunch was injected and scraped to a standard initial
 	\label{fig:spokes}
 \end{figure}
 
-Both the BPMs and DCCT were used to monitor beam current after a kick. The sum of the individual BPM button responses can be used as a TBT indicator of losses. The BPM TBT output contains 20 turns of information before the kicker fires, which can be used as a baseline. For loss comparisons, the mean of the BPM signal for the first and last 20 turns was compared. The sample range of the BPMs was around 7000 turns which corresponds to a timescale of just under a millisecond.The sum signal from all of the BPMs was combined TBT to form a global sum signal. The sum signal noise was evaluated as the standard deviation of these sample ranges. 
+Both the BPMs and DCCT were used to monitor beam current after a kick. The sum of the individual BPM button responses can be used as a TBT indicator of losses. The BPM TBT output contains 20 turns of information before the kicker fires, which can be used as a baseline. For loss comparisons, the mean of the BPM signal for the first and last 20 turns was compared. The sample range of the BPMs was around 7000 turns which corresponds to a timescale of just under a millisecond. The sum signal from all of the BPMs was combined TBT to form a global sum signal. The sum signal noise was evaluated as the standard deviation of these sample ranges. 
 
 The DCCT signal was sampled before and after the kick on a timescale of a second. Loss timescales differed, some losses on kick were visible in the first few turns of the sum signal, and some losses were too slow to be in the sum signal but were visible in the DCCT. 
 
@@ -356,7 +365,7 @@ To ensure that losses occurred in the time span between the DCCT samples, and we
 	\label{fig:dcctKickLife}
 \end{figure}
 
-Figure \ref{fig:daLimit} shows the DCCT and BPM sum signal for increasing kicks along a particular spoke. The red line indicates the determined DA limit for the particular spoke.
+Figure \ref{fig:daLimit} shows the DCCT and BPM sum signal for increasing kicks along a particular spoke. A consistent qualitative metric was applied, the loss limit was defined as a percent loss greater than 25\% or two subsequent kicks with percent losses greater than 10\%. The red line indicates the determined DA limit for the particular spoke.
 
 \begin{figure}
 	\centering
