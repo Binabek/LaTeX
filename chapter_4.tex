@@ -1,8 +1,5 @@
 \chapter{Experimental Studies} \label{chap:expResults}
 
-\section{NIO Studies Kicked Beam Collections}
-
-
 \section{Working Point stability of Different NIO configurations} \label{sec:nioWorkPoint}
 As discussed in section \ref{sec:nioConfig}, the NIO system requires chromatic compensation for stable operation. The base stability was investigated for different bare lattice configurations. Circulating beam was established and the nonlinear insert t-parameter was slowly ramped to establish stability. Figure \ref{fig:bareRamp} shows the ramp for the naieve bare lattice without sextupole compensation of any kind. We see complete losses near the horizontal third order resonance $3 Q_x = 1$. This may indicate residual sextupole components in the bare lattice. The source of these nonlinearities is not clear, but may stem from the dipole fringe fields, or the geometric nonlinearities from the tight bending radius. The source may also be destabilztion of the system due to adjustment of momentum.
 
@@ -42,6 +39,18 @@ Figure \ref{fig:fastRamp} shows quickly ramping does not incur significant losse
 	\label{fig:fastRamp}
 \end{figure}
 
+
+\section{NIO Studies Kicked Beam Collections}
+Measurements of kicked beam data is convienet and information rich with electron operation. Synchrotron radiaiton damping means the beam occupies a relatively small portion of the phase space and the motion of the centroid closely approximates the motion of a single particle at the same amplitude. The radiation damping also means that the beam "resets" after a kick as the beam damps back down to its equalibrium emitttance quickly. In the case of IOTA the damping time is significantly longer than the BPM sample range, and on the order of the kicker reset timing. We do not introduce significant damping systematics in the tbt data, and can effectively kick as quickly as possible to maximize the available lifetime between re-injections. For kicked beam measurements we have access to all 21 BPMs on a TBT basis and the current measurments, nearly our full diagnostic complement. The synchrotron radiation cameras lack the acquisition systems and speed for kicked beam measurments, but the live monitoring provides useful operational information on kick success, amplitude, and damping. There were two primary configurations for kicked beam measurements in run 4. The first was a simple grid in the parameter space of the kicker setpoints. Early in the run, coarse calibration of the kickers was performed to evaluate their respective strengths. These ratios were used to roughly scale to a grid in beam configuration space. As described in section \ref{sec:ampCal}, the absolute calibration varies based on the exact lattice configuration, and likely drifts from collection to collection with the overall lattice drift. So, while the coarse calibration does not yield a uniform grid in configuration space. But if the kick difference is small the density is sufficient to sample the full available phase space. Two grid ordering approaches were used, for fast measurements, the points were ordered according to the magnitude of their amplitude. This approach seeks to maximize the number of kicks per injection before beginning to lose beam on aperture, physical or dynamic. The second configuration of grid kicks used a raster approach, a single horizontal or vertical kicker setting was selected, and the perpendicual kicker iterated amplitudes until the beam was fully lost on the aperture. The kicks were rastered in both direction, first sweeping one direction then the other. This approach is neccesarially slower, but yields the maximum range of samples in configuration space, and was only applied to a few lattice configurations which had been evaluted to have reasonable apertures and large detuning ranges. Figure \ref{fig:gridKick} shows an example of the kicker settings for a grid scan with current. The colors scale is simply an incrementing counter of individual kicks. It shows the perpendicular rastering, we can see where losses occur more quickly in one direction than the other, and the earlier kicks on the vertical raster lines peek out from behind. The two points not on the regular grid spacing are "calibration" kicks used for collection purposes, but not analyzed.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{./chapter_4_figures/gridKickExample.pdf}
+	\caption{Circulating current in IOTA while quickly ramping t-parameter with chromatic compensation}
+	\label{fig:gridKick}
+\end{figure}
+
+The other primary collection for kicked beam measurement used was a spoke style scan intended for aperture measurments. For these scans a fixed kicker amplitude ratio was employed, with iteratively larger kicks applied along that "spoke". Initially a binary search style method was tried for efficient measurment of the aperture. However, in practice, re-injections were time intensive and unreliable, so methodswith expected losses at the end were preferrable. For each spoke, the beam was re-injected, scraped to a consistent initial current, then kicked along the spoke starting at an expected lossless amplitude. The kick amplitude was then increased until total beam loss as measured by the DCCT. The method to measure the aperture with this approach is detailed in section \ref{sec:DAmethod}. In principle the lossless kicks from this approach could also be used for analysis of the TBT motion, but the much better statistics from grid-style scans means this was not often done.
 
 \section{Conservation of Nonlinear Invariants} \label{sec:invConv}
 A direct verification of proper implementation of the NIO system would be conservation of the analytically predicted invariants. The same approach was used in section \ref{sec:simInv} for evalution of insert configurations. To evaluate the invariant expressions, transverse momentum coordinates must be reconstructed as described in section \ref{sec:momReconst}, and the fitted coordinates needed to be normalized by the bare lattice Courant-Snyder functions at the virtual BPM location. Like the transfer matrices, these quantities were extracted from the design lattice fitted to by LOCO. To benchmark the method, the Courant-Snyder invariants were calculated for the same kicks. For reasonable comparison to the equivalent Courant-Snyder invariant, the first order effect on the lattice functions due to the NIO insert were simulated using quadrupoles in place of the full nonlinear elements. The calculations of the Courant-Snyder invariants used this normalization as opposed to the bare lattice functions. To avoid apparent invariant changes due to any linear coupling, the sum of the horizontal and vertical invariants (also the normalized Hamiltonian) was used for comparison \cite{leeAccelerator}.  Figure \ref{fig:invTbt} shows the resulting calculated invariant quantities TBT for two kicks. These parameters are normalized to the value at the first turn. Since the decoherence reduces the amplitude of the centroid signal, the invariant quantities also neccesarially reduce. The TBT BPM position uncertianty also impacts the invariant uncertianty. The left plot shows a good result for measured conservation, where both nonlinear predicted invariants show relatively small devation from their predicted values. The right plot shows a case where the second DN invariant is not conserved at all. We see large oscillations about a central value, this is a characteristic signature of an arbitrary value calculated from the dynamical variables. These responses were for the same lattice condition with different kick amplitues.
@@ -104,8 +113,8 @@ A useful measurement of the nonlinearities of a system is to directly evaluate t
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadPoint_t330.pdf}
-	\caption{Amplitude dependent detuning for nominal $t=-0.330$}
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadErrorbar_t330_45turn.pdf}
+	\caption{Amplitude dependent detuning for nominal $t=-0.330$, sampled for 45 turns}
 	\label{fig:t330Detuning}
 \end{figure}
 
@@ -148,7 +157,7 @@ Based on these constraints, to measure the maximum range of the detuning without
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadPoint_t238_190turn.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadErrorbar_t238_190turn.pdf}
 	\caption{Amplitude dependent detuning for nominal $t=-0.238$, sampled for 190 turns. Resonant capture dominates tune measurments for a large fraction of tune space}
 	\label{fig:t238detune190}
 \end{figure}
@@ -195,8 +204,8 @@ We see significant impacts of the residual nonlinearities in the bare IOTA latti
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadPoint_t000_190turn.pdf}
-	\caption{Amplitude dependent detuning for bare IOTA lattice}
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/zoomTuneSpreadErrorbar_t000_190turn.pdf}
+	\caption{Amplitude dependent detuning for bare IOTA lattice. Evaluated for 190 turns, error bars are smaller than markers}
 	\label{fig:t0detune}
 \end{figure}
 
@@ -247,7 +256,7 @@ These images are for the same nominal setting, but there is a difference in the 
 
 The camera exposure had to be changed during the course of the measurements, as continuing beam loss reduced the signal. This means that only the relative intensity for a given exposure setting could be evaluated, and the absolute circulating current values were not availible.
 
-Figure \ref{fig:synchLife} shows the fitted lifetimes for the beam as the integer resonance is crossed. The red circled points correspond to the synchtrotron profiles plotted in \ref{fig:intCrossSych}, which were used to set the upper limit on the integer resonance crossing indicated in the green bar, around the nominal t-parameter of $t=-0.5$. 
+Figure \ref{fig:synchLife} shows the fitted lifetimes for the beam as the integer resonance is crossed. The red circled points correspond to the synchtrotron profiles plotted in Figure \ref{fig:intCrossSynch}, which were used to set the upper limit on the integer resonance crossing indicated in the green bar, around the nominal t-parameter of $t=-0.5$. 
 
 \begin{figure}
 	\centering
