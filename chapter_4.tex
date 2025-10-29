@@ -236,40 +236,57 @@ Additionally, an effect related to the configuration space of the NIO system may
 \section{Nonlinear Stability at Integer Resonance} \label{sec:intCross}
 The synchrotron camera images were used for evaluation of beam stability at the integer resonance condition. To make this observation, the t-parameter was incremented while logging the time dependence of the synchrotron radiation profiles. Based on the calibration of the t-strength from the linear working point in section \ref{sec:dnCal}, settings crossing the vertical integer resonance were selected. The linear system is fundamentally unstable at this tune, but the NIO system retains stability . Measurments supporting stability in these conditions are strong evidence for the NIO system. To evaluate stability, the lifetime of the beam was evaluated at each t-parameter setting. Beam current was low due to a restricted dynamic aperture and normal beam lifetime, so the DCCT measurments were insensitive and intensity was evaluated from the synchtrotron images. Section \ref{sec:synchLife} describes the methods to extract the lifetime from the synchtrotron images.
 
-The topography of the DN system is useful here in tuning the measurments and determining the working point. At strengths of the nonlinear insert beyond the integer resonance, the origin of the system becomes an unstable fixed point. Two new stable fixed points are present above and below the origin. The result in the machine is the slow splitting of the beam into two stable ”beamlets” about these new fixed points. By evaluating when the beam becomse fully split, an upper limit on the crossing of the integer resonance location can be set. In addition to evaluating the integer resonance, the synchrotron profiles could be used for fine tuning the closed orbit throught the insert. Varying the closed orbit knobs to arrive at an equal distribution of beam in the top and bottom beamlets is a  clear indicator of proper alignment about the center of the insert. Figure \ref{fig:synchCenter} shows a comparison of the synchrotron profile of the beam for the nominal lattice and after hand optimization. Two important effects are visible here, the first is that the t-parameter calibration is inexact. 
+The topography of the DN system is useful here in tuning the measurments and determining the working point. At strengths of the nonlinear insert beyond the integer resonance, the origin of the system becomes an unstable fixed point. Two new stable fixed points are present above and below the origin. The result in the machine is the slow splitting of the beam into two stable ”beamlets” about these new fixed points. By evaluating when the beam becomse fully split, an upper limit on the crossing of the integer resonance location can be set. Figure \ref{fig:allCams} shows the raw images in all of the cameras for a t-parameter just beyond the integer resonance condition. Here we see the characterstic distribution about the two new fixed points. Based on the calibration of the step size between t-parameter settings and the location of the splitting of the beam, we can attach a nominal t-parameter of $t=-0.525\pm0.0019$ to these profiles. The assymetry in the beam distribution is another characteristic feature of operation at and beyond the integer resonance with the DN NIO system. Small deviations in the closed orbit means the beam distribution tends to oscillate between the two main potential wells over relatively slow timescales, yielding a visible "flickering" of the distribution. By evaluating many profiles over time for the same t-parameter, a more even distribution can be obtained, and is the approach used moving forward.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./chapter_4_figures/synchLightNomOpt.png}
-	\caption{Sychrotron radiation profiles for the nominal lattice, and lattice after manual aliment, camera M3R}
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/allCamst525.png}
+	\caption{Example sychrotron radiation profiles for all cameras, t-parameter $t=-0.525$}
+	\label{fig:allCams}
+\end{figure}
+
+In addition to evaluating the integer resonance, the synchrotron profiles could be used for fine tuning the closed orbit throught the insert. Varying the closed orbit knobs to arrive at an equal distribution of beam in the top and bottom beamlets is a  clear indicator of proper alignment about the center of the insert. Additionally, the characteristic lattice funcitons in the nonlinear insert could be adjusted. Figure \ref{fig:synchCenter} shows a comparison of the synchrotron profile of the beam for two different manual optimizations. The left plot is the nominal IOTA lattice with best manual optimization for beam centering in the nonlinear insert. Here many images at the same t-parameter are combined to smooth out this slow scale flickering mentioned above. The plot on the right shows the same set t-parameter optimized for best lifetime, here the beam is less centered in the DN potential. Less obvious from this plot is the fact that the t-parameter scaling suffers some drift, the location of the integer resonance based on the topology changes with respect to the setpoint t-parameter for different collections. The strong dependence of the tune on the t-parameter and the resolution and repeatability means the topology is a more accurate indicator of the resonance crossing than our earlier tune based methods. Additionally, the strong suppression of the dynamic aperture in these regions, means kicked beam tune measurements are unavailable.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{./chapter_4_figures/synchLightNomOptM3R_t525.pdf}
+	\caption{Sychrotron radiation profiles for the nominal lattice, and lattice optimized for lifetime, in camera M3R, t-parameter $t=-0.525$}
 	\label{fig:synchCenter}
 \end{figure}
 
-These images are for the same nominal setting, but there is a difference in the seperation of the maxima indicating different effective nonlinear strengths. Second, there is a slightly more even distribution between the two maxima in the right image, which was teh figure of merit for the alignment. However, imperfect closed orbit stability means that this condition was not neccesarially the same for the overall range of the collections. Figure \ref{fig:synchAssym} 
-
-\begin{figure}
-	\centering
-	\includegraphics[width=1\linewidth]{./chapter_4_figures/synchLightNomOptM1assym.png}
-	\caption{Synchrotron radiation profiles for the nominal lattice and lattice after manual alignment, camera M1L}
-	\label{fig:synchAssym}
-\end{figure}
 
 The camera exposure had to be changed during the course of the measurements, as continuing beam loss reduced the signal. This means that only the relative intensity for a given exposure setting could be evaluated, and the absolute circulating current values were not availible.
 
-Figure \ref{fig:synchLife} shows the fitted lifetimes for the beam as the integer resonance is crossed. The red circled points correspond to the synchtrotron profiles plotted in Figure \ref{fig:intCrossSynch}, which were used to set the upper limit on the integer resonance crossing indicated in the green bar, around the nominal t-parameter of $t=-0.5$. 
+Figure \ref{fig:synchLifeNom} shows the fitted lifetimes for the beam as the integer resonance is crossed for the well centered lattice configuration. The red circled points correspond to the synchtrotron profiles plotted in Figure \ref{fig:intCrossSynchNom}, which were used to set the upper limit on the integer resonance crossing indicated in the green bar, around the nominal t-parameter of $t=-0.5$. Also included for reference are some t-parameters beyond the splitting point, where two seperately stable orbiting beamlets propogate in the machine.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./chapter_4_figures/integer_crossing_lifetimes.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/integer_crossing_lifetimes_nominal.pdf}
 	\caption{Fitted lifetimes from synchrtron radiation intesity for beam crossing integer resonance.}
-	\label{fig:synchLife}
+	\label{fig:synchLifeNom}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./chapter_4_figures/m1l_split_tight_aspect_tlabel.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/m1l_split_tight_aspect_tlabel_nominal.pdf}
 	\caption{Synchrotron radiation profiles for crossing the integer resononce, the original stable fixed point splits to two new fixed points which move away from the origin with the t-strength.}
-	\label{fig:intCrossSynch}
+	\label{fig:intCrossSynchNom}
+\end{figure}
+
+Figure \ref{fig:synchLifeOpt} shows the fitted lifetimes for the beams at the integer resonace after manual optimization for best lifetime. We see some significant improvement for lifetimes up to and at the integer resonance limit. Once again, the red circled points correspond to beam profiles in \ref{fig:ingCrossSynchOpt}. Here a slightly broader range of nominal t-parameters is selected to show the full transition from the almost perfectly elliptical profile through to the broadly seperated beamlets. As the orbit centering is imperfect in this lattice we can see an assymetric current distribution in the beamlets, as the lower beamlet in the last plot contains a larger fraction of the total circulating beam.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/integer_crossing_lifetimes_optimized.pdf}
+	\caption{Fitted lifetimes from synchrtron radiation intesity for beam crossing integer resonance.}
+	\label{fig:synchLifeOpt}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/m1l_split_tight_aspect_tlabel_optimized.pdf}
+	\caption{Synchrotron radiation profiles for crossing the integer resononce, the original stable fixed point splits to two new fixed points which move away from the origin with the t-strength.}
+	\label{fig:intCrossSynchOpt}
 \end{figure}
 
 The lifetime measurements on the order of minutes indicate asymptotic stability of particles at the integer resonance where the nonlinear focusing terms dominate. We see very low lifetimes beyond the integer resonance where the beam is fully split. 
