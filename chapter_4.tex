@@ -210,7 +210,36 @@ We see significant impacts of the residual nonlinearities in the bare IOTA latti
 \end{figure}
 
 \section{Dynamic Aperture} \label{sec:DA}
-To evaluate the different sextupole configurations, full aperture scans of the bare lattice were taken for different sextupole configurations after the optimization. \ref{fig:bareDA}
+For evaluations of the dynamic aperture, we first need to understand the admittance, or accepted amplitues of our lattice. This is of course a convolution of the apertures of the machine and the beta funcitons at each location. In IOTA the dominant minimizing aperture is that in the nonlinear insert. due to the small size of the nonlinear magnet poles, the aperture is constrained, nominally by the normalization due to the design beta function in the insert. Figure \ref{fig:dnAperture} shows the CAD drawings of the IOTA NIO insert vaccum chamber, at the center and the enterance. The most strict minimizing requirements are horizontal so this lemon-shaped profile was adopted to simultaneously clear the poles and provide good vacuum conductance in the insert. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/iotaApertureDrawings.png}
+	\caption{CAD drawings of IOTA NIO insert vaccuum chambers, with minimizing ellipses in apertures overlaid}
+	\label{fig:dnAperture}
+\end{figure}
+
+Elliptical minimizing apertures at each location have been overlaid, while there may technically be extra vertical admittance beyond these ellipses, it is very narrow and simulation softwares typically only supports elliptical and rectangular apertures. The vaccum chamber also does not perfectly conform to the beta function scaling, so a single aperture is insufficeint for the bare lattice. A combined minimizing aperture using the limits in each direction was calculated. Table \ref{tab:dnAperture} gives the relative values for each. This is a bit coarse, but the uncertianties in our closed orbit location and beta function scaling mean that accuracy below 50\unit{\micro m} will be overprecision, so this combined minmizing aperture will be used for reference moving forward.
+
+\begin{table}
+    \centering
+    \begin{tabular}{lccc}
+    \toprule
+    \textbf{Aperture} & \textbf{X Minor Axis} [mm] & \textbf{Y Major Axis} [mm] & \textbf{Axis Ratio} [1]\\
+    \midrule
+    Central & 3.84 & 5.15 & 0.75\\
+    Edge  & 7.12 & 8.60 & 0.83\\
+    Combined Central  & 3.84 & 5.05 & 0.76\\
+    \bottomrule
+    \end{tabular}
+    \caption{IOTA NIO Insert Apertures}
+    \label{tab:dnAperture}
+\end{table}
+
+There is an additional aperture impact on the admittance, the undulator used for other experiments has an atypical vaccuum pipe which limits the vertical admittance for low t-parameter values. The first order effect of the DN insert can be used to adjust the beta functions, so we can see that this restriciton goes away and the insert vaccum becomes the minimizing aperture for t-parameters $t<-0.2$. Before then, though we end up with a superpositoin of the ellipse and a flat vertical limiting aperture.
+
+
+To evaluate the different sextupole configurations, full aperture scans of the bare lattice were taken for different sextupole configurations after the optimization. Figure \ref{fig:bareDA} shows the resulting measured aperture limits. The apertures are symmetric, so the limits are mirrored twice to give a sense of the aperture in configuration space. For comparison, the admittance scaled to the center of the nonliear insert is plotted in the thick black lines. Both the insert vacuum and the undulator contribute here, so the actual admittance restriciton becomes the minimum of these overlapping contours, a vertically truncated ellipse. The uncertianties presented are the rms beam sized according to the expected emittance for the current at loss. The vertical uncertiantly also includes a contribution from the closed orbit in the undulator. While the closed orbit is carefully controlled in the nonlinear insert, it is less well controlled in the rest of the lattice, which contributes to about a $\pm 5$mm uncertianty in the closed orbit at that aperture. We see significant impacts on the sextupole configuration from the sextupole fields. Without any sextupole excitation, we see significant horizontal dynamic aperture restrictions. The consistent vertical restriction is consistent with a flat vertical aperture restriction. Potentially, this means that the aperture metric systematically underevaluates physical aperture restrictions. This is not so much of a limitation for evaluating relative dynamical losses, so it was not pursued further. It does serve to emphasize that the greatest value from these loss scans is int their relative features, and not in the exact loss limits. Adding the minimum sextupole complement does not adjust the aperture much, making it slightly larger. The optimization result with the "lilac" configuration shows significant gains horizontally at the cost of some vertical aperture.
 
 \begin{figure}
 	\centering
@@ -221,7 +250,6 @@ To evaluate the different sextupole configurations, full aperture scans of the b
 
 The dynamic aperture was measured for different lattice configurations and nonlinear insert settings. The losses along fixed amplitude ratio "spoke" kicks were taken as outlined in section \ref{sec:DAmethod}. To evaluate the loss amplitude we compare the initial amplitude to the effective linear action in the center of the nonlinear insert, as we expect this to be the minimizing aperture. In this approximaiton, the aperture comparison is seen in \ref{fig:iotaMinApDA}. We see reasonable aperture conservation in the vertical plane for the first few t-parameters, but the horizontal aperture shrinks to a plateau.
 
-The measured losses with amplitude has a few caveats. An error in the admittance model of IOTA means we were not strictly limited by the small aperture in the center of the nonlinear insert.
 
 Additionally, an effect related to the configuration space of the NIO system may shrink the admittance. For larger t-parameters, the configuration space begins to take on an "hourglass" shape, so for a given horizontal axis positon, parts of the beam off the median symmetry line may have larger horizontal offsets and be lost on the minimizing aperture. Figure \ref{fig:dnAdmitEvolve} shows the case for a simple simulation (configuration s1 in seciton \ref{sec:simConfig}) of only the nonlinear insert and a matching matrix. We see losses on the central aperture changing near the horizonatal axis for large displacements. This is a strictly nonlinear effect, for a linear system the admittince for this single aperture case would simply be the aperture scaled by the beta funciton. For future experiments a full aperture model of IOTA should be constrocted and evaluated with the full DN impacts, but this is unfortunately beyond the scope of this thesis work.
 
