@@ -270,7 +270,7 @@ The dynamic aperture was measured for different lattice configurations and nonli
 	\label{fig:lilacDA}
 \end{figure}
 
-Figure \ref{fig:chromDA} shows the evolution of the aperture for different t-parameters in the IOTA lattice with only chromatic compensation. The $t=0$ measurment here is not the same as in \ref{fig:bareDA} as collections from the same day are preffered for the most direct comparison. There are a number of t-parameter settings below $t=-0.2$, but only the $t=0$ setting is constrained by the undulator admittance, so only that value is plotted. In principle it is not there for the rest of the aperture contours.
+Figure \ref{fig:chromDA} shows the evolution of the aperture for different t-parameters in the IOTA lattice with only chromatic compensation. The $t=0$ measurment here is not the same as in \ref{fig:bareDA} as collections from the same day are preffered for the most direct comparison. There are a number of t-parameter settings below $t=-0.2$, but only the $t=0$ setting is constrained by the undulator admittance, so only that limiting aperture is plotted. Its relative value is not applicable for the rest of the aperture contours, e.g. the $t=-0.187$ is not near the undulator aperture at its vertical admittance settings. Here we see that the evolution is largely the same as with the lilac sextupole configuration. The horizontal aperture srinks before the vertical, and both axes shrink significantly for values of the t-parameter beyond $t=-0.3$. Unfortunately, a direct comparison cannot be made since not all of the same t-parameters were sampled between these lattice configuraitons. Ultimately, based on the reduction of aperture in both of the widely sampled sextupole configurations near sextupole impacts, it seems that the simple optimization of dynamic aperture for the bare lattice is an insufficient condition for maximizing the available NIO aperture.
 
 \begin{figure}
 	\centering
@@ -279,7 +279,41 @@ Figure \ref{fig:chromDA} shows the evolution of the aperture for different t-par
 	\label{fig:chromDA}
 \end{figure}
 
+Of particular interest for the stability of the DN NIO implementation is its robustness to linear lattice perturbations. To evaluate this stability a number of orthogonal perturbations to the linear matchin lattice were constructed, with a particular focus on the lattice functions in the nonlinear insert drift. To evaluate the relative effect, a consistent t-parameter of $t=-0.223$ and the lilac sextupole configuration were applied for all collections. The t-parameter was intended to be the nominal $t=-0.238$ as used for the amplitude dependent detuning and invariant conservation measurments. Unfortunately, by mistake, the calibration factor found in \ref{sec:DNcal} was not applied. Luckily a consistent value of $t=-0.233$ was applied for almost all of the aperture measurments, so we can still make relative measurements. As a baseline, we should evaluate the stability of the aperture measurment for collections at different times. Figure \ref{fig:t223DA}, shows the nominal lattice aperture at $t=-0.223$ on different collection days. The 10/07 collection shows a little inconsistency vertically, but the horizontal apertures are consistnet, and we will compare the measurments to the neasrest base lattice which excludes the 10/07 collection moving forward.
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{./chapter_4_figures/t223LossPhysical.pdf}
+	\caption{Aperture limits for $t=-0.223$ with lilac sextupole settings on multiple collection days}
+	\label{fig:t223DA}
+\end{figure}
+
+The first comparison is the overall tune of the lattice. Nominally, this know adjusts the phase advance in the matching lattice while leaving all the lattice functions exactly the same in the insert. This exact knob was used on a daily basis for matching the tunes of the bare lattice, usually to a $\Delta Q$ lower than \num{10e-3}. The perturbations are then significantly worse than the level of lattice control we expect. We see general reduction of the aperture for mismatch of the external lattice, with sligtly more losses for the increased tune.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{./chapter_4_figures/tunePerturbLossPhysical.pdf}
+	\caption{Aperture limits for perturbations of the bare lattice phase advance in the matching section outside of the insert with $t=-0.223$}
+	\label{fig:tunePerturbDA}
+\end{figure}
+
+The next comparison is adjusting the phase advance across the nonlinear insert, in this case the integer matching condition is conserved, so the overall tune still changes. The system is quite robust to these adjustments, with a sizeable reduction only for significantly reducing the phase advace. Recall that the overall phase advance through the insert is $\Phi_x = \Phi_y = 0.$, so these perterbations are a significant fraction of the overall phase advance. This can be partially understood as a poor implementaiton of the integration, for a symmetric mismatched phase, it simply looks like we did a worse job of matching the nomimal scaling with the bare lattice beta function.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/phiPerturbLossPhysical.pdf}
+	\caption{Aperture limits for pertubations of the bare lattice phase advance across the nonlinear insert with $t=-0.223$}
+	\label{fig:phiPerturbDA}
+\end{figure}
+
+The next two perturbations we consider are the location of the minimum of the beta function $\beta^*$ longitudinally in the insert. These knobs are quite small, not quite 1 cm in a drift of 1.8 m, but we already see significant reduction in the aperture with these samples. This was one of the main knobs used for increasing the beam lifetime at the integer resonance discussed in section \ref{sec:intCross}. The second knob considered here is the amplitude of the dispersion function through the NIO insert. Once again these knobs are quite small, but we see some reduction of the aperture for the most agressinv knob. This is the only comparative perturbation collection with non $t=-0.223$ conditions, the two last points in the dispersion comparison were taken at the properly calibrated $t=-0.238$. However, we see no significant reduction in aperture for the $+\num{2e-2}$ collection, so the comparison is likely reasonable.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/latPerturbLossPhysical.pdf}
+	\caption{Aperture limits for perturbations of the $\beta^*$ location and the dispersion across teh nonlinear insert}
+	\label{fig:latPerturbDA}
+\end{figure}
 
 Additionally, an effect related to the configuration space of the NIO system may shrink the admittance. For larger t-parameters, the configuration space begins to take on an "hourglass" shape, so for a given horizontal axis positon, parts of the beam off the median symmetry line may have larger horizontal offsets and be lost on the minimizing aperture. Figure \ref{fig:dnAdmitEvolve} shows the case for a simple simulation (configuration s1 in seciton \ref{sec:simConfig}) of only the nonlinear insert and a matching matrix. We see losses on the central aperture changing near the horizonatal axis for large displacements. This is a strictly nonlinear effect, for a linear system the admittince for this single aperture case would simply be the aperture scaled by the beta funciton. For future experiments a full aperture model of IOTA should be constrocted and evaluated with the full DN impacts, but this is unfortunately beyond the scope of this thesis work.
 
