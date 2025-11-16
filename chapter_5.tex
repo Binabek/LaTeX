@@ -36,41 +36,55 @@ Figure \ref{fig:idealDNampDetune} displays the tunes versus the initial amplitud
 	\label{fig:idealDNampDetune}
 \end{figure}
 
+
 The characteristic Poincar\`e sections of the DN NIO system are shown in Figure \ref{fig:idealDNpoincare} in fully normalized coordinates. The system exhibits these "Spirograph" like patterns near the circle which would be traced by the basic courant snyder system in the phase space. The most notable effect in the configuration space is the nonlinear couplig which results in this "Hourglass" shape that the particle traces. This has some impacts on admittance considered in section \ref{sec:DA}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactxThinDNexamplePhase_t238.pdf}
-	\caption{Poincare sections for a single macroparticle of the horizontal and vertical phase spaces, and the configuration space for the idealized NIO system at $t=-0.238$}
+	\caption{Poincare sections for a single particle of the horizontal and vertical phase spaces, and the configuration space for the idealized NIO system at $t=-0.238$}
 	\label{fig:idealDNpoincare}
 \end{figure}
 
-We now need to consider more realistic nonlinear insert configurations. It is impractical to manufacture a magnet that smootly tapers with the required longitudinal scaling. To simulate the realistic IOTA insert, we need kicks which correspond to our 18 elements. This wil not perfectly match the neccesary integration of the potential, so we evaluate the quality of invariant conservation for this reduced number of elements. The following simulation consists of the IOTA style nonlinear insert with 18 equally spaced nonlinear thin kicks. We apply an aperture at the center of the insert consistent with the minimizing aperture in IOTA. Figure \ref{fig:v1idealInvariant} shows the resulting invariant conservation for the whole simulated grid of macroparticles. Here we have calculated the standard deviation of the invariants turn-by-turn. We see that the overall conservation quality has gone down, but our RMS is still below a tenth of a percent. In general, the quality of invariant conservation and approximation of the DN system improves for a larger numbers integration steps or slices.
+We can gain some further insight by looking at the phase space and fourier specturm of a particle near the integer resonance. Figure \ref{fig:integerFourierSpectrum} shows the result of the FFT for such a particle. We see that there is a broader spectrum and no obvious dominant freqency, so our monotonal defenition of tune begins to break down somewhat.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
-	\caption{Invariant quantities conservation for the full IOTA aperture with real configuration of 18 kicks at $t=-0.238$}
+	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/impactXthinDN_t238nearIntegerSpectrum.pdf}
+	\caption{Fourier specturm of simulated particle near vertical integer resonance}
+	\label{fig:integerFourierSpectrum}
+\end{figure}
+
+Figure \ref{fig:integerPhase} shows the phase space of this same particle. The motion becomes strongly nonlinear, especially vertically, where we are no longer orbiting around the original closed orbit.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactXthinDNexamplePhase_t238nearInteger.pdf}
+	\caption{Phase space poincare sections for simulated macroparticle near vertical integer resonance}
+	\label{fig:integerPhase}
+\end{figure}
+
+A final figure of merit to consider is the quality of the conservation of the analytically predicted invariants. Figure \ref{toyInv} shows the calculted DN system Hamiltonian and the second invariant turn by turn from an example particle, normalized by the mean. In the ideal case this whould be flat. We see some slight jitter presumably from numerical noise and a slightly imperfect integration of the potential. This calculated quantity will be used for evaluating quality of other integrators and lattices moving forward as it is a direct indicator of the match of the system to the ideal DN NIO system.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/invariantConservation_t238_thinDN.pdf}
+	\caption{Calculated analytic invariant quantites turn-by-turn from simulated particle in toy NIO system at $t=-0.238$}
+	\label{fig:toyInv}
+\end{figure}
+
+We now need to consider more realistic nonlinear insert configurations. It is impractical to manufacture a magnet that smootly tapers with the required longitudinal scaling. To simulate the realistic IOTA insert, we need kicks which correspond to our 18 elements. This wil not perfectly match the neccesary integration of the potential, so we evaluate the quality of invariant conservation for this reduced number of elements. The following simulation consists of the IOTA style nonlinear insert with 18 equally spaced nonlinear thin kicks. We apply an aperture at the center of the insert consistent with the minimizing aperture in IOTA. Figure \ref{fig:v1idealInvariant} shows the resulting invariant conservation for the whole simulated grid of macroparticles. Here the color scale is the standard deviation of the invariants turn-by-turn and divided by the mean of the invariant quantity over the range, like in figure \ref{fig:toyInv}. The horizontal and vertical axes correspond to the simulated particles inital position in quadrant one, as the potential is symmetric about both axes. The aperture of IOTA is visible as the elipptical cutoff in the particles. We see that the overall conservation quality has gone down, but our standard deviation is still below a tenth of a percent. In general, the quality of invariant conservation and approximation of the DN system improves for a larger number of integration steps or slices. Practically, though we are limited in what we can build.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_5_figures/toy_equiSpace_t238_invariants.pdf}
+	\caption{Invariant quantities conservation for the full IOTA aperture with 18 thin NIO kicks at $t=-0.238$}
 	\label{fig:v1idealInvariant}
 \end{figure}
 
-This is the nominal t-parameter we may operate at, but we from a simulation point of view, we are also interested in the conservation of more nonlinear-dominated regions. Figure \ref{fig:v1idealt45} shows the conservation for a t-parameter of $t=-0.45$, which is almost at the vertical integer resonance.
+This is the nominal t-parameter studied further in this thesis, but we are also interested in the quality of conservation in nonlinear-dominated regions. Identical simulations were performed with the 18 element configuraton for a t-parameter $t=-0.45$, which is almost at the vertical integer resonance. The conservation of both invariant quantites was below a fractional standard deviation of \num{2.5e-3} for this t-parameter.
 
-\begin{figure}
-	\centering
-	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
-	\caption{Invariant quantities conservation for the full IOTA aperture with real configuration of 18 kicks at $t=-0.45$}
-	\label{fig:v1idealt45}
-\end{figure}
-
-The equal spacing configuration is the simplest apporoach to the system, but alternative configurations have been found have superior quality of integration. \cite{baturinHamiltonianPreservingNonlinear2022} proposes two alternative integration schemes, an equi-phase insert configuration, and an Yoshida-style \cite{yoshidaConstructionHigherOrder1990} higher order integrator. The equi-phase style integration can be straghtforwardly implemented as a new insert. Instead of placing elements equally spaced in lab frame positon, the elements are equally spaced in bare lattice phase advance. Figure \ref{fig:v2Idealt45} shows the quality of invariant conservation for and equi-phase insert with thin kicks. In this case we are at a t-parameter of $t=-0.45$, and are using 9 elements instead of 18. We can see that even for a reduced number of integration steps we have similar invariant conservation to the equal spacing in figure \ref{fig:v1idealt45}. This is a significant advantage in practically construcing these inserts, as we can arrive at the same NIO system quality with fewer expensive magnets. This configuration is the basis for the second IOTA insert covered in appendix \ref{apx:dnv2}.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
-	\caption{Invariant quantities conservation for the full IOTA aperture with equi-phase insert consistning of 9 kicks for $t=-0.45$}
-	\label{fig:v2idealt45}
-\end{figure}
+The equal spacing configuration is the simplest apporoach to the system, but alternative configurations have been found have superior quality of integration. \cite{baturinHamiltonianPreservingNonlinear2022} proposes two alternative integration schemes, an equi-phase insert configuration, and an Yoshida-style \cite{yoshidaConstructionHigherOrder1990} higher order integrator. The equi-phase style integration can be straghtforwardly implemented as a new insert. Instead of placing elements equally spaced in lab frame positon, the elements are equally spaced in bare lattice phase advance. A simulation using 11 equi-phase elements instead of 18 at a t-parameter of $t=-0.238$ showed invariant conservation below a fractional standard deviation of \num{4e-3}. The upper limit on the conservation deviation is dominated by a single region in the configuration space near the horizontal aperture. The majority of the range has conservation better than \num{1.5e-3} like the 18 element equal space case. This is a significant advantage in practically construcing these inserts, as we can arrive at the same NIO system quality with fewer expensive magnets. This configuration is the basis for the second IOTA insert covered in appendix \ref{apx:dnv2}.
 
 \section{IOTA Tracking Simulation Lattices}
 For better fidelity simulations for experimental design and comparison, we need to include the full IOTA lattice. The physical dimensions Impactx IOTA lattice used is based on the publically released version of the Mad-X lattice. The linear dynamics were benchmarked to this lattice configuration with simple gaussian beam simulations as Impact-X does not have direct first order lattice calculation capibilites. Lattice funcitons must be calculated from circulating beam with the proper assumptions. The lattice was configured to accept quadrupole settings from SixDSim lattices. In all Impact-X simulations, the idealized form of IOTA was used, matching the lattice in figure \ref{fig:inj6a}. This is without BPM offsets, dipole gradients, and the undulator corrections for easiest interpretability. 
@@ -88,7 +102,7 @@ Impact-X supports a number of higher order effects which we can optionally inclu
     \midrule
     linmin & Linearized IOTA model, linear thick quads, linear thick dipoles, linear drifts. Minimizing aperture matching that in real IOTA. 18 thin kicks for NIO insert matching physical insert, with linear drifts between.\\
     \midrule
-    crom & First order chromatic quadrupoles, exact nonlinear drifts, linear thick dipoles. Minimizing aperture matching that in real IOTA. Thin sextupoles may be used, treated seperately. Thin linear RF modle included for bunched beam simulations. 18 thin kicks for NIO insert matching physical insert, with exact nonlinear drifts between.\\
+    crom & Nonlinear drift-kick quadrupoles, exact nonlinear drifts, linear thick dipoles. Minimizing aperture matching that in real IOTA. Thin sextupoles may be used, treated seperately. Thin linear RF modle included for bunched beam simulations. 18 thin kicks for NIO insert matching physical insert, with exact nonlinear drifts between.\\
     \midrule
     nonlin & Nonlinear drift-kick quadrupoles with thin fringe field models, exact nonlinear drifts, exact nonlinear dipoles. Minimizing aperture matching that in real IOTA. Drift-kick sextupoles may be used, treated seperately. Thin linear RF modle included for bunched beam simulations. 18 thin kicks for NIO insert matching physical insert, with exact nonlinear drifts between.\\
     \midrule
@@ -99,17 +113,36 @@ Impact-X supports a number of higher order effects which we can optionally inclu
     \label{tab:iotaLats}
 \end{table}
 
-In addion to the linear lattice benchmarking, identical simulations using the "linmin" lattice to those carried out with the thin matrix yielded similiar invariant conservation levels as seen in Figure \ref{fig:v1idealInvariant}. We can look at the detuning range given by the realistic aperture in Figure \ref{fig:IOTAminapFullDetune} for $t=-0.238$ in "linmin". The overall detuning shape is the same, but the range is much smaller, especially stemming from the reduction in horizontal aperture. The interpretation problem of the tunes near the integer resonance disappears in this realistic configuration, which simplifies the experimental analysis.
+In addion to the linear lattice benchmarking, identical simulations using the "linmin" lattice to those carried out with the thin matrix yielded similiar invariant conservation levels as seen in Figure \ref{fig:v1idealInvariant}. We can look at the detuning range given by the realistic aperture in Figure \ref{fig:IOTAminapFullDetune} for $t=-0.238$ in "linmin". The overall detuning shape is the same, but the range is much smaller, especially from the reduction in horizontal aperture. The interpretation problem of the tunes near the integer resonance disappears in this realistic configuration, which simplifies the experimental analysis.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\includegraphics[width=0.8\linewidth]{./chapter_5_figures/impactxIOTAlinearDetune_t238.pdf}
 	\caption{Amplitude dependent detuning for IOTA with  $t=-0.238$}
 	\label{fig:IOTAminapFullDetune}
 \end{figure}
 
+
 \section{Energy Dependence Simulation}
-We can evaluate the impacts of momentum deviation on the system with controlled offsets. In the following simulations, we consider an initial distribution consisting of transverse particles which fill the available aperture at a select group of initial momentum offsets. We are primarily interested in the relative stability at these locations, so there is no RF applied, and the macroparticles are permitted to slip longitudinally as in a coasting beam. 
+We can evaluate the impacts of momentum deviation on the system with controlled offsets. In the following simulations, we consider an initial distribution consisting of transverse particles which fill the available aperture at a select group of initial momentum offsets. We are primarily interested in the relative stability at these locations, so there is no RF applied, and the macroparticles are permitted to slip longitudinally as in a coasting beam. Before we commit to these simulations, we will verify that the grid in xy is a sufficient inital condition to sample the whole phase space. For the linear hamiltonian, this will uniformly cover the available phase space, but the full phase space of nonlinear systems is not neccesarially sampled by a uniform distribution in one phase space variable. We have some confidence, because the underlying system is integrable it is smoothly differentialble in phase space variables, so there should be no isolated regions in phase space. This assumption breaks down with perturbations to the system in the form of additional nonlinearities. To verify, a simulation in the "crom" with 4-D initial conditions was performed. The base structure consisted of a $x$-$y$ grid, and for each point in configuration space a smaller range of $p_x,p_y$ points was added. The energy offsets were also included to evaluate their impacts. Figure \ref{fig:fullPhaseDNH} shows the fractional standard deviation in the DN hamiltonian plotted against the initial positions in phase space. THe plotted points have no momentum deviation. All simulated particles are plotted, so naturally, some are obscured by later points, here they have been sorted by conservation so the "worst" points rise to the top. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{./chapter_5_figures/phaseVolCorrCromlatInj6a_t238.png}
+	\caption{DN Hamiltonian fractional standard deviation against transverse phase space variables}
+	\label{fig:fullPhaseDNH}
+\end{figure}
+
+We see that generally, conservation is reasonable with the nonlinear contributions from chromatic drifts and quads. More importantly, we can see that there is no significant correlation on invariant conservation agains initial momentum. The only point of concern is the cluster of unusual poor conservation around $x=3,y=2$. This picture becomes more clear if we instead plot the conservation with respect to the maximum amplitude as calculated by the effective emittances. Figure \ref{fig:invVenergy4D} shows the fractional invariant conservation for both DN invariants, Hamiltonian on the left and second invariant on the right. Here the color scales are unified, if invariant standard deviation is below \num{5e-3} it is colored dark blue, and if over \num{5e-2} orange. The horizontal and vertical coordinates are the maximum amplitudes at the IOTA minimum aperture calculated by using the first order effect of the nonlinear insert to calculate the effective emittances. The third plot from the top on the left corresponds to the same points, and we see that this region of poorer conservation in \ref{fig:fullPhaseDNH} corresponds clearly to a line in the reduced quality conservation in combined amplitude, presumably stemming from a nonlinear resonance.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_inj6aQuads_cromLat_invariantVenergy4DMask.png}
+	\caption{DN Invariants fractional standard deviation against maximum amplitudes calibrated by effective courant snyder emittances and initial momentum offsets}
+	\label{fig:invVenergy4D}
+\end{figure}
+
+We can further compare this conservation picture with a similar plot of the invariant conservation for only intial position seeds in \ref{fig:invVenergySplit}. All of the same features are present at a higher resolution for many fewer simulated macroparticle due to the reduced dimensionality.
 
 \section{Bunch Simulations}
 The IOTA electron experiments leverage the fact the electron beam is small and can act as a macroparticle probe of the dynamics. Some simulations were performed to verify that this assumption holds in the strongly amplitude dependent NIO system. 
@@ -119,7 +152,7 @@ Based on experimental results, a number of potential improvements to the bare la
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_5_figures/dbaLatticeCropped.png}
 	\caption{SixDsim lattice plot of the lower emittance DBA-style IOTA configuration.}
 	\label{fig:dbaSixdsim}
 \end{figure}
@@ -128,7 +161,7 @@ The resulting detuning impacts on a simulated TBT response can be seen in Figure
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\includegraphics[width=0.8\linewidth]{./chapter_5_figures/bunchKickEmitOptTunest238.png}
 	\caption{Single bunch kicked beam tune footprints before and after lattice emittance minimization.}
 	\label{fig:lowEmitDetune}
 \end{figure}
@@ -137,7 +170,7 @@ The results on the decoherence as measured by the mean of the transverse coordin
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_5_figures/bunchKickCentroidEmitOp_t238.pdf}
 	\caption{Decoherence profiles for kicked beam simulations before and after lattice emittance minimization.}
 	\label{fig:lowEmitDecohere}
 \end{figure}
@@ -146,3 +179,5 @@ This lattice represents only the first pass on the optimization, but is readily 
 
 \section{IOTA Proton Injector Simulations}
 While electron experiments are the primary focus, the IOTA proton injector line was being formalized and constructed during the course of this work. Some simulations were undertaken for evaluating the impact of space charge effects in the proton injector beamline. 
+
+
