@@ -38,7 +38,7 @@ The following derivations for the equations of motion generally follow the tradi
 
 \begin{figure} 
 	\centering
-	\includegraphics[width=0.8\linewidth]{madxFrenetSerret.pdf}
+	\includegraphics[width=0.8\linewidth]{./chapter_1_figures/madxFrenetSerret.pdf}
 	\caption{Illustration of Frenet-Serret style Coordinate System From Mad X Documentation \cite{deniauMADXProgramUsers}}
 	\label{fig:frenetSerret}
 \end{figure}
@@ -177,7 +177,7 @@ The term $C_n(z)$ contains the multipole terms, and is in general a complex term
 
 \begin{figure} 
 	\centering
-	\includegraphics[width=1\linewidth]{multipoleExamples.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_1_figures/multipoleExamples.pdf}
 	\caption{First three multipoles}
 	\label{fig:multipoles}
 \end{figure}
@@ -207,7 +207,7 @@ An additional consideration for the dipole fields is the incident angle on the e
 
 \begin{figure} 
 	\centering
-	\includegraphics[width=1\linewidth]{sectorRect.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_1_figures/sectorRect.pdf}
 	\caption{Sector and Rectangular bending dipoles}
 	\label{fig:sector}
 \end{figure}
@@ -484,7 +484,7 @@ The area of this ellipse is $2\pi J_x$, but is usually related to the "emittance
 \end{equation}
 
 \begin{figure} 	\centering
-	\includegraphics[width=\linewidth]{phase_space_ellipseImpactX.pdf}
+	\includegraphics[width=\linewidth]{./chapter_1_figures/phase_space_ellipseImpactX.pdf}
 	\caption{Poincare section ellipse of linear betatron motion with associated relationships to Courant-Snyder parameters \cite{hueblNextGenerationComputational2022}}
 	\label{fig:csEllipse}
 \end{figure}
@@ -576,11 +576,13 @@ Based on the relationship between the Courant-Snyder parameters in Eq. \ref{eq:e
 	\epsilon_{x,rms} = \sqrt{\langle x^2 \rangle \langle p_x^2 \rangle - \langle x p_x \rangle^2}
 \end{equation}
 
-These values can be directly related to measurable quantities. This of course requires knowledge of the beam distribution, but the core of most beams are Gaussian and Eq. \ref{eq:rmsMoment} is generally useful.
+These values can be directly related to measurable quantities. This of course requires knowledge of the beam distribution, but the core of most beams are Gaussian and Eq. \ref{eq:rmsMoment} is generally useful. 
 
 \begin{equation} \label{eq:rmsMoment}
 	\sigma_x = \sqrt{\beta_x \epsilon_{x,rms}}
 \end{equation}
+
+In most accelerator literature, these rms quantites are referred to as the geometric emittance, as opposed to the other common "normalized" emittance. The normalization in question is a multiplicaiton by the relatavistic factors to ensure that the emittance is preserved through acceleration. This is irrelevant in a non-accelerating ring, so emittances presented are all geometric. Finally, by a quick dimensional analysis the units of emittance are simply [m] in our canonical coordinates. However, this convention is not universal, and often times the momentum dimensions are scaled with metric prefixes, as in the commonplace [mm-mrad]. As such, the emittance will be presented as [m-rad] to remain consisent, even though the [rad] label is not strictly accurate in our choice of coordinates.
 
 \section{Nonlinear Perturbations} \label{sec:nonlinearPerturb}
 Our treatment of the dynamics thus far has been exclusively linear. In practical machines, higher order multipoles are often added to compensate for deficiencies in the linear lattice construction. In most modern circular accelerators the transverse chromaticity is compensated, or at least controlled with sextupole magnets. Octupole magnets may also be added to add an amplitude dependent detuning, which in turn drives tune spread in the bunch and can provide landau damping. In addition to deliberately introduced nonlinear perturbations, our linear elements have small intrinsic nonlinearities. Most notably there is an exact, nonlinear mapping for the dipole which has higher order terms which become relevant for large bending element \cite{bruhwilerSymplecticPropagationMap}s. Additionally, the fringe fields of linear elements will possess intrinsic nonlinearities, though this is strongly dependent on the design \cite{baartmanQuadrupoleShapes2012}. For example, the quadrupole fringe field in the hard-edge approximation has contributions of the same order as an octupole magnet \cite{forestLeadingOrderHard1988}. These contributions all serve to perturb the dynamics, we can briefly consider the next order case of a sextupole magnet. If we add the sextupole term to our general Hamiltonian in Eq. \ref{eq:H_As}, and take the case for the curvature to be zero we arrive at Eq. \ref{eq:H_sext}.
@@ -601,7 +603,7 @@ Figure \ref{fig:sextMap} shows the Poincare map for beam measurements in the Ind
 
 \begin{figure} 
 	\centering
-	\includegraphics[width=0.8\linewidth]{iucfSextupole.png}
+	\includegraphics[width=0.8\linewidth]{./chapter_1_figures/iucfSextupole.png}
 	\caption{Phase space in canonical and action angle coordinates for linear system with strong sextupole perturbations \cite{caussynExperimentalBeamDynamics}}
 	\label{fig:sextMap}
 \end{figure}
@@ -617,7 +619,7 @@ At these characteristic frequencies contributions add coherently and drive unsta
 
 \begin{figure} 
 	\centering
-	\includegraphics[width=0.8\linewidth]{order6resonance.pdf}
+	\includegraphics[width=0.8\linewidth]{./chapter_1_figures/order6resonance.pdf}
 	\caption{Resonance lines in tune space up to the 6th order}
 	\label{fig:resonanceLines}
 \end{figure}
@@ -755,7 +757,7 @@ We can plot the potential $U$ with respect to our fully normalized coordinates $
 
 \begin{figure} 
 	\centering
-	\includegraphics[width=0.8\linewidth]{dnPot.pdf}
+	\includegraphics[width=0.8\linewidth]{./chapter_1_figures/dnPot.pdf}
 	\caption{Potential of Danilov-Nagaitsev Integrable System. Yellow arrows indicate direction of potential scaling with $t$-parameter, and the cross indicates the location of the pole where $x=c$}
 	\label{fig:DNpot}
 \end{figure}
