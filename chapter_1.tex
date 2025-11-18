@@ -523,7 +523,7 @@ There is one more important dynamical quantity that needs to be defined. The bet
 	Q_x = \int_{s_o}^{s_o + C} \frac{1}{\beta_x(s)} ds
 \end{equation}
 
-All of this parameterization was of course in one dimension, the same can be applied to the y-plane assuming they are uncoupled. An extended parameterization to include coupling has been considered and there are two main approaches. One by Edwards-Teng \cite{edwardsParametrizationLinearCoupled1973} and one by Mais-Ripkin \cite{borchardtCalculationBeamEnvelopes1988}. A good overview including many extenisions to these parameterizations is provided in \cite{vanweldeReviewCoupledBetatron2022}. For the purposes of this thesis these coupled parameterizations are extraneous and only affect the tune match possible which will be discussed in chapter \ref{chap:experiment} on experimental design.
+All of this parameterization was of course in one dimension, the same can be applied to the y-plane assuming they are uncoupled. An extended parameterization to include coupling has been considered and there are two main approaches. One by Edwards-Teng \cite{edwardsParametrizationLinearCoupled1973} and one by Mais-Ripkin \cite{borchardtCalculationBeamEnvelopes1988}. A good overview including many extenisions to these parameterizations is provided in \cite{vanweldeReviewCoupledBetatron2022}. For the purposes of this dissertation these coupled parameterizations are extraneous.
 
 At this point I would like to reiterate the assumptions along the way, and comment on the impacts.
 \begin{enumerate}
@@ -764,5 +764,6 @@ We can plot the potential $U$ with respect to our fully normalized coordinates $
 
 This plot allows us to clearly illustrate the impact of the two arbitrary constants in the DN system. The $c$ parameter describes the locations of singularities in the nonlinear potential, specifically when $x_c = 1$ and $y_c = 0$. The dimensionless $t$ parameter encodes the relative strength of nonlinear insert, and has the strongest impact on the dynamics. Practically, the $t$-parameter is selected to vary in the range $-0.5 \leq t \leq 0$, here a value of $t=0$ recovers our Courant-Snyder case. The impact on the dynamics for further $t$ ranges are considered in \cite{mitchellBifurcationAnalysisNonlinear2020}. 
 
-As the potential satisfies Laplace's equation it can be represented with a string of magnets with properly shaped poles. The details of the implementation of such a magnet are discussed in further chapters.
+As the potential satisfies Laplace's equation it can be represented with a string of magnets with properly shaped poles. The details of the implementation of such a magnet are discussed in section \ref{sec:nioDesign}.
 
+When the system was first introduced, it naturally generated some interest. This combination of bounded trajectories and strong nonlinearities is a generic recepie for a large tune footprint with no limiting dynamic aperture, a desirable configuration for high intensity beams with intense space charge. In particular, simulations with intense space charge in the NIO system were perfomed \cite{webbSuppressingTransverseBeam2013} and indicated strong suppression of halo formation for space charge dominated beams. This motivate constructing the IOTA ring for dedicated studies of a realistic NIO system.
