@@ -86,7 +86,7 @@ The $t=-0.238$ is the nominal t-parameter studied further in this dissertation, 
 
 The equal spacing configuration is the simplest apporoach to the system, but alternative configurations have been found have superior quality of integration. \cite{baturinHamiltonianPreservingNonlinear2022} proposes two alternative integration schemes, an equi-phase insert configuration, and an Yoshida-style \cite{yoshidaConstructionHigherOrder1990} higher order integrator. The equi-phase style integration can be straghtforwardly implemented as a new insert. Instead of placing elements equally spaced in lab frame positon, the elements are equally spaced in bare lattice phase advance. A simulation using 11 equi-phase elements instead of 18 at a t-parameter of $t=-0.238$ showed invariant conservation below a fractional standard deviation of \num{4e-3}. The upper limit on the conservation deviation is dominated by a single region in the configuration space near the horizontal aperture limit. The majority of the range has conservation better than \num{1.5e-3} like the 18 element equal space case. This is a significant advantage in practically construcing these inserts, as we can arrive at similar NIO system quality with fewer expensive magnets. This configuration is the basis for the second IOTA insert covered in appendix \ref{apx:dnv2}.
 
-\section{IOTA Tracking Simulation Lattices}
+\section{IOTA Tracking Simulation Lattices} \label{sec:iotaSim}
 For better fidelity simulations of experimental design and comparison, we need to include the full IOTA lattice. The physical dimensions the Impactx IOTA lattice used are based on the publically released version of the Mad-X lattice. The linear dynamics were benchmarked to this lattice configuration with simple gaussian beam simulations as Impact-X does not have direct first-order lattice calculation capibilites. The lattice was configured to accept quadrupole settings from SixDSim lattices. In all Impact-X simulations, the fully symmetric model of IOTA was used, matching the lattice in figure \ref{fig:inj6a}. This is without BPM offsets, dipole gradients, and the undulator corrections for easiest interpretability. 
 
 Impact-X supports a number of higher order effects which we can optionally include in the simulations to verify their impacts on invariant conservation and stability. The base condition considered above uses the linearized versions of the linear elements, i.e. drifts, quads, and dipoles. With respect to longitudinal effects, this means that we are considering disperion but not chromaticity. To begin to consider chromaticity, we change the quadrupole model to a drift kick model which integrates the full nonlinearities present, and the drifts to the exact model which includes the full geometric nonlinear term in momentum. The combination of this drift model and thin kicks is a sufficient Hamiltonian splitting for  arbitrary transverse kicks, so adding nonlinear elements in this lattice properly inlcudes their chromatic effects as well. In this configuration we can evaluate the chromaticity of the lattice, by directly measuring the tune dependence on energy. We see a discrepancy in the natural chromaticity of the Impact-X lattice compared with SixDSim. Additionally, the impacts of the sextupole families based on the nominal calibrations fail to accurrately compensate the chromaticity, this likely stems from improper calibraiton of the sextupole current to strength. Regardless, based on the measured impacts of the sextupoles in Impact-X, we can fully compensate the natural chromaticity in the simulated lattice. For bunched beam simulations in the chromatic lattice we implement a thin linear model of the RF. The bunch length is small compared to the RF bucket, and synchrotron dynamics are not typically relevant compared to momentum deviation and simple stablity, so the linear approximation is sufficient. In addition to chromatic effects, we can introduce models of the expected residual nonlinearities in the bare lattice. The two elements considered in Impact-X are quadrupole fringe fields \cite{forestLeadingOrderHard1988} and the "geometric" nonlinearites from the short bending radii of the dipoles \cite{bruhwilerSymplecticPropagationMap}. In addition to the larger nonliner contributions full, nonlinear drift-kick models of the sextupoles can be implemented. We have one more configuration to consider, which is a first-order version of the NIO insert. This is used to evaluate the general lattice with only the first order impacts of the NIO insert. Since the insert is modeled with thin kicks, in Impact-X this is accomplished by simply replacing the DN kicks with thin quadrupole kicks, not the typical linearized thick quadrupole models used elsewhere in the ring. We now have many basic lattice configurations which will be swapped between in the upcoming chapters, the have been given nicknames and associated descriptions in table \ref{tab:iotaLats}. Sextupole strenght configurations are in general more flexible and treated seperately.
@@ -122,7 +122,7 @@ In addion to the linear lattice benchmarking, identical simulations using the "l
 \end{figure}
 
 
-\section{Energy Dependence Simulation}
+\section{Energy Dependence Simulation} \label{sec:invVI}
 We can evaluate the impacts of realistic momentum deviation on the system with controlled offsets. In the following simulations, we consider an initial distribution consisting of transverse particles which fill the available aperture at a select group of initial momentum offsets. We are primarily interested in the relative stability at these locations, so there is no RF applied, and the macroparticles are permitted to slip longitudinally as in a coasting beam. Before we commit to these simulations, we will verify that the grid in xy is a sufficient inital condition to sample the whole phase space. For the linear hamiltonian, this will uniformly cover the available phase space, but the full phase space of nonlinear systems is not neccesarially sampled by a uniform distribution in one phase space variable. We have some confidence, because the underlying system is integrable it is smoothly differentialble in phase space variables, so there should be no isolated regions in phase space. This assumption breaks down with perturbations to the system in the form of additional nonlinearities. To verify, a simulation in the "crom" with 4-D initial conditions was performed. The base structure consisted of a $x$-$y$ grid, and for each point in configuration space a smaller range of $p_x,p_y$ points was added. The energy offsets were also included to evaluate their impacts. Figure \ref{fig:fullPhaseDNH} shows the fractional standard deviation in the DN hamiltonian plotted against the initial positions in phase space. The plotted points have no momentum deviation. All simulated particles are plotted, so naturally, some are obscured by later points, here they have been sorted by conservation so the "worst" points rise to the top. 
 
 \begin{figure}
@@ -145,8 +145,8 @@ We can further compare this conservation picture with a similar plot of the inva
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
-	\caption{DN Invariants conservation for flat intial positions with all momentum $p_x,p_y$ zero.}
+	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_inj6aQuads_cromLat_invariantVenergy2Dmask.png}
+	\caption{DN Invariants conservation for flat intial positions with all momentum $p_x,p_y$ zero. Orange points indivate values with over \num{5e-2} fractional devation in the invariants. Blue points indicate values below \num{5e-3} fractional deviation in the invariants.}
 	\label{fig:invVenergySplit}
 \end{figure}
 
@@ -154,21 +154,34 @@ We now want to evaluate the impacts of chromatic compensation with sextupoles on
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
-	\caption{DN Invariants conservation for flat intial positions with all momentum $p_x,p_y$ zero.}
+	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_inj6aQuads_cromLat_sextComp_invariantVenergy2DMask.png}
+	\caption{DN Invariants conservation for flat intial positions with sextupole compensation of chromaticity.  Orange points indivate values with over \num{5e-1} fractional devation in the invariants.}
 	\label{fig:invVenergySext}
 \end{figure}
 
 We can also simulate the impacts of expected nonlinearities in our lattice with the "nonlin" lattice configuration. Here we do not include sextupole contributions. This condition is milder than the sextupole impacts, we can revert to the orange upper limit at \num{5e-2}. Generally, outside of the impacted upper regions
 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_inj6aQuads_nonlinLat_invariantVenergy2DMask.png}
+	\caption{DN Invariants conservation for flat intial positions with expected residual nonlinearities.  Orange points indivate values with over \num{5e-2} fractional devation in the invariants.}
+	\label{fig:invVenergyNonlin}
+\end{figure}
 
-Finally, we can consider the expected nonlinearities and the sextupole compensation. We need to increase the orange threshold to \num{5e-1} again. invariant conservation is poor, and dynamic aperture is significantly reduced, though the main impacts seem to stem from the sextupole terms. It is difficult to evaluate the invariant conservation dependence on the energy offset.
+Finally, we can consider the expected nonlinearities and the sextupole compensation. We need to increase the orange threshold to \num{5e-1} again. invariant conservation is poor, and dynamic aperture is significantly reduced, though the main impacts seem to stem from the sextupole terms. It is difficult to evaluate the invariant conservation dependence on the energy offset. This is the nearest simulation configuration to the expected dynamics in IOTA. As the invariant conservation is quite poor for these noisless measurements, this throws into doubt the possiblity to direcly measure the conservation of invariant quantites from turn by turn measurments, especially with sextupoles. Unfortunately, these simulations were performed after the experimental measurments, and were not availible for guiding the experimental design.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_inj6aQuads_nonlinLat_sextComp_invariantVenergy2DMask.png}
+	\caption{DN Invariants conservation for flat intial positions with expected residual nonlinearities. Orange points indivate values with over \num{5e-1} fractional devation in the invariants.}
+	\label{fig:invVenergyNonlinSext}
+\end{figure}
 
 
-\section{Bunch Simulations}
-The IOTA electron experiments leverage the fact the electron beam is small and can act as a macroparticle probe of the dynamics. Some simulations were performed to verify that this assumption holds in the strongly amplitude dependent NIO system. 
+\section{Bunch Simulations} \label{sec:bunchSims}
+The IOTA electron experiments leverage the fact the electron beam is small and can act as a macroparticle probe of the dynamics. Some simulations were performed to verify that this assumption holds in the strongly amplitude dependent NIO system. To evaluate this, a 10,000 particle bunch with emittances comparable to those measured in the bare iota lattice was initialized. An "index" particle was also placed with zero amplitude. The whole bunch and index were then given coherent instantaneous momentum, analagous to the action of a kicker. The individual particles, index particle, and beam centroid could then be tracked through the ring. The index represents the actual point probe of the dynamics for a given amplitude, and the centroid is a close approximation of the signal on the BPMs. These simulations are interesting in the context of a bunched beam which neccesarially includes chromatic effects. The first simulation is for an inital kick of $\delta p_x = \num{2e-3}$ [1] and $delta p_y = \num{2e-3}$ in the "crom" lattice without sextupole compensation. The initial and final configuration in $x$-$y$ configuration space is plotted in Figure \ref{fig:kickProfile}.
 
-\section{Theoretical Lattice Improvement Simulations}
+\section{Theoretical Lattice Improvement Simulations} \label{sec:latImprove}
 Based on experimental results, a number of potential improvements to the bare lattice configuration were considered in simulation. The simplest impact evaluated was to minimize the emittance of the electron beam. This has the effect of making the beam more point-like, and most importantly reduces its tune footprint. A reduced footpring means extended coherenet centroid oscillations and improved sensitivity for all major turn-by-turn measurments. The main contributor to emittance is the dispersion in the 60 degree dipoles. For the NIO lattice, the dispersion and its derivative must be zero at the end of these dipoles on the face near the insert to match the NIO condition. In the dipole the derivitive of the dispersion monotonically increases, so the simplest approach to reduce these integrals in the 60 degree dipoles is to configure them as a so called double bend achromat \cite[pg.133]{leeAcceleratorPhysics2018}. An example lattice which retains the core NIO requirements with a DBA like structure in the 60 degree dipoles is presented in Figure \ref{fig:dbaSixdsim}. This lattice results in over an order of magnitude reduction in equalibrium emittance in the horizontal plane, from \num{1.67e-5} to \num{1.01e-6} [cm-rad] as calculated by SixDsim using the radiation integrals \cite[pg.438]{leeAcceleratorPhysics2018}.
 
 \begin{figure}
@@ -200,11 +213,11 @@ This lattice represents only the first pass on the optimization, but is readily 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_impactGuessQuads_cromLat_invariantVenergy2DMask.png}
 	\caption{Invariant conservation for lattice with approximately matched natural chromaticities}
 	\label{fig:chromMatchInv}
 \end{figure}
 
-\section{IOTA Proton Injector Simulations}
+\section{IOTA Proton Injector Simulations} \label{sec:ipiSims}
 While electron experiments are the primary focus, the IOTA proton injector line was being formalized and constructed during the course of this work. Some simulations were undertaken for evaluating the impact of space charge effects in the proton injector beamline. 
 
