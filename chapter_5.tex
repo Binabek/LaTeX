@@ -293,3 +293,48 @@ This lattice represents only the first pass on the optimization, but is readily 
 \section{IOTA Proton Injector Simulations} \label{sec:ipiSims}
 While electron experiments are the primary focus, the IOTA proton injector line was being formalized and constructed during the course of this work. Some simulations were undertaken for evaluating the impact of space charge effects in the proton injector beamline. 
 
+The IOTA proton source was characterized in the past \cite{tamCharacterizationProtonIon2010}, and these emittances were used as the starting point for the simulation. The source configuration has since changed, so these values are not expected to be the exact configuration in the current beamline. As a result a range of currents and their associated measured emittances were used to initialize the simulations. Currents of 8, 2, and 0 [mA] were simulated. We expect space charge neutralization in the LEBT, so these output emittances were used directly as the inputs to the RFQ simulations, in conjunction with the well understood matched incoming lattice functions.
+
+The RFQ simulations were performed with the TRACK code, as it was the original code used to design the RFQ in question \cite{ostroumovApplicationNewProcedure2006}. The HINS linac was intended to be focused entirely with superconducting solenoids, so the incoming and outgoing beams from the RFQ needed to be axially symmetric. This was accomplished through deliberately shaped electrodes for matching at the end of the otherwise typical RFQ vanes. These elements are represented as custom 3-D EM fields in TRACK and necessitated reviving the original simulation files. Space charge was modeled with particle in cell kicks. Table \ref{tab:track} summarizes the essential qantites for the RFQ outputs at the extremum currents. Figure \ref{fig:trackEmit} shows the output poincare sections of the outputs for the extremum currents as well. The input distribuion was transverse waterbages with a DC longitudinal structure, so of most interest is negligible transverse emittance growth and reasonable bunching. As we can see, the output longitudinal envelope is current independent in this range. The slight reduction in 8 [mA] emittance can be attributed to small mismatch losses. The longitudinal "cyclone" structure in the 0 [mA] is not expected to significantly affect the dynamics downstream and can be seen to reasonably smear out with more current. 
+
+\begin{table}
+    \centering
+    \begin{tabular}{llll}
+    \toprule
+    Current & Input $\epsilon_{x,y}$ & Output $\epsilon_{x,y}$ & Output $\epsilon_{ct}$ \\\relax
+    [mA] & [mm-mrad] & [mm-mrad] & [mm-mrad] \\
+    \midrule
+    0 & 2.05 & 2.1 & 9.1 \\
+    8 & 6.8 & 6.5 & 8.5 \\
+    \bottomrule
+    \end{tabular}
+    \caption{TRACK RFQ simulation results}
+    \label{tab:track}
+\end{table}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\caption{Output bunch profiles from TRACK RFQ simulation}
+	\label{fig:trackEmit}
+\end{figure}
+
+The second order moments were calculated for these output distributions and used as the seeds for input distributions, both waterbag and guassian, into Impact-X simulations of the MEBT. At the range of currents considered, there are negligible transverse impacts, and we are primarily interested in the evolution of the longitudinal structure. The MEBT simulations ran from the output of the RFQ to just beyond the extent of the vertical injection kicker in IOTA, so the resulting distributions could be direcly used for injection simulations. The ImpactX PIC solver does not have periodic boundary conditions, so to mitigate unpredictable results at the edge of the grid, the tracked bunch was "bookended" by identical bunches at the RFQ wavelength, as in  figure \ref{fig:bookendBunch}. The analysis was only considered for the central bunch, but the self-fields are calculated for all of the bunches.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\caption{"Bookended" bunches for MEBT space charge simulation}
+	\label{fig:bookendBunch}
+\end{figure}
+
+Figure \ref{fig:mebtLenght} shows the resulting bunch lengthening in the MEBT for different input distributions and currents space charge. For the largest growth configuration, this is almost fully debunched. While we do not need bunched beam to stably circulate in IOTA, the residual bunch structure is the intended mode for tuning injection into IOTA. In principle, the debunching cavity (visible as the sharp kink in the growth curve) may be moved slightly downstream to increase its action on the bunch length.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\caption{MEBT bunch lengthening}
+	\label{fig:mebtLenght}
+\end{figure}
+
