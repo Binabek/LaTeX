@@ -108,20 +108,20 @@ The first DN invariant (the Hamiltonian) is similar in functional form to the ov
 	\label{fig:pointCurrent}
 \end{figure}
 
-This set corresponds to the best conservation of the nonlinear invariants via this method. We can compare to the predicted deviation between the conservation of the Courant-Snyder invariant with adjusted lattice functions and the nonlinear invariants in simulation for the same initial amplitudes. Table \ref{tab:invConsv} shows the difference in the invariants in simulation and experiment. Unfortunately direct calculation of the analytical invariant quantities from fitted position data has insufficient resolution to demonstrate conservation of these invariants. We can still evaluate regions of better and worse conservation, but the direct quantitative verification is limited by the TBT noise and fast decoherence in our BPM signals.
+This set corresponds to the best conservation of the nonlinear invariants via this method. We can compare to the predicted deviation between the conservation of the Courant-Snyder invariant with adjusted lattice functions and the nonlinear invariants in simulation for the same initial amplitudes. Table \ref{tab:invConsv} shows the difference in the invariants in simulation and experiment. Two simulation conditions are considered, originally simulations were performed in the idealized linear lattice ("linmin" from \ref{sec:iotaSim}) indicating a clear difference in conservation. However, after identifying the best case conservation quantities, simulation fidelity had improved and comparative simulations with sextupole effects and expected nonlinearites ("nonlin" lattice) showed similar conservation quantites in simulation. Direct calculation of the analytical invariant quantities from fitted position data or simulation has insufficient resolution to demonstrate conservation of these invariants for a realistic lattice. We can still evaluate the topography of better and worse conservation for evaluting the interplay of NIO with perterbative nonlinearities.
 
 \begin{table}
     \centering
-    \begin{tabular}{lcc}
+    \begin{tabular}{lccc}
         \toprule
-        \textbf{Invariant} & \textbf{Simulation} & \textbf{Experimental}\\
+	\textbf{Invariant} & \textbf{Linmin} & \textbf{Nonlin} & \textbf{Experimental}\\
         \midrule
-        CS Hamiltonian & 1.9\% & 6.9\% \\
-        DN Hamiltonian & 0.3\% & 5.6\% \\
-        DN Invariant & 0.3\% & 6.9\% \\
+	CS Hamiltonian & \num{1.07e-2} & \num{5.04e-2} & \num{8.02e-2} \\
+	DN Hamiltonian & \num{5.59e-3} & \num{4.95e-2} & \num{6.66e-2} \\
+	DN Invariant & \num{6.83e-3} & \num{6.95e-2} & \num{7.54e-2} \\
         \bottomrule
     \end{tabular}
-    \caption{Invariant conservation standard deviation for simulation and experiment with identical transverse initial conditions}
+    \caption{Fractional Invariant conservation standard deviation for simulation and experiment with identical transverse initial conditions}
     \label{tab:invConsv}
 \end{table}
 
