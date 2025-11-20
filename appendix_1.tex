@@ -1,3 +1,79 @@
-\chapter{Relationship between canonical momentum and energy deviation} \label{apx:delToPt}
+\chapter{Relationship between $p_t$ and $\delta$} \label{apx:delToPt}
 
-We would like to briefly consider the exact relationships between the canonical longitudinal coordinates $p_t$ and $\delta$
+We would like to briefly consider the exact relationships between the canonical longitudinal coordinates $p_t$ and $\delta$. Starting with the ImpactX definition of $p_t$ in eq. \ref{eq:pt1} and the reference particles total energy $E_o$, we can rearrange to the total energy of the particle $E$ in eq. \ref{eq:E1}.
+
+\begin{equation}
+	p_t = \frac{E_o - E}{p_o c}
+\label{eq:pt1}
+\end{equation}
+
+\begin{equation}
+	E = \sqrt{p_o^2 c^2 + (m c^2)^2} - p_t p_o c
+\label{eq:E1}
+\end{equation}
+
+We can now perform a similar sequence with the definition of $\delta$ in eq. \ref{eq:del1} to arrive a the total energy in eq. \ref{eq:E2}.
+
+\begin{equation}
+	\delta = \frac{p - p_o}{p_o}
+\label{eq:del1}
+\end{equation}
+
+\begin{equation}
+	E = \sqrt{p_o^2 c^2 (1 + \delta) + (m c^2)^2}
+\label{eq:E2}
+\end{equation}
+
+Setting these expressions equal to each other and squaring to remove the roots results in eq. \ref{eq:ptDel1}.
+
+\begin{equation}
+	p_t^2 p_o^2 c^2 - 2 p_t p_o c E_o + p_o^2 c^2 + (m c^2)^2 = p_o^2 c^2 + p_o^2 c^2 (2\delta + \delta^2) + (m c^2)^2
+\label{eq:ptDel1}
+\end{equation}
+
+Subtracting like terms and dividing by $p_o^2 c^2$ yields eq. \ref{eq:ptDel2}.
+
+\begin{equation}
+	p_t^2 + \frac{2 p_t E_o}{p_o c} = 2\delta + \delta^2
+\label{eq:ptDel2}
+\end{equation}
+
+We can now use the fact that the reference particle momentum is the definition of the trajectory, we can use the relationship in \ref{eq:betRef1} to arrive at eq. \ref{eq:ptDel3}.
+
+\begin{equation}
+	\beta_o E_o = p_o c
+\label{eq:betRef1}
+\end{equation}
+
+\begin{equation}
+	p_t^2 - \frac{2 p_t}{\beta_o} = 2\delta + \delta^2
+\label{eq:ptDel3}
+\end{equation}
+
+In the paraxial approximation, both $p_t$ and $\delta$ are small so $p_t^2 \ll p_t$ and $\delta^2 \ll \delta$ and the relationship in eq. \ref{eq:ptDel4} holds.
+
+\begin{equation}
+	p_t \approx - \beta_o \delta
+\label{eq:ptDel4}
+\end{equation}
+
+For the exact relationship we can start with eq \ref{eq:ptDel1} and divide by $p_o^2 c^2$ without subtracting all terms to arrive at eq. \ref{eq:ptDel5}.
+
+\begin{equation}
+	p_t^2 - \frac{2 p_t E_o}{p_o c} + 1 = (1 + \delta)^2 
+\label{eq:ptDel5}
+\end{equation}
+
+Substituting eq. \ref{eq:betRef1} and rearranging we arrive at eq. \ref{eq:ptDel6}, where the sign of the root can be determined from the initial sign of the $p_t$ term.
+
+\begin{equation}
+	\delta = \pm \sqrt{p_t^2 -\frac{2 p_t}{\beta_o} + 1} -1 
+\label{eq:ptDel6}
+\end{equation}
+
+The inverse transformation is can be obtained from eq. \ref{eq:ptDel2} to arrive at eq. \ref{eq:ptDel7}. Once again, the sign of the root can be determined from the inital sign of $\delta$.
+
+\begin{equation}
+	p_t = \pm \sqrt{\delta^2 + 2 \delta + \frac{1}{\beta_o^2}} + \frac{1}{\beta_o} 
+\label{eq:ptDel7}
+\end{equation}
