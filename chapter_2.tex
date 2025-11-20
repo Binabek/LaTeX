@@ -158,15 +158,13 @@ The dispersion consideration comes from analytical studies of the NIO system inc
     \midrule
     RMS momentum spread $\sigma_{\delta}$ & 1.28 [1]\\
     Synchrotron Tune $Q_s$ & \num{3.33e-4} [2$\pi$]\\
-    Radiation Damping Times\footnotemark[1] $x,y,s$ & 2.8, 0.65, 0.24 [s]\\
-    Equalibrium Emittances\footnotemark[1] $x,y$ & \num{1.67e-7},0 [m-rad]\\
+    Radiation Damping Times\textsuperscript{\textdagger} $x,y,s$ & 2.8, 0.65, 0.24 [s]\\
+    Equalibrium Emittances\textsuperscript{\textdagger} $x,y$ & \num{1.67e-7},0 [m-rad]\\
     \bottomrule
     \end{tabular}
-    \caption{IOTA Run 4 Lattice Parameters}
+    \caption{IOTA Run 4 Lattice Parameters. \\ \textsuperscript{\textdagger}Calculated from linear radiation integrals \cite[pg.438]{leeAcceleratorPhysics2018} without quantum excitation}
     \label{tab:IOTAlattice}
 \end{table}
-
-\footnotetext[1]{Calculated from linear radiation integrals \cite[pg.438]{leeAcceleratorPhysics2018} without quantum excitation}
 
 In the real accelerator there are of course small perturbations and misalignments of the physical elements. To actually tune the IOTA lattice the linear optimization of closed orbits (LOCO) algorithm is used to iterativley adjust the lattice to best fit the simulation model \cite{romanovLatticeCorrectionModeling2014}. In the case of IOTA, there had to be slight adjustments to the lattice model to arrive at the final fit. Most notably, the undulator magnet was included in the lattice, the BPM locations had to shift a bit, and small gradient terms were added to the dipoles. The resulting lattice functions are plotting in \ref{fig:IOTAund9}, notice that the symmetry in the dispersion has been broken due to the dipole gradients. This lattice is used for experimental analysis as it represents the best match to the real accelerator conditions.
 
