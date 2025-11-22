@@ -86,7 +86,7 @@ The $x,y$ coordinates are not affected by the transformation, but we have the fo
 
 \begin{equation} \label{eq:statCoords}
 \begin{split}
-	ct &= ct - \frac{s}{\beta_o}\\
+	\tilde{ct} &= ct - \frac{s}{\beta_o}\\
 	\tilde{p_t} &= \frac{1}{\beta_o} - \frac{\tilde{E_{\Phi}}}{c}\\
 	\tilde{H_p} &= H_p - \frac{\tilde{p_t}}{\beta_o} + \frac{1}{\beta_o^2}
 \end{split}
@@ -107,7 +107,7 @@ From here, we now need to decide on which fields to apply to our particle for st
 	H = -\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{1}{\beta_o} - p_t \right)^2 - p_x^2 - p_y^2- \frac{m^2c^2}{p_o^2}} - \frac{p_t}{\beta_o} - \left(1 + \frac{x}{\rho}\right)\frac{q}{p_o}A_s
 \end{equation}
 
-With the scalar potential set to zero, we arrive at a common set of canonical coordinates used for studies of accelerator dynamics (Eq. \ref{eq:coords}). The relevant difference here from our coordinates above is that now the longitudinal momentum $p_t$ is the difference in the relativistic energy (Eq. \ref{eq:relEnergy}) of the test and reference particle. These definitions are now completely consistent with those used in ImpactX. I refer to the longitudinal spacial coordinate as $ct$ to continually remind that the units are in meters.
+With the scalar potential set to zero, we arrive at a common set of canonical coordinates used for studies of accelerator dynamics (Eq. \ref{eq:coords}). The relevant difference here from our coordinates above is that now the longitudinal momentum $p_t$ is the difference in the relativistic energy (Eq. \ref{eq:relEnergy}) of the test and reference particle. These definitions are now completely consistent with those used in ImpactX. The longitudinal spacial coordinate $\tilde{ct}$ (the time of arrival difference scaled by speed of light) will retain the scaling parameter to remind its dimensinality is length, but will be reffered to as $ct$ without the tilde for consistency with plotting moving forward.
 
 \begin{equation} \label{eq:coords}
 \begin{split}
