@@ -3,9 +3,9 @@
 \section{Background} \label{sec:back}
 Charged particle accelerators have been productive experimental tools for fundamental physics experiments, from Rutherford's use of naturally accelerated alpha particles for the discovery of the nucleus to the contemporary multinational physics collaborations centered at the Large Hadron Collider.  In addition to their useful nature as tools, particle accelerators provide an interesting system to study dynamics in a controlled environment. These same dynamical studies then have direct impacts on the construction of new machines for fundamental studies. As the experiments drive increasing energy and power demands on the beams, careful control of losses becomes more important as ever smaller loss fractions exceed safety and machine protection limits.
 
-To tackle the challenge of controlling energetic subatomic particles we first have to choose our tools. Some of the earliest "accelerator" experiments relied on energetic decay products, leveraging the weak nuclear force. This approach is quickly limited by the characteristic energies of these decays. Gravity can be easily dismissed as too weak and effectively fixed on the earth's surface. Bulk material interactions can be used to affect the path of particles, but they cannot accelerate and tend to cause significant losses. The default choice has been electromagnetic fields, dating back to early cathode ray experiments. These fields are easy to produce and control and can both steer and provide energy to charged particles. Naturally this restricts our ability to work with neutral particle beams, but this can be typically overcome with a charged primary beam to produce a neutral secondary beam as is the case in successful neutron spallation and neutrino beam facilities \cite{hendersonSpallationNeutronSource2014} \cite{adamsonNuMINeutrinoBeam2016}.
+To tackle the challenge of controlling energetic subatomic particles we first have to choose our tools. Some of the earliest "accelerator" experiments relied on energetic decay products, leveraging the weak nuclear force. This approach is quickly limited by the characteristic energies of these decays. Gravity can be easily dismissed as too weak and effectively fixed on the earth's surface. Bulk material interactions can be used to affect the path of particles, but they cannot accelerate and tend to cause significant losses. The default choice has been electromagnetic fields, dating back to early cathode ray experiments. These fields are easy to produce and control and can both steer and provide energy to charged particles. Naturally this restricts our ability to work with neutral particle beams, but this can be typically overcome with a charged primary beam to produce a neutral secondary beam as is the case in successful neutron spallation and neutrino beam facilities \cite{hendersonSpallationNeutronSource2014,adamsonNuMINeutrinoBeam2016}.
 
-Scaling the electrostatic fields from our early cathode ray tubes are a straightforward starting point for accelerating particles. A large voltage applied across carefully shaped electrodes can simultaneously accelerate and focus a beam. This was the guiding principle for early Van de Graaff machines like the Westinghouse atom smasher and the Cockroft-Walton style proton sources popularly used in the mid 20th century. This approach still finds use in pelletrons and "tandem" accelerators for low energy nuclear experimentation. However, the limits of breakdown gradients quickly restrict the energy from such devices. Using an oscillating electric field is a practical approach to bypassing this in two ways. First, the gradients of oscillating fields may be much higher than static fields. Second, by selectively timing the particles to be accelerated, the particle can gain energy from the gradient at the frequency of the oscillation. There are a few ways this is currently accomplished. The first is simply physically shielding the particles from the negative gradient, as is done in the Alvarez or drift tube linear accelerator (linac). If the velocity of a traveling Electromagnetic (EM) wave is matched to that of the desired accelerated particle the beam can always see a positive gradient and "surf" the wave. This is the approach of a traveling wave linac, typified by the original SLAC linac. Another early approach is to accelerate the particles in a single increasing field period. This is the approach of a betatron, where a ramping magnetic field generates a circular accelerating gradient until the field ramp is unsustainible. Betatrons were popular early industrial electron sources. Another approach is to adjust the path length of the beam between standing wave structures (usually called cavities) and the phase of these cavities to always arrive in a positive gradient. There are two main approaches using this technique. Either a sequence of cavities with proper phase are used sequentially, a resonant cavity linac. Or, the particles are recirculated to a cavity many times, the case with a broad variety of cyclic machines.
+Scaling the electrostatic fields from our early cathode ray tubes are a straightforward starting point for accelerating particles. A large voltage applied across carefully shaped electrodes can simultaneously accelerate and focus a beam. This was the guiding principle for early Van de Graaff machines like the Westinghouse atom smasher and the Cockroft-Walton style proton sources popularly used in the mid 20th century. This approach still finds use in pelletrons and "tandem" accelerators for low energy nuclear experimentation. However, the limits of breakdown gradients quickly restrict the energy from such devices. Using an oscillating electric field is a practical approach to bypassing this in two ways. First, the gradients of oscillating fields may be much higher than static fields. Second, by selectively timing the particles to be accelerated, the particle can gain energy from the gradient at the frequency of the oscillation. There are a few ways this is currently accomplished. The first is simply physically shielding the particles from the negative gradient, as is done in the Alvarez or drift tube linear accelerator (linac) \cite{alvarezBerkeleyProtonLinear1955}. If the velocity of a traveling Electromagnetic (EM) wave is matched to that of the desired accelerated particle, the beam can always see a positive gradient and "surf" the wave. This is the approach of a traveling wave linac, typified by the original SLAC linac. Another early approach is to accelerate the particles in a single increasing field period. This is the approach of a betatron, where a ramping magnetic field generates a circular accelerating gradient until the field ramp is unsustainible. Betatrons were popular early industrial electron sources. Another approach is to adjust the path length of the beam between standing wave structures (usually called cavities) and the phase of these cavities to always arrive in a positive gradient. There are two main approaches using this technique. Either a sequence of cavities with proper phase are used sequentially, a resonant cavity linac. Or, the particles are recirculated to a cavity many times, the case with a broad variety of cyclic machines.
 
 So far the problem of imparting energy to the particles has been given precedence, but naturally the particles must also be steered and focused for useful purposes. Here, we can consider magnetic fields as well as electric. While not possible to be used for energy gain, magnetic fields are the preferred option for steering and control. While electrostatic fields are used in some low energy applications, the proportional scaling of the force with momentum from a magnetic field pay dividends as beam energy increases and is the dominant approach for accelerator applications. We can consider then the earliest cyclic machine, the cyclotron. This consists of a single resonant electric gap in a static perpendicular magnetic field. By properly scaling the field strength, in the nonrelatavistic approximation, the classical cyclotron frequency means that the particle will continue to cycle at the correct frequency to see a positive gradient and gain energy. As a result, a modest field on the gap seen many times can result in a significant energy gain for the beam. The trade off is that now we have a periodic system which must support stable motion in the plane transverse to the direction of acceleration. This is not unique to cyclic machines, but the stability conditions are less stringent in linear machines, as they are one pass.
 
@@ -13,7 +13,7 @@ The energy limitations imposed by the relativistic effects in fixed field cyclot
 
 \section{General Beamline Hamiltonian} \label{sec:genHam}
 
-The problem of system stability is of course not unique to accelerators and has a long history of study of dynamical systems. Accordingly, we can construct a Hamiltonian of the system. To evaluate the inherent stability of the system we will construct the Hamiltonian for a single particle in external confining potentials in two dimensions. Notably, this does not include the self fields of the particle, or of the interactions of many particles in a beam. We are specifically interested in a Hamiltonian which describes a relativistic particle in electromagnetic fields. This results in the general Hamiltonian \ref{eq:H_em} where $\Phi$ and $\vec{A}$ are the typical scalar and vector potentials related to the electric and magnetic fields by \ref{eq:phi_A}
+The problem of system stability is of course not unique to accelerators and has a long history of study for dynamical systems. Accordingly, we can construct a Hamiltonian of the system. To evaluate the inherent stability of the system, we will construct the Hamiltonian for a single particle in external confining potentials in two dimensions. Notably, this does not include the self fields of the particle, or of the interactions of many particles in a beam. We are specifically interested in a Hamiltonian which describes a relativistic particle in electromagnetic fields. This results in the general Hamiltonian \ref{eq:H_em} where $\Phi$ and $\vec{A}$ are the typical scalar and vector potentials related to the electric and magnetic fields by \ref{eq:phi_A}
 
 \begin{equation} \label{eq:H_em}
 H_{EM} = E_{\Phi} = c\sqrt{(\vec{P} - q\vec{A}) + m^2 c^2} + q\Phi
@@ -34,12 +34,12 @@ Here the canonical momentum $\vec{P}$ is related to the mechanical momentum by \
 
 And this Hamiltonian is then the total energy of the particle including the contribution from the scalar potential, I will call this $E_{\Phi}$ to differentiate it from the total energy in the absence of the scalar potential.
 
-The upcoming derivations for the equations of motion are based on the tradition of the solution found in \cite{courantTheoryAlternatinggradientSynchrotron1958}, and generally follow the approach outlined in \cite{wolskiBeamDynamicsHigh2014} with some elements from \cite{leeAcceleratorPhysics2018}. We would like to refine this expression by changing to a simpler local coordinate system. When studying the dynamics of a particle accelerator, it is useful to investigate the motion of the particles with respect to some reference trajectory rather than their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret (Fig. \ref{fig:frenetSerret}) coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path.  In the case of many accelerator systems, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the Hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}. This coordinate transformation does not affect the value of the Hamiltonian, so it is still equivalent to the total energy of the test particle with the scalar field contribution. In general, this is the case for transfer lines, linacs, synchrotrons and storage rings. There are other style machines, such as cyclotrons and fixed field alternating gradient accelerators which demand a different treatment of the dynamics, but are beyond the scope of this dissertation.
+The presented derivations for the equations of motion are based on the tradition of the solution found in \cite{courantTheoryAlternatinggradientSynchrotron1958}, and generally follow the approach outlined in \cite{wolskiBeamDynamicsHigh2014} with some elements from \cite{leeAcceleratorPhysics2018}. We would like to refine this expression by changing to a simpler local coordinate system. When studying the dynamics of a particle accelerator, it is useful to investigate the motion of the particles with respect to some reference trajectory rather than their absolute coordinates in the lab frame. To start with, we adopt a Frenet-Serret (Fig. \ref{fig:frenetSerret}) coordinate system where the coordinate axes are defined with respect to a tangent vector of an arbitrary curved path.  In the case of many accelerator systems, the situation is simpler than this. In practice, bending is only in a single plane, typically horizontal in the lab frame. Additionally, if bending is only generated from the motion of charged particles in a static magnetic field, the bent path will be circles of a characteristic bending radius $\rho$. The result of this transformation only ends up modifying the momentum along the curved trajectory by a factor of $1 + \frac{x}{\rho}$ and gives us the Hamiltonian $H_{f.s.}$ in \ref{eq:H_fs}. This coordinate transformation does not affect the value of the Hamiltonian, so it is still equivalent to the total energy of the test particle with the scalar field contribution. In general, this is the case for transfer lines, linacs, synchrotrons and storage rings. There are other style machines, such as cyclotrons and fixed field alternating gradient accelerators which demand a different treatment of the dynamics, but are beyond the scope of this dissertation.
 
 \begin{figure} 
 	\centering
 	\includegraphics[width=0.8\linewidth]{./chapter_1_figures/madxFrenetSerret.pdf}
-	\caption{Illustration of Frenet-Serret style Coordinate System From Mad X Documentation \cite{deniauMADXProgramUsers}}
+	\caption{Illustration of Frenet-Serret style Coordinate System From MAD-X Documentation \cite{deniauMADXProgramUsers}}
 	\label{fig:frenetSerret}
 \end{figure}
 
@@ -47,13 +47,13 @@ The upcoming derivations for the equations of motion are based on the tradition 
 	H_{f.s.} = E_{\Phi} = c\sqrt{\left(\frac{p_s}{1 + x/\rho} - qA_s\right)^2 + (P_x - qA_x)^2 + (P_y- qA_y)^2+ m^2c^2} + q\Phi
 \end{equation}
 
-Since an accelerator is composed of sequential elements along this reference trajectory, it is useful to change the independent variable to the spacial coordinate along the trajectory. Inspecting the action with respect to the $s$-dimension shows that defining the new Hamiltonian as $H_s(x,p_x,y,p_y,t,-E_{\Phi};s) = -p_s$ only requires rearranging Eq. \ref{eq:H_fs} to arrive at Eq. \ref{eq:H_s}.
+Since an accelerator is composed of sequential elements along this reference trajectory, it is useful to change the independent variable to the spacial coordinate along the trajectory. Inspecting the form of the action shows that to change from $t$ as the independent variable to $s$ requires a new Hamiltonian of the form $H_s(x,p_x,y,p_y,t,-E_{\Phi};s) = -p_s$. We can then simply rearrange Eq. \ref{eq:H_fs} to arrive at Eq. \ref{eq:H_s}.
 
 \begin{multline} \label{eq:H_s}
 	H_s = -\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{E_{\Phi} - q\Phi}{c}\right)^2 - (P_x -q A_x)^2 - (P_y - q A_y)^2 - m^2c^2}\\ - \left(1 + \frac{x}{\rho}\right)qA_s
 \end{multline}
 
-There is one more coordinate transformation we would like to make. Currently our longitudinal canonical coordinate is time, which will increase quickly along the beam line and become cumbersome. We would like to define the position of the beam with respect to some reference particle, which has the ideal quantities we would like in our accelerated beam. Correspondingly we define a particle on our reference trajectory with a momentum $p_o$ (Eq.\ref{eq:p_o}) directed along the reference trajectory.
+There is one more coordinate transformation we would like to make. Currently, our longitudinal canonical coordinate is absolute position alont the Frenet-Serret trajectory, which will increase quickly along the beam line and become cumbersome. We would like to define the position of the beam with respect to some reference particle, which has the ideal quantities we would like in our accelerated beam. Correspondingly, we define a particle on our reference trajectory with a momentum $p_o$ (Eq.\ref{eq:p_o}) directed along the reference trajectory.
 
 \begin{equation} \label{eq:p_o}
 	p_o = \beta_o \gamma_o m c
@@ -133,7 +133,7 @@ There are two prominent alternative coordinate definitions in use. The first is 
 \end{split}
 \end{equation}
 
-The other coordinate convention which deserves mention is the use of $x' = \frac{dx}{ds}$. This is an easy to understand coordinate, but it is in general non-canonical and so is avoided in our Hamiltonian based approach. This value converges with our definition of $p_x$ in the ultrarelatavistic case.
+The other coordinate convention which deserves mention is the use of $x' = \frac{dx}{ds}$. This is an easy to understand coordinate, but it is in general non-canonical and so is avoided in our Hamiltonian-based approach. This value converges with our definition of $p_x$ in the ultrarelatavistic case.
 
 Recognizing $\frac{m^2c^2}{p_o^2} = \frac{1}{\beta_o^2 \gamma_o^2}$ we can make one more simplification now that $\Phi = 0$, giving us the Hamiltonian in Eq. \ref{eq:H_As}.
 
@@ -149,8 +149,8 @@ To determine the fields used, we first consider what is convenient to generate. 
 
 \begin{equation} \label{eq:poissonCylinder}
 \begin{split}
-	B_r(r,\theta) &= \sum_{n=1}^{\infty} C_n(z) \left( r \right)^{n-1} \sin{(n\theta)}\\
-	B_\theta(r,\theta) &= \sum_{n=1}^{\infty} C_n(z) \left( r \right)^{n-1} \cos{(n\theta)}
+	B_r(r,\theta) &= \sum_{n=1}^{\infty} \tilde{A}_n(z) \left( r \right)^{n-1} \sin{(n\theta)}\\
+	B_\theta(r,\theta) &= \sum_{n=1}^{\infty} \tilde{B}_n(z) \left( r \right)^{n-1} \cos{(n\theta)}
 \end{split}
 \end{equation}
 
@@ -164,7 +164,7 @@ Using the substitutions in Eq. \ref{eq:cylToCart} we can convert the field repre
 
 \begin{equation} \label{eq:cylToCart}
 \begin{split}
-	B_{\theta} + i B_r &= B_y + i B_x\\
+	B_{\theta} + i B_r &= (B_y + i B_x)e^{i\theta}\\
 	r e^{i\theta} &= x + iy
 \end{split}
 \end{equation}
@@ -173,7 +173,7 @@ Using the substitutions in Eq. \ref{eq:cylToCart} we can convert the field repre
 	B_y + iB_x = \sum_{n=1}^{\infty} C_n(z) (x + iy)^{n-1}
 \end{equation}
 
-The term $C_n(z)$ contains the multipole terms, and is in general a complex term with real "normal" and complex "skew" terms. The skew fields end up being the normal fields rotated by a factor of $\frac{\pi}{2n}$ for a given order. Figure \ref{fig:multipoles} shows the first few multipole fields, both normal and skew. As there are no magnetic monopoles, each multipole term represents another radially symmetric addition of a pair of north and south poles. The multipole terms are named according to a mix of Latin and Greek numeric prefixes, $n=1$ is dipole, $n=2$ is quadrupole, $n=3$ is a sextupole etc.
+The term $C_n(z)$ contains the multipole terms, and is in general a complex quantity with real "normal" and complex "skew" terms. The skew fields end up being the normal fields rotated by a factor of $\frac{\pi}{2n}$ for a given order. Figure \ref{fig:multipoles} shows the first few multipole fields, both normal and skew. As there are no magnetic monopoles, each multipole term represents another radially symmetric addition of a pair of north and south poles. The multipole terms are named according to a mix of Latin and Greek numeric prefixes, $n=1$ is dipole, $n=2$ is quadrupole, $n=3$ is a sextupole etc.
 
 \begin{figure} 
 	\centering
@@ -247,7 +247,7 @@ Resubstituting and dropping the constant factor, we arrive at the Hamiltonian in
 	H = \frac{p_x^2}{2} + \frac{p_y^2}{2} + \frac{p_t^2}{2\beta_o^2\gamma_o^2} + \frac{k_2}{2}(x^2 - y^2)
 \end{equation}
 
-Note that the resulting Hamiltonian has no mixed terms, so the equations are naturally separated into the different dimensions. This is in part due to our selection of external field, if we selected a skew quadrupole the transverse dimensions would be coupled. We can see that any static, non-bending, multipole field will not result in any coupling to the longitudinal dimensions in the paraxial approximation. For the quadrupole, the most relevant effect is the effective field for different momentum, the transverse "Chromaticity" in analogy to light optics. This is properly treated at higher orders, but we will first resolve this to lowest order. Applying Hamilton's equations of motion gives us three systems of linear differential equations.
+Note that the resulting Hamiltonian has no mixed terms, so the equations of motion are naturally separated into the different dimensions. This is in part due to our selection of external field, if we selected a skew quadrupole the transverse dimensions would be coupled. We can see that any static, non-bending, multipole field will not result in any coupling to the longitudinal dimensions in the paraxial approximation. For the quadrupole, the most relevant effect is the effective field for different momentum, the transverse "Chromaticity" in analogy to light optics. This is properly treated at higher orders, but we will first resolve this to lowest order. Applying Hamilton's equations of motion gives us three systems of linear differential equations.
 
 \begin{equation} \label{eq:quad_diffeq}
 \begin{split}
@@ -273,7 +273,7 @@ Which has three general solutions for different ranges of $k_2$.
 For a quadrupole of a given length $L$, we can define a matrix Eq. \ref{mat:quad} which represents the three linear solutions for our different dimensions if it acts on a state vector of our canonical coordinates.
 
 \begin{multline} \label{mat:quad}
-	M_{quad} = \\
+	\mathrm{M}_{quad} = \\
 \begin{pmatrix} 
 	&\cos{\left(\sqrt{k_2} L\right)} &\frac{1}{\sqrt{k_2}}\sin{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
 	&-\sqrt{k_2}\sin{\left(\sqrt{k_2} L\right)} &\cos{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
@@ -287,7 +287,7 @@ For a quadrupole of a given length $L$, we can define a matrix Eq. \ref{mat:quad
 The same approach can be applied to our other separated function, first order elements in the paraxial approximation, for a drift space (Eq. \ref{mat:drift}) and a sector dipole magnet (Eq. \ref{mat:dipole}).
 
 \begin{equation} \label{mat:drift}
-	M_{drift} =
+	\mathrm{M}_{drift} =
 \begin{pmatrix}
 	&1 &L &0 &0 &0 &0\\
 	&0 &1 &0 &0 &0 &0\\
@@ -299,7 +299,7 @@ The same approach can be applied to our other separated function, first order el
 \end{equation}
 
 \begin{multline} \label{mat:dipole}
-	M_{dipole} = \\
+	\mathrm{M}_{dipole} = \\
 \begin{pmatrix}
 	&\cos{\left(\frac{L}{\rho}\right)} &\rho \sin{\left(\frac{L}{\rho}\right)} &0 &0 &0 &-\frac{\rho}{\beta_o}\left(1 - \cos{\left(\frac{L}{\rho}\right)}\right)\\
 	&-\frac{1}{\rho}\sin{\left(\frac{L}{\rho}\right)} &\cos{\left(\frac{L}{\rho}\right)} &0 &0 &0 &-\frac{1}{\beta_o}\sin{\left(\frac{L}{\rho}\right)}\\
@@ -317,10 +317,10 @@ These solutions are quite powerful, as they let us stack linear transformations 
 \section{Courant-Snyder Parameterization} \label{sec:CSparam}
 While the transformations we have acquired are generally applicable, we would like to evaluate the conditions for a stable periodic system like we need for a cyclic machine. At this point we will make another simplification of the dynamics by investigating the stability of the transverse and longitudinal dimensions separately. This is of course not strictly true, but the characteristic timescales of synchrotron oscillations are often orders of magnitude slower than the transverse oscillations. We will choose the horizontal $x$ motion to investigate. Analogous methods can be used for the $y$ plane.
 
-We begin with defining a matrix of a periodic "cell" (Eq. \ref{eq:period}), or sequence of elements $M_1 \dots M_n$ with total length $L$. This could be the representation of a whole cyclic accelerator, or smaller sequence of elements intended for a superperiodic construction.
+We begin with defining a matrix of a periodic "cell" (Eq. \ref{eq:period}), or sequence of elements $\mathrm{M}_1 \dots \mathrm{M}_n$ with total length $L$. This could be the representation of a whole cyclic accelerator, or smaller sequence of elements intended for a superperiodic construction.
 
 \begin{equation} \label{eq:period}
-	\mathbb{M}(s) = M(s+L|s) = M_nM_{n-1}\dots M_2M_1
+	\mathbb{M}(s) = \mathrm{M}(s_o+L|s_o) = \mathrm{M}_n\mathrm{M}_{n-1}\dots \mathrm{M}_2\mathrm{M}_1
 \end{equation}
 
 Our periodic condition then becomes that motion is bounded for repeated applications of this matrix. The solutions to Hill's equations (including the dipole case where longitudinal coupling is excluded) yield matrices with a determinant of one. As the determinant of a product of matrices is the product of their individual determinants, we know that the determinant of our particular cell must be 1. If we decompose $\mathbb{M}$ into eigenvalues $\lambda_1, \lambda_2$ and eigenvectors $\vec{v}_1, \vec{v}_2$, the unit determinant leads to two useful relationships. First $\lambda_1 + \lambda_2 = \mathrm{Trace}(\mathbb{M})$, and second $\lambda_1 = 1/\lambda_2$. Substituting and rearranging yields Eq. \ref{eq:eigenTrace}.
@@ -335,7 +335,7 @@ If we describe a canonical state vector as a linear combination of our eigenvect
 	\vec{q}_n = \mathbb{M}^n\vec{q}_o = \mathbb{M}^n(a \vec{v}_1 + b \vec{v}_2) = a \lambda_1^n \vec{v}_1 + b \lambda_2^n \vec{v}_2
 \end{equation}
 
-This relationship clearly demonstrates that for stable long term motion, these eigenvalues cannot grow with repeated iterations. Courant and Snyder proposed the following general parameterization of our transfer matrix in Eq. \ref{eq:csMat}.
+This relationship clearly demonstrates that for stable long term motion, these eigenvalues cannot grow with repeated iterations. Courant and Snyder proposed the following general parameterization of our transfer matrix in Eq. \ref{eq:csMat}, consisting of "Lattice functions" $\alpha_x,\beta_x,\gamma_x$ and phase advance $\phi_x$.
 
 \begin{equation} \label{eq:csMat}
 	\mathbb{M}_{CS} = 
@@ -365,29 +365,34 @@ By leveraging the fact that the periodic linearized equations of motion have a d
 	\cos{\left(\phi_x\right)} = \mathrm{Trace}(\mathbb{M})
 \end{equation}
 
-We can further investigate the form of these parameters by splitting the general periodic matrix, in Eq. \ref{eq:csMatSplit}, where the matrix $A$ and $S$ are given in Eq. \ref{mat:csA}. $S$ is a block antisymmetric matrix, and reduces to just the antisymmetric matrix in two dimensions like we have here.
+We can further investigate the form of these parameters by splitting the general periodic matrix, in Eq. \ref{eq:csMatSplit}, where the matrix "A" and "S" are given in Eq. \ref{mat:csA}. "S" is a block antisymmetric matrix, and reduces to just the antisymmetric matrix in two dimensions like we have here.
 
 \begin{equation} \label{eq:csMatSplit}
-	\mathbb{M}_{CS} = I \cos{\left(\phi_x\right)} + S A \sin{\left(\phi_x\right)}
+	\mathbb{M}_{CS} = \mathrm{I} \cos{\left(\phi_x\right)} + \mathrm{S} \mathrm{A} \sin{\left(\phi_x\right)}
 \end{equation}
 
 \begin{equation} \label{mat:csA}
-	A = 
+	\mathrm{A} = 
 \begin{pmatrix}
 	&\gamma_x &\alpha_x\\
 	&\alpha_x &\beta_x
 \end{pmatrix},
-\hspace{10pt} S =
+\hspace{10pt} \mathrm{S} =
 \begin{pmatrix}
 	&0 &1\\
 	&-1 &0
+\end{pmatrix},
+\hspace{10pt} \mathrm{I} = 
+\begin{pmatrix}
+	&1 &0\\
+	&0 &1
 \end{pmatrix}
 \end{equation}
 
 Within our periodic cell $\mathbb{M}$, we can consider the transformation in Eq. \ref{eq:startShift} by some transfer matrix in the cell which moves the overall start point. By examining the trace of this transformation, we can see that $\phi_x$ of our periodic matrix is unchanged by this shift in start point.
 
 \begin{equation} \label{eq:startShift}
-	\mathbb{M}(s_1)  = M(s_1|s_o)\mathbb{M}(s_o)M(s_1|s_o)^{-1}
+	\mathbb{M}(s_1)  = \mathrm{M}(s_1|s_o)\mathbb{M}(s_o)\mathrm{M}(s_1|s_o)^{-1}
 \end{equation}
 
 If we apply this transformation to \ref{eq:csMatSplit}, as $\phi_x$ unadjusted by the shift, the overall effect is summarized in Eq. \ref{eq:AstartShift}.
@@ -399,16 +404,16 @@ If we apply this transformation to \ref{eq:csMatSplit}, as $\phi_x$ unadjusted b
 We can now leverage the underlying symplecticity of our transfer matrices, which mandates the condition in Eq. \ref{eq:symplecticMat}.
 
 \begin{equation} \label{eq:symplecticMat}
-	M^T S M = S
+	\mathrm{M}^T \mathrm{S} \mathrm{M} = \mathrm{S}
 \end{equation}
 
-Recognizing that $S^T = S^{-1}$ and using the symplectic condition, we can rearrange and invert Eq. \ref{eq:AstartShift} to arrive at the transformation of $A^{-1}$ at different points in the cell in Eq. \ref{eq:barAshift} 
+Recognizing that $\mathrm{S}^T = \mathrm{S}^{-1}$ and using the symplectic condition, we can rearrange and invert Eq. \ref{eq:AstartShift} to arrive at the transformation of $\mathrm{A}^{-1}$ at different points in the cell in Eq. \ref{eq:barAshift}.
 
 \begin{equation} \label{eq:barAshift}
 	A(s_1)^{-1} = M(s_1|s_o)  A(s_o)^{-1} M(s_1|s_o)^T
 \end{equation}
 
-After inverting $A$ we can solve Eq. \ref{eq:barAshift} for the transformation of our Courant-Snyder parameters $\beta_x, \alpha_x, \gamma_x$ with respect to the components of the transfer matrix $M$ in Eq. \ref{eq:csShift}.
+After inverting "A" we can solve Eq. \ref{eq:barAshift} for the transformation of our Courant-Snyder parameters $\beta_x, \alpha_x, \gamma_x$ with respect to the components of the transfer matrix "M" in Eq. \ref{eq:csShift}.
 
 \begin{equation} \label{eq:csShift}
 	\begin{pmatrix} &\beta_x(s_1) \\ &\alpha_x(s_1)\\ &\gamma_x(s_1) \end{pmatrix} = 
@@ -425,13 +430,13 @@ This is a useful result, as it means for any stable, periodic, sequence of our l
 We would now like to find the equations of motion for this parameterization. We can construct an invariant action for our canonical coordinates and Courant-Snyder parameters.
 
 \begin{equation} \label{eq:csJ}
-	J = \frac{1}{2} (\vec{q}_x)^T A \vec{q}_x = \frac{1}{2} (\gamma_x x^2 + 2\alpha_x x p_x + \beta_x p_x^2)
+	J = \frac{1}{2} (\vec{q}_x)^T \mathrm{A} \vec{q}_x = \frac{1}{2} (\gamma_x x^2 + 2\alpha_x x p_x + \beta_x p_x^2)
 \end{equation}
 
-Which we verify is invariant by inspecting the transformation of our canonical state vectors $\vec{q}_x$ and matrix $A$ under a transfer matrix in Eq \ref{eq:Jinvariant}.
+Which we verify is invariant by inspecting the transformation of our canonical state vectors $\vec{q}_x$ and matrix "A" under a transfer matrix in Eq \ref{eq:Jinvariant}.
 
 \begin{equation} \label{eq:Jinvariant}
-	J(s_1) = \frac{1}{2} \vec{q}_x(s_1)^T A(s_1) \vec{q}_x(s1) = \frac{1}{2} \vec{q}_x(s_o)^T M^T (M^T)^{-1} A(s_o) M^{-1}  M \vec{q}_x(s_o) = J(s_o)
+	J(s_1) = \frac{1}{2} \vec{q}_x(s_1)^T \mathrm{A}(s_1) \vec{q}_x(s1) = \frac{1}{2} \vec{q}_x(s_o)^T \mathrm{M}^T (\mathrm{M}^T)^{-1} \mathrm{A}(s_o) \mathrm{M}^{-1}  \mathrm{M} \vec{q}_x(s_o) = J(s_o)
 \end{equation}
 
 Determining the angle variable with respect to the Cournant-Snyder parameters is an extended derivation which requires inspecting the general solution to Hill's equation using the Floquet transform in comparison with the current periodic condition. This would be longer than the entire derivation of the Courant-Snyder parameters up to this point, so it is omitted here and only the important results are quoted. First, is the relationship of the angle variable $\varphi_x$ to the coordinates in eq. \ref{eq:csAngle}.
@@ -475,7 +480,7 @@ The result is that we only need the function $\beta_x(s)$ and its derivative to 
 	p_x = -\sqrt{\frac{2 J_x}{\beta_x}} (\sin{(\varphi_x)} + \alpha_x \cos{(\varphi_x)})
 \end{equation}
 
-We can see that the combination of these equations of motion paramaterize an ellipse for our Poincare section at any given point along the beamline. Figure \ref{fig:csEllipse} shows such an ellipse with the relevant relationship to the Courant-Snyder parameters. This graphic makes clear some useful intuitive relationships of the paramaterization. We can see that the $\beta_x$ describes the transverse envelope of motion for the lattice at a given location, and is defined to be strictly positive. The $\gamma_x$ function must also be strictly positive and parameterizes something of a "momentum envelope", though this is much less useful than the amplitude. The phase advance $\phi_x$ can be seen as sort of betatron oscillation time parameter. Regions with small beta functions, or small beam envelopes have large phase advances and represent large advances in the betatron oscillations.
+We can see that the combination of these equations of motion paramaterize an ellipse for our Poincar\'{e} section at any given point along the beamline. Figure \ref{fig:csEllipse} shows such an ellipse with the relevant relationship to the Courant-Snyder parameters. This graphic makes clear some useful intuitive relationships of the paramaterization. We can see that the $\beta_x$ describes the transverse envelope of motion for the lattice at a given location, and is defined to be strictly positive. The $\gamma_x$ function must also be strictly positive and parameterizes something of a "momentum envelope", though this is much less useful than the amplitude. The phase advance $\phi_x$ can be seen as sort of betatron oscillation time parameter. Regions with small beta functions, or small beam envelopes have large phase advances and represent large advances in the betatron oscillations.
 
 The area of this ellipse is $2\pi J_x$, but is usually related to the "emittance" in Eq. \ref{eq:csEmit} as $\pi \epsilon_x$. There is some inconsistency in application of the emittance in accelerator literature, sometimes it is only considered to be an aggregate property of a particle bunch and other times it may relate to a single particle equivalent dynamical value. I will distinguish the aggregate property as e.g. $\epsilon_{x,rms}$, defined in section \ref{sec:bunchEmit}, to distinguish it from the dynamical value $\epsilon_x$.
 
@@ -537,7 +542,7 @@ At this point, I would like to reiterate the assumptions along the way, and comm
 With these caveats in mind, this approach has been very powerful and is the guiding principle for first order accelerator design since its introduction. There is a wide variety of lattice simulation codes dating back to the 60's specifically designed to calculate these lattice parameters for evaluating stability, steering, and aperture restrictions of linear lattices.
 
 \section{First Order Bunch Properties} \label{sec:bunchEmit}
-In practice we rarely accelerate single particles, and so we would like to parameterize the collective properties of a particle bunch. If we have some bunch of particles all undergoing betatron oscillations we can relate their individual oscillations to the ensemble average or first moment in Eq. \ref{eq:bunchMean}.
+In practice we rarely accelerate single particles, and so we would like to parameterize the collective properties of a particle bunch. If we have some bunch of particles we can relate their individual betatron oscillations to the ensemble average or first moment in Eq. \ref{eq:bunchMean}.
 
 \begin{equation} \label{eq:bunchMean}
 	\langle x \rangle  = \sqrt{\beta_x} \langle \sqrt{\epsilon_x} \cos{(\varphi_x)}\rangle 
@@ -585,7 +590,7 @@ These values can be directly related to measurable quantities. This of course re
 In most accelerator literature, these rms quantites are referred to as the geometric emittance, as opposed to the other common "normalized" emittance. The normalization in question is a multiplicaiton by the relatavistic factors to ensure that the emittance is preserved through acceleration. This is irrelevant in a non-accelerating ring, so emittances presented are all geometric. Finally, by a quick dimensional analysis the units of emittance are simply [m] in our canonical coordinates. However, this convention is not universal, and often times the momentum dimensions are scaled with metric prefixes, as in the commonplace [mm-mrad]. As such, the emittance will be presented as [m-rad] to remain consisent, even though the [rad] label is not strictly accurate in our choice of coordinates.
 
 \section{Nonlinear Perturbations} \label{sec:nonlinearPerturb}
-Our treatment of the dynamics thus far has been exclusively linear. In practical machines, higher order multipoles are often added to compensate for deficiencies in the linear lattice construction. In most modern circular accelerators, the transverse chromaticity is compensated, or at least controlled with sextupole magnets. Octupole magnets may also be added to add an amplitude dependent detuning, which in turn drives tune spread in the bunch and can provide landau damping. In addition to deliberately introduced nonlinear perturbations, our linear elements have small intrinsic nonlinearities. Most notably there is an exact, nonlinear mapping for the dipole which has higher order terms which become relevant for dipoles with short radii of curvature \cite{bruhwilerSymplecticPropagationMap}. Additionally, the fringe fields of linear elements will possess intrinsic nonlinearities, though this is strongly dependent on the design \cite{baartmanQuadrupoleShapes2012}. For example, the quadrupole fringe field in the hard-edge approximation has contributions of the same order as an octupole magnet \cite{forestLeadingOrderHard1988}. These contributions all serve to perturb the dynamics, we can briefly consider the next order case of a sextupole magnet. If we add the sextupole term to our general Hamiltonian in Eq. \ref{eq:H_As}, and take the case for the curvature to be zero we arrive at Eq. \ref{eq:H_sext}.
+Our treatment of the dynamics thus far has been exclusively linear. In practical machines, higher order multipoles are often added to compensate for deficiencies in the linear lattice construction. In most modern circular accelerators, the transverse chromaticity is compensated, or at least controlled with sextupole magnets. Octupole magnets may also be added to add an amplitude dependent detuning, which in turn drives tune spread in the bunch and can provide landau damping. In addition to deliberately introduced nonlinear perturbations, our linear elements have small intrinsic nonlinearities. Most notably, there is an exact, nonlinear mapping for the dipole which has higher order terms which become relevant for dipoles with short radii of curvature \cite{bruhwilerSymplecticPropagationMap}. Additionally, the fringe fields of linear elements will possess intrinsic nonlinearities, though this is strongly dependent on the design \cite{baartmanQuadrupoleShapes2012}. For example, the quadrupole fringe field in the hard-edge approximation has contributions of the same order as an octupole magnet \cite{forestLeadingOrderHard1988}. These contributions all serve to perturb the dynamics, we can briefly consider the next order case of a sextupole magnet. If we add the sextupole term to our general Hamiltonian in Eq. \ref{eq:H_As}, and take the case for the curvature to be zero we arrive at Eq. \ref{eq:H_sext}.
 
 \begin{equation} \label{eq:H_sext}
 	H = -\sqrt{1 + p_t^2 - \frac{2p_t}{\beta_o} - p_x^2 - p_y^2} - \frac{p_t}{\beta_o} + \frac{k_3}{3}(3 x y^2 - x^3)
@@ -604,7 +609,7 @@ Figure \ref{fig:sextMap} shows the Poincare map for beam measurements in the Ind
 \begin{figure} 
 	\centering
 	\includegraphics[width=0.8\linewidth]{./chapter_1_figures/iucfSextupole.png}
-	\caption{Phase space in canonical and action angle coordinates for linear system with strong sextupole perturbations \cite{caussynExperimentalBeamDynamics}}
+	\caption{Phase space in canonical and action angle coordinates for linear system with strong sextupole perturbations \cite{caussynExperimentalBeamDynamics}.}
 	\label{fig:sextMap}
 \end{figure}
 
@@ -620,7 +625,7 @@ At these characteristic frequencies contributions add coherently and drive unsta
 \begin{figure} 
 	\centering
 	\includegraphics[width=0.8\linewidth]{./chapter_1_figures/order6resonance.pdf}
-	\caption{Resonance lines in tune space up to the 6th order}
+	\caption{Resonance lines in tune space up to the 6\textsuperscript{th} order}
 	\label{fig:resonanceLines}
 \end{figure}
 
@@ -630,7 +635,7 @@ Not every resonance is dangerous, only those which are driven strongly by the pa
 \section{Integrable Systems} \label{sec:integral}
 We have seen that uncontrolled nonlinear perturbations can significantly reduce the stability of our system. An integrable system is one which has as many independent conserved quantities as degrees of freedom in the configuration space. This serves to regularize the motion and means there cannot be chaotic trajectories, though it does not guarantee that trajectories are bounded. Additionally, the KAM theorem ensures that most trajectories away from resonances of a perturbed integrable system remain stable and quasi-periodic \cite{moserSolarSystemStable1978}. This is an important result, as it means a realistic, flawed implementation of an integrable system will still demonstrate broad stability. The predictability of integrable systems means they have long been a subject of study in dynamics. Many forms of integrable systems have been found \cite{hietarintaDirectMethodsSearch1987}, though they generally are physically impossible to impractical to implement in accelerators. Particle accelerators are one of the few areas where careful study of the controlled dynamical systems can take place.
 
-The linear Courant-Snyder system is an integrable system, with an independently conserved emittance in each degree of freedom. This also holds in the coupled linear system, though the parameterization is more complicated. In the context of accelerator dynamics, the advantages of this integrability are clear. It indicates that the design orbits are stable, generally robust to small permutations, and can be parameterized from the conserved quantities. The drawbacks of perturbative nonlinearites introduced to the linear system to mitigate higher order effects, have motivated a long history of searches for practical nonlinear integrable accelerators. McMillan introduced a basic set of one dimensional thin lens solutions \cite{mcmillanThoughtsStabilityNonlinear1967}, and Danilov found a practical 1-D solution using the Beam-Beam force as the nonlinear confining potential \cite{danilovTwoExamplesIntegrable1997}. The experiments in this thesis focus on another development of Danilov and Nagaitsev formulated in 2010.
+The linear Courant-Snyder system is an integrable system, with an independently conserved emittance in each degree of freedom. This also holds in the coupled linear system, though the parameterization is more complicated. In the context of accelerator dynamics, the advantages of this integrability are clear. It indicates that the design orbits are stable, generally robust to small permutations, and can be parameterized from the conserved quantities. The drawbacks of perturbative nonlinearites introduced to the linear system to mitigate higher order effects, have motivated a long history of searches for practical nonlinear integrable accelerators. McMillan introduced a basic set of one dimensional thin lens solutions \cite{mcmillanThoughtsStabilityNonlinear1967}, and Danilov found a practical 1-D solution using the Beam-Beam force as the nonlinear confining potential \cite{danilovTwoExamplesIntegrable1997}. The experiments in this thesis focus on another development of Danilov and Nagaitsev formulated in 2010 \cite{danilovNonlinearAcceleratorLattices2010}.
 
 \section{Nonlinear Integrable Optics} \label{sec:nio}
 Danilov and Nagaitsev discovered a two dimensional nonlinear integrable system relevant for accelerators \cite{danilovNonlinearAcceleratorLattices2010}. To derive this system, we begin with a Hamiltonian in transverse space using Courant-Snyder normalized parameters, so there is no time dependence of the Hamiltonian.  If we add a general nonlinear potential constructed out of these normalized coordinates, it too will be time independent and the Hamiltonian will be a constant of motion, as in Eq. \ref{eq:H_norm}.
