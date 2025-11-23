@@ -13,32 +13,47 @@
 \usepackage{siunitx}
 \sisetup{tight-spacing=true} 
 
+%adds bookmarks and external linking hopefully
+%\usepackage[bookmarks]{hyperref}
+
 %add subfig package for side-by-side figures
 %\usepackage{subfig}
 
-\addbibresource{z_full.bib}
+\addbibresource{z_chapter_2.bib}
 
 \begin{document}
 
 \frontmatter
-\title{Wieland PhD Thesis}
+
+\title{Experimental Studies of Nonlinear Integrable Optics with Elliptic Potentials}
+%\author{John Wieland}
+%\date{December 7, 1941}
+%\fieldofstudy{Physics}
+%
+%\maketitlepage
+
+\abstract{Stable transport of charged particle beams is the core challenge in designing and operating accelerators. The current paradigm in transverse focusing consists of quadrupole and dipole elements, parameterized as a linear integrable Hamiltonian by Courant and Snyder. The operational limits of high intensity accelerators are often determined by collective instabilites within the beam. Nonlinear elements may be added to supress certian forms of these collective effects, but restrict the range of stable trajectories. These shortcomings motivate extending to a nonlinear integrable which can share the benifits of supressing collective instabilites without limiting the stable trajectories. Danilov and Nagaitsev proposed a novel nonlinear integrable system with elliptical potentials which could be implemented as magnetic elements in an accelerator. \\ Such a system has been implemented for verification in the integrable optics test accelerator (IOTA), a small storage ring constructed for beam dynamics studies. Electron studies in IOTA treat the low-emittance beam as a macroparticle for a granular probe of the dynamics. Turn by turn measurements of the kicked beam responses are used for phase space reconstruction and analysis of the dynamics. Amplitude dependent detuning, a core figure of merit for suppressing instabilities, are directly measured and compared with high fidelity particle tracking simulations. Measuremnets of circulating beam with strong nonlinearities allow direct measurments of the topology of the nonlinear potential, and lifetime measurments in regions where nonlinear focusing terms dominate.}
+
+%\makecopyrightpage
+
+%\tableofcontents
 
 \mainmatter
 
-\include{chapter_1.tex}
-\include{chapter_2.tex}
-\include{chapter_5.tex}
-\include{chapter_3.tex}
-\include{chapter_4.tex}
+%\include{chapter_1.tex}
+%\include{chapter_2.tex}
+%\include{chapter_5.tex}
+%\include{chapter_3.tex}
+%\include{chapter_4.tex}
 \include{chapter_6.tex}
 
-\begin{appendices}
-\include{appendix_1.tex}
-\include{appendix_2.tex}
-\include{appendix_3.tex}
-\include{appendix_4.tex}
-\end{appendices}
+%\begin{appendices}
+%\include{appendix_1.tex}
+%\include{appendix_2.tex}
+%\include{appendix_3.tex}
+%\include{appendix_4.tex}
+%\end{appendices}
 
-\printbibliography
+%\printbibliography
 
 \end{document}
