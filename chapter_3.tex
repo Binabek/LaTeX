@@ -52,7 +52,7 @@ We then have three approaches which reliably converge before the 100 turn limit 
 	\label{fig:noiseConv}
 \end{figure}
 
-There is an additional consideration, we can evaluate the accuracy of the measurements while adjusting the initial phase. There is a periodic variation of the measured tune for this change in initial.  This necessarily means sampling a lower amplitude region of the signal as you go along the decoherence. With the padded signal we can also do a similar transformation. By rolling the padding to the front as well as behind with the same overall signal length, different phases given by the resolution of the binning. Figure \ref{fig:baseRoll} shows the change in the tune measurements for varying the initial turn of a sixty turn sample window and "rolling" the padded signal. Note that the first value of the NAFF padded and the NAFF rolled circled in black are exactly the same as they are evaluating the same signal. This comparison is not apples-to-apples but it does imply a benefit of the NAFF padded evaluation. For a given signal length the uncertainty due to the initial phase is regular and can be evaluated without sampling different, presumably lower amplitude areas of the original signal.
+There is an additional consideration, we can evaluate the accuracy of the measurements while adjusting the initial phase. There is a periodic variation of the measured tune for this change in initial.  This necessarily means sampling a lower amplitude region of the signal as you go along the decoherence. With the padded signal we can also do a similar transformation. By rolling the padding to the front as well as behind with the same overall signal length, different phases given by the resolution of the binning. Figure \ref{fig:baseRoll} shows the change in the tune measurements for varying the initial turn of a sixty turn sample window and ``rolling" the padded signal. Note that the first value of the NAFF padded and the NAFF rolled circled in black are exactly the same as they are evaluating the same signal. This comparison is not apples-to-apples but it does imply a benefit of the NAFF padded evaluation. For a given signal length the uncertainty due to the initial phase is regular and can be evaluated without sampling different, presumably lower amplitude areas of the original signal.
 
 \begin{figure}
 	\centering
@@ -64,7 +64,7 @@ There is an additional consideration, we can evaluate the accuracy of the measur
 The different tune measurement algorithms have different characteristic statistical uncertainties that scale with the available sample window. Without interpolation, the uncertainty in the FFT lines goes as $\frac{1}{N}$ where N is sample points, in our case available turns. Both the unwindowed NAFF and interpolation approaches have analytic uncertainties that go as $\frac{1}{N^2}$ \cite{zisopoulosRefinedBetatronTune2019,bartoliniTuneEvaluationSimulations1996}. The magnitude of the variation due to initial phase was added to the uncertainty of the tune measurements. We then have the following steps for a single signal tune measurement: \begin{enumerate}
 	\item{Zero pad signal to predetermined length}
 	\item{Evaluate the tune with NAFF}
-	\item{"Roll" the signal to shift initial phase}
+	\item{``Roll" the signal to shift initial phase}
 	\item{Evaluate rolled signal with NAFF}
 	\item{Repeat roll and evaluation a predetermined number of times, and estimate initial phase uncertainty from variance in rolled tune measurements}
 \end{enumerate}
@@ -203,7 +203,7 @@ The BPMs are all located in the linear matching section of the lattice. We can t
 
 To perform the least squares fit the lmfit python package \cite{newvilleLMFITNonLinearLeastSquares2025} was used. The nonlinear least squares efforts are irrelevant for the linear transport model, but the interface is much improved over other pythonic options, e.g. scipy. For our fits the free parameters are the position and momentum at a virtual BPM. Our model is the linear transfer matrices to each BPM from the virtual BPM location. In principle, these could be coupled, but the coupling is deliberately locally corrected with the IOTA skew quad correctors. The resulting transfer matrices have coupling on the order of the machine precision, so we simply exclude these terms to reduce the dimensionality of the fit. Accordingly, we perform a fit for each plane. The data for the fit is the BPM measured position at each BPM in a given turn. To ascribe an uncertainty to our reconstructed coordinates we need an understanding of the uncertainty in our BPM measurements.
 
-The uncertainty of the BPM measurements is evaluated from the variation in the tails long after the signal has fully decohered. Note that the radiation damping time for the beam ~3 orders of magnitude longer than this sample time. The individual particles are still at mostly full amplitude and our beam is "large". This may impact the centroid measurements if the nonlinear BPM calibration factors are off, as a fraction of the beam near the buttons may be undersampled or saturate the acquisition electronics. Some preprocessing was applied to the BPM signals to excluded these effects. For NIO lattice configurations, the tail was defined to be 2000 turns from the end, well past the expected coherence limit. Figure \ref{fig:bpmErrCutoff} shows the full sample range of an example kick in IOTA with a line indicating the noise sample threshold.
+The uncertainty of the BPM measurements is evaluated from the variation in the tails long after the signal has fully decohered. Note that the radiation damping time for the beam ~3 orders of magnitude longer than this sample time. The individual particles are still at mostly full amplitude and our beam is ``large". This may impact the centroid measurements if the nonlinear BPM calibration factors are off, as a fraction of the beam near the buttons may be undersampled or saturate the acquisition electronics. Some preprocessing was applied to the BPM signals to excluded these effects. For NIO lattice configurations, the tail was defined to be 2000 turns from the end, well past the expected coherence limit. Figure \ref{fig:bpmErrCutoff} shows the full sample range of an example kick in IOTA with a line indicating the noise sample threshold.
 
 \begin{figure}
     \centering
@@ -294,7 +294,7 @@ To illustrate the result with data, Figure \ref{fig:fitThread} shows the result 
 \end{figure}
 
 \section{Kick Amplitude Calibration} \label{sec:kickAmpCal}
-The position reconstruction is also valuable for calibrating the amplitude from the kicker. When evaluating the amplitude dependent detuning, we need a consistent way to define the amplitude for different configurations. The position reconstruction with the nonlinear insert is difficult to interpret and depends on the insert setting. We prefer instead to evaluate the effective linear emittance imparted from a kick. To calculate this, we reconstruct the position and momentum for the first turn in the bare lattice and look at the correlation with the kicker setting. Figure \ref{fig:kickCalLilacChrom} shows the reconstructed position and momentum for a few bare lattices with different sextupole configurations. The kicker response is reasonably linear, but we see a difference in calibration between bare lattices. From operational experience, we know some sextupoles have error terms with feed down effects on the linear lattice \ref{apx:sextErr}. As a result only the lattice with a current LOCO optimization is reliable, for the collections we are interested in, this is the "lilac" configuration considered moving forward.
+The position reconstruction is also valuable for calibrating the amplitude from the kicker. When evaluating the amplitude dependent detuning, we need a consistent way to define the amplitude for different configurations. The position reconstruction with the nonlinear insert is difficult to interpret and depends on the insert setting. We prefer instead to evaluate the effective linear emittance imparted from a kick. To calculate this, we reconstruct the position and momentum for the first turn in the bare lattice and look at the correlation with the kicker setting. Figure \ref{fig:kickCalLilacChrom} shows the reconstructed position and momentum for a few bare lattices with different sextupole configurations. The kicker response is reasonably linear, but we see a difference in calibration between bare lattices. From operational experience, we know some sextupoles have error terms with feed down effects on the linear lattice \ref{apx:sextErr}. As a result only the lattice with a current LOCO optimization is reliable, for the collections we are interested in, this is the ``lilac" configuration considered moving forward.
 
 
 \begin{figure}
@@ -325,7 +325,7 @@ Considering with a large collection of mixed kicks for this bare lattice configu
     $p_y$ [1] & \num{5.2e-5} $\pm$ \num{4.8e-6} & -\num{3.9e-3} $\pm$ \num{1.6e-5}\\
     \bottomrule
     \end{tabular}
-    \caption{Kicker Calibration scaling for "Lilac" bare lattice}
+    \caption{Kicker Calibration scaling for ``Lilac" bare lattice}
     \label{tab:kickCal}
 \end{table}
 
@@ -343,7 +343,7 @@ The coarse apporoach consisted of fitting a logistic funciton to the charactersi
 	\label{fig:acnetDA}
 \end{figure}
 
-For the more granualar, postprocessed DA scans, a bunch was injected and scraped to a standard initial current in the BPM sensitivity range. The beam was iteratively kicked along fixed ratio "spokes" as current was logged. Once the current reached a minimum threshold, another bunch was injected and the scan of another spoke began.  Figure \ref{fig:spokes} illustrates the resulting geometry of the kick amplitudes.
+For the more granualar, postprocessed DA scans, a bunch was injected and scraped to a standard initial current in the BPM sensitivity range. The beam was iteratively kicked along fixed ratio ``spokes" as current was logged. Once the current reached a minimum threshold, another bunch was injected and the scan of another spoke began.  Figure \ref{fig:spokes} illustrates the resulting geometry of the kick amplitudes.
 
 \begin{figure}
 	\centering
