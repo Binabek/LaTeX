@@ -62,7 +62,7 @@ There is one more coordinate transformation we would like to make. Currently, ou
 We can then scale the overall Hamiltonian by this reference momentum in  Eq. \ref{eq:H_p}. The equations of motion are still satisfied with the inclusion of the already substituted variable changes in Eq. \ref{eq:pOverP}.
 
 \begin{multline} \label{eq:H_p}
-	H_p = \frac{H_s}{p_o} = - \left(1 + \frac{x}{\rho}\right)\frac{q}{p_o}A_s\\
+	H_p = \frac{H_s}{p_o} = - \left(1 + \frac{x}{\rho}\right)\frac{q}{p_o}A_s \\
 -\left(1 + \frac{x}{\rho}\right)\sqrt{\left(\frac{\tilde{E}_{\Phi} - \frac{q}{p_o}\Phi}{c}\right)^2 - \left(p_x -\frac{q}{p_o} A_x\right)^2 - \left(p_y - \frac{q}{p_o} A_y\right)^2 - \frac{m^2c^2}{p_o^2}}
 \end{multline}
 
@@ -274,6 +274,8 @@ For a quadrupole of a given length $L$, we can define a matrix Eq. \ref{mat:quad
 
 \begin{multline} \label{mat:quad}
 	\mathrm{M}_{quad} = \\
+\begingroup
+\setlength\arraycolsep{-5pt}
 \begin{pmatrix} 
 	&\cos{\left(\sqrt{k_2} L\right)} &\frac{1}{\sqrt{k_2}}\sin{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
 	&-\sqrt{k_2}\sin{\left(\sqrt{k_2} L\right)} &\cos{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
@@ -282,6 +284,7 @@ For a quadrupole of a given length $L$, we can define a matrix Eq. \ref{mat:quad
 	&0 &0 &0 &0 &1 &\frac{L}{\beta_o^2\gamma_o^2}\\
 	&0 &0 &0 &0 &0 &1\\
 \end{pmatrix}
+\endgroup
 \end{multline}
 
 The same approach can be applied to our other separated function, first order elements in the paraxial approximation, for a drift space (Eq. \ref{mat:drift}) and a sector dipole magnet (Eq. \ref{mat:dipole}).
@@ -398,7 +401,7 @@ Within our periodic cell $\mathbb{M}$, we can consider the transformation in Eq.
 If we apply this transformation to \ref{eq:csMatSplit}, as $\phi_x$ unadjusted by the shift, the overall effect is summarized in Eq. \ref{eq:AstartShift}.
 
 \begin{equation} \label{eq:AstartShift}
-	S A(s_1) = M(s_1|s_o) S A(s_o)M(s_1|s_o)^{-1}
+	\mathrm{S} \mathrm{A}(s_1) = \mathrm{M}(s_1|s_o) \mathrm{S} \mathrm{A}(s_o)\mathrm{M}(s_1|s_o)^{-1}
 \end{equation}
 
 We can now leverage the underlying symplecticity of our transfer matrices, which mandates the condition in Eq. \ref{eq:symplecticMat}.
@@ -410,7 +413,7 @@ We can now leverage the underlying symplecticity of our transfer matrices, which
 Recognizing that $\mathrm{S}^T = \mathrm{S}^{-1}$ and using the symplectic condition, we can rearrange and invert Eq. \ref{eq:AstartShift} to arrive at the transformation of $\mathrm{A}^{-1}$ at different points in the cell in Eq. \ref{eq:barAshift}.
 
 \begin{equation} \label{eq:barAshift}
-	A(s_1)^{-1} = M(s_1|s_o)  A(s_o)^{-1} M(s_1|s_o)^T
+	\mathrm{A}(s_1)^{-1} = \mathrm{M}(s_1|s_o)  \mathrm{A}(s_o)^{-1} \mathrm{M}(s_1|s_o)^T
 \end{equation}
 
 After inverting ``A" we can solve Eq. \ref{eq:barAshift} for the transformation of our Courant-Snyder parameters $\beta_x, \alpha_x, \gamma_x$ with respect to the components of the transfer matrix ``M" in Eq. \ref{eq:csShift}.
