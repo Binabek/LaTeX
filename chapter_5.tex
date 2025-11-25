@@ -37,12 +37,12 @@ Figure \ref{fig:idealDNampDetune} displays the tunes versus the initial amplitud
 \end{figure}
 
 
-The characteristic Poincar\`e sections of the DN NIO system are shown in Figure \ref{fig:idealDNpoincare} in fully normalized coordinates. The system exhibits these ``spirograph" like patterns near the circle which would be traced by the basic Courant-Snyder system in the phase space. The most notable effect in the configuration space is the nonlinear coupling which results in this ``hourglass" shape that the particle traces. This has some impacts on admittance considered in section \ref{sec:DA}.
+The characteristic Poincar\'{e} sections of the DN NIO system are shown in Figure \ref{fig:idealDNpoincare} in fully normalized coordinates. The system exhibits these ``spirograph" like patterns near the circle which would be traced by the basic Courant-Snyder system in the phase space. The most notable effect in the configuration space is the nonlinear coupling which results in this ``hourglass" shape that the particle traces. This has some impacts on admittance considered in section \ref{sec:DA}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactxThinDNexamplePhase_t238.pdf}
-	\caption{Poincare sections for a single particle of the horizontal and vertical phase spaces, and the configuration space for the idealized NIO system at $t=-0.238$}
+	\caption{Poincar\'{e} sections for a single particle of the horizontal and vertical phase spaces, and the configuration space for the idealized NIO system at $t=-0.238$}
 	\label{fig:idealDNpoincare}
 \end{figure}
 
@@ -60,7 +60,7 @@ Figure \ref{fig:integerPhase} shows the phase space of this same particle. The m
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactXthinDNexamplePhase_t238nearInteger.pdf}
-	\caption{Phase space Poincare sections for simulated macroparticle near vertical integer resonance}
+	\caption{Phase space Poincar\'{e} sections for simulated macroparticle near vertical integer resonance}
 	\label{fig:integerPhase}
 \end{figure}
 
@@ -295,7 +295,7 @@ While electron experiments are the primary focus, the IOTA proton injector line 
 
 The IOTA proton source was characterized in the past \cite{tamCharacterizationProtonIon2010}, and these emittances were used as the starting point for the simulation. The source configuration has since changed, so these values are not expected to be the exact configuration in the current beamline. As a result a range of currents and their associated measured emittances were used to initialize the simulations. Currents of 8, 2, and 0 [mA] were simulated. We expect space charge neutralization in the LEBT, so these output emittances were used directly as the inputs to the RFQ simulations, in conjunction with the well understood matched incoming lattice functions.
 
-The RFQ simulations were performed with the TRACK code, as it was the original code used to design the RFQ in question \cite{ostroumovApplicationNewProcedure2006}. The HINS linac was intended to be focused entirely with superconducting solenoids, so the incoming and outgoing beams from the RFQ needed to be axially symmetric. This was accomplished through deliberately shaped electrodes for matching at the end of the otherwise typical RFQ vanes. These elements are represented as custom 3-D EM fields in TRACK and necessitated reviving the original simulation files. Space charge was modeled with particle in cell kicks. Table \ref{tab:track} summarizes the essential quantities for the RFQ outputs at the extremum currents. Figure \ref{fig:trackEmit} shows the output Poincare sections of the outputs for the extremum currents as well. The input distribution was transverse waterbags with a DC longitudinal structure, so of most interest is negligible transverse emittance growth and reasonable bunching. As we can see, the output longitudinal envelope is current independent in this range. The slight reduction in 8 [mA] emittance can be attributed to small mismatch losses. The longitudinal ``cyclone" structure in the 0 [mA] is not expected to significantly affect the dynamics downstream and can be seen to reasonably smear out with more current. 
+The RFQ simulations were performed with the TRACK code, as it was the original code used to design the RFQ in question \cite{ostroumovApplicationNewProcedure2006}. The HINS linac was intended to be focused entirely with superconducting solenoids, so the incoming and outgoing beams from the RFQ needed to be axially symmetric. This was accomplished through deliberately shaped electrodes for matching at the end of the otherwise typical RFQ vanes. These elements are represented as custom 3-D EM fields in TRACK and necessitated reviving the original simulation files. Space charge was modeled with particle in cell kicks. Table \ref{tab:track} summarizes the essential quantities for the RFQ outputs at the extremum currents. Figure \ref{fig:trackEmit} shows the output Poincar\'{e} sections of the outputs for the extremum currents as well. The input distribution was transverse waterbags with a DC longitudinal structure, so of most interest is negligible transverse emittance growth and reasonable bunching. As we can see, the output longitudinal envelope is current independent in this range. The slight reduction in 8 [mA] emittance can be attributed to small mismatch losses. The longitudinal ``cyclone" structure in the 0 [mA] is not expected to significantly affect the dynamics downstream and can be seen to reasonably smear out with more current. 
 
 \begin{table}
     \centering
