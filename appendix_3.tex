@@ -1,3 +1,46 @@
 \chapter{Octupole Magnetic Fiducialization} \label{apx:oct}
 
-This covers the magnetic field measurments for fiducialization and centering of the octupole insert.
+As discussed in section \ref{sec:iotaDesign}, any transverse field with the proper longitudinal scaling satisfies the condition for a time independent Hamiltonian. A single constant of motion does not make the system fully integrable without a chaotic seperatrix, but does serve to regularize the motion. This quasi-integrable (QI) dynamical system has been studied alongside the full NIO system as a cheaper, simpler system to implement with potentially similar benifits \cite{kuklevExperimentalStudiesNonlinear,antipovDesignOctupoleChannel2016}. In past experiments, alignment of the octupole lenses was undertaken with respect to the physical pole faces. Experimental closed orbit deviations with respect to insert excitation indicated imperfect alignment of the magnetic centers. The magnets were evaluated with a hall-probe test stand to fiducialize the magnetic center and select the best subset of magnets by field quality for installation in an lower lens count equi-phase configuration. 
+
+The magnetic test stand consists of a three-axis hall probe mounted on a three-axis motion stage. The movement of the probe was aligned with respect to a reference stand. The relative flatness of the stand to a metrology surface plate was within \num{5e-3} in ($\mathrm{\approx}$130 \unit{\micro m}). The perpendicularity of the axis was aligned to be better than \num{2e-3} in ($\mathrm{\approx}$51 \unit{\micro m}) over 4 in as measured to a reference flat with dial indicators. The repetability of the position of the stage was evaluated over the course of the measurments to be on the order of 5 \unit{\micro m}.
+
+Measurements of the field were made using points on a cylinder and the fourier transform was applied to find the multipole components. First a coarse measurment with a low radius and minimum set of 16 points on the cylider was taken. Based on the calculated multipoles, the center of the octupole term could be evaluated by minimizing the sextupole term assuming it is due to  feed down from the octupole term, as in Eq. \ref{eq:multCenter}. 
+
+\begin{equation} \label{eq:multCenter}
+	x_o + i y_o  = \left(\frac{1}{n-1}\right)\left(\frac{C'_{n-1}}{C'_n}\right)R_{ref}
+\end{equation}
+
+The effective multipoles given by this centered location could then be found within a good field region using Eq. \ref{eq:feedDown}.
+
+\begin{equation} \label{eq:feedDown}
+	C_n = \sum_{k=n}^{\infty} C'_k \left(\frac{(k-1)!}{(n-1)!(k-n)!}\right)\left(\frac{x_o +i y_o}{R_{ref}}\right)^{k-n}
+\end{equation}
+
+A finer resolution scan was performed with 32 points at the maximum radius which cleared the physical poles. Initally the $x$ and $y$ field signals were combined using the design position values to generate the $r$ and $\phi$ field components. Evaluating the multipole composition of these calculated fields gave unexpectedly high dipole terms considering the emperically measured residual fields at the center of the magnet. Figure \ref{fig:uncompMults} shows the resulting multipole composition in ``units", i.e. \num{1e4} times the dominant multipole term. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\caption{}
+	\label{fig:uncompMults}
+\end{figure}
+
+The dipole term is on the order of 10\% of the octupole term, much higher than measured. The underlying issue was found to be the physical offset of the hall effect chips in the probe. Figure \ref{fig:hallProbe} shows the manufacurers drawings of the probe. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\caption{}
+	\label{fig:hallProbe}
+\end{figure}
+
+Calculating the azimuthal fields assumes the chips are at an identical location, and introduces systematics according to the offset. Instead, the multipoles could be calculated directly from the individual probes. Figure \ref{fig:xMults} shows the multipole decomposition for only the $x$ hall probe from the same collection. This measurment is insensitive to the ``normal" dipole term, since only the horizontal field components are measured, but the $y$ decomposition is also used.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.1\linewidth]{./placeholder.pdf}
+	\caption{}
+	\label{fig:xMults}
+\end{figure}
+
+Based on the average results of the offests, the difference in the pole locations was found to be, with a rotation error of of the vertical probe from the horizontal of 0.2$^{\circ}$. The lowest integrated quadrupole terms of the individual magnets were used to select the best subset. Using reference features on the stand and the base of the magnet, another round of centering measuments were taken without any probe centering between to calculate the magnetic centers with respect to these fiducials. The Overall string was then aligned according to the relative offesets with shims.
