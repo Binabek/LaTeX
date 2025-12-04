@@ -124,7 +124,7 @@ Another effect on tune measurements is resonant capture, briefly discussed in se
 	\label{fig:specResCap}
 \end{figure}
 
-This resonant capture effect means we prefer to keep the tune measurement windows as short as gives reasonable tune resolution. This effect has been demonstrated in simulation, with kicked bunch measurements, and can be seen in single-electron measurements.
+This resonant capture effect means we prefer to keep the tune measurement windows as short as gives reasonable tune resolution. This effect has been demonstrated in simulation, with kicked bunch measurements, and can be seen in single-electron measurements \cite{romanovalexanderAnalysisEllipticIntegrable2025}.
 
 \section{Nonlinear Insert Calibration} \label{sec:nioCal}
 The nonlinear insert had to be calibrated and aligned to best match the nominal potential. This was done with beam based measurements. Recalling from section \ref{sec:nioDesign} that the lowest order component of the nonlinear insert is a quadrupole, and that the proper implementation of the DN NIO system requires consistent longitudinal scaling to properly match the potential, we treat the individual DN magnets as quadrupoles for small amplitudes. LOCO was applied to center the individual elements, the measured closed orbit offsets after centering \textit{assuming quadrupole terms} are presented in \ref{fig:dnOffset}. 
@@ -293,6 +293,8 @@ To illustrate the result with data, Figure \ref{fig:fitThread} shows the result 
     \label{fig:fitThread}
 \end{figure}
 
+To summarize, the full phase space variables were reconstructed from TBT data at a virtual BPM using least squares fitting to the linear lattice model. The model consisted of the linear dominated matching section of the lattice excluding the NIO insert to exclude the nonlinear dominated region. To ensure good quality of the fits, the goodness of fit for various preprocessing steps was evaluated. This required a good model of the BPM uncertainty, which was extracted on a kick-by-kick basis. Applying BPM calibrations, dropping a problematic BPM, and applying PCA to the TBT data showed the best results for limiting the variance in the goodness of fit and demonstrated the expected chi-square distribution. These efforts give us good confidence in the quality of the LOCO optimization of the linear lattice and uncertainties in the TBT extracted quantities from the data. 
+
 \section{Kick Amplitude Calibration} \label{sec:kickAmpCal}
 The position reconstruction is also valuable for calibrating the amplitude from the kicker. When evaluating the amplitude dependent detuning, we need a consistent way to define the amplitude for different configurations. The position reconstruction with the nonlinear insert is difficult to interpret and depends on the insert setting. We prefer instead to evaluate the effective linear emittance imparted from a kick. To calculate this, we reconstruct the position and momentum for the first turn in the bare lattice and look at the correlation with the kicker setting. Figure \ref{fig:kickCalLilacChrom} shows the reconstructed position and momentum for a few bare lattices with different sextupole configurations. The kicker response is reasonably linear, but we see a difference in calibration between bare lattices. From operational experience, we know some sextupoles have error terms with feed down effects on the linear lattice \ref{apx:sextErr}. As a result only the lattice with a current LOCO optimization is reliable, for the collections we are interested in, this is the ``lilac" configuration described in section \ref{sec:kickBeam}.
 
@@ -384,7 +386,7 @@ In addition to their very useful capacity as live beam monitoring instruments, t
 	\label{fig:synchBackground}
 \end{figure}
 
-To evaluate the lifetime from camera images, the relative intensity (simply the sum of the full image) and time stamps of the image could be fit with an exponential decay, eq. \ref{eq:expLife}. The uncertainty of the lifetime was determined from the uncertainty in the fit.
+To evaluate the lifetime from camera images, the relative intensity (simply the sum of the full image) and time stamps of the image could be fit with an exponential decay, eq. \ref{eq:expLife}. The uncertainty of the lifetime was determined from the uncertainty in the fit. Experimental results for lifetime measurments are described in section \ref{sec:intCross}.
 
 \begin{equation}
 	I(t) = I_o e^{-\frac{t}{\tau}}
