@@ -45,8 +45,8 @@ Measurements of kicked beam data is convenient and information rich with electro
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\linewidth]{./chapter_4_figures/gridKickExample.pdf}
-	\caption{Circulating current in IOTA while quickly ramping t-parameter with chromatic compensation}
+	\includegraphics[width=0.6\linewidth]{./chapter_4_figures/gridKickExampleMonochrome.pdf}
+	\caption{Example control system kicker setpoints for a individual lattice configuration collection.}
 	\label{fig:gridKick}
 \end{figure}
 
@@ -76,7 +76,7 @@ A direct verification of proper implementation of the NIO system would be conser
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_4_figures/goodBadInvConsTbt_t238.pdf}
-	\caption{TBT calculated invariant quantities, left plot shows general good conservation of all invariant quantities, right plot shows poor conservation of DN second invariant}
+	\caption{TBT calculated invariant quantities, left plot shows general good conservation of all invariant quantities for initial calibrated amplitudes $x=1.34$ mm $y=1.44$ mm. Right plot shows poor conservation of DN second invariant for initial calibrated amplitudes $x=0.62$ mm $y=3.89$ mm.}
 	\label{fig:invTbt}
 \end{figure}
 
@@ -86,7 +86,7 @@ An approach to evaluating the variance of the predicted invariants is to look at
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_4_figures/fourierInvariantCons_t238.pdf}
-	\caption{Turn based spectral composition of calculated invariant quantities for example sets}
+	\caption{Turn based spectral composition of calculated invariant quantities for example sets. Left plot for initial calibrated amplitudes $x=1.34$ mm $y=1.44$ mm, and right plot for initial calibrated amplitudes $x=0.62$ mm $y=3.89$ mm.}
 	\label{fig:invLogLog}
 \end{figure}
 
@@ -99,7 +99,7 @@ To compare different amplitudes and nonlinear insert configurations we calculate
 	\label{fig:invt238}
 \end{figure}
 
-The first DN invariant (the Hamiltonian) is similar in functional form to the overall Courant-Snyder invariant. As a result these two quantities display similar levels of conservation. A better metric is looking at the conservation of the second DN invariant. Based on this plotted invariant space we see reasonable conservation of both nonlinear invariants of motion for low vertical kicks and middling horizontal kicks. Based on this observation, a collection was taken for the same kicker settings repeatedly for the full beam lifetime. Once again, the sextupoles are in the ``lilac" configuration and the nonlinear $t=-0.238$. We can observe the nonlinear invariants versus current for this setting, in Figure \ref{fig:pointCurrent}. There is a slight reduction in overall conservation as current goes down, this is an expected effect of the decreasing signal to noise ratio we see in the BPM TBT signals. Additionally, the values are all within the statistical uncertainty for the range from about 0.33 to 0.5 mA.
+The first DN invariant (the Hamiltonian) is similar in functional form to the overall Courant-Snyder invariant. As a result these two quantities display similar levels of conservation. A better metric is looking at the conservation of the second DN invariant. Based on this plotted invariant space we see reasonable conservation of both nonlinear invariants of motion for low vertical kicks and middling horizontal kicks. Based on this observation, a collection was taken for the same kicker settings repeatedly for the full beam lifetime. The initial calibrated amplitudes were selected to be $x=1.33$ mm and $y=1.29$ mm. Once again, the sextupoles are in the ``lilac" configuration and the nonlinear $t=-0.238$. We can observe the nonlinear invariants versus current for this setting, in Figure \ref{fig:pointCurrent}. There is a slight reduction in overall conservation as current goes down, this is an expected effect of the decreasing signal to noise ratio we see in the BPM TBT signals. Additionally, the values are all within the statistical uncertainty for the range from about 0.33 to 0.5 mA.
 
 \begin{figure}
 	\centering
@@ -108,7 +108,7 @@ The first DN invariant (the Hamiltonian) is similar in functional form to the ov
 	\label{fig:pointCurrent}
 \end{figure}
 
-This set corresponds to the best conservation of the nonlinear invariants via this method. We can compare to the predicted deviation between the conservation of the Courant-Snyder invariant with adjusted lattice functions and the nonlinear invariants in simulation for the same initial amplitudes. Table \ref{tab:invConsv} shows the difference in the invariants in simulation and experiment. Two simulation conditions are considered, originally simulations were performed in the idealized linear lattice (``linmin" from \ref{sec:iotaSim}) indicating a clear difference in conservation. However, after identifying the best case conservation quantities, simulation fidelity had improved and comparative simulations with sextupole effects and expected nonlinearites (``nonlin" lattice) showed similar conservation quantites in simulation. Direct calculation of the analytical invariant quantities from fitted position data or simulation has insufficient resolution to demonstrate better relative conservation compared to the Courant-Snyder null hypothesis for a realistic lattice. We can still evaluate the topography of better and worse conservation for evaluting the interplay of NIO with perterbative nonlinearities.
+This set corresponds to the best conservation of the nonlinear invariants via this method. We can compare to the predicted deviation between the conservation of the Courant-Snyder invariant with adjusted lattice functions and the nonlinear invariants in simulation for the same initial amplitudes. Table \ref{tab:invConsv} shows the difference in the invariants in simulation and experiment. Two simulation conditions are considered, originally simulations were performed in the idealized linear lattice (``linmin" from \ref{sec:iotaSim}) indicating a clear difference in conservation. However, after identifying the best case conservation quantities, simulation fidelity had improved and comparative simulations with sextupole effects and expected nonlinearites (``nonlin" lattice) showed similar conservation quantites in simulation. Direct calculation of the analytical invariant quantities from fitted position data or simulation has insufficient resolution to demonstrate better relative conservation compared to the Courant-Snyder null hypothesis for a realistic lattice. We can still evaluate the topography of better and worse conservation for evaluting the interplay of NIO with perturbative nonlinearities.
 
 \begin{table}
     \centering
@@ -213,8 +213,8 @@ The effect is more striking in tune space, Figure \ref{fig:t238detuneQuad} shows
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./chapter_4_figures/impactx_t238_tunes_chromSexts_exactBends_quadFringe_dnQuad.pdf}
-	\caption{Amplitude dependent detuning for simulated IOTA lattice with ad-hoc nonlinearities and first order component of DN NIO insert}
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/impactXvmeasured_nonlin_quadDN_Detune_t238.pdf}
+	\caption{Amplitude dependent detuning for simulated IOTA lattice with ad-hoc nonlinearities and first order component of DN NIO insert, in blue to red color. Measured detuning with NIO nonlinearities in green.}
 	\label{fig:t238detuneQuad}
 \end{figure}
 
@@ -232,7 +232,7 @@ For evaluations of the available aperture, we first need to understand the admit
 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./chapter_4_figures/iotaApertureDrawings.png}
+	\includegraphics[width=1\linewidth]{./chapter_4_figures/iotaApertureDrawingsSmall.png}
 	\caption{CAD drawings of IOTA NIO insert vacuum chambers, with minimizing ellipses in apertures overlaid}
 	\label{fig:dnAperture}
 \end{figure}
@@ -352,12 +352,12 @@ The topography of the DN system is useful here in tuning the measurements and de
 \end{figure}
 
 
-Figure \ref{fig:allCams} shows the raw images in all of the cameras for a t-parameter just beyond the integer resonance condition. Here we see the characteristic distribution about the two new fixed points. Based on the calibration of the step size between t-parameter settings and the location of the splitting of the beam, we can attach a nominal t-parameter of $t=-0.525\pm0.002$ to these profiles. The asymmetry in the beam distribution is another characteristic feature of operation at and beyond the integer resonance with the DN NIO system. Small deviations in the closed orbit means the beam distribution tends to oscillate between the two main potential wells over relatively slow timescales, yielding a visible ``flickering" of the distribution during operation. By evaluating many profiles over time for the same t-parameter, a more even distribution can be obtained, and is the approach used moving forward.
+Figure \ref{fig:allCams} shows the raw images in all of the cameras for a t-parameter just beyond the integer resonance condition. Here we see the characteristic distribution about the two new fixed points. Based on the calibration of the step size between t-parameter settings and the location of the splitting of the beam, we can attach a nominal t-parameter of $t=-0.502\pm0.002$ to these profiles. The asymmetry in the beam distribution is another characteristic feature of operation at and beyond the integer resonance with the DN NIO system. Small deviations in the closed orbit means the beam distribution tends to oscillate between the two main potential wells over relatively slow timescales, yielding a visible ``flickering" of the distribution during operation. By evaluating many profiles over time for the same t-parameter, a more even distribution can be obtained, and is the approach used moving forward.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_4_figures/allCamst525.png}
-	\caption{Example sychrotron radiation profiles for all cameras, t-parameter $t=-0.525$}
+	\caption{Example sychrotron radiation profiles for all cameras, t-parameter $t=-0.502$}
 	\label{fig:allCams}
 \end{figure}
 
@@ -366,7 +366,7 @@ In addition to evaluating the integer resonance, the synchrotron profiles could 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{./chapter_4_figures/synchLightNomOptM3R_t525.pdf}
-	\caption{Sychrotron radiation profiles for the nominal lattice on the left, and lattice optimized for lifetime on the right, in camera M3R, t-parameter $t=-0.525$}
+	\caption{Sychrotron radiation profiles for the nominal lattice on the left, and lattice optimized for lifetime on the right, in camera M3R, t-parameter $t=-0.502$}
 	\label{fig:synchCenter}
 \end{figure}
 
