@@ -11,6 +11,8 @@ So far the problem of imparting energy to the particles has been given precedenc
 
 The energy limitations imposed by the relativistic effects in fixed field cyclotrons straightforwardly motivated ramping the magnetic field in time with the nominal energy to produced a fixed reference trajectory. This breaks the isochronous condition and introduces a synchronous frequency for a given design energy. The resulting ``synchrotrons" represent the current standard in high-energy accelerators, holding the absolute beam energy record since the late 60's. Advantages in alternating gradient focusing and later separated function magnets resulted in greatly reduced beam sizes and increased control over the dynamics. However, as intensities and energies increased, the requirements on the beam control increased commensurately. These conditions require close control of chromaticity and the working point to suppress certain multi-particle instabilities driven by the fields of beams, usually referred to as collective instabilities. Additional elements to provide for Landau damping to suppress general collective instabilities all add nonlinear perturbations which serve to limit the stable region of dynamics. In high intensity machines, self forces in the form of space charge serve to significantly perturb the dynamics and increase vulnerability to parametric resonances. These shortcomings have long motivated searches for nonlinear integrable focusing systems in accelerators. Such a potential has been implemented at the Integrable Optics Test Accelerator (IOTA). This dissertation describes the system, and presents experimental results on studies of the practicality of the nonlinear focusing system.
 
+The remainder of the first chapter will cover the background of the NIO system as implemented at IOTA. The second chapter describes the experimental facilities and hardware used in the experiment. The third chapter is focused on simulation studies done in support of the experiments. The fourth chapter introduces the analysis methods used for the experimental results, and the fifth chapter presents the experimental results and analysis of the NIO studies.
+
 \section{General Beamline Hamiltonian} \label{sec:genHam}
 
 The problem of system stability is of course not unique to accelerators and has a long history of study for dynamical systems. Accordingly, we can construct a Hamiltonian of the system. To evaluate the inherent stability of the system, we will construct the Hamiltonian for a single particle in external confining potentials in two dimensions. Notably, this does not include the self fields of the particle, or of the interactions of many particles in a beam. We are specifically interested in a Hamiltonian which describes a relativistic particle in electromagnetic fields. This results in the general Hamiltonian \ref{eq:H_em} where $\Phi$ and $\vec{A}$ are the typical scalar and vector potentials related to the electric and magnetic fields by \ref{eq:phi_A}
@@ -270,12 +272,12 @@ Which has three general solutions for different ranges of $k_2$.
 	x(s) &= a \cosh{\left(\sqrt{k_2} s\right)} + b \sinh{\left(\sqrt{k_2} s\right)}, &k_2<0
 \end{align}
 
-For a quadrupole of a given length $L$, we can define a matrix Eq. \ref{mat:quad} which represents the three linear solutions for our different dimensions if it acts on a state vector of our canonical coordinates.
+For a quadrupole of a given length $L$, we can define a matrix Eq. \ref{mat:quad} which represents the three linear solutions for our different dimensions if it acts on a state vector  of our canonical coordinates $\left(x,p_x,y,p_y,ct,p_t \right)$.
 
 \begin{multline} \label{mat:quad}
 	\mathrm{M}_{quad} = \\
 \begingroup
-\setlength\arraycolsep{-5pt}
+\setlength\arraycolsep{1pt}
 \begin{pmatrix} 
 	&\cos{\left(\sqrt{k_2} L\right)} &\frac{1}{\sqrt{k_2}}\sin{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
 	&-\sqrt{k_2}\sin{\left(\sqrt{k_2} L\right)} &\cos{\left(\sqrt{k_2} L\right)} &0 &0 &0 &0\\
