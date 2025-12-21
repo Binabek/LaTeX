@@ -20,7 +20,7 @@ To evaluate the methods, a comparison was made with both a synthetic signal and 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_3_figures/syntheticAndSimulationKicks.pdf}
-	\caption{Evaluation signals, fully synthetic and simulated}
+	\caption{Evaluation signals, fully synthetic left and simulated on right}
 	\label{fig:synKicks}
 \end{figure}
 
@@ -48,7 +48,7 @@ We then have three approaches which reliably converge before the 100 turn limit 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_3_figures/noiseSeedConvergence.pdf}
-	\caption{Convergence of tune measurements with zero padding}
+	\caption{Statistical variance of tune evaluation methods vs window length for different noise seeds with identical magnitude.}
 	\label{fig:noiseConv}
 \end{figure}
 
@@ -57,7 +57,7 @@ There is an additional consideration, we can evaluate the accuracy of the measur
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{./chapter_3_figures/slideTuneComparison.pdf}
-	\caption{Variation of tune measurements with initial phase}
+	\caption{Variation of tune measurements with initial phase for synthetic signal}
 	\label{fig:baseRoll}
 \end{figure}
 
@@ -73,7 +73,7 @@ This algorithm is applied to the real TBT bpm sample (Figure. \ref{fig:realEvalS
 
 \begin{figure}
 	\centering \includegraphics[width=1\linewidth]{./chapter_3_figures/realTuneEvalSignal.pdf}
-	\caption{Example kick for tune evaluation, BPM B1R signal}
+	\caption{Example kick for tune evaluation, TBT BPM B1R signal}
 	\label{fig:realEvalSig}
 \end{figure}
 
@@ -92,7 +92,7 @@ The other considered approach to investigate multiple BPM response was to select
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{./chapter_3_figures/t238_singleKickPCA.pdf}
-	\caption{PCA decomposition of TBT signals }
+	\caption{PCA decomposition of TBT signals for kick}
 	\label{fig:pcaComps}
 \end{figure}
 
@@ -101,7 +101,7 @@ The rows indicate different temporal signals. To provide some insight, in the ca
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_3_figures/pcaTemporalModes.pdf}
-	\caption{First four PCA temporal modes from decomposition above}
+	\caption{First four PCA temporal modes from decomposition in figure \ref{fig:pcaComps}}
 	\label{fig:pcaTemps}
 \end{figure}
 
@@ -112,7 +112,7 @@ Another effect on tune measurements is resonant capture, briefly discussed in se
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_3_figures/resonantCaptureSignal.pdf}
-	\caption{Example resonant capture kick}
+	\caption{Example resonant capture kick, TBT BPM B1R signal}
 	\label{fig:resCapReal}
 \end{figure}
 
@@ -120,7 +120,7 @@ Another effect on tune measurements is resonant capture, briefly discussed in se
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_3_figures/resonantCaptureSpectogramB1R_238_10_19_kick26.png}
-	\caption{Resonant capture spectrogram}
+	\caption{Resonant capture spectrogram of TBT signal from figure \ref{fig:resCapReal}}
 	\label{fig:specResCap}
 \end{figure}
 
@@ -244,7 +244,7 @@ In Figure \ref{fig:rawVcal} we compare the reduced chi square of the fits to the
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{./chapter_3_figures/redChiSquare_10_19_t238_rawVcal.pdf}
-    \caption{Goodness of Fit}
+    \caption{Goodness of Fit to raw BPM signals and signals with linear calibration factors applied}
     \label{fig:rawVcal}
 \end{figure}
 
@@ -253,7 +253,7 @@ Individual BPMs can be dropped from the fitting algorithm in the case of a acqui
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{./chapter_3_figures/redChiSquare_10_19_t238_rawVdropA1CandCalibrate.pdf}
-    \caption{Goodness of fit}
+    \caption{Goodness of fit to raw BPM signals and signals with calibrations and dropping unreliable BPM A1C}
     \label{fig:rawVA1C}
 \end{figure}
 
@@ -262,7 +262,7 @@ To reduce the uncorrelated noise a principle component analysis was applied to a
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{./chapter_3_figures/redChiSquare_10_19_t238_calAndDropVpcaClean.pdf}
-    \caption{Goodness of fit}
+    \caption{Goodness of fit to signals with calibrations and dropped A1C versus PCA ``cleaning"}
     \label{fig:calVpca}
 \end{figure}
 
@@ -271,7 +271,7 @@ While BPM A1C was consistently excluded, the other BPMs were evaluated and found
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{./chapter_3_figures/redChiSquare_10_19_t238_fullPrepVdropB2L.pdf}
-    \caption{Goodness of fit}
+    \caption{Goodness of fit for signals with nominal preprocessing versus signals with nominal preprocessing and dropped BPM B2L}
     \label{fig:prepVB2L}
 \end{figure}
 
