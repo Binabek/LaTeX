@@ -10,16 +10,13 @@ MAD-X is the closest the accelerator community has to a standard, and as such is
 
 \section{NIO Toy Simulations} \label{sec:dnSims}
 The first simulations we will consider will be of the DN NIO system to demonstrate the underlying dynamics. The simulations are constructed in the drift-kick style, with the kick for the DN insert defined by the instantaneous change in momentum in a Ruth-like formulation in equation \ref{eq:dnKick} \cite{mitchellComplexRepresentationPotentials2019}. 
-
 \begin{equation} 
 \label{eq:dnKick}
 \Delta p_x - i \Delta p_y = \Delta s \frac{t c}{\beta^{3/2}} \left( \frac{z_c}{1-z_c^2} + \frac{\arcsin{(z_c)}}{(1-z_c^2)^{3/2}} \right)
 \end{equation}
-
 The simplest insert configuration is a nonlinear insert drift with a thin matrix element providing the equal focusing. For ease of comparison, we match the IOTA NIO configuration with a 1.8 m drift with a phase advance of 0.3. This uniquely constrains the lattice functions in the drift and sets the values in the focusing matrix. We will also add a limiting aperture of a circle with a radius of 0.95 times the lab frame location of the singularities in the DN potential. We are only interested in the dynamics between the singularities as this is the physically practical region. Reference \cite{mitchellBifurcationAnalysisNonlinear2020} touches on the predicted dynamics outside of these constraints. We choose aperture of 0.95 of the limit to avoid numerical issues near the singularities. 
 
 To best approximate the nominal smooth longitudinal scaling of the DN potential, we integrate the insert with a sequence of 1800 kicks, effectively subdividing the insert into millimeter-scale steps. The particles are initialized and monitored at the center of the insert. In the bare lattice this corresponds to the $\beta^*$ location where the $\alpha$ lattice functions are zero. This makes interpretation easy as the maximum amplitude of the oscillation shares the zero momentum condition. As we ramp the t-insert, the symmetry of the insert means the first order effect of the nonlinear magnets keeps the effective $\alpha$ zero at the center. The first simulation considered uses an initial grid of points which uniformly fills the central aperture in the transverse configuration space. Impact-X is a strictly 6-D code, so it is impossible to completely exclude the longitudinal dynamics, but the $ct$ and $p_t$ coordinates are uniformly zero, so any effects are the result of numerical error. The drifts in the nonlinear insert are strictly linear, and do not include chromatic or geometric effects. Figure \ref{fig:idealDNdetune} shows the resulting amplitude dependent detuning for this full configuration space range for a t-parameter of $t=-0.238$. The color indicates the relative initial coordinates, i.e. red points indicate only $y$ initial coordinates and blue the same for $x$. The tune was measured for each macroparticle with the NAFF algorithm \cite{laskarMeasureChaosNumerical1992,zisopoulosPZisoPyNAFF2023} and a first order Hann window \cite{harrisUseWindowsHarmonic1978a}. We see a very large tune footprint with a characteristic ``butterfly wing" profile. The largest detuning axis is dependent on the horizontal amplitude. There are some spurious features related to large horizontal excitations. We see a thin line of tunes crossing the main footprint from the lower ``point", and a number of tunes on the $2Q_x + Q_y = 6$ resonance line. The interpretation of this effect becomes more obvious in the tune versus amplitude space.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{./chapter_5_figures/impactxIdealDNdetunet238.pdf}
@@ -28,7 +25,6 @@ To best approximate the nominal smooth longitudinal scaling of the DN potential,
 \end{figure}
 
 Figure \ref{fig:idealDNampDetune} displays the tunes versus the initial amplitude. The amplitude is calculated as the initial emittance for the bare lattice, to easily compare between different simulations. All points are present in each plot, so the perpendicular amplitudes are also present for a given labeled amplitude axis. The color scaling for relative ratio of kick amplitude has been retained. In addition to the general tune dependence on different amplitudes, we have a clear indicator on these extra features. Both features are present at excitations leading to detuning near the vertical integer resonance. Notably, since the system is fully integrable, all of these orbits remain stable. The interpretation of the tune becomes difficult in this region, as the TBT frequency approaches zero. The system is strongly nonlinear, so the assumption of a dominant frequency breaks down. The measured tunes for amplitudes predicted to detune beyond the also pose a practical challenge, standard signal processing methods are sensitive only to the fractional component of the tune, so we are insensitive to whether the tune ``rebounds" or passes down by an integer. 
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactxIdealDNtuneVampt238.pdf}
@@ -36,9 +32,7 @@ Figure \ref{fig:idealDNampDetune} displays the tunes versus the initial amplitud
 	\label{fig:idealDNampDetune}
 \end{figure}
 
-
 The characteristic Poincar\'{e} sections of the DN NIO system are shown in Figure \ref{fig:idealDNpoincare} in fully normalized coordinates. The system exhibits these ``Spirograph" like patterns near the circle which would be traced by the basic Courant-Snyder system in the phase space. The most notable effect in the configuration space is the nonlinear coupling which results in the ``hourglass" shape that the particle traces. This has some impacts on admittance considered in section \ref{sec:DA}.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactxThinDNexamplePhase_t238.pdf}
@@ -47,16 +41,13 @@ The characteristic Poincar\'{e} sections of the DN NIO system are shown in Figur
 \end{figure}
 
 We can gain some further insight into the unusual tune footprint by looking at the phase space and Fourier spectrum of a particle with an amplitude which corresponds to detuning near the vertical integer resonance. Figure \ref{fig:integerFourierSpectrum} shows the result of the FFT for such a particle, after centering on the mean of the TBT motion. We see that there is a broader spectrum with many peaks, the monotonal definition of tune begins to break down. Additionally, we do not see a frequency peak near the integer resonance or 0 tune. 
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/impactXthinDN_t238nearIntegerSpectrum.pdf}
 	\caption{Fourier spectrum of simulated particle near vertical integer resonance.}
 	\label{fig:integerFourierSpectrum}
 \end{figure}
-
 Figure \ref{fig:integerPhase} shows the phase space of this same particle. The motion becomes strongly nonlinear, especially vertically, where we are no longer orbiting around the original closed orbit. This explains the sudden jump in tune as we are in a different region of the phase space, and we are measuring the transverse frequency in this region, not the tune as generally defined. Reference \cite{mitchellBifurcationAnalysisNonlinear2020} provides some additional context for these behaviors for large amplitude particles.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactXthinDNexamplePhase_t238nearInteger.pdf}
@@ -65,7 +56,6 @@ Figure \ref{fig:integerPhase} shows the phase space of this same particle. The m
 \end{figure}
 
 A final figure of merit to consider is the quality of the conservation of the analytically predicted invariants. Figure \ref{fig:toyInv} shows the calculated DN system Hamiltonian and the second invariant turn by turn from an example particle, normalized by the mean. In the ideal case this would be flat. We see some slight jitter presumably from numerical noise and a slightly imperfect integration of the potential. This calculated quantity will be used for evaluating quality of other integrators and lattices moving forward as it is a direct indicator of the match of the system to the ideal DN NIO system.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/invariantConservation_t238_thinDN.pdf}
@@ -74,14 +64,12 @@ A final figure of merit to consider is the quality of the conservation of the an
 \end{figure}
 
 We now need to consider more realistic nonlinear insert configurations. It is impractical to manufacture a magnet that smoothly tapers with the required longitudinal scaling. To simulate the realistic IOTA insert, we need kicks which correspond to our 18 elements. This will not perfectly match the necessary integration of the potential, so we evaluate the quality of invariant conservation for this reduced number of elements. The following simulation consists of the IOTA style nonlinear insert with 18 equally spaced nonlinear thin kicks. We apply an aperture at the center of the insert consistent with the minimizing aperture in IOTA. Figure \ref{fig:v1idealInvariant} shows the resulting invariant conservation for the whole simulated grid of macro particles. Here the color scale is the standard deviation of the invariants turn-by-turn and divided by the mean of the invariant quantity over the range, like in figure \ref{fig:toyInv}. The horizontal and vertical axes correspond to the simulated particles initial position in quadrant one, as the potential is symmetric about both axes. The aperture of IOTA is visible as the elliptical cutoff in the transverse dimensions. We see that the overall conservation quality has gone down, but our standard deviation is still below \num{1.1e-3}. In general, the quality of invariant conservation and approximation of the DN system improves for a larger number of integration steps or slices, though we are limited to what we can practically build.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/toy_equiSpace_t238_invariants.pdf}
 	\caption{Invariant quantities conservation for the full IOTA aperture with 18 thin NIO kicks at $t=-0.238$.}
 	\label{fig:v1idealInvariant}
 \end{figure}
-
 The $t=-0.238$ is the nominal t-parameter studied further in this dissertation, but we are also interested in the quality of conservation in more nonlinear-dominated configurations. Identical simulations were performed with the 18 element configuration for a t-parameter $t=-0.45$, which is almost at the vertical integer resonance. The conservation of both invariant quantities was below a fractional standard deviation of \num{2.5e-3} for this t-parameter.
 
 The equal spacing configuration is the simplest approach to the system, but alternative configurations have been found have superior quality of integration. \cite{baturinHamiltonianPreservingNonlinear2022} proposes two alternative integration schemes, an equi-phase insert configuration, and an Yoshida-style \cite{yoshidaConstructionHigherOrder1990} higher order integrator. The equi-phase style integration can be straightforwardly implemented as a new insert. Instead of placing elements equally spaced in lab frame position, the elements are equally spaced in bare lattice phase advance. A simulation using 11 equi-phase elements instead of 18 at a t-parameter of $t=-0.238$ showed invariant conservation below a fractional standard deviation of \num{4e-3}. The upper limit on the conservation deviation is dominated by a single region in the configuration space near the horizontal aperture limit. The majority of the range has conservation better than \num{1.5e-3} like the 18 element equal space case. This is a significant advantage in practically constructing these inserts, as we can arrive at similar NIO system quality with fewer expensive magnets. This configuration is the basis for the second IOTA insert covered in appendix \ref{apx:dnv2}.
@@ -90,7 +78,6 @@ The equal spacing configuration is the simplest approach to the system, but alte
 For better fidelity simulations of experimental design and comparison, we need to include the full IOTA lattice. The physical dimensions the ImpactX IOTA lattice used are based on the publicly released version of the Mad-X lattice. The linear dynamics were benchmarked to this lattice configuration with simple Gaussian beam simulations as Impact-X does not have direct first-order lattice calculation capabilities. The lattice was configured to accept quadrupole settings from SixDSim lattices. In all Impact-X simulations, the fully symmetric model of IOTA was used, matching the lattice in figure \ref{fig:IOTAinj6}. This is without BPM offsets, dipole gradients, and the undulator corrections for easiest interpretability. 
 
 Impact-X supports a number of higher order effects which we can optionally include in the simulations to verify their impacts on invariant conservation and stability. The base condition considered above uses the linearized versions of the basic lattice elements, i.e. drifts, quads, and dipoles. With respect to longitudinal effects, this means that we are considering dispersion but not chromaticity. To begin to consider chromaticity, we change the quadrupole model to a drift kick model which integrates the full nonlinearities present, and the drifts to the exact model which includes the full geometric nonlinear term in momentum. The combination of this drift model and thin kicks is a sufficient Hamiltonian splitting for  arbitrary transverse kicks, so adding nonlinear elements in this lattice properly includes their chromatic effects as well. In this configuration we can evaluate the chromaticity of the lattice, by directly measuring the tune dependence on energy. We see a discrepancy in the natural chromaticity of the Impact-X lattice compared with SixDSim. Additionally, the impacts of the sextupole families based on the nominal calibrations fail to accurately compensate the chromaticity, this likely stems from improper calibration of the sextupole current to strength. Regardless, based on the measured impacts of the sextupoles in Impact-X, we can fully compensate the natural chromaticity in the simulated lattice. For bunched beam simulations in the chromatic lattice we implement a thin linear model of the RF. The bunch length is small compared to the RF bucket, and synchrotron dynamics are not typically relevant compared to momentum deviation and simple stability, so the linear approximation is sufficient for longitudinal dynamics in these studies. In addition to chromatic effects, we can introduce models of the expected residual nonlinearities in the bare lattice. The two elements considered in Impact-X are quadrupole fringe fields \cite{forestLeadingOrderHard1988} and the ``geometric" nonlinearities from the short bending radii of the dipoles \cite{bruhwilerSymplecticPropagationMap}. In addition to the larger nonlinear contributions full, nonlinear drift-kick models of the sextupoles can be implemented. We have one more configuration to consider, which is a first-order version of the NIO insert. This is used to evaluate the nonlinear contributions of the matching lattice with only the first order impacts of the NIO insert. Since the insert is modeled with thin kicks, in Impact-X this is accomplished by simply replacing the DN kicks with thin quadrupole kicks, not the typical linearized thick quadrupole models used elsewhere in the ring. We now have many basic lattice configurations which will be swapped between in the upcoming chapters, the assigned nicknames and associated descriptions are described in table \ref{tab:iotaLats}. Sextupole strength configurations are in general more flexible and treated separately.
-
 \begin{table}
     \centering
     \begin{tabular}{l|p{5.2in}}
@@ -113,7 +100,6 @@ Impact-X supports a number of higher order effects which we can optionally inclu
 \end{table}
 
 In addition to the linear lattice benchmarking, identical simulations using the ``linmin" lattice to those carried out with the thin matrix yielded similar invariant conservation levels as seen in Figure \ref{fig:v1idealInvariant}. We can look at the detuning range given by the realistic aperture in Figure \ref{fig:IOTAminapFullDetune} for $t=-0.238$ in ``linmin". The overall detuning shape is the same, but the range is much smaller, especially from the reduction in horizontal aperture. The interpretation problem of the tunes near the integer resonance disappears in this realistic configuration, which simplifies the experimental analysis.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{./chapter_5_figures/impactxIOTAlinearDetune_t238.pdf}
@@ -121,10 +107,8 @@ In addition to the linear lattice benchmarking, identical simulations using the 
 	\label{fig:IOTAminapFullDetune}
 \end{figure}
 
-
 \section{Energy Dependence Simulation} \label{sec:invVI}
 We can evaluate the impacts of realistic momentum deviation on the system with controlled offsets. In the following simulations, we consider an initial distribution consisting of transverse particles which fill the available aperture at a select group of initial momentum offsets. We are primarily interested in the relative stability at these locations, so there is no RF applied, and the macroparticles are permitted to slip longitudinally as in a coasting beam. Before we commit to these simulations, we will verify that the grid in $x$-$y$ is a sufficient initial condition to sample the whole phase space. For the linear Hamiltonian, this will uniformly cover the available phase space, but the full phase space of a nonlinear system is not necessarily sampled by a uniform distribution in one phase space variable. We have some confidence, because the underlying system is integrable it is smoothly differentiable in phase space variables, so there should be no isolated regions in phase space. This assumption breaks down with perturbations to the system in the form of additional nonlinearities. To evaluate the impact of full phase space initial conditions, a simulation in the ``crom" lattice with 4-D initial conditions was performed. The base structure consisted of a $x$-$y$ grid, and for each point in configuration space a smaller range of $p_x,p_y$ points was added. The energy offsets were also included to evaluate their impacts. Figure \ref{fig:fullPhaseDNH} shows the fractional standard deviation in the DN Hamiltonian plotted against the initial positions in phase space. The plotted points have no momentum deviation. All simulated particles are plotted, so naturally, some are obscured by later points, here they have been sorted by conservation so the ``worst" points rise to the top. 
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/phaseVolCorrCromlatInj6a_t238.png}
@@ -133,7 +117,6 @@ We can evaluate the impacts of realistic momentum deviation on the system with c
 \end{figure}
 
 We see that generally, conservation is reasonable with the nonlinear contributions from chromatic drifts and quads. More importantly, we can see that there is no significant correlation on invariant conservation against initial momentum. The only point of concern is the cluster of unusual poor conservation around $x=3,y=2$. This picture becomes more clear if we instead plot the conservation with respect to the maximum amplitude as calculated by the effective emittances. Figure \ref{fig:invVenergy4D} shows the fractional invariant conservation for both DN invariants, Hamiltonian on the left and second invariant on the right. Here the color scales are unified, if invariant standard deviation is below \num{5e-3} it is colored dark blue, and if over \num{5e-2} orange. The horizontal and vertical coordinates are the maximum amplitudes at the IOTA minimum aperture calculated by using the first order effect of the nonlinear insert to calculate the effective emittances. The third plot from the top on the left corresponds to the same points, and we see that this region of poorer conservation in figure \ref{fig:fullPhaseDNH} corresponds clearly to a line in the reduced quality conservation in combined amplitude, presumably stemming from a nonlinear resonance.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_inj6aQuads_cromLat_invariantVenergy4DMask.png}
@@ -142,7 +125,6 @@ We see that generally, conservation is reasonable with the nonlinear contributio
 \end{figure}
 
 We can further compare this conservation picture with a similar plot of the invariant conservation for only initial position seeds in \ref{fig:invVenergySplit}. All of the same features are present at a higher resolution for many fewer simulated particles due to the reduced dimensionality.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_inj6aQuads_cromLat_invariantVenergy2Dmask.png}
@@ -151,7 +133,6 @@ We can further compare this conservation picture with a similar plot of the inva
 \end{figure}
 
 We now want to evaluate the impacts of chromatic compensation with sextupoles on the dynamic aperture and invariant conservation. This is the generic approach to matching the chromaticities and maximizing decoherence times for the bare lattice in experiment. This should nominally compensate for the energy dependence of the invariant conservation seen in figure \ref{fig:invVenergySplit}. Figure \ref{fig:invVenergySext} shows the resulting conservation plots. We see that conservation is significantly impacted, the threshold for the orange points has been raised to a fractional standard deviation of \num{5e-1} for reasonable comparison. Clearly this means that the NIO system is not well represented here. Additionally, the sextupole effects introduce a significant reduction in the dynamic aperture, especially in regions detuning to the sextupole resonant lines.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_inj6aQuads_cromLat_sextComp_invariantVenergy2DMask.png}
@@ -160,7 +141,6 @@ We now want to evaluate the impacts of chromatic compensation with sextupoles on
 \end{figure}
 
 We can also simulate the impacts of expected nonlinearities in our lattice with the ``nonlin" lattice configuration without sextupole contributions in figure \ref{fig:invVenergyNonlin}.This condition is milder than the sextupole impacts, we can revert to the orange upper limit at \num{5e-2}. Generally, outside of the impacted upper regions of the initial points, this configuration recovers much of the structure of the idealized lattice and retains regions of reasonable conservation. 
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_inj6aQuads_nonlinLat_invariantVenergy2DMask.png}
@@ -169,7 +149,6 @@ We can also simulate the impacts of expected nonlinearities in our lattice with 
 \end{figure}
 
 Finally, we can consider the expected nonlinearities and the sextupole compensation in figure \ref{fig:invVenergyNonlinSext}. We need to increase the orange threshold to \num{5e-1} again. Invariant conservation is poor, and dynamic aperture is significantly reduced, though the main impacts seem to stem from the sextupole terms. It is difficult to evaluate the invariant conservation dependence on the energy offset. This is the nearest simulation configuration to the expected dynamics in IOTA. As the invariant conservation is quite poor for these noiseless measurements, this throws into doubt the possibility to directly measure the conservation of invariant quantities from turn by turn measurements, especially with sextupoles. Unfortunately, these simulations were performed after the experimental measurements, and were not available for guiding the experimental design.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_inj6aQuads_nonlinLat_sextComp_invariantVenergy2DMask.png}
@@ -177,10 +156,8 @@ Finally, we can consider the expected nonlinearities and the sextupole compensat
 	\label{fig:invVenergyNonlinSext}
 \end{figure}
 
-
 \section{Bunch Simulations} \label{sec:bunchSims}
 The IOTA electron experiments leverage the fact the electron beam is small and can act as a macroparticle probe of the dynamics. Some simulations were performed to verify that this assumption holds in the strongly amplitude dependent NIO system. To evaluate this, a 10,000 particle bunch with emittances comparable to those measured in the bare IOTA lattice was initialized. An ``index" particle was also placed with zero amplitude. The whole bunch and index were then given coherent instantaneous momentum change, analogous to the action of a kicker. The individual particles, index particle, and beam centroid could then be tracked through the ring. The index represents the actual point probe of the dynamics for a given amplitude, and the centroid is a close approximation of the signal on the BPMs. These simulations are interesting in the context of a bunched beam which necessarily includes chromatic effects. The first simulation is for an initial kick of $\delta p_x = \num{2e-3}$ [1] and $\delta p_y = \num{2e-3}$ in the ``crom" lattice without sextupole compensation. The initial and final configuration in $x$-$y$ configuration space is plotted in Figure \ref{fig:kickProfile}. This is a good illustration of the relatively flat beam and the mostly linear response of the kicked beam, the final state after 1200 turns is the typical four pointed distribution.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{./chapter_5_figures/impactIniFin_bunchKick6D_cromLat_t238.pdf}
@@ -189,7 +166,6 @@ The IOTA electron experiments leverage the fact the electron beam is small and c
 \end{figure}
 
 We can look at the calculated centroids TBT in Figure \ref{fig:kickCentroid}, this is analogous to the signal we expect to see on the BPMs. Immediately the decoherence from the tune footprint of the beam is obvious and gives us an idea of what we may expect in experiment. This also informs the range we can measure the tune over.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/impactCentroids_bunchKick6D_cromLat_t238.pdf}
@@ -198,8 +174,6 @@ We can look at the calculated centroids TBT in Figure \ref{fig:kickCentroid}, th
 \end{figure}
 
 To evaluate the quality of the bunch probe, we can investigate the tune for the index particle, which is on momentum with exactly the kick amplitude, the centroid of the bunch, and the individual simulated particles. Figure \ref{fig:kickCromDetune} shows the calculated tunes for the index, centroid, and the tune footprint of the beam. For this configuration, we see that the beam centroid tune closely resembles the equivalent single particle probe of our index particle. The index particle tune is calculated over the full range of 1200 turns, as it is the nominal on-momentum dynamics probe. The tune footprint measurements are over 400 turns to minimize the impacts of synchrotron motion on the detuning. Finally the centroid tune is calculate over 60 turns to accurately capture the large amplitude region before strong detuning.
-
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactAmpDetune_bunchKick6D_cromLat_400turn_t238.pdf}
@@ -208,7 +182,6 @@ To evaluate the quality of the bunch probe, we can investigate the tune for the 
 \end{figure}
 
 We can look at the tune distributions directly in Figure \ref{fig:kickTuneHist}, and see that in this relatively clean lattice configuration the tune footprint is well distributed about the nominal and centroid tunes. The detuning is dominated by the nonlinear insert and the chromatic tune footprint only mildly impacts the distribution.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactTuneDist_bunchKick6D_cromLat_400turn_t238.pdf}
@@ -217,7 +190,6 @@ We can look at the tune distributions directly in Figure \ref{fig:kickTuneHist},
 \end{figure}
 
 The next obvious comparison is the tune measurements with our chromatic compensation. Nominally this should reduce the tune footprint due to energy spread and improve our coherence times. Additionally, this is the expected necessary condition for a stable working point with the nonlinear insert. Figure \ref{fig:kickSextCentroid} shows the resulting centroid decoherence with fully compensated chromaticity in the ``crom" lattice. In this clean configuration, we see negligible change in the vertical decoherence and an increase in the horizontal length.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/impactCentroids_bunchKick6D_cromLat_sextComp_t238.pdf}
@@ -226,7 +198,6 @@ The next obvious comparison is the tune measurements with our chromatic compensa
 \end{figure}
 
 Inspecting the tune footprint in Figure \ref{fig:kickSextDetune}, we see the impacts of the nonlinearities, some large amplitude particles are captured on the sextupole coupling resonance. Nonetheless, for the same tune calculation ranges the centroid still closely matches the nominal ``index" particle.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactAmpDetune_bunchKick6D_cromLat_sextComp_400turn_t238.pdf}
@@ -235,7 +206,6 @@ Inspecting the tune footprint in Figure \ref{fig:kickSextDetune}, we see the imp
 \end{figure}
 
 Finally we consider the tune footprint for the full ``nonlin" lattice with sextupole chromatic compensation in \ref{fig:kickNonlinDetune}. Here the resonant capture effects are quite strong, we see significant components of the beam trapped on the third and fourth order coupling resonances for our nominal kick away from these locations. Nonetheless, with short samples of the turns, the centroid tune measurements remain robust and comparable with the nominal tune.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactAmpDetune_bunchKick6D_nonlinLat_sextComp_400turn_t238.pdf}
@@ -244,7 +214,6 @@ Finally we consider the tune footprint for the full ``nonlin" lattice with sextu
 \end{figure}
 
 The importance of selecting relevant turn ranges for tune calculation is well illustrated in Figure \ref{fig:kickResCap}. This is the same lattice condition as above, ``nonlin" with full sextupole chromatic compensation with different kick amplitudes of $\delta p_x = \num{2.2e-3}$ [1] and $\delta p_y = \num{1.2e-3}$ [1] to get a larger fraction of the beam on the sextupole coupling line. The index and tune footprint calculation ranges are the same, but the centroid tune is calculated over 200 turns, so the resonantly captured particles begin to dominate the measurement. We see that the centroid tune becomes resonantly captured and does not represent the nominal ``index" amplitude. This effect is reproduced in experiment, as further discussed in sections \ref{sec:tune} and \ref{sec:ampDetune}.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/impactAmpDetune_bunchKick6D_nonlinLat_sextComp_400-200turn_t238.pdf}
@@ -252,19 +221,15 @@ The importance of selecting relevant turn ranges for tune calculation is well il
 	\label{fig:kickResCap}
 \end{figure}
 
-
 \section{Theoretical Lattice Improvement Simulations} \label{sec:latImprove}
 Based on experimental results, a number of potential improvements to the bare lattice configuration were considered in simulation. The simplest impact evaluated was to minimize the emittance of the electron beam. This has the effect of making the beam more point-like, and most importantly reduces its tune footprint. A reduced footprint means extended coherent centroid oscillations and improved sensitivity for all major turn-by-turn measurements. The main contributor to emittance is the dispersion in the 60 degree dipoles. For the NIO lattice, the dispersion and its derivative must be zero at the end of these dipoles on the face near the insert to match the NIO condition. In the dipole the derivative of the dispersion monotonically increases, so the simplest approach to reduce these integrals in the 60 degree dipoles is to configure them as a so called double bend achromat \cite[pg.133]{leeAcceleratorPhysics2018}. An example lattice which retains the core NIO requirements with a DBA like structure in the 60 degree dipoles is presented in Figure \ref{fig:dbaSixdsim}. This lattice results in over an order of magnitude reduction in equilibrium emittance in the horizontal plane, from \num{1.67e-5} to \num{1.01e-6} [cm-rad] as calculated by SixDsim using the radiation integrals \cite[pg.438]{leeAcceleratorPhysics2018}.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/dbaLatticeCropped.png}
 	\caption{SixDsim lattice plot of the lower emittance DBA-style IOTA configuration.}
 	\label{fig:dbaSixdsim}
 \end{figure}
-
 The resulting detuning impacts on a simulated TBT response can be seen in Figure \ref{fig:lowEmitDetune}. The tune footprints for an example kick amplitude of beams at the equilibrium emittance for the generic NIO and low-emittance lattices are plotted in blue and green respectively. 
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{./chapter_5_figures/bunchKickEmitOptTunest238.png}
@@ -273,7 +238,6 @@ The resulting detuning impacts on a simulated TBT response can be seen in Figure
 \end{figure}
 
 The results on the decoherence as measured by the mean of the transverse coordinates are given in Figure \ref{fig:lowEmitDecohere}. We see about a factor of two improvement on the vertical decoherence, a relevant factor as this is often the limiting number in the tune and phase space reconstruction. 
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/bunchKickCentroidEmitOp_t238.pdf}
@@ -282,7 +246,6 @@ The results on the decoherence as measured by the mean of the transverse coordin
 \end{figure}
 
 This lattice represents only the first pass on the optimization, but is readily applicable for the IOTA lattice and within the bounds of the current quadrupoles. In addition to the emittance minimization, tuning of the natural chromaticities of IOTA was considered. The main consideration for NIO lattice operation is matched chromaticities in the horizontal and vertical planes. The natural chromaticities in IOTA are already near each other. A lattice was optimized to bring these chromaticities to match, though the symmetry of IOTA had to be broken. This was accomplished with a general optimization using the full range of IOTA quadrupoles, there is not a simple linearly scaling knob to adjust the natural chromaticities in this way. Due to the imperfect matching between the SixDSim and Impact-X calibrations, the quality of the NIO condition degraded somewhat. The resulting invariant conservation versus energy spread is given in Figure \ref{fig:chromMatchInv}. We can see that the overall conservation in the zero energy condition is slightly compromised, likely due to this imperfect bare lattice. But, more importantly, the invariant conservation for off momentum particles is improved, especially for higher amplitudes.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/t238_impactGuessQuads_cromLat_invariantVenergy2DMask.png}
@@ -296,7 +259,6 @@ While electron experiments are the primary focus of this dissertation, the IOTA 
 The IOTA proton source was characterized in the past \cite{tamCharacterizationProtonIon2010}, and these emittances were used as the starting point for the simulation. The source configuration has since changed, so these values are not expected to be the exact configuration in the current beamline. As a result a range of currents and their associated measured emittances were used to initialize the simulations. Currents of 8, 2, and 0 [mA] were simulated. We expect space charge neutralization in the LEBT, so these output emittances were used directly as the inputs to the RFQ simulations, in conjunction with the well understood matched incoming lattice functions.
 
 The RFQ simulations were performed with the TRACK code, as it was the original code used to design the RFQ in question \cite{ostroumovApplicationNewProcedure2006}. The HINS linac was intended to be focused entirely with superconducting solenoids, so the incoming and outgoing beams from the RFQ needed to be axially symmetric. This was accomplished through deliberately shaped electrodes for matching at the end of the otherwise typical RFQ vanes. These elements are represented as custom 3-D EM fields in TRACK and necessitated reviving the original simulation files. Space charge was modeled with particle in cell kicks. Table \ref{tab:track} summarizes the essential quantities for the RFQ outputs at the extremum currents. Figure \ref{fig:trackEmit} shows the Poincar\'{e} sections of the outputs for the extremum currents as well. The input was transverse waterbag distributions with a DC longitudinal structure, so of most interest is negligible transverse emittance growth and reasonable bunching. As we can see, the output longitudinal envelope is current independent in this range. The slight reduction in 8 [mA] emittance can be attributed to small mismatch losses. The longitudinal ``cyclone" structure in the 0 [mA] is not expected to significantly affect the dynamics downstream and can be seen to reasonably smear out with more current. 
-
 \begin{table}
     \centering
     \begin{tabular}{llll}
@@ -311,8 +273,6 @@ The RFQ simulations were performed with the TRACK code, as it was the original c
     \caption{TRACK RFQ simulation results}
     \label{tab:track}
 \end{table}
-
-
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{./chapter_5_figures/trackOutput0mAv8mAcomparisonImpact.png}
@@ -321,7 +281,6 @@ The RFQ simulations were performed with the TRACK code, as it was the original c
 \end{figure}
 
 The second order moments were calculated for these output distributions and used as the seeds for input distributions, both waterbag and Gaussian, into Impact-X simulations of the MEBT. At the range of currents considered, there are negligible transverse impacts, and we are primarily interested in the evolution of the longitudinal structure. The MEBT simulations ran from the output of the RFQ to just beyond the extent of the vertical injection kicker in IOTA, so the resulting distributions could be directly used for injection simulations. The ImpactX PIC solver does not have periodic boundary conditions, so to mitigate unpredictable results at the edge of the grid, the tracked bunch was ``bookended" by identical bunches at the RFQ wavelength, as in  figure \ref{fig:bookendBunch}. The analysis was only considered for the central bunch, but the self-fields are calculated for all of the bunches.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/bookendedBunch.png}
@@ -330,7 +289,6 @@ The second order moments were calculated for these output distributions and used
 \end{figure}
 
 Figure \ref{fig:mebtLenght} shows the resulting bunch lengthening in the MEBT for different input distributions and currents. For the largest growth configuration, this is almost fully de-bunched. While we do not need bunched beam to stably circulate in IOTA, the residual bunch structure is the intended mode for tuning injection into IOTA, as the BPMs are insensitive to unbunched beam. In principle, the debunching cavity (visible as the sharp kink in the growth curve) may be moved slightly downstream to increase its action on the bunch length.
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{./chapter_5_figures/bunchLenvSpaceCharge.pdf}
@@ -339,7 +297,6 @@ Figure \ref{fig:mebtLenght} shows the resulting bunch lengthening in the MEBT fo
 \end{figure}
 
 Using the resulting emittances from the MEBT simulation, the injection efficiency into IOTA was simulated. The tuning knobs at the end of the MEBT are strongly constrained by the large edge focusing from the final dipole. To optimized the injection efficiency into IOTA, the lattice functions at the injection were allowed to vary. Based on these results, the intent is to best match the MEBT by adding small permanent magnet quadrupoles, but the range of this tuning is naturally limited. Based on preliminary simulations of injection into IOTA the beam de-bunches very quickly. The Impact-X space charge models available at the time of the simulation did not handle coasting beam well (this functionality has recently been added), so only the first 8 turns were simulated, after which every case was fully de-bunched. To optimize injection, the transverse lattice parameters were applied as the independent parameters to a Bayesian optimization algorithm with losses over the initial turns as the figure of merit. The optimization algorithm in question was from the Xopt package \cite{rousselXoptSimplifiedFramework}. Table \ref{tab:injOpt} shows the optimization results for injection losses before and after tuning. Matching is improved for the lower initial emittance case considered, but if the source output emittance is at the upper end of the earlier measurements, we can expect substantial losses on injection.
-
 \begin{table}
     \centering
     \begin{tabular}{lcc}
@@ -364,7 +321,6 @@ Using the resulting emittances from the MEBT simulation, the injection efficienc
 \end{table}
 
 Finally, the same approach was used for a full NIO lattice with the nonlinear insert excited. If beam lifetime is short, this may be the preferred approach instead of ramping the insert strength after injection. Table \ref{tab:nioInjOpt} shows the similar results as above for the NIO lattice. Only the low initial emittance was considered as the losses are so large in the previous case, and matching optimization seems to have negligible results. We see a similar scale of improvement with the NIO insert for the higher space charge conditions. The resulting lattice functions from this optimization are expected to guide injection tuning as commissioning continues.
-
 \begin{table}
     \centering
     \begin{tabular}{lcc}
