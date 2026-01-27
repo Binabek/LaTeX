@@ -691,7 +691,7 @@ chapterapp.code = {
 	\thispagestyle{empty}
 	% Author now uppercase 6/5/12
 	% Use vplace to centre vertically added v4
-	{\begin{vplace}\noindent\msu@copyrightalign Copyright by\\\MakeUppercase{\theauthor}\\\thedate\end{vplace}}
+	{\begin{vplace}\noindent\msu@copyrightalign Copyright by\\[-0.7em]\MakeUppercase{\theauthor}\\[-0.7em]\thedate\end{vplace}}
 	\clearpage}
 
 % make the dedication page
