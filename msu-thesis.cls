@@ -589,10 +589,15 @@ chapterapp.code = {
 
 \let\oldmem@tableofcontents\mem@tableofcontents
 \renewcommand\mem@tableofcontents[1]{%
+   %\oldmem@tableofcontents{#1}%
+   \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
+   \setlength{\cftbeforesectionskip}{0.0em \@plus\p@}
+   \begingroup
+   \SingleSpacing
    \oldmem@tableofcontents{#1}%
-   \setlength{\cftbeforechapterskip}{0.0em \@plus\p@}
-	\setlength{\cftparskip}{\onelineskip}
-	\pagestyle{plain}
+   \endgroup
+      %\setlength{\cftparskip}{\onelineskip}
+      \pagestyle{plain}
 }
 % This allows users to use either \tableofcontents or \tableofcontents* with the same effect
 % Code from https://tex.stackexchange.com/a/165968/2693
