@@ -665,7 +665,8 @@ chapterapp.code = {
 
 
 % set up captions
-\captionstyle[\centering]{\raggedright}
+%\captionstyle[\centering]{\raggedright}
+\captionstyle{\centering}
 % Make the caption delimiter a space instead of colon space so that the
 % contents lists don't look so stupid.  Can be changed if necessary.
 \newcommand*\msucaptiondelim{\space}
