@@ -24,7 +24,7 @@ To evaluate the methods, a comparison was made with both a synthetic signal and 
 The first evaluation was on the convergence of the various methods. Figure \ref{fig:baseConv} shows the convergence of tune measurements for the various considered algorithms with increasing length of the sample window. The limitations of the FFT resolution from the available signal are clear, but they inform the initial values for the interpolation and the NAFF. The vertical simulation signals are considered here as they exhibit faster decoherence. The relatively long coherence time of the horizontal signal means that convergence rate is less important, and we are interested in best performance for very fast decoherence.
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./chapter_3_figures/basicConvergence.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_3_figures/basicConvergance.pdf}
 	\caption{Convergence of tune measurements with length of signal window.}
 	\label{fig:baseConv}
 \end{figure}
@@ -32,7 +32,7 @@ The first evaluation was on the convergence of the various methods. Figure \ref{
 The available resolution of the FFT can be improved by padding the input signal with zero values. This is the same effect as increasing the length of the signal and applying a rectangular window the length of the original signal. Figure \ref{fig:padConv} shows the convergence of the faster methods with and without padding. Here all signals were padded to an equal signal length of 256 turns. We see that the convergence of the padded FFT is improved, but the windowing effect introduces a systematic, limited offset of the tune determined by the length of the padding. The Jacobsen interpolation with a padded signal also suffers a similar effect, converging on a systematically offset tune.
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./chapter_3_figures/paddedConvergence.pdf}
+	\includegraphics[width=1\linewidth]{./chapter_3_figures/paddedConvergance.pdf}
 	\caption{Convergence of tune measurements with zero padding.}
 	\label{fig:padConv}
 \end{figure}
